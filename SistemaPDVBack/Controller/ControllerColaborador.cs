@@ -10,21 +10,33 @@ namespace SistemaPDVBack.Controller
     {
 
         private readonly MySqlCommand cmd = new MySqlCommand();
-        private readonly string _inserir = "";
+        private readonly string _inserir = "insert into Colaborador(codDepartamento, cpfColaborador, ativoColaborador, cargoColaborador, telefoneColaborador, emailPessoalColaborador, emailCorporativo )" +
+                                            "values(@codDepartamento, @cpfColaborador, @ativoColaborador, @cargoColaborador, @telefoneColaborador,@emailPessoalColaborador, @emailCorporativo)";
         private readonly string _alterar = "";
         private readonly string _listar = "";
 
-
+        Colaborador colaborador = new Colaborador();
         Conexao conexao = new Conexao();
 
+        public ControllerColaborador( )
+        {
 
-        public void AdicionarColaborador(Colaborador colaborador)
+        }
+
+
+        public void AdicionarColaborador()
         {
 
             cmd.CommandText = _inserir;
 
-            cmd.Parameters.AddWithValue("", colaborador);
-         
+            cmd.Parameters.AddWithValue("@codDepartamento", colaborador.CodDepartamento);
+            cmd.Parameters.AddWithValue("@cpfColaborador", colaborador.CpfColaborador);
+            cmd.Parameters.AddWithValue("@ativoColaborador", colaborador.AtivoColaborador);
+            cmd.Parameters.AddWithValue("@cargoColaborador", colaborador.CargoColaborador);
+
+
+
+
 
 
             try
@@ -49,10 +61,10 @@ namespace SistemaPDVBack.Controller
         }
 
 
-        public void AlterarProduto(Produto produto)
+        public void AlterarColaborador()
         {
             cmd.CommandText = _alterar;
-            cmd.Parameters.AddWithValue("", produto.CodFornecedor);
+            cmd.Parameters.AddWithValue("", colaborador.CargoColaborador);
       
 
 
@@ -82,7 +94,7 @@ namespace SistemaPDVBack.Controller
         }
 
 
-        public DataTable ListarProduto()
+        public DataTable ListarColaborador()
         {
             cmd.CommandText = _listar;
             try
@@ -106,7 +118,7 @@ namespace SistemaPDVBack.Controller
         }
 
 
-        public void PesquisaProduto(Produto produto)
+        public void PesquisaColaborador()
         {
 
 

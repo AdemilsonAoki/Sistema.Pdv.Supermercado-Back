@@ -5,19 +5,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace SistemaPDVBack.Controller
 {
     class ControllerUsuario
     {
-        Usuario login;
+        Usuario login = new Usuario();
         Conexao conexao = new Conexao();
 
         public ControllerUsuario(string usuario, string senha)
         {
             login.Login = usuario;
             login.Senha = senha;
-            
+
+
         }
 
         private readonly MySqlCommand cmd = new MySqlCommand();
@@ -43,7 +45,8 @@ namespace SistemaPDVBack.Controller
             }
             catch(Exception e)
             {
-                throw;
+                MessageBox.Show("Ïnvalido");
+                return false;
             }
             finally
             {

@@ -94,7 +94,7 @@ namespace SistemaPDVBack
 
             if(controllerUsuario.Login() == false)
             {
-                MessageBox.Show("Login Invalido!!");
+                
             }
             else
             {

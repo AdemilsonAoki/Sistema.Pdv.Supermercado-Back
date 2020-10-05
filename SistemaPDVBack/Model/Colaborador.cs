@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SistemaPDVBack.Model
 {
-    class Colaborador:AbsPessoa
+    class Colaborador
     {
 
         public int IdColaborador { get; set; }
@@ -20,21 +20,10 @@ namespace SistemaPDVBack.Model
         public string EmailPessoalColaborador { get; set; }
         public string EmailCorporativo { get; set; }
 
-        public Colaborador(int idColaborador, Departamento codDepartamento, string cpfColaborador, int ativoColaborador, string cargoColaborador, 
-                            string telefoneColaborador, string emailPessoalColaborador, string emailCorporativo,
-                            int idEndereco, string logradouroPessoa, string ufPessoa, string numeroPessoa,
-                            string complementoPessoa, string bairroPessoa, string cidadePessoa)
-                             :base(idEndereco, logradouroPessoa, ufPessoa, numeroPessoa, complementoPessoa, bairroPessoa, cidadePessoa)
 
-        {
-            IdColaborador = idColaborador;
-            CodDepartamento = codDepartamento;
-            CpfColaborador = cpfColaborador;
-            AtivoColaborador = ativoColaborador;
-            CargoColaborador = cargoColaborador;
-            TelefoneColaborador = telefoneColaborador;
-            EmailPessoalColaborador = emailPessoalColaborador;
-            EmailCorporativo = emailCorporativo;
-        }
     }
+
+    
+
+
 }

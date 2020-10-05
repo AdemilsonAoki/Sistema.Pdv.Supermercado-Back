@@ -4,6 +4,8 @@ using System.Data;
 
 namespace SistemaPDVBack.Model
 {
+
+
     class Conexao
     {
 

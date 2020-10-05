@@ -56,12 +56,10 @@
     <Compile Include="Controller\ControllerFornecedor.cs" />
     <Compile Include="Controller\ControllerProduto.cs" />
     <Compile Include="Controller\ControllerUsuario.cs" />
-    <Compile Include="Interface\Endereco.cs" />
     <Compile Include="Model\Cliente.cs" />
     <Compile Include="Model\Colaborador.cs" />
     <Compile Include="Model\Conexao.cs" />
     <Compile Include="Model\Departamento.cs" />
-    <Compile Include="Model\AbsPessoa.cs" />
     <Compile Include="Model\Fornecedor.cs" />
     <Compile Include="Model\Pedido.cs" />
     <Compile Include="Model\Produto.cs" />
