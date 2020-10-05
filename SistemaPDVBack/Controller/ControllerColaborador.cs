@@ -18,7 +18,7 @@ namespace SistemaPDVBack.Controller
         Colaborador colaborador = new Colaborador();
         Conexao conexao = new Conexao();
 
-        public ControllerColaborador( )
+        public ControllerColaborador()
         {
 
         }

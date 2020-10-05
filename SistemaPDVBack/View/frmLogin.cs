@@ -89,12 +89,9 @@ namespace SistemaPDVBack
         {
             ControllerUsuario controllerUsuario = new ControllerUsuario(txbUsuario.Text , txbSenha.Text);
           
-
-
-
             if(controllerUsuario.Login() == false)
             {
-                
+                MessageBox.Show("Login ou senha inválidos!");
             }
             else
             {

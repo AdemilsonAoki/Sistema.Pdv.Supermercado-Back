@@ -1,5 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using SistemaPDVBack.Model;
+using SistemaPDVBack.Validacoes;
+
 using System;
 using System.Data;
 
@@ -17,7 +19,16 @@ namespace SistemaPDVBack.Controller
 
 
         Conexao conexao = new Conexao();
+        Produto produto = new Produto();
+  
+        
 
+        public ControllerProduto(string codBarras, string codFornecedor, string nomeProduto, string descricaoProduto, string precoCusto, decimal precoVenda, decimal margemLucro, string dataFabricacao, string dataVencimento, int quantidadeEstoqueProduto, string categoria, int ativoProduto)
+        {
+            
+            
+            
+        }
 
         public void AdicionarProduto(Produto produto)
         {
@@ -131,6 +142,11 @@ namespace SistemaPDVBack.Controller
 
 
 
+        }
+
+        private void convertendoValores(string codBarras)
+        {
+            produto.CodBarras = int.Parse(codBarras);
         }
 
     }

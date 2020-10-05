@@ -15,12 +15,14 @@ namespace SistemaPDVBack.Model
         public decimal PrecoCusto { get; set; }
         public decimal PrecoVenda { get; set; }
         public decimal MargemLucro { get; set; }
-        public DateTime  DataFabricacao { get; set; }
-        public DateTime DataVencimento { get; set; }
+        public string  DataFabricacao { get; set; }
+        public string DataVencimento { get; set; }
         public int QuantidadeEstoqueProduto { get; set; }
         public string Categoria { get; set; }
         public int AtivoProduto { get; set; }
 
-
+    
     }
+    
+    
 }

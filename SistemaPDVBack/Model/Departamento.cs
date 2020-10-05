@@ -12,4 +12,6 @@ namespace SistemaPDVBack.Model
         public int NomeDepartamento { get; set; }
 
     }
+    
+
 }

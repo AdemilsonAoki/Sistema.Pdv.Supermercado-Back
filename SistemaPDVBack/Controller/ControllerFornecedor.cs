@@ -17,8 +17,12 @@ namespace SistemaPDVBack.Controller
         private readonly string _listar = "";
 
 
+        Fornecedor fornecedor = new Fornecedor();
         Conexao conexao = new Conexao();
 
+        public ControllerFornecedor()
+        {
+        }
 
         public void AdicionarFornecedor(Fornecedor fornecedor)
         {
@@ -27,7 +31,7 @@ namespace SistemaPDVBack.Controller
 
             cmd.Parameters.AddWithValue("", fornecedor.InscricaoEstadual);
             cmd.Parameters.AddWithValue("", fornecedor.NomeFantasia);
-            cmd.Parameters.AddWithValue("", fornecedor.IdEndereco);
+          
 
 
             try

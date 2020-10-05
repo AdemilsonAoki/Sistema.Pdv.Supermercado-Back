@@ -13,6 +13,8 @@ namespace SistemaPDVBack.Controller
     {
         Usuario login = new Usuario();
         Conexao conexao = new Conexao();
+        private readonly MySqlCommand cmd = new MySqlCommand();
+        private MySqlDataReader reader;
 
         public ControllerUsuario(string usuario, string senha)
         {
@@ -22,30 +24,34 @@ namespace SistemaPDVBack.Controller
 
         }
 
-        private readonly MySqlCommand cmd = new MySqlCommand();
+            
+
         public bool Login()
         {
-            cmd.CommandText = "select *from Usuario where usuario = @usuario and senha = @senha";
+            cmd.CommandText = "select *from usuario where usuario = @usuario and senha = @senha";
             cmd.Parameters.AddWithValue("@usuario", login.Login);
             cmd.Parameters.AddWithValue("@senha", login.Senha);
             try
             {
-                conexao.AbrirBanco();
+                cmd.Connection = conexao.AbrirBanco();
                               
-                MySqlDataReader reader = cmd.ExecuteReader();
+                reader = cmd.ExecuteReader();
                 if (reader.HasRows)
                 {
                     return true;
                 }
                 else
+                {
                     return false;
+                }
+                    
 
 
 
             }
             catch(Exception e)
             {
-                MessageBox.Show("Ïnvalido");
+                MessageBox.Show(e.Message);
                 return false;
             }
             finally

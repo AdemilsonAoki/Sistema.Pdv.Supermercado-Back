@@ -11,7 +11,7 @@ namespace SistemaPDVBack.Model
 
         MySqlConnection con = new MySqlConnection();
 
-        private readonly string conexao = "Server=localhost;Database=bancopim2semestre2020;Uid=root;Pwd=Brasileiro55@;";
+        private  string conexao = "Server=localhost;Database=bancopim2semestre2020;Uid=root;Pwd=Brasileiro55@;";
 
         public Conexao()
         {
