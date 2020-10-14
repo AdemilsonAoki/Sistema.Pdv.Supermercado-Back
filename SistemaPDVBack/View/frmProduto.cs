@@ -74,40 +74,43 @@ namespace SistemaPDVBack
 
         private void txbMargemDeLucro_TextChanged(object sender, EventArgs e)
         {
-            // CalculaMargem();
+
         }
 
         private void txbPrecoDeVenda_TextChanged(object sender, EventArgs e)
         {
-            PrecoVendaMargem();
+            float porcentagem = 0;
+            float total = 0;
 
-        }
-
-        private bool CalculaMargem()
-        {
-            decimal porcentagem = 0;
-
-            decimal precoCusto = 0;
-            decimal total = 0;
-            if (txbMargemDeLucro.Text != "" && txbPrecoCusto.Text != "")
+            float precoCusto = 0;
+            if (txbMargemDeLucro.Text != "")
             {
-                porcentagem = decimal.Parse(txbMargemDeLucro.Text);
-                precoCusto = decimal.Parse(txbPrecoCusto.Text);
-                porcentagem += 100;
-                total = (porcentagem / 100) * precoCusto;
-
-                txbPrecoDeVenda.Text = total.ToString();
-                return true;
+                porcentagem = float.Parse(txbMargemDeLucro.Text);
             }
-            else
+            if (txbPrecoCusto.Text != "")
             {
-                return false;
+
+                precoCusto = float.Parse(txbPrecoCusto.Text);
             }
 
+            //decimal precoVenda = 0;
+            //decimal porcentagem = 0;
+
+
+            //decimal precoCusto = 0;
+            //decimal total = 0;
+
+            //    if (txbPrecoDeVenda.Text != "" && txbPrecoCusto.Text != "" && txbPrecoDeVenda.Text != "0" && txbPrecoCusto.Text != "0")
+            //    {
+            //        precoVenda = decimal.Parse(txbPrecoDeVenda.Text);
+            //        precoCusto = decimal.Parse(txbPrecoCusto.Text);
+
+            //    }
+            //    total = (((precoVenda - precoCusto) / precoVenda)) * 200;
+            //    txbMargemDeLucro.Text = total.ToString("F2");
+
 
         }
-
-
 
         private void txbPrecoCusto_TextChanged(object sender, EventArgs e)
         {
@@ -116,20 +119,38 @@ namespace SistemaPDVBack
 
         private void txbMargemDeLucro_MouseLeave(object sender, EventArgs e)
         {
-            CalculaMargem();
+
 
         }
 
         private void txbMargemDeLucro_TextChanged_1(object sender, EventArgs e)
         {
-            CalculaMargem();
+            float porcentagem = 0;
+            float total = 0;
+
+            float precoCusto = 0;
+    
+            if (txbPrecoCusto.Text != "" && txbMargemDeLucro.Text != "")
+            {
+                porcentagem = float.Parse(txbMargemDeLucro.Text);
+                precoCusto = float.Parse(txbPrecoCusto.Text);
+            }
+
+
+            porcentagem += 100;
+            total = (porcentagem / 100) * precoCusto;
+
+            txbPrecoDeVenda.Text = total.ToString("F2");
+          
+
+
         }
 
         private void txbPrecoDeVenda_MouseLeave(object sender, EventArgs e)
         {
 
 
-        
+
 
 
 
@@ -140,13 +161,16 @@ namespace SistemaPDVBack
 
 
             decimal precoVenda = 0;
+            decimal porcentagem = 0;
+
 
             decimal precoCusto = 0;
             decimal total = 0;
-            if (CalculaMargem() == true)
+
+
+
+            if (txbPrecoDeVenda.Focus() != true)
             {
-
-
                 if (txbPrecoDeVenda.Text != "" && txbPrecoCusto.Text != "" && txbPrecoDeVenda.Text != "0" && txbPrecoCusto.Text != "0")
                 {
                     precoVenda = decimal.Parse(txbPrecoDeVenda.Text);
@@ -155,6 +179,21 @@ namespace SistemaPDVBack
                     txbMargemDeLucro.Text = total.ToString("F2");
                 }
             }
+
+            else if (txbMargemDeLucro.Focus() != true)
+            {
+                if (txbMargemDeLucro.Text != "" && txbPrecoCusto.Text != "")
+                {
+                    porcentagem = decimal.Parse(txbMargemDeLucro.Text);
+                    precoCusto = decimal.Parse(txbPrecoCusto.Text);
+                    porcentagem += 100;
+                    total = (porcentagem / 100) * precoCusto;
+
+                    txbPrecoDeVenda.Text = total.ToString();
+                }
+
+            }
+
         }
     }
 }

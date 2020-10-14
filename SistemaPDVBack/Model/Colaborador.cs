@@ -10,6 +10,8 @@ namespace SistemaPDVBack.Model
     {
 
         public int IdColaborador { get; set; }
+        public string NomeColaborador { get; set; }
+
         public Departamento CodDepartamento { get; set; }
 
         public string CpfColaborador { get; set; }

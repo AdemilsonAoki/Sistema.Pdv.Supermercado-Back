@@ -10,7 +10,7 @@ namespace SistemaPDVBack.Controller
     {
 
         private readonly MySqlCommand cmd = new MySqlCommand();
-        private readonly string _inserir = "insert into Colaborador(cpfColaborador,idDepartamento, ativoColaborador, cargoColaborador, telefoneColaborador, emailPessoalColaborador, emailCorporativo )" +
+        private readonly string _inserir = "insert into Colaborador(nomeColaborador, cpfColaborador,idDepartamento, ativoColaborador, cargoColaborador, telefoneColaborador, emailPessoalColaborador, emailCorporativo )" +
                                             "values(@cpfColaborador, @ativoColaborador, @cargoColaborador, @telefoneColaborador,@emailPessoalColaborador, @emailCorporativo)";
         private readonly string _alterar = "update Colaborador set cpfColaborador = @cpfColaborador,idDepartamento =@idDepartamento,  ativoColaborador = @ativoColaborador, cargoColaborador = @cargoColaborador,telefoneColaborador = @telefoneColaborador,emailPessoalColaborador= @emailPessoalColaborador, emailCorporativo =@emailCorporativo where idColaborador = @idColaborador";
         private readonly string _listar = "select *from Colaborador";
@@ -18,11 +18,16 @@ namespace SistemaPDVBack.Controller
         Colaborador colaborador = new Colaborador();
         Conexao conexao = new Conexao();
 
-        public ControllerColaborador(string cpfColaborador, string codDepartamento, string ativoColaborador, string cargoColaborador, string telefoneColaborador, string emailPessoalColaborador, string emailColaborador)
+        public ControllerColaborador()
         {
-            ConverterValidar(cpfColaborador, codDepartamento, ativoColaborador, cargoColaborador, telefoneColaborador, emailPessoalColaborador, emailColaborador);
+
         }
-        public void ConverterValidar(string cpfColaborador, string codDepartamento, string ativoColaborador, string cargoColaborador, string telefoneColaborador, string emailPessoalColaborador, string emailColaborador)
+
+        public ControllerColaborador(string nomeColaborador, string cpfColaborador, string codDepartamento, string ativoColaborador, string cargoColaborador, string telefoneColaborador, string emailPessoalColaborador, string emailColaborador)
+        {
+            ConverterValidar(nomeColaborador, cpfColaborador, codDepartamento, ativoColaborador, cargoColaborador, telefoneColaborador, emailPessoalColaborador, emailColaborador);
+        }
+        public void ConverterValidar(string nomeColaborador, string cpfColaborador, string codDepartamento, string ativoColaborador, string cargoColaborador, string telefoneColaborador, string emailPessoalColaborador, string emailColaborador)
         {
             try
             {
@@ -48,6 +53,7 @@ namespace SistemaPDVBack.Controller
             cmd.CommandText = _inserir;
 
             cmd.Parameters.AddWithValue("@cpfColaborador", colaborador.CpfColaborador);
+            cmd.Parameters.AddWithValue("@nomeColaborador", colaborador.NomeColaborador);
             cmd.Parameters.AddWithValue("@idDepartamento", colaborador.CodDepartamento.IdDEpartamento);
             cmd.Parameters.AddWithValue("@ativoColaborador", colaborador.AtivoColaborador);
             cmd.Parameters.AddWithValue("@cargoColaborador", colaborador.CargoColaborador);
