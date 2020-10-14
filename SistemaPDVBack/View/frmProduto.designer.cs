@@ -59,20 +59,15 @@
             this.btnAdicionar = new FontAwesome.Sharp.IconButton();
             this.rbProdutoInativo = new System.Windows.Forms.RadioButton();
             this.rbProdutoAtivo = new System.Windows.Forms.RadioButton();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvProduto = new System.Windows.Forms.DataGridView();
             this.txbQuantidadeEstoque = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             this.gpCategoria.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProduto)).BeginInit();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblCodBarras
@@ -90,7 +85,7 @@
             // 
             this.txbCodigoBarras.Location = new System.Drawing.Point(24, 38);
             this.txbCodigoBarras.Name = "txbCodigoBarras";
-            this.txbCodigoBarras.Size = new System.Drawing.Size(174, 20);
+            this.txbCodigoBarras.Size = new System.Drawing.Size(191, 20);
             this.txbCodigoBarras.TabIndex = 1;
             // 
             // lblFornecedor
@@ -106,12 +101,12 @@
             // 
             // cmbFornecedor
             // 
-            this.cmbFornecedor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.cmbFornecedor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbFornecedor.FormattingEnabled = true;
             this.cmbFornecedor.Location = new System.Drawing.Point(298, 36);
             this.cmbFornecedor.Name = "cmbFornecedor";
-            this.cmbFornecedor.Size = new System.Drawing.Size(251, 21);
+            this.cmbFornecedor.Size = new System.Drawing.Size(268, 21);
             this.cmbFornecedor.TabIndex = 4;
             // 
             // groupBox1
@@ -122,7 +117,7 @@
             this.groupBox1.Controls.Add(this.txbNome);
             this.groupBox1.Location = new System.Drawing.Point(24, 79);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(542, 158);
+            this.groupBox1.Size = new System.Drawing.Size(542, 173);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             // 
@@ -141,7 +136,7 @@
             // 
             this.rtbDescricao.Location = new System.Drawing.Point(6, 75);
             this.rtbDescricao.Name = "rtbDescricao";
-            this.rtbDescricao.Size = new System.Drawing.Size(519, 68);
+            this.rtbDescricao.Size = new System.Drawing.Size(519, 92);
             this.rtbDescricao.TabIndex = 13;
             this.rtbDescricao.Text = "";
             // 
@@ -172,7 +167,7 @@
             this.btnGerarCodBarras.IconColor = System.Drawing.Color.Black;
             this.btnGerarCodBarras.IconSize = 65;
             this.btnGerarCodBarras.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnGerarCodBarras.Location = new System.Drawing.Point(204, 36);
+            this.btnGerarCodBarras.Location = new System.Drawing.Point(221, 36);
             this.btnGerarCodBarras.Name = "btnGerarCodBarras";
             this.btnGerarCodBarras.Rotation = 0D;
             this.btnGerarCodBarras.Size = new System.Drawing.Size(59, 23);
@@ -185,9 +180,9 @@
             this.gpCategoria.Controls.Add(this.rbNaoPerecivel);
             this.gpCategoria.Controls.Add(this.rbPerecivel);
             this.gpCategoria.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gpCategoria.Location = new System.Drawing.Point(570, 4);
+            this.gpCategoria.Location = new System.Drawing.Point(580, 4);
             this.gpCategoria.Name = "gpCategoria";
-            this.gpCategoria.Size = new System.Drawing.Size(149, 69);
+            this.gpCategoria.Size = new System.Drawing.Size(125, 69);
             this.gpCategoria.TabIndex = 10;
             this.gpCategoria.TabStop = false;
             // 
@@ -215,7 +210,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.Controls.Add(this.txbMargemDeLucro);
             this.groupBox2.Controls.Add(this.label6);
@@ -225,18 +220,20 @@
             this.groupBox2.Controls.Add(this.lblPrecoCusto);
             this.groupBox2.Location = new System.Drawing.Point(580, 79);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(258, 158);
+            this.groupBox2.Size = new System.Drawing.Size(276, 173);
             this.groupBox2.TabIndex = 11;
             this.groupBox2.TabStop = false;
             // 
             // txbMargemDeLucro
             // 
-            this.txbMargemDeLucro.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.txbMargemDeLucro.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txbMargemDeLucro.Location = new System.Drawing.Point(9, 84);
             this.txbMargemDeLucro.Name = "txbMargemDeLucro";
-            this.txbMargemDeLucro.Size = new System.Drawing.Size(224, 20);
+            this.txbMargemDeLucro.Size = new System.Drawing.Size(242, 20);
             this.txbMargemDeLucro.TabIndex = 7;
+            this.txbMargemDeLucro.TextChanged += new System.EventHandler(this.txbMargemDeLucro_TextChanged_1);
+            this.txbMargemDeLucro.MouseLeave += new System.EventHandler(this.txbMargemDeLucro_MouseLeave);
             // 
             // label6
             // 
@@ -251,12 +248,15 @@
             // 
             // txbPrecoDeVenda
             // 
-            this.txbPrecoDeVenda.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.txbPrecoDeVenda.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txbPrecoDeVenda.Location = new System.Drawing.Point(9, 134);
             this.txbPrecoDeVenda.Name = "txbPrecoDeVenda";
-            this.txbPrecoDeVenda.Size = new System.Drawing.Size(224, 20);
+            this.txbPrecoDeVenda.Size = new System.Drawing.Size(242, 20);
             this.txbPrecoDeVenda.TabIndex = 5;
+            this.txbPrecoDeVenda.Text = "0";
+            this.txbPrecoDeVenda.TextChanged += new System.EventHandler(this.txbPrecoDeVenda_TextChanged);
+            this.txbPrecoDeVenda.MouseLeave += new System.EventHandler(this.txbPrecoDeVenda_MouseLeave);
             // 
             // label5
             // 
@@ -271,12 +271,14 @@
             // 
             // txbPrecoCusto
             // 
-            this.txbPrecoCusto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.txbPrecoCusto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txbPrecoCusto.Location = new System.Drawing.Point(9, 34);
             this.txbPrecoCusto.Name = "txbPrecoCusto";
-            this.txbPrecoCusto.Size = new System.Drawing.Size(224, 20);
+            this.txbPrecoCusto.Size = new System.Drawing.Size(242, 20);
             this.txbPrecoCusto.TabIndex = 3;
+            this.txbPrecoCusto.Text = "0";
+            this.txbPrecoCusto.TextChanged += new System.EventHandler(this.txbPrecoCusto_TextChanged);
             // 
             // lblPrecoCusto
             // 
@@ -292,7 +294,7 @@
             // dtpDataFabricacao
             // 
             this.dtpDataFabricacao.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDataFabricacao.Location = new System.Drawing.Point(24, 258);
+            this.dtpDataFabricacao.Location = new System.Drawing.Point(24, 273);
             this.dtpDataFabricacao.Name = "dtpDataFabricacao";
             this.dtpDataFabricacao.Size = new System.Drawing.Size(131, 20);
             this.dtpDataFabricacao.TabIndex = 12;
@@ -300,7 +302,7 @@
             // dtpDataVencimento
             // 
             this.dtpDataVencimento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDataVencimento.Location = new System.Drawing.Point(188, 258);
+            this.dtpDataVencimento.Location = new System.Drawing.Point(188, 273);
             this.dtpDataVencimento.Name = "dtpDataVencimento";
             this.dtpDataVencimento.Size = new System.Drawing.Size(131, 20);
             this.dtpDataVencimento.TabIndex = 13;
@@ -310,7 +312,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(21, 240);
+            this.label7.Location = new System.Drawing.Point(21, 255);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(134, 15);
             this.label7.TabIndex = 14;
@@ -321,7 +323,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(185, 240);
+            this.label8.Location = new System.Drawing.Point(185, 255);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(138, 15);
             this.label8.TabIndex = 15;
@@ -330,6 +332,7 @@
             // btnAlterar
             // 
             this.btnAlterar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAlterar.BackColor = System.Drawing.Color.Azure;
             this.btnAlterar.FlatAppearance.BorderSize = 0;
             this.btnAlterar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAlterar.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
@@ -339,18 +342,19 @@
             this.btnAlterar.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.btnAlterar.IconSize = 32;
             this.btnAlterar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnAlterar.Location = new System.Drawing.Point(725, 243);
+            this.btnAlterar.Location = new System.Drawing.Point(729, 258);
             this.btnAlterar.Name = "btnAlterar";
             this.btnAlterar.Rotation = 0D;
-            this.btnAlterar.Size = new System.Drawing.Size(106, 35);
+            this.btnAlterar.Size = new System.Drawing.Size(127, 35);
             this.btnAlterar.TabIndex = 20;
             this.btnAlterar.Text = "Alterar";
             this.btnAlterar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnAlterar.UseVisualStyleBackColor = true;
+            this.btnAlterar.UseVisualStyleBackColor = false;
             // 
             // btnAdicionar
             // 
             this.btnAdicionar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAdicionar.BackColor = System.Drawing.Color.Azure;
             this.btnAdicionar.FlatAppearance.BorderSize = 0;
             this.btnAdicionar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdicionar.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
@@ -360,21 +364,22 @@
             this.btnAdicionar.IconColor = System.Drawing.Color.Green;
             this.btnAdicionar.IconSize = 32;
             this.btnAdicionar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnAdicionar.Location = new System.Drawing.Point(592, 243);
+            this.btnAdicionar.Location = new System.Drawing.Point(580, 258);
             this.btnAdicionar.Name = "btnAdicionar";
             this.btnAdicionar.Rotation = 0D;
             this.btnAdicionar.Size = new System.Drawing.Size(127, 35);
             this.btnAdicionar.TabIndex = 19;
             this.btnAdicionar.Text = "Adicionar";
             this.btnAdicionar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnAdicionar.UseVisualStyleBackColor = true;
+            this.btnAdicionar.UseVisualStyleBackColor = false;
+            this.btnAdicionar.Click += new System.EventHandler(this.btnAdicionar_Click);
             // 
             // rbProdutoInativo
             // 
             this.rbProdutoInativo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.rbProdutoInativo.AutoSize = true;
             this.rbProdutoInativo.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbProdutoInativo.Location = new System.Drawing.Point(728, 44);
+            this.rbProdutoInativo.Location = new System.Drawing.Point(15, 40);
             this.rbProdutoInativo.Name = "rbProdutoInativo";
             this.rbProdutoInativo.Size = new System.Drawing.Size(124, 19);
             this.rbProdutoInativo.TabIndex = 23;
@@ -387,7 +392,7 @@
             this.rbProdutoAtivo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.rbProdutoAtivo.AutoSize = true;
             this.rbProdutoAtivo.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbProdutoAtivo.Location = new System.Drawing.Point(729, 12);
+            this.rbProdutoAtivo.Location = new System.Drawing.Point(14, 14);
             this.rbProdutoAtivo.Name = "rbProdutoAtivo";
             this.rbProdutoAtivo.Size = new System.Drawing.Size(113, 19);
             this.rbProdutoAtivo.TabIndex = 22;
@@ -395,17 +400,17 @@
             this.rbProdutoAtivo.Text = "Produto Ativo";
             this.rbProdutoAtivo.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // dgvProduto
             // 
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.dgvProduto.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgvProduto.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgvProduto.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvProduto.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgvProduto.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvProduto.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dgvProduto.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.Green;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -413,22 +418,14 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridView1.ColumnHeadersHeight = 30;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4,
-            this.Column5,
-            this.Column6,
-            this.Column7});
-            this.dataGridView1.EnableHeadersVisualStyles = false;
-            this.dataGridView1.GridColor = System.Drawing.Color.Yellow;
-            this.dataGridView1.Location = new System.Drawing.Point(20, 293);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgvProduto.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvProduto.ColumnHeadersHeight = 30;
+            this.dgvProduto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dgvProduto.EnableHeadersVisualStyles = false;
+            this.dgvProduto.GridColor = System.Drawing.Color.SandyBrown;
+            this.dgvProduto.Location = new System.Drawing.Point(20, 302);
+            this.dgvProduto.Name = "dgvProduto";
+            this.dgvProduto.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.Maroon;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -436,67 +433,25 @@
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridView1.RowHeadersVisible = false;
+            this.dgvProduto.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvProduto.RowHeadersVisible = false;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(818, 217);
-            this.dataGridView1.TabIndex = 24;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Column1";
-            this.Column1.Name = "Column1";
-            this.Column1.Width = 87;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Column2";
-            this.Column2.Name = "Column2";
-            this.Column2.Width = 87;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Column3";
-            this.Column3.Name = "Column3";
-            this.Column3.Width = 87;
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Column4";
-            this.Column4.Name = "Column4";
-            this.Column4.Width = 87;
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "Column5";
-            this.Column5.Name = "Column5";
-            this.Column5.Width = 87;
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "Column6";
-            this.Column6.Name = "Column6";
-            this.Column6.Width = 87;
-            // 
-            // Column7
-            // 
-            this.Column7.HeaderText = "Column7";
-            this.Column7.Name = "Column7";
-            this.Column7.Width = 87;
+            this.dgvProduto.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvProduto.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvProduto.Size = new System.Drawing.Size(836, 212);
+            this.dgvProduto.TabIndex = 24;
             // 
             // txbQuantidadeEstoque
             // 
-            this.txbQuantidadeEstoque.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.txbQuantidadeEstoque.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txbQuantidadeEstoque.Location = new System.Drawing.Point(353, 258);
+            this.txbQuantidadeEstoque.Location = new System.Drawing.Point(353, 273);
             this.txbQuantidadeEstoque.Name = "txbQuantidadeEstoque";
-            this.txbQuantidadeEstoque.Size = new System.Drawing.Size(213, 20);
+            this.txbQuantidadeEstoque.Size = new System.Drawing.Size(196, 20);
             this.txbQuantidadeEstoque.TabIndex = 25;
             // 
             // label9
@@ -504,23 +459,34 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.Black;
-            this.label9.Location = new System.Drawing.Point(350, 240);
+            this.label9.Location = new System.Drawing.Point(350, 255);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(160, 15);
             this.label9.TabIndex = 26;
             this.label9.Text = "Quantidade em estoque";
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.Controls.Add(this.rbProdutoAtivo);
+            this.groupBox3.Controls.Add(this.rbProdutoInativo);
+            this.groupBox3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox3.Location = new System.Drawing.Point(711, 4);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(145, 69);
+            this.groupBox3.TabIndex = 11;
+            this.groupBox3.TabStop = false;
+            // 
             // frmProduto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
+            this.BackColor = System.Drawing.Color.SteelBlue;
             this.ClientSize = new System.Drawing.Size(868, 522);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.txbQuantidadeEstoque);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.rbProdutoInativo);
-            this.Controls.Add(this.rbProdutoAtivo);
+            this.Controls.Add(this.dgvProduto);
             this.Controls.Add(this.btnAlterar);
             this.Controls.Add(this.btnAdicionar);
             this.Controls.Add(this.label8);
@@ -544,7 +510,9 @@
             this.gpCategoria.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProduto)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -580,15 +548,9 @@
         private FontAwesome.Sharp.IconButton btnAdicionar;
         private System.Windows.Forms.RadioButton rbProdutoInativo;
         private System.Windows.Forms.RadioButton rbProdutoAtivo;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvProduto;
         private System.Windows.Forms.TextBox txbQuantidadeEstoque;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.GroupBox groupBox3;
     }
 }

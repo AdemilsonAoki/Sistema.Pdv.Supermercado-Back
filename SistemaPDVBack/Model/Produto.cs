@@ -9,7 +9,7 @@ namespace SistemaPDVBack.Model
     class Produto
     {
         public int CodBarras { get; set; }
-        public Fornecedor CodFornecedor { get; set; }
+        public int CodFornecedor { get; set; }
         public string NomeProduto { get; set; }
         public string DescricaoProduto { get; set; }
         public decimal PrecoCusto { get; set; }

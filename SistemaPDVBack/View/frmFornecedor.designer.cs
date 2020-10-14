@@ -47,6 +47,8 @@
             this.txbCep = new System.Windows.Forms.TextBox();
             this.lblCep = new System.Windows.Forms.Label();
             this.gbDadosForncedor = new System.Windows.Forms.GroupBox();
+            this.txbId = new System.Windows.Forms.TextBox();
+            this.lblId = new System.Windows.Forms.Label();
             this.rbFornecedorInativo = new System.Windows.Forms.RadioButton();
             this.rbFornecedorAtivo = new System.Windows.Forms.RadioButton();
             this.lblCnpj = new System.Windows.Forms.Label();
@@ -58,16 +60,9 @@
             this.btnAlterar = new FontAwesome.Sharp.IconButton();
             this.btnAdicionar = new FontAwesome.Sharp.IconButton();
             this.dgvFornecedor = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.txbId = new System.Windows.Forms.TextBox();
-            this.lblId = new System.Windows.Forms.Label();
+            this.txbLogradouro = new System.Windows.Forms.TextBox();
+            this.lblLogradouro = new System.Windows.Forms.Label();
             this.gbEndereco.SuspendLayout();
             this.gbDadosForncedor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFornecedor)).BeginInit();
@@ -75,8 +70,10 @@
             // 
             // gbEndereco
             // 
-            this.gbEndereco.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.gbEndereco.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbEndereco.Controls.Add(this.txbLogradouro);
+            this.gbEndereco.Controls.Add(this.lblLogradouro);
             this.gbEndereco.Controls.Add(this.txbNumero);
             this.gbEndereco.Controls.Add(this.lblNumero);
             this.gbEndereco.Controls.Add(this.txbComplemento);
@@ -120,9 +117,9 @@
             // txbComplemento
             // 
             this.txbComplemento.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txbComplemento.Location = new System.Drawing.Point(583, 84);
+            this.txbComplemento.Location = new System.Drawing.Point(433, 84);
             this.txbComplemento.Name = "txbComplemento";
-            this.txbComplemento.Size = new System.Drawing.Size(204, 20);
+            this.txbComplemento.Size = new System.Drawing.Size(164, 20);
             this.txbComplemento.TabIndex = 17;
             // 
             // lblComplemento
@@ -131,7 +128,7 @@
             this.lblComplemento.AutoSize = true;
             this.lblComplemento.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblComplemento.ForeColor = System.Drawing.Color.Black;
-            this.lblComplemento.Location = new System.Drawing.Point(580, 66);
+            this.lblComplemento.Location = new System.Drawing.Point(430, 66);
             this.lblComplemento.Name = "lblComplemento";
             this.lblComplemento.Size = new System.Drawing.Size(98, 15);
             this.lblComplemento.TabIndex = 16;
@@ -140,7 +137,7 @@
             // txbEstado
             // 
             this.txbEstado.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txbEstado.Location = new System.Drawing.Point(455, 84);
+            this.txbEstado.Location = new System.Drawing.Point(319, 84);
             this.txbEstado.Name = "txbEstado";
             this.txbEstado.Size = new System.Drawing.Size(105, 20);
             this.txbEstado.TabIndex = 15;
@@ -151,7 +148,7 @@
             this.lblEstado.AutoSize = true;
             this.lblEstado.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEstado.ForeColor = System.Drawing.Color.Black;
-            this.lblEstado.Location = new System.Drawing.Point(452, 66);
+            this.lblEstado.Location = new System.Drawing.Point(316, 66);
             this.lblEstado.Name = "lblEstado";
             this.lblEstado.Size = new System.Drawing.Size(52, 15);
             this.lblEstado.TabIndex = 14;
@@ -160,9 +157,9 @@
             // txbCidade
             // 
             this.txbCidade.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txbCidade.Location = new System.Drawing.Point(259, 84);
+            this.txbCidade.Location = new System.Drawing.Point(190, 84);
             this.txbCidade.Name = "txbCidade";
-            this.txbCidade.Size = new System.Drawing.Size(180, 20);
+            this.txbCidade.Size = new System.Drawing.Size(113, 20);
             this.txbCidade.TabIndex = 13;
             // 
             // lblCidade
@@ -171,7 +168,7 @@
             this.lblCidade.AutoSize = true;
             this.lblCidade.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCidade.ForeColor = System.Drawing.Color.Black;
-            this.lblCidade.Location = new System.Drawing.Point(256, 66);
+            this.lblCidade.Location = new System.Drawing.Point(187, 66);
             this.lblCidade.Name = "lblCidade";
             this.lblCidade.Size = new System.Drawing.Size(53, 15);
             this.lblCidade.TabIndex = 12;
@@ -179,11 +176,11 @@
             // 
             // txbBairro
             // 
-            this.txbBairro.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.txbBairro.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txbBairro.Location = new System.Drawing.Point(9, 84);
             this.txbBairro.Name = "txbBairro";
-            this.txbBairro.Size = new System.Drawing.Size(228, 20);
+            this.txbBairro.Size = new System.Drawing.Size(166, 20);
             this.txbBairro.TabIndex = 11;
             // 
             // lblBairro
@@ -199,21 +196,21 @@
             // 
             // txbRua
             // 
-            this.txbRua.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.txbRua.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txbRua.Location = new System.Drawing.Point(197, 34);
+            this.txbRua.Location = new System.Drawing.Point(190, 34);
             this.txbRua.Name = "txbRua";
             this.txbRua.Size = new System.Drawing.Size(457, 20);
             this.txbRua.TabIndex = 9;
             // 
             // lblRua
             // 
-            this.lblRua.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.lblRua.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblRua.AutoSize = true;
             this.lblRua.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRua.ForeColor = System.Drawing.Color.Black;
-            this.lblRua.Location = new System.Drawing.Point(194, 16);
+            this.lblRua.Location = new System.Drawing.Point(187, 16);
             this.lblRua.Name = "lblRua";
             this.lblRua.Size = new System.Drawing.Size(32, 15);
             this.lblRua.TabIndex = 8;
@@ -239,7 +236,7 @@
             // 
             // gbDadosForncedor
             // 
-            this.gbDadosForncedor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.gbDadosForncedor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gbDadosForncedor.Controls.Add(this.txbId);
             this.gbDadosForncedor.Controls.Add(this.lblId);
@@ -257,12 +254,30 @@
             this.gbDadosForncedor.TabIndex = 7;
             this.gbDadosForncedor.TabStop = false;
             // 
+            // txbId
+            // 
+            this.txbId.Location = new System.Drawing.Point(8, 33);
+            this.txbId.Name = "txbId";
+            this.txbId.Size = new System.Drawing.Size(54, 20);
+            this.txbId.TabIndex = 43;
+            // 
+            // lblId
+            // 
+            this.lblId.AutoSize = true;
+            this.lblId.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblId.ForeColor = System.Drawing.Color.Black;
+            this.lblId.Location = new System.Drawing.Point(6, 15);
+            this.lblId.Name = "lblId";
+            this.lblId.Size = new System.Drawing.Size(21, 15);
+            this.lblId.TabIndex = 42;
+            this.lblId.Text = "ID";
+            // 
             // rbFornecedorInativo
             // 
             this.rbFornecedorInativo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.rbFornecedorInativo.AutoSize = true;
             this.rbFornecedorInativo.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbFornecedorInativo.Location = new System.Drawing.Point(586, 87);
+            this.rbFornecedorInativo.Location = new System.Drawing.Point(654, 88);
             this.rbFornecedorInativo.Name = "rbFornecedorInativo";
             this.rbFornecedorInativo.Size = new System.Drawing.Size(151, 19);
             this.rbFornecedorInativo.TabIndex = 31;
@@ -275,7 +290,7 @@
             this.rbFornecedorAtivo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.rbFornecedorAtivo.AutoSize = true;
             this.rbFornecedorAtivo.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbFornecedorAtivo.Location = new System.Drawing.Point(388, 87);
+            this.rbFornecedorAtivo.Location = new System.Drawing.Point(423, 88);
             this.rbFornecedorAtivo.Name = "rbFornecedorAtivo";
             this.rbFornecedorAtivo.Size = new System.Drawing.Size(137, 19);
             this.rbFornecedorAtivo.TabIndex = 30;
@@ -306,16 +321,16 @@
             // 
             // txbNomeFantasia
             // 
-            this.txbNomeFantasia.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.txbNomeFantasia.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txbNomeFantasia.Location = new System.Drawing.Point(74, 34);
             this.txbNomeFantasia.Name = "txbNomeFantasia";
-            this.txbNomeFantasia.Size = new System.Drawing.Size(722, 20);
+            this.txbNomeFantasia.Size = new System.Drawing.Size(731, 20);
             this.txbNomeFantasia.TabIndex = 11;
             // 
             // lblNomeFantasia
             // 
-            this.lblNomeFantasia.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.lblNomeFantasia.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblNomeFantasia.AutoSize = true;
             this.lblNomeFantasia.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -329,9 +344,9 @@
             // 
             // txbInscricaoEstadual
             // 
-            this.txbInscricaoEstadual.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.txbInscricaoEstadual.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txbInscricaoEstadual.Location = new System.Drawing.Point(15, 87);
+            this.txbInscricaoEstadual.Location = new System.Drawing.Point(9, 87);
             this.txbInscricaoEstadual.Name = "txbInscricaoEstadual";
             this.txbInscricaoEstadual.Size = new System.Drawing.Size(183, 20);
             this.txbInscricaoEstadual.TabIndex = 9;
@@ -341,7 +356,7 @@
             this.lblInscricaoEstadual.AutoSize = true;
             this.lblInscricaoEstadual.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblInscricaoEstadual.ForeColor = System.Drawing.Color.Black;
-            this.lblInscricaoEstadual.Location = new System.Drawing.Point(15, 69);
+            this.lblInscricaoEstadual.Location = new System.Drawing.Point(6, 69);
             this.lblInscricaoEstadual.Name = "lblInscricaoEstadual";
             this.lblInscricaoEstadual.Size = new System.Drawing.Size(128, 15);
             this.lblInscricaoEstadual.TabIndex = 8;
@@ -349,6 +364,7 @@
             // 
             // btnAlterar
             // 
+            this.btnAlterar.BackColor = System.Drawing.Color.Azure;
             this.btnAlterar.FlatAppearance.BorderSize = 0;
             this.btnAlterar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAlterar.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
@@ -361,14 +377,15 @@
             this.btnAlterar.Location = new System.Drawing.Point(152, 282);
             this.btnAlterar.Name = "btnAlterar";
             this.btnAlterar.Rotation = 0D;
-            this.btnAlterar.Size = new System.Drawing.Size(106, 35);
+            this.btnAlterar.Size = new System.Drawing.Size(127, 35);
             this.btnAlterar.TabIndex = 30;
             this.btnAlterar.Text = "Alterar";
             this.btnAlterar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnAlterar.UseVisualStyleBackColor = true;
+            this.btnAlterar.UseVisualStyleBackColor = false;
             // 
             // btnAdicionar
             // 
+            this.btnAdicionar.BackColor = System.Drawing.Color.Azure;
             this.btnAdicionar.FlatAppearance.BorderSize = 0;
             this.btnAdicionar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdicionar.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
@@ -385,16 +402,17 @@
             this.btnAdicionar.TabIndex = 29;
             this.btnAdicionar.Text = "Adicionar";
             this.btnAdicionar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnAdicionar.UseVisualStyleBackColor = true;
+            this.btnAdicionar.UseVisualStyleBackColor = false;
+            this.btnAdicionar.Click += new System.EventHandler(this.btnAdicionar_Click);
             // 
             // dgvFornecedor
             // 
-            this.dgvFornecedor.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.dgvFornecedor.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvFornecedor.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvFornecedor.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dgvFornecedor.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.dgvFornecedor.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.dgvFornecedor.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvFornecedor.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvFornecedor.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -408,17 +426,9 @@
             this.dgvFornecedor.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvFornecedor.ColumnHeadersHeight = 30;
             this.dgvFornecedor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dgvFornecedor.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4,
-            this.Column5,
-            this.Column6,
-            this.Column7});
             this.dgvFornecedor.EnableHeadersVisualStyles = false;
             this.dgvFornecedor.GridColor = System.Drawing.Color.Yellow;
-            this.dgvFornecedor.Location = new System.Drawing.Point(19, 323);
+            this.dgvFornecedor.Location = new System.Drawing.Point(21, 323);
             this.dgvFornecedor.Name = "dgvFornecedor";
             this.dgvFornecedor.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -433,78 +443,38 @@
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Aqua;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
             this.dgvFornecedor.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvFornecedor.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvFornecedor.Size = new System.Drawing.Size(846, 187);
+            this.dgvFornecedor.Size = new System.Drawing.Size(824, 187);
             this.dgvFornecedor.TabIndex = 28;
             // 
-            // Column1
+            // txbLogradouro
             // 
-            this.Column1.HeaderText = "Column1";
-            this.Column1.Name = "Column1";
-            this.Column1.Width = 87;
+            this.txbLogradouro.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txbLogradouro.Location = new System.Drawing.Point(613, 84);
+            this.txbLogradouro.Name = "txbLogradouro";
+            this.txbLogradouro.Size = new System.Drawing.Size(192, 20);
+            this.txbLogradouro.TabIndex = 21;
             // 
-            // Column2
+            // lblLogradouro
             // 
-            this.Column2.HeaderText = "Column2";
-            this.Column2.Name = "Column2";
-            this.Column2.Width = 87;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Column3";
-            this.Column3.Name = "Column3";
-            this.Column3.Width = 87;
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Column4";
-            this.Column4.Name = "Column4";
-            this.Column4.Width = 87;
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "Column5";
-            this.Column5.Name = "Column5";
-            this.Column5.Width = 87;
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "Column6";
-            this.Column6.Name = "Column6";
-            this.Column6.Width = 87;
-            // 
-            // Column7
-            // 
-            this.Column7.HeaderText = "Column7";
-            this.Column7.Name = "Column7";
-            this.Column7.Width = 87;
-            // 
-            // txbId
-            // 
-            this.txbId.Location = new System.Drawing.Point(8, 33);
-            this.txbId.Name = "txbId";
-            this.txbId.Size = new System.Drawing.Size(54, 20);
-            this.txbId.TabIndex = 43;
-            // 
-            // lblId
-            // 
-            this.lblId.AutoSize = true;
-            this.lblId.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblId.ForeColor = System.Drawing.Color.Black;
-            this.lblId.Location = new System.Drawing.Point(6, 15);
-            this.lblId.Name = "lblId";
-            this.lblId.Size = new System.Drawing.Size(21, 15);
-            this.lblId.TabIndex = 42;
-            this.lblId.Text = "ID";
+            this.lblLogradouro.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblLogradouro.AutoSize = true;
+            this.lblLogradouro.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLogradouro.ForeColor = System.Drawing.Color.Black;
+            this.lblLogradouro.Location = new System.Drawing.Point(610, 66);
+            this.lblLogradouro.Name = "lblLogradouro";
+            this.lblLogradouro.Size = new System.Drawing.Size(83, 15);
+            this.lblLogradouro.TabIndex = 20;
+            this.lblLogradouro.Text = "Logradouro";
             // 
             // frmFornecedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
+            this.BackColor = System.Drawing.Color.SteelBlue;
             this.ClientSize = new System.Drawing.Size(868, 522);
             this.Controls.Add(this.btnAlterar);
             this.Controls.Add(this.btnAdicionar);
@@ -550,18 +520,13 @@
         private FontAwesome.Sharp.IconButton btnAlterar;
         private FontAwesome.Sharp.IconButton btnAdicionar;
         private System.Windows.Forms.DataGridView dgvFornecedor;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.RadioButton rbFornecedorInativo;
         private System.Windows.Forms.RadioButton rbFornecedorAtivo;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.TextBox txbBairro;
         private System.Windows.Forms.TextBox txbId;
         private System.Windows.Forms.Label lblId;
+        private System.Windows.Forms.TextBox txbLogradouro;
+        private System.Windows.Forms.Label lblLogradouro;
     }
 }

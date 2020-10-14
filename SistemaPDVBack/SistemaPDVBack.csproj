@@ -67,6 +67,30 @@
     <Compile Include="Model\Usuario.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\frmProduto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmProduto.designer.cs">
+      <DependentUpon>frmProduto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmFornecedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmFornecedor.designer.cs">
+      <DependentUpon>frmFornecedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmTelaPdv.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmTelaPdv.designer.cs">
+      <DependentUpon>frmTelaPdv.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmFinalizarVenda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmFinalizarVenda.designer.cs">
+      <DependentUpon>frmFinalizarVenda.cs</DependentUpon>
+    </Compile>
     <Compile Include="Validacoes\Validar.cs" />
     <Compile Include="View\frmColaborador.cs">
       <SubType>Form</SubType>
@@ -79,12 +103,6 @@
     </Compile>
     <Compile Include="View\frmDashboard.designer.cs">
       <DependentUpon>frmDashboard.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\frmFornecedor.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\frmFornecedor.designer.cs">
-      <DependentUpon>frmFornecedor.cs</DependentUpon>
     </Compile>
     <Compile Include="View\frmLogin.cs">
       <SubType>Form</SubType>
@@ -122,12 +140,6 @@
     <Compile Include="View\frmPesquisaRelatorio.designer.cs">
       <DependentUpon>frmPesquisaRelatorio.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\frmProduto.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\frmProduto.designer.cs">
-      <DependentUpon>frmProduto.cs</DependentUpon>
-    </Compile>
     <Compile Include="View\MoverForm.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -138,11 +150,20 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="View\frmColaborador.resx">
-      <DependentUpon>frmColaborador.cs</DependentUpon>
+    <EmbeddedResource Include="View\frmProduto.resx">
+      <DependentUpon>frmProduto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmFornecedor.resx">
       <DependentUpon>frmFornecedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmTelaPdv.resx">
+      <DependentUpon>frmTelaPdv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmFinalizarVenda.resx">
+      <DependentUpon>frmFinalizarVenda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmColaborador.resx">
+      <DependentUpon>frmColaborador.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
@@ -161,9 +182,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmPesquisaRelatorio.resx">
       <DependentUpon>frmPesquisaRelatorio.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\frmProduto.resx">
-      <DependentUpon>frmProduto.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
