@@ -19,7 +19,7 @@ namespace SistemaPDVBack.Model
         public string DataVencimento { get; set; }
         public int QuantidadeEstoqueProduto { get; set; }
         public string Categoria { get; set; }
-        public int AtivoProduto { get; set; }
+        public int StatusAtivo { get; set; }
 
     
     }

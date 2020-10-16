@@ -97,7 +97,6 @@
     <Compile Include="View\frmFinalizarVenda.designer.cs">
       <DependentUpon>frmFinalizarVenda.cs</DependentUpon>
     </Compile>
-    <Compile Include="Validacoes\Validar.cs" />
     <Compile Include="View\frmDashboard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -197,6 +196,8 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Validacoes\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

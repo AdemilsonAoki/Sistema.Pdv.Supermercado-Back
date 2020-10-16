@@ -12,11 +12,11 @@ namespace SistemaPDVBack.Model
         public int IdColaborador { get; set; }
         public string NomeColaborador { get; set; }
 
-        public Departamento CodDepartamento { get; set; }
+        public int CodDepartamento { get; set; }
 
         public string CpfColaborador { get; set; }
 
-        public int AtivoColaborador { get; set; }
+        public int StatusAtivo { get; set; }
         public string CargoColaborador { get; set; }
         public string TelefoneColaborador { get; set; }
         public string EmailPessoalColaborador { get; set; }

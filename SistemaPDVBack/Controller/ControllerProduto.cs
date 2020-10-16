@@ -1,6 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using SistemaPDVBack.Model;
-using SistemaPDVBack.Validacoes;
+
 
 using System;
 using System.Data;
@@ -11,11 +11,11 @@ namespace SistemaPDVBack.Controller
     class ControllerProduto
     {
         private readonly MySqlCommand cmd = new MySqlCommand();
-        private readonly string _inserir = "insert into Produto(codBarras, codFornecedor, nomeProduto, descricaoProduto,precoCusto,precoVenda,margemLucro,dataFabricacao,dataVencimento, quantidadeEstoqueProduto, categoria, ativoProduto)" +
-                                            "values(@codBarras, @codFornecedor, @nomeProduto, @descricaoProduto, @precoCusto, @precoVenda, @margemLucro, @dataFabricacao, @dataVencimento, @quantidadeEstoqueProduto, @categoria, @ativoProduto ) ";
+        private readonly string _inserir = "insert into Produto(codBarras, codFornecedor, nomeProduto, descricaoProduto,precoCusto,precoVenda,margemLucro,dataFabricacao,dataVencimento, quantidadeEstoqueProduto, categoria, statusAtivo)" +
+                                            "values(@codBarras, @codFornecedor, @nomeProduto, @descricaoProduto, @precoCusto, @precoVenda, @margemLucro, @dataFabricacao, @dataVencimento, @quantidadeEstoqueProduto, @categoria, @statusAtivo ) ";
 
-        private readonly string _alterar = "update Produto set codFornecedor = @codFornecedor , nomeProduto = @nomeProduto, descricaoProduto = @descricaoProduto, precoCusto =@precoCusto, precoVenda = @precoVenda, margemLucro = @margemLucro, dataFabricao = @dataFabricacao, dataVencimento = @dataVencimento, quantidadeEstoqueProduto = @quantidadeEstoqueProduto, categoria = @categoria, ativoProduto = @ativoProduto where codBarras = @codBarras ";
-        private readonly string _listar = "select *from Produto";
+        private readonly string _alterar = "update Produto set codFornecedor = @codFornecedor , nomeProduto = @nomeProduto, descricaoProduto = @descricaoProduto, precoCusto =@precoCusto, precoVenda = @precoVenda, margemLucro = @margemLucro, dataFabricacao = @dataFabricacao, dataVencimento = @dataVencimento, quantidadeEstoqueProduto = @quantidadeEstoqueProduto, categoria = @categoria, statusAtivo = @statusAtivo where codBarras = @codBarras ";
+        private readonly string _listar = "select p.codBarras, p.nomeProduto, f.nomeFantasia, p.descricaoProduto,p.quantidadeEstoqueProduto, p.precoCusto, p.margemLucro, p.precoVenda, p.dataFabricacao, p.dataVencimento, p.categoria, p.statusAtivo  From Produto p join Fornecedor f on p.codFornecedor = f.idFornecedor";
         string mensagem;
 
         Conexao conexao = new Conexao();
@@ -27,14 +27,14 @@ namespace SistemaPDVBack.Controller
         }
 
 
-        public ControllerProduto(string codBarras, string codFornecedor, string nomeProduto, string descricaoProduto, string precoCusto, string precoVenda, string margemLucro, string dataFabricacao, string dataVencimento, string quantidadeEstoqueProduto, string categoria, string ativoProduto)
+        public ControllerProduto(string codBarras, string codFornecedor, string nomeProduto, string descricaoProduto, string precoCusto, string precoVenda, string margemLucro, string dataFabricacao, string dataVencimento, string quantidadeEstoqueProduto, string categoria, string statusAtivo)
         {
 
-            ConverterValidar(codBarras, codFornecedor, nomeProduto, descricaoProduto, precoCusto, precoVenda, margemLucro, dataFabricacao, dataVencimento, quantidadeEstoqueProduto, categoria, ativoProduto);
+            ConverterValidar(codBarras, codFornecedor, nomeProduto, descricaoProduto, precoCusto, precoVenda, margemLucro, dataFabricacao, dataVencimento, quantidadeEstoqueProduto, categoria, statusAtivo);
 
 
         }
-        private void ConverterValidar(string codBarras, string codFornecedor, string nomeProduto, string descricaoProduto, string precoCusto, string precoVenda, string margemLucro, string dataFabricacao, string dataVencimento, string quantidadeEstoqueProduto, string categoria, string ativoProduto)
+        private void ConverterValidar(string codBarras, string codFornecedor, string nomeProduto, string descricaoProduto, string precoCusto, string precoVenda, string margemLucro, string dataFabricacao, string dataVencimento, string quantidadeEstoqueProduto, string categoria, string statusAtivo)
         {
             try
             {
@@ -49,7 +49,7 @@ namespace SistemaPDVBack.Controller
                 produto.DataVencimento = dataVencimento;
                 produto.QuantidadeEstoqueProduto = int.Parse(quantidadeEstoqueProduto);
                 produto.Categoria = categoria;
-                produto.AtivoProduto = int.Parse(ativoProduto);
+                produto.StatusAtivo = int.Parse(statusAtivo);
 
 
             }
@@ -77,7 +77,7 @@ namespace SistemaPDVBack.Controller
             cmd.Parameters.AddWithValue("@dataVencimento", produto.DataVencimento);
             cmd.Parameters.AddWithValue("@quantidadeEstoqueProduto", produto.QuantidadeEstoqueProduto);
             cmd.Parameters.AddWithValue("@categoria", produto.Categoria);
-            cmd.Parameters.AddWithValue("@ativoProduto", produto.AtivoProduto);
+            cmd.Parameters.AddWithValue("@statusAtivo", produto.StatusAtivo);
 
             try
             {
@@ -117,7 +117,7 @@ namespace SistemaPDVBack.Controller
             cmd.Parameters.AddWithValue("@dataVencimento", produto.DataVencimento);
             cmd.Parameters.AddWithValue("@quantidadeEstoqueProduto", produto.QuantidadeEstoqueProduto);
             cmd.Parameters.AddWithValue("@categoria", produto.Categoria);
-            cmd.Parameters.AddWithValue("@ativoProduto", produto.AtivoProduto);
+            cmd.Parameters.AddWithValue("@statusAtivo", produto.StatusAtivo);
 
 
 

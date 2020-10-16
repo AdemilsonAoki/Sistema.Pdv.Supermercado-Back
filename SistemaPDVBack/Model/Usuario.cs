@@ -13,5 +13,7 @@ namespace SistemaPDVBack.Model
 
         public string Login { get; set; }
         public string Senha { get; set; }
+        public int StatusAtivo { get; set; }
+
     }
 }

@@ -22,6 +22,12 @@ namespace SistemaPDVBack.Model
         public string CidadePessoa { get; set; }
         public int CepFornecedor { get; set; }
 
+        public int StatusAtivo { get; set; }
+        public string  Cnpj { get; set; }
+        public string Rua { get; set; }
+
+
+
 
 
     }

@@ -17,9 +17,9 @@ namespace SistemaPDVBack.Controller
         private readonly MySqlCommand cmd = new MySqlCommand();
         private MySqlDataReader reader;
 
-        public ControllerUsuario(string usuario, string senha, string idColaborador)
+        public ControllerUsuario(string usuario, string senha, string idColaborador, string statusAtivo)
         {
-            ValidarConverter(usuario, senha, idColaborador);
+            ValidarConverter(usuario, senha, idColaborador, statusAtivo);
 
         }
         public ControllerUsuario(string usuario, string senha)
@@ -29,10 +29,11 @@ namespace SistemaPDVBack.Controller
 
         }
 
-        private void ValidarConverter(string usuario, string senha, string idColaborador)
+        private void ValidarConverter(string usuario, string senha, string idColaborador, string statusAtivo)
         {
             try
             {
+                login.StatusAtivo = int.Parse(statusAtivo);
                 login.Login = usuario;
                 login.Senha = senha;
                 colaborador.IdColaborador = int.Parse(idColaborador);
@@ -80,11 +81,13 @@ namespace SistemaPDVBack.Controller
 
         public void AdicionarUsuario()
         {
-            cmd.CommandText = "insert into Usuario(codColaborador, usuario, senha) values (@codColaborador, @usuario, @senha) ";
+            cmd.CommandText = "insert into Usuario(codColaborador, usuario, senha, statusAtivo) values (@codColaborador, @usuario, @senha, @statusAtivo) ";
 
             cmd.Parameters.AddWithValue("@codColaborador", login.CodColaborador );
             cmd.Parameters.AddWithValue("@usuario", login.Login);
             cmd.Parameters.AddWithValue("@senha", login.Senha);
+            cmd.Parameters.AddWithValue("@statusAtivo", login.StatusAtivo);
+
 
 
             try

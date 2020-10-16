@@ -2,7 +2,7 @@
 using SistemaPDVBack.Model;
 using System;
 using System.Data;
-
+using System.Windows.Forms;
 
 namespace SistemaPDVBack.Controller
 {
@@ -10,10 +10,10 @@ namespace SistemaPDVBack.Controller
     {
 
         private readonly MySqlCommand cmd = new MySqlCommand();
-        private readonly string _inserir = "insert into Colaborador(nomeColaborador, cpfColaborador,idDepartamento, ativoColaborador, cargoColaborador, telefoneColaborador, emailPessoalColaborador, emailCorporativo )" +
-                                            "values(@cpfColaborador, @ativoColaborador, @cargoColaborador, @telefoneColaborador,@emailPessoalColaborador, @emailCorporativo)";
-        private readonly string _alterar = "update Colaborador set cpfColaborador = @cpfColaborador,idDepartamento =@idDepartamento,  ativoColaborador = @ativoColaborador, cargoColaborador = @cargoColaborador,telefoneColaborador = @telefoneColaborador,emailPessoalColaborador= @emailPessoalColaborador, emailCorporativo =@emailCorporativo where idColaborador = @idColaborador";
-        private readonly string _listar = "select *from Colaborador";
+        private readonly string _inserir = "insert into Colaborador(nomeColaborador, cpfColaborador,idDepartamento, statusAtivo, cargoColaborador, telefoneColaborador, emailPessoalColaborador, emailCorporativo)" +
+                                            "values(@nomeColaborador, @cpfColaborador, @idDepartamento, @statusAtivo, @cargoColaborador, @telefoneColaborador,@emailPessoalColaborador, @emailCorporativo)";
+        private readonly string _alterar = "update Colaborador set nomeColaborador = @nomeColaborador, cpfColaborador = @cpfColaborador,idDepartamento =@idDepartamento,  statusAtivo = @statusAtivo, cargoColaborador = @cargoColaborador,telefoneColaborador = @telefoneColaborador,emailPessoalColaborador= @emailPessoalColaborador, emailCorporativo =@emailCorporativo where idColaborador = @idColaborador";
+        private readonly string _listar = "select c.idColaborador, d.nomeDepartamento, c.nomeColaborador,c.cpfColaborador,c.cargoColaborador, c.telefoneColaborador,c.emailCorporativo, c.emailPessoalColaborador, u.usuario, u.senha, c.statusAtivo from Colaborador c join departamento d on c.idDepartamento = d.idDepartamento join Usuario u on u.codColaborador = idColaborador";
         string mensagem;
         Colaborador colaborador = new Colaborador();
         Conexao conexao = new Conexao();
@@ -23,17 +23,22 @@ namespace SistemaPDVBack.Controller
 
         }
 
-        public ControllerColaborador(string nomeColaborador, string cpfColaborador, string codDepartamento, string ativoColaborador, string cargoColaborador, string telefoneColaborador, string emailPessoalColaborador, string emailColaborador)
+        public ControllerColaborador(string idColaborador ,string nomeColaborador, string cpfColaborador, string codDepartamento, string statusAtivo, string cargoColaborador, string telefoneColaborador, string emailPessoalColaborador, string emailColaborador)
         {
-            ConverterValidar(nomeColaborador, cpfColaborador, codDepartamento, ativoColaborador, cargoColaborador, telefoneColaborador, emailPessoalColaborador, emailColaborador);
+            ConverterValidar(idColaborador, nomeColaborador, cpfColaborador, codDepartamento, statusAtivo, cargoColaborador, telefoneColaborador, emailPessoalColaborador, emailColaborador);
         }
-        public void ConverterValidar(string nomeColaborador, string cpfColaborador, string codDepartamento, string ativoColaborador, string cargoColaborador, string telefoneColaborador, string emailPessoalColaborador, string emailColaborador)
+        public void ConverterValidar(string idColaborador,string nomeColaborador, string cpfColaborador, string codDepartamento, string statusAtivo, string cargoColaborador, string telefoneColaborador, string emailPessoalColaborador, string emailColaborador)
         {
             try
             {
+                if (!idColaborador.Equals(""))
+                {
+                    colaborador.IdColaborador = int.Parse(idColaborador);
+                }
+                colaborador.NomeColaborador = nomeColaborador;
                 colaborador.CpfColaborador = cpfColaborador;
-                colaborador.CodDepartamento.IdDEpartamento = int.Parse(codDepartamento);
-                colaborador.AtivoColaborador = int.Parse(ativoColaborador);
+                colaborador.CodDepartamento = int.Parse(codDepartamento);
+                colaborador.StatusAtivo = int.Parse(statusAtivo);
                 colaborador.CargoColaborador = cargoColaborador;
                 colaborador.TelefoneColaborador = telefoneColaborador;
                 colaborador.EmailCorporativo = emailColaborador;
@@ -54,8 +59,8 @@ namespace SistemaPDVBack.Controller
 
             cmd.Parameters.AddWithValue("@cpfColaborador", colaborador.CpfColaborador);
             cmd.Parameters.AddWithValue("@nomeColaborador", colaborador.NomeColaborador);
-            cmd.Parameters.AddWithValue("@idDepartamento", colaborador.CodDepartamento.IdDEpartamento);
-            cmd.Parameters.AddWithValue("@ativoColaborador", colaborador.AtivoColaborador);
+            cmd.Parameters.AddWithValue("@idDepartamento", colaborador.CodDepartamento);
+            cmd.Parameters.AddWithValue("@statusAtivo", colaborador.StatusAtivo);
             cmd.Parameters.AddWithValue("@cargoColaborador", colaborador.CargoColaborador);
             cmd.Parameters.AddWithValue("@telefoneColaborador", colaborador.TelefoneColaborador);
             cmd.Parameters.AddWithValue("@emailPessoalColaborador", colaborador.EmailPessoalColaborador);
@@ -89,7 +94,7 @@ namespace SistemaPDVBack.Controller
             cmd.Parameters.AddWithValue("@idColaborador", colaborador.IdColaborador);
             cmd.Parameters.AddWithValue("@idDepartamento", colaborador.CodDepartamento);
             cmd.Parameters.AddWithValue("@cpfColaborador", colaborador.CpfColaborador);
-            cmd.Parameters.AddWithValue("@ativoColaborador", colaborador.AtivoColaborador);
+            cmd.Parameters.AddWithValue("@statusAtivo", colaborador.StatusAtivo);
             cmd.Parameters.AddWithValue("@cargoColaborador", colaborador.CargoColaborador);
             cmd.Parameters.AddWithValue("@telefoneColaborador", colaborador.TelefoneColaborador);
             cmd.Parameters.AddWithValue("@emailPessoalColaborador", colaborador.EmailPessoalColaborador);
@@ -147,6 +152,37 @@ namespace SistemaPDVBack.Controller
         {
 
 
+
+        }
+        public DataTable PreencherDepartamento()
+        {
+
+            MySqlDataAdapter da = new MySqlDataAdapter();
+            cmd.CommandText = "select *from Departamento";
+
+
+            try
+            {
+                cmd.Connection = conexao.AbrirBanco();
+                MySqlDataReader dr = cmd.ExecuteReader();
+                DataTable dt = new DataTable();
+                dt.Load(dr);
+
+                return dt;
+
+
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                throw;
+            }
+            finally
+            {
+                conexao.FecharBanco();
+
+            }
 
         }
     }
