@@ -54,7 +54,9 @@
     <Compile Include="Controller\ControllerCliente.cs" />
     <Compile Include="Controller\ControllerColaborador.cs" />
     <Compile Include="Controller\ControllerFornecedor.cs" />
+    <Compile Include="Controller\ControllerPedido.cs" />
     <Compile Include="Controller\ControllerProduto.cs" />
+    <Compile Include="Controller\ControllerProdutoPedido.cs" />
     <Compile Include="Controller\ControllerUsuario.cs" />
     <Compile Include="Model\Cliente.cs" />
     <Compile Include="Model\Colaborador.cs" />

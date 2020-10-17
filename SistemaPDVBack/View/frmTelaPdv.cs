@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SistemaPDVBack.Controller;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,9 +18,67 @@ namespace SistemaPDVBack
             InitializeComponent();
         }
 
+        ControllerProdutoPedido controllerProdutoPedido;
+
+
         private void frmTelaPdv_Load(object sender, EventArgs e)
         {
 
         }
+
+
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            switch (keyData)
+            {
+                case Keys.F2:
+                    frmFinalizarVenda frmFinalizar = new frmFinalizarVenda();
+                    frmFinalizar.Show();
+                    this.Hide();
+
+                    break;
+                case Keys.A:
+                    break;
+
+            }
+
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+        private void txbCodBarras_TextChanged(object sender, EventArgs e)
+        {
+            controllerProdutoPedido = new ControllerProdutoPedido(txbCodBarras.Text);
+            txbPrecoUnit.Text = controllerProdutoPedido.VerificaProdutoPreco();
+            txbDescricao.Text = controllerProdutoPedido.VerificaProdutoNome();
+
+        }
+
+        private void txbQuantidade_TextChanged(object sender, EventArgs e)
+        {
+            decimal quantidade = 0;
+            decimal preco = 0;
+            decimal total = 0;
+
+
+            if (txbPrecoUnit.Text != "" && txbQuantidade.Text != "")
+            {
+                quantidade = decimal.Parse(txbQuantidade.Text);
+                preco = decimal.Parse(txbPrecoUnit.Text);
+
+            }
+
+            total = quantidade * preco;
+
+
+            txbTotalRecebido.Text = total.ToString();
+        }
+
+        private void Adicionar()
+        {
+
+        }
+
+
     }
 }

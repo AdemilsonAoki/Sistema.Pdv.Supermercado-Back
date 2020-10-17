@@ -9,8 +9,8 @@ namespace SistemaPDVBack.Model
     class ProdutoPedido
     {
         public int IdProdutoPedido { get; set; }
-        public Pedido CodPedido { get; set; }
-        public Produto CodProduto { get; set; }
+        public int CodPedido { get; set; }
+        public int CodProduto { get; set; }
 
         public int QuantidadeItemPedido { get; set; }
 

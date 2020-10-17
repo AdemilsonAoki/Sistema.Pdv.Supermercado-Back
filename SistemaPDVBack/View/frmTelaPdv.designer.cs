@@ -80,7 +80,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold);
-            this.label6.Location = new System.Drawing.Point(310, 277);
+            this.label6.Location = new System.Drawing.Point(303, 208);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(126, 14);
             this.label6.TabIndex = 58;
@@ -90,7 +90,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold);
-            this.label5.Location = new System.Drawing.Point(310, 217);
+            this.label5.Location = new System.Drawing.Point(306, 268);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(98, 14);
             this.label5.TabIndex = 57;
@@ -100,7 +100,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold);
-            this.label4.Location = new System.Drawing.Point(310, 157);
+            this.label4.Location = new System.Drawing.Point(306, 93);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(121, 14);
             this.label4.TabIndex = 56;
@@ -108,6 +108,7 @@
             // 
             // txbTotalRecebido
             // 
+            this.txbTotalRecebido.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbTotalRecebido.Location = new System.Drawing.Point(306, 358);
             this.txbTotalRecebido.Multiline = true;
             this.txbTotalRecebido.Name = "txbTotalRecebido";
@@ -116,7 +117,8 @@
             // 
             // txbPrecoUnit
             // 
-            this.txbPrecoUnit.Location = new System.Drawing.Point(306, 293);
+            this.txbPrecoUnit.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbPrecoUnit.Location = new System.Drawing.Point(306, 224);
             this.txbPrecoUnit.Multiline = true;
             this.txbPrecoUnit.Name = "txbPrecoUnit";
             this.txbPrecoUnit.Size = new System.Drawing.Size(130, 36);
@@ -124,23 +126,28 @@
             // 
             // txbQuantidade
             // 
-            this.txbQuantidade.Location = new System.Drawing.Point(306, 233);
+            this.txbQuantidade.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbQuantidade.Location = new System.Drawing.Point(306, 285);
             this.txbQuantidade.Multiline = true;
             this.txbQuantidade.Name = "txbQuantidade";
             this.txbQuantidade.Size = new System.Drawing.Size(130, 36);
             this.txbQuantidade.TabIndex = 52;
+            this.txbQuantidade.TextChanged += new System.EventHandler(this.txbQuantidade_TextChanged);
             // 
             // txbCodBarras
             // 
-            this.txbCodBarras.Location = new System.Drawing.Point(306, 173);
+            this.txbCodBarras.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbCodBarras.Location = new System.Drawing.Point(306, 113);
             this.txbCodBarras.Multiline = true;
             this.txbCodBarras.Name = "txbCodBarras";
             this.txbCodBarras.Size = new System.Drawing.Size(263, 36);
             this.txbCodBarras.TabIndex = 51;
+            this.txbCodBarras.TextChanged += new System.EventHandler(this.txbCodBarras_TextChanged);
             // 
             // txbDescricao
             // 
-            this.txbDescricao.Location = new System.Drawing.Point(306, 110);
+            this.txbDescricao.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbDescricao.Location = new System.Drawing.Point(306, 169);
             this.txbDescricao.Multiline = true;
             this.txbDescricao.Name = "txbDescricao";
             this.txbDescricao.Size = new System.Drawing.Size(397, 36);
@@ -150,7 +157,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold);
-            this.label3.Location = new System.Drawing.Point(310, 94);
+            this.label3.Location = new System.Drawing.Point(303, 152);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(87, 14);
             this.label3.TabIndex = 49;

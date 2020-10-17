@@ -32,6 +32,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gbDadosColaborador = new System.Windows.Forms.GroupBox();
+            this.txtCargo = new System.Windows.Forms.TextBox();
             this.txbSenha = new System.Windows.Forms.TextBox();
             this.lblSenha = new System.Windows.Forms.Label();
             this.txbUsuario = new System.Windows.Forms.TextBox();
@@ -57,7 +58,6 @@
             this.dgvColaborador = new System.Windows.Forms.DataGridView();
             this.btnAlterar = new FontAwesome.Sharp.IconButton();
             this.btnAdicionar = new FontAwesome.Sharp.IconButton();
-            this.txtCargo = new System.Windows.Forms.TextBox();
             this.gbDadosColaborador.SuspendLayout();
             this.gpAtivo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvColaborador)).BeginInit();
@@ -93,6 +93,16 @@
             this.gbDadosColaborador.Size = new System.Drawing.Size(776, 179);
             this.gbDadosColaborador.TabIndex = 4;
             this.gbDadosColaborador.TabStop = false;
+            // 
+            // txtCargo
+            // 
+            this.txtCargo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtCargo.Location = new System.Drawing.Point(595, 133);
+            this.txtCargo.Name = "txtCargo";
+            this.txtCargo.Size = new System.Drawing.Size(175, 20);
+            this.txtCargo.TabIndex = 46;
+            this.txtCargo.UseSystemPasswordChar = true;
             // 
             // txbSenha
             // 
@@ -141,6 +151,7 @@
             // 
             // txbId
             // 
+            this.txbId.Enabled = false;
             this.txbId.Location = new System.Drawing.Point(9, 31);
             this.txbId.Name = "txbId";
             this.txbId.Size = new System.Drawing.Size(61, 20);
@@ -417,16 +428,6 @@
             this.btnAdicionar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAdicionar.UseVisualStyleBackColor = false;
             this.btnAdicionar.Click += new System.EventHandler(this.btnAdicionar_Click);
-            // 
-            // txtCargo
-            // 
-            this.txtCargo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtCargo.Location = new System.Drawing.Point(595, 133);
-            this.txtCargo.Name = "txtCargo";
-            this.txtCargo.Size = new System.Drawing.Size(175, 20);
-            this.txtCargo.TabIndex = 46;
-            this.txtCargo.UseSystemPasswordChar = true;
             // 
             // frmColaborador
             // 
