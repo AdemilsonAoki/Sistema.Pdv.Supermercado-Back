@@ -29,14 +29,14 @@ namespace SistemaPDVBack.Controller
 
         }
 
-        private void ValidarConverter(string usuario, string senha, string idColaborador, string statusAtivo)
+        private void ValidarConverter(string usuario, string senha, string cpf, string statusAtivo)
         {
             try
             {
                 login.StatusAtivo = int.Parse(statusAtivo);
                 login.Login = usuario;
                 login.Senha = senha;
-                colaborador.IdColaborador = int.Parse(idColaborador);
+                colaborador.CpfColaborador = cpf;
             }
             catch (Exception e)
             {
@@ -81,9 +81,9 @@ namespace SistemaPDVBack.Controller
 
         public void AdicionarUsuario()
         {
-            cmd.CommandText = "insert into Usuario(codColaborador, usuario, senha, statusAtivo) values (@codColaborador, @usuario, @senha, @statusAtivo) ";
+            cmd.CommandText = "insert into Usuario(cpfColaborador, usuario, senha, statusAtivo) values (@cpfColaborador, @usuario, @senha, @statusAtivo) ";
 
-            cmd.Parameters.AddWithValue("@codColaborador", login.CodColaborador );
+            cmd.Parameters.AddWithValue("@cpfColaborador", colaborador.CpfColaborador );
             cmd.Parameters.AddWithValue("@usuario", login.Login);
             cmd.Parameters.AddWithValue("@senha", login.Senha);
             cmd.Parameters.AddWithValue("@statusAtivo", login.StatusAtivo);

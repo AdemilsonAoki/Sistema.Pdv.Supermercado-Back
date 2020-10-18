@@ -34,11 +34,13 @@ namespace SistemaPDVBack
                 _ativo = "0";
             }
 
-            controllerColaborador = new ControllerColaborador(txbId.Text, txbNome.Text, msktCpf.Text, cmbDepartamento.SelectedValue.ToString(), _ativo, txtCargo.Text, mskTxtCelular.Text, txbEmail.Text, txbEmailCorporativo.Text);
+            controllerColaborador = new ControllerColaborador (txbNome.Text, msktCpf.Text, cmbDepartamento.SelectedValue.ToString(), _ativo, txtCargo.Text, mskTxtCelular.Text, txbEmail.Text, txbEmailCorporativo.Text);
             controllerColaborador.AdicionarColaborador();
 
-            controllerUsuario = new ControllerUsuario(txbUsuario.Text, txbSenha.Text, txbId.Text, _ativo);
+            controllerUsuario = new ControllerUsuario(txbUsuario.Text, txbSenha.Text, msktCpf.Text, _ativo);
             controllerUsuario.AdicionarUsuario();
+
+            controllerColaborador.ListarColaborador();
 
 
         }
@@ -61,17 +63,16 @@ namespace SistemaPDVBack
         private void dgvColaborador_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             string _temp;
-            txbId.Text = this.dgvColaborador.CurrentRow.Cells[0].Value.ToString();
-            cmbDepartamento.Text = this.dgvColaborador.CurrentRow.Cells[1].Value.ToString();
-            txbNome.Text = this.dgvColaborador.CurrentRow.Cells[2].Value.ToString();
-            msktCpf.Text = this.dgvColaborador.CurrentRow.Cells[3].Value.ToString();
-            txtCargo.Text = this.dgvColaborador.CurrentRow.Cells[4].Value.ToString();
-            mskTxtCelular.Text = this.dgvColaborador.CurrentRow.Cells[5].Value.ToString();
-            txbEmailCorporativo.Text = this.dgvColaborador.CurrentRow.Cells[6].Value.ToString();
-            txbEmail.Text = this.dgvColaborador.CurrentRow.Cells[7].Value.ToString();
-            txbUsuario.Text = this.dgvColaborador.CurrentRow.Cells[8].Value.ToString();
-            txbSenha.Text = this.dgvColaborador.CurrentRow.Cells[9].Value.ToString();
-            _temp = this.dgvColaborador.CurrentRow.Cells[10].Value.ToString();
+            cmbDepartamento.Text = this.dgvColaborador.CurrentRow.Cells[0].Value.ToString();
+            txbNome.Text = this.dgvColaborador.CurrentRow.Cells[1].Value.ToString();
+            msktCpf.Text = this.dgvColaborador.CurrentRow.Cells[2].Value.ToString();
+            txtCargo.Text = this.dgvColaborador.CurrentRow.Cells[3].Value.ToString();
+            mskTxtCelular.Text = this.dgvColaborador.CurrentRow.Cells[4].Value.ToString();
+            txbEmailCorporativo.Text = this.dgvColaborador.CurrentRow.Cells[5].Value.ToString();
+            txbEmail.Text = this.dgvColaborador.CurrentRow.Cells[6].Value.ToString();
+            txbUsuario.Text = this.dgvColaborador.CurrentRow.Cells[7].Value.ToString();
+            txbSenha.Text = this.dgvColaborador.CurrentRow.Cells[8].Value.ToString();
+            _temp = this.dgvColaborador.CurrentRow.Cells[9].Value.ToString();
 
             bool _tempV = bool.Parse(_temp);
             if (_tempV == true)

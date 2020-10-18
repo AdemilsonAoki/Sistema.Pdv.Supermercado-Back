@@ -301,7 +301,7 @@
             this.msktCpf.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.msktCpf.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.msktCpf.Location = new System.Drawing.Point(492, 29);
-            this.msktCpf.Mask = "999,999,99-99";
+            this.msktCpf.Mask = "999,999,999-99";
             this.msktCpf.Name = "msktCpf";
             this.msktCpf.Size = new System.Drawing.Size(97, 22);
             this.msktCpf.TabIndex = 8;

@@ -49,7 +49,7 @@
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnAdicionar = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.txbSubtotal = new System.Windows.Forms.TextBox();
@@ -152,6 +152,7 @@
             this.txbDescricao.Name = "txbDescricao";
             this.txbDescricao.Size = new System.Drawing.Size(397, 36);
             this.txbDescricao.TabIndex = 50;
+            this.txbDescricao.TextChanged += new System.EventHandler(this.txbDescricao_TextChanged);
             // 
             // label3
             // 
@@ -225,7 +226,7 @@
             this.panel3.Controls.Add(this.button5);
             this.panel3.Controls.Add(this.button4);
             this.panel3.Controls.Add(this.button3);
-            this.panel3.Controls.Add(this.button2);
+            this.panel3.Controls.Add(this.btnAdicionar);
             this.panel3.Controls.Add(this.button1);
             this.panel3.Location = new System.Drawing.Point(709, 253);
             this.panel3.Name = "panel3";
@@ -290,17 +291,18 @@
             this.button3.Text = "Finalizar Venda (F2)";
             this.button3.UseVisualStyleBackColor = false;
             // 
-            // button2
+            // btnAdicionar
             // 
-            this.button2.BackColor = System.Drawing.SystemColors.Info;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button2.Font = new System.Drawing.Font("Verdana", 8.25F);
-            this.button2.Location = new System.Drawing.Point(106, 61);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(100, 36);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Cancelar Item (F6)";
-            this.button2.UseVisualStyleBackColor = false;
+            this.btnAdicionar.BackColor = System.Drawing.SystemColors.Info;
+            this.btnAdicionar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnAdicionar.Font = new System.Drawing.Font("Verdana", 8.25F);
+            this.btnAdicionar.Location = new System.Drawing.Point(106, 61);
+            this.btnAdicionar.Name = "btnAdicionar";
+            this.btnAdicionar.Size = new System.Drawing.Size(100, 36);
+            this.btnAdicionar.TabIndex = 1;
+            this.btnAdicionar.Text = "Adicionar (A)";
+            this.btnAdicionar.UseVisualStyleBackColor = false;
+            this.btnAdicionar.Click += new System.EventHandler(this.btnAdicionar_Click);
             // 
             // button1
             // 
@@ -451,7 +453,7 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnAdicionar;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TextBox txbSubtotal;

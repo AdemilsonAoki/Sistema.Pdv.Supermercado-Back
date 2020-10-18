@@ -12,8 +12,8 @@ namespace SistemaPDVBack.Controller
         private readonly MySqlCommand cmd = new MySqlCommand();
         private readonly string _inserir = "insert into Colaborador(nomeColaborador, cpfColaborador,idDepartamento, statusAtivo, cargoColaborador, telefoneColaborador, emailPessoalColaborador, emailCorporativo)" +
                                             "values(@nomeColaborador, @cpfColaborador, @idDepartamento, @statusAtivo, @cargoColaborador, @telefoneColaborador,@emailPessoalColaborador, @emailCorporativo)";
-        private readonly string _alterar = "update Colaborador set nomeColaborador = @nomeColaborador, cpfColaborador = @cpfColaborador,idDepartamento =@idDepartamento,  statusAtivo = @statusAtivo, cargoColaborador = @cargoColaborador,telefoneColaborador = @telefoneColaborador,emailPessoalColaborador= @emailPessoalColaborador, emailCorporativo =@emailCorporativo where idColaborador = @idColaborador";
-        private readonly string _listar = "select c.idColaborador, d.nomeDepartamento, c.nomeColaborador,c.cpfColaborador,c.cargoColaborador, c.telefoneColaborador,c.emailCorporativo, c.emailPessoalColaborador, u.usuario, u.senha, c.statusAtivo from Colaborador c join departamento d on c.idDepartamento = d.idDepartamento join Usuario u on u.codColaborador = idColaborador";
+        private readonly string _alterar = "update Colaborador set nomeColaborador = @nomeColaborador, cpfColaborador = @cpfColaborador,idDepartamento =@idDepartamento,  statusAtivo = @statusAtivo, cargoColaborador = @cargoColaborador,telefoneColaborador = @telefoneColaborador,emailPessoalColaborador= @emailPessoalColaborador, emailCorporativo =@emailCorporativo where cpfColaborador = @cpfColaborador";
+        private readonly string _listar = "select d.nomeDepartamento, c.nomeColaborador,c.cpfColaborador,c.cargoColaborador, c.telefoneColaborador,c.emailCorporativo, c.emailPessoalColaborador, u.usuario, u.senha, c.statusAtivo from Colaborador c join departamento d on c.idDepartamento = d.idDepartamento join Usuario u on u.cpfColaborador = c.cpfColaborador";
         string mensagem;
         Colaborador colaborador = new Colaborador();
         Conexao conexao = new Conexao();
@@ -23,18 +23,14 @@ namespace SistemaPDVBack.Controller
 
         }
 
-        public ControllerColaborador(string idColaborador ,string nomeColaborador, string cpfColaborador, string codDepartamento, string statusAtivo, string cargoColaborador, string telefoneColaborador, string emailPessoalColaborador, string emailColaborador)
+        public ControllerColaborador(string nomeColaborador, string cpfColaborador, string codDepartamento, string statusAtivo, string cargoColaborador, string telefoneColaborador, string emailPessoalColaborador, string emailColaborador)
         {
-            ConverterValidar(idColaborador, nomeColaborador, cpfColaborador, codDepartamento, statusAtivo, cargoColaborador, telefoneColaborador, emailPessoalColaborador, emailColaborador);
+            ConverterValidar(nomeColaborador, cpfColaborador, codDepartamento, statusAtivo, cargoColaborador, telefoneColaborador, emailPessoalColaborador, emailColaborador);
         }
-        public void ConverterValidar(string idColaborador,string nomeColaborador, string cpfColaborador, string codDepartamento, string statusAtivo, string cargoColaborador, string telefoneColaborador, string emailPessoalColaborador, string emailColaborador)
+        public void ConverterValidar(string nomeColaborador, string cpfColaborador, string codDepartamento, string statusAtivo, string cargoColaborador, string telefoneColaborador, string emailPessoalColaborador, string emailColaborador)
         {
             try
             {
-                if (!idColaborador.Equals(""))
-                {
-                    colaborador.IdColaborador = int.Parse(idColaborador);
-                }
                 colaborador.NomeColaborador = nomeColaborador;
                 colaborador.CpfColaborador = cpfColaborador;
                 colaborador.CodDepartamento = int.Parse(codDepartamento);
@@ -91,7 +87,6 @@ namespace SistemaPDVBack.Controller
         public void AlterarColaborador()
         {
             cmd.CommandText = _alterar;
-            cmd.Parameters.AddWithValue("@idColaborador", colaborador.IdColaborador);
             cmd.Parameters.AddWithValue("@idDepartamento", colaborador.CodDepartamento);
             cmd.Parameters.AddWithValue("@cpfColaborador", colaborador.CpfColaborador);
             cmd.Parameters.AddWithValue("@statusAtivo", colaborador.StatusAtivo);

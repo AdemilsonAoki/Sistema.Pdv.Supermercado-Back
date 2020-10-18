@@ -9,7 +9,7 @@ namespace SistemaPDVBack.Model
     class Usuario
     {
         public int IdUsuario { get; set; }
-        public Colaborador CodColaborador { get; set; }
+        public string cpfColaborador { get; set; }
 
         public string Login { get; set; }
         public string Senha { get; set; }

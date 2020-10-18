@@ -19,6 +19,8 @@ namespace SistemaPDVBack
         }
 
         ControllerProdutoPedido controllerProdutoPedido;
+        ControllerPedido controllerPedido;
+        ControllerUsuario ControllerUsuario;
 
 
         private void frmTelaPdv_Load(object sender, EventArgs e)
@@ -39,6 +41,7 @@ namespace SistemaPDVBack
 
                     break;
                 case Keys.A:
+                    Adicionar();
                     break;
 
             }
@@ -48,6 +51,7 @@ namespace SistemaPDVBack
 
         private void txbCodBarras_TextChanged(object sender, EventArgs e)
         {
+            
             controllerProdutoPedido = new ControllerProdutoPedido(txbCodBarras.Text);
             txbPrecoUnit.Text = controllerProdutoPedido.VerificaProdutoPreco();
             txbDescricao.Text = controllerProdutoPedido.VerificaProdutoNome();
@@ -74,11 +78,28 @@ namespace SistemaPDVBack
             txbTotalRecebido.Text = total.ToString();
         }
 
+        bool i = false;
+    
         private void Adicionar()
+        {
+            if (i == false)
+            {
+                frmProduto frm = new frmProduto();
+                frm.Show();
+                i = true;
+            }
+         
+
+        }
+
+        private void btnAdicionar_Click(object sender, EventArgs e)
         {
 
         }
 
-
+        private void txbDescricao_TextChanged(object sender, EventArgs e)
+        {
+           
+        }
     }
 }
