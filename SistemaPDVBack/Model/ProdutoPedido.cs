@@ -13,6 +13,8 @@ namespace SistemaPDVBack.Model
         public int CodProduto { get; set; }
 
         public int QuantidadeItemPedido { get; set; }
+        public decimal TotalProdutoPedido { get; set; }
+
 
 
     }

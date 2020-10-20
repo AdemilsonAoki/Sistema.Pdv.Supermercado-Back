@@ -95,7 +95,8 @@ namespace SistemaPDVBack
             }
             else
             {
-                frmMenuTeste frmMenu = new frmMenuTeste();
+                frmTelaPdv frmMenu = new frmTelaPdv();
+                //frmMenuTeste frmMenu = new frmMenuTeste();
                 frmMenu.Show();
             }
         }

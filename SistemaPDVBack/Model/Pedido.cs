@@ -9,11 +9,13 @@ namespace SistemaPDVBack.Model
     class Pedido
     {
         public int IdPedido { get; set; }
-        public Colaborador CodColaborador { get; set; }
-        public Cliente CodCliente { get; set; }
+        public string CpfColaborador { get; set; }
+        public int ? CodCliente { get; set; }
         public int Status { get; set; }
-        public DateTime DataDoPedido { get; set; }
-        public int FormaDePagamento { get; set; }
+        public string DataDoPedido { get; set; }
+        public string FormaDePagamento { get; set; }
+        public string TipoCliente { get; set; }
+
 
     }
 }

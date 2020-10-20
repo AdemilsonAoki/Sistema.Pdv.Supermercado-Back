@@ -28,6 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -39,6 +43,9 @@
             this.txbDescricao = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.lblHora = new System.Windows.Forms.Label();
+            this.lblData = new System.Windows.Forms.Label();
+            this.lblNomeOperador = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -57,13 +64,14 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.timerData = new System.Windows.Forms.Timer(this.components);
+            this.dgvCarrinho = new System.Windows.Forms.DataGridView();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCarrinho)).BeginInit();
             this.SuspendLayout();
             // 
             // label7
@@ -108,6 +116,7 @@
             // 
             // txbTotalRecebido
             // 
+            this.txbTotalRecebido.Enabled = false;
             this.txbTotalRecebido.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbTotalRecebido.Location = new System.Drawing.Point(306, 358);
             this.txbTotalRecebido.Multiline = true;
@@ -117,6 +126,7 @@
             // 
             // txbPrecoUnit
             // 
+            this.txbPrecoUnit.Enabled = false;
             this.txbPrecoUnit.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbPrecoUnit.Location = new System.Drawing.Point(306, 224);
             this.txbPrecoUnit.Multiline = true;
@@ -133,6 +143,7 @@
             this.txbQuantidade.Size = new System.Drawing.Size(130, 36);
             this.txbQuantidade.TabIndex = 52;
             this.txbQuantidade.TextChanged += new System.EventHandler(this.txbQuantidade_TextChanged);
+            this.txbQuantidade.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbQuantidade_KeyPress);
             // 
             // txbCodBarras
             // 
@@ -143,9 +154,11 @@
             this.txbCodBarras.Size = new System.Drawing.Size(263, 36);
             this.txbCodBarras.TabIndex = 51;
             this.txbCodBarras.TextChanged += new System.EventHandler(this.txbCodBarras_TextChanged);
+            this.txbCodBarras.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbCodBarras_KeyPress);
             // 
             // txbDescricao
             // 
+            this.txbDescricao.Enabled = false;
             this.txbDescricao.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbDescricao.Location = new System.Drawing.Point(306, 169);
             this.txbDescricao.Multiline = true;
@@ -168,6 +181,9 @@
             // 
             this.panel4.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel4.Controls.Add(this.lblHora);
+            this.panel4.Controls.Add(this.lblData);
+            this.panel4.Controls.Add(this.lblNomeOperador);
             this.panel4.Controls.Add(this.label12);
             this.panel4.Controls.Add(this.label11);
             this.panel4.Controls.Add(this.label10);
@@ -176,6 +192,36 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(909, 40);
             this.panel4.TabIndex = 48;
+            // 
+            // lblHora
+            // 
+            this.lblHora.AutoSize = true;
+            this.lblHora.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold);
+            this.lblHora.Location = new System.Drawing.Point(750, 12);
+            this.lblHora.Name = "lblHora";
+            this.lblHora.Size = new System.Drawing.Size(39, 14);
+            this.lblHora.TabIndex = 6;
+            this.lblHora.Text = "Hora";
+            // 
+            // lblData
+            // 
+            this.lblData.AutoSize = true;
+            this.lblData.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold);
+            this.lblData.Location = new System.Drawing.Point(534, 12);
+            this.lblData.Name = "lblData";
+            this.lblData.Size = new System.Drawing.Size(38, 14);
+            this.lblData.TabIndex = 5;
+            this.lblData.Text = "Data";
+            // 
+            // lblNomeOperador
+            // 
+            this.lblNomeOperador.AutoSize = true;
+            this.lblNomeOperador.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold);
+            this.lblNomeOperador.Location = new System.Drawing.Point(298, 12);
+            this.lblNomeOperador.Name = "lblNomeOperador";
+            this.lblNomeOperador.Size = new System.Drawing.Size(45, 14);
+            this.lblNomeOperador.TabIndex = 4;
+            this.lblNomeOperador.Text = "Nome";
             // 
             // label12
             // 
@@ -377,14 +423,55 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "CAIXA LIVRE";
             // 
-            // dataGridView1
+            // timerData
             // 
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(11, 93);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(289, 271);
-            this.dataGridView1.TabIndex = 42;
+            this.timerData.Tick += new System.EventHandler(this.timerData_Tick);
+            // 
+            // dgvCarrinho
+            // 
+            this.dgvCarrinho.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvCarrinho.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvCarrinho.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvCarrinho.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgvCarrinho.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvCarrinho.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dgvCarrinho.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Green;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCarrinho.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvCarrinho.ColumnHeadersHeight = 30;
+            this.dgvCarrinho.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dgvCarrinho.EnableHeadersVisualStyles = false;
+            this.dgvCarrinho.GridColor = System.Drawing.Color.SandyBrown;
+            this.dgvCarrinho.Location = new System.Drawing.Point(12, 99);
+            this.dgvCarrinho.Name = "dgvCarrinho";
+            this.dgvCarrinho.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Maroon;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCarrinho.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvCarrinho.RowHeadersVisible = false;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
+            this.dgvCarrinho.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvCarrinho.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvCarrinho.Size = new System.Drawing.Size(285, 255);
+            this.dgvCarrinho.TabIndex = 60;
+            this.dgvCarrinho.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCarrinho_CellDoubleClick);
             // 
             // frmTelaPdv
             // 
@@ -394,6 +481,7 @@
             this.BackColor = System.Drawing.Color.SteelBlue;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(933, 450);
+            this.Controls.Add(this.dgvCarrinho);
             this.Controls.Add(this.txbSubtotal);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -410,7 +498,6 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.dataGridView1);
             this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmTelaPdv";
@@ -425,7 +512,7 @@
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCarrinho)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -461,6 +548,10 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label lblNomeOperador;
+        private System.Windows.Forms.Label lblData;
+        private System.Windows.Forms.Label lblHora;
+        private System.Windows.Forms.Timer timerData;
+        private System.Windows.Forms.DataGridView dgvCarrinho;
     }
 }

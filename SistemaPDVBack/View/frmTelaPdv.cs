@@ -1,4 +1,7 @@
-﻿using SistemaPDVBack.Controller;
+﻿using MySqlX.XDevAPI.Relational;
+using SistemaPDVBack.Controller;
+using SistemaPDVBack.Model;
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,12 +23,13 @@ namespace SistemaPDVBack
 
         ControllerProdutoPedido controllerProdutoPedido;
         ControllerPedido controllerPedido;
-        ControllerUsuario ControllerUsuario;
+        ControllerUsuario controllerUsuario;
 
 
         private void frmTelaPdv_Load(object sender, EventArgs e)
         {
-
+            CarregarUsuario();
+            timerData.Start();
         }
 
 
@@ -42,8 +46,14 @@ namespace SistemaPDVBack
                     break;
                 case Keys.A:
                     Adicionar();
-                    break;
+                    controllerProdutoPedido = new ControllerProdutoPedido(txbCodBarras.Text, txbQuantidade.Text, txbTotalRecebido.Text);
+                    controllerProdutoPedido.AdicionarProdutoPedido();
+                    dgvCarrinho.DataSource = controllerProdutoPedido.ListarProdutoPedido();
 
+
+
+                    break;
+            
             }
 
             return base.ProcessCmdKey(ref msg, keyData);
@@ -51,8 +61,8 @@ namespace SistemaPDVBack
 
         private void txbCodBarras_TextChanged(object sender, EventArgs e)
         {
-            
-            controllerProdutoPedido = new ControllerProdutoPedido(txbCodBarras.Text);
+
+            controllerProdutoPedido = new ControllerProdutoPedido(txbCodBarras.Text, txbQuantidade.Text, txbTotalRecebido.Text);
             txbPrecoUnit.Text = controllerProdutoPedido.VerificaProdutoPreco();
             txbDescricao.Text = controllerProdutoPedido.VerificaProdutoNome();
 
@@ -79,17 +89,49 @@ namespace SistemaPDVBack
         }
 
         bool i = false;
-    
+
         private void Adicionar()
         {
+            string temp = "1";
+            
+
+            controllerPedido = new ControllerPedido(temp, lblData.Text + lblHora.Text);
+
             if (i == false)
             {
-                frmProduto frm = new frmProduto();
-                frm.Show();
-                i = true;
-            }
-         
+                const string message = "Deseja Colacar CPF na nota?";
+                const string caption = "CPF?";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.YesNo,
+                                             MessageBoxIcon.Question);
 
+                if (result == DialogResult.Yes)
+                {
+                    frmCliente cliente = new frmCliente();
+                    cliente.ShowDialog();
+                    controllerPedido.CarregaCpf();
+                    controllerPedido.AdicionarPedido();
+
+
+
+                }
+
+
+                else
+                {
+                    controllerPedido.AdicionarPedido();
+
+                }
+                i = true;
+
+            }
+        
+        }
+
+        private void CarregarUsuario()
+        {
+
+            lblNomeOperador.Text = CarregaUsuario.Nome;
         }
 
         private void btnAdicionar_Click(object sender, EventArgs e)
@@ -99,7 +141,63 @@ namespace SistemaPDVBack
 
         private void txbDescricao_TextChanged(object sender, EventArgs e)
         {
-           
+
         }
+
+        private void txbCodBarras_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((Char.IsLetter(e.KeyChar)))
+                e.Handled = true;
+        }
+
+        private void timerData_Tick(object sender, EventArgs e)
+        {
+            lblData.Text = DateTime.Now.ToString("dd/MM/yyyy");
+            lblHora.Text = DateTime.Now.ToString("HH:mm:ss");
+        }
+
+        private void msktCpf_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
+        }
+
+        private void txbQuantidade_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((Char.IsLetter(e.KeyChar)))
+                e.Handled = true;
+        }
+
+
+        private void Remover()
+        {
+          
+
+        }
+
+        private void dgvCarrinho_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            dgvCarrinho.CurrentRow.Selected = true;
+            string temp = dgvCarrinho.CurrentRow.Cells[4].Value.ToString(); 
+
+          //  temp = dgvCarrinho.CurrentRow.Cells[]
+
+            string mensagem = "Deseja retirar da lista?";
+            string fechar = "Retirado com sucesso!!";
+            var result = MessageBox.Show(mensagem, fechar,
+                             MessageBoxButtons.YesNo,
+                             MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                controllerProdutoPedido = new ControllerProdutoPedido(temp);
+                controllerProdutoPedido.DeeletarProdutoPedido();
+                dgvCarrinho.DataSource = controllerProdutoPedido.ListarProdutoPedido();
+
+            }
+
+        }
+
+
+        
     }
 }

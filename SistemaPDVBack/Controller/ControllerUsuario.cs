@@ -17,15 +17,20 @@ namespace SistemaPDVBack.Controller
         private readonly MySqlCommand cmd = new MySqlCommand();
         private MySqlDataReader reader;
 
-        public ControllerUsuario(string usuario, string senha, string idColaborador, string statusAtivo)
+        public ControllerUsuario(string usuario, string senha, string cpfColaborador, string statusAtivo)
         {
-            ValidarConverter(usuario, senha, idColaborador, statusAtivo);
+            ValidarConverter(usuario, senha, cpfColaborador, statusAtivo);
 
         }
         public ControllerUsuario(string usuario, string senha)
         {
             login.Login = usuario;
             login.Senha = senha;
+
+        }
+        public ControllerUsuario( string cpfColaborador)
+        {
+            colaborador.CpfColaborador = cpfColaborador;
 
         }
 
@@ -59,7 +64,14 @@ namespace SistemaPDVBack.Controller
                 reader = cmd.ExecuteReader();
                 if (reader.HasRows)
                 {
+                    while (reader.Read())
+                    {
+                        CarregaUsuario.Nome = reader.GetString(2);
+                        CarregaUsuario.IdUser = reader.GetString(1);
+                    }
                     return true;
+
+
                 }
                 else
                 {
@@ -83,7 +95,7 @@ namespace SistemaPDVBack.Controller
         {
             cmd.CommandText = "insert into Usuario(cpfColaborador, usuario, senha, statusAtivo) values (@cpfColaborador, @usuario, @senha, @statusAtivo) ";
 
-            cmd.Parameters.AddWithValue("@cpfColaborador", colaborador.CpfColaborador );
+            cmd.Parameters.AddWithValue("@cpfColaborador", colaborador.CpfColaborador);
             cmd.Parameters.AddWithValue("@usuario", login.Login);
             cmd.Parameters.AddWithValue("@senha", login.Senha);
             cmd.Parameters.AddWithValue("@statusAtivo", login.StatusAtivo);
@@ -109,6 +121,8 @@ namespace SistemaPDVBack.Controller
                 conexao.FecharBanco();
             }
         }
+
+      
 
     }
 }

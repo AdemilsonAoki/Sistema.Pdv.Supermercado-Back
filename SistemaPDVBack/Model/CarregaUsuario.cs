@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace SistemaPDVBack.Model
 {
-    class Cliente
+    public static class CarregaUsuario
     {
+        public static string IdUser { get; set; }
+        public static string Nome { get; set; }
 
-        public string CpfCnpj { get; set; }
-        public string TipoCliente { get; set; }
+
 
     }
 }
