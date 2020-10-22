@@ -59,13 +59,14 @@
             this.btnAdicionar = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.txbSubtotal = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.timerData = new System.Windows.Forms.Timer(this.components);
             this.dgvCarrinho = new System.Windows.Forms.DataGridView();
+            this.lblSubTotal = new System.Windows.Forms.Label();
+            this.lblTotal = new System.Windows.Forms.Label();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -372,17 +373,6 @@
             this.pictureBox1.TabIndex = 46;
             this.pictureBox1.TabStop = false;
             // 
-            // txbSubtotal
-            // 
-            this.txbSubtotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txbSubtotal.Font = new System.Drawing.Font("Verdana", 14F, System.Drawing.FontStyle.Bold);
-            this.txbSubtotal.Location = new System.Drawing.Point(11, 360);
-            this.txbSubtotal.Multiline = true;
-            this.txbSubtotal.Name = "txbSubtotal";
-            this.txbSubtotal.Size = new System.Drawing.Size(289, 38);
-            this.txbSubtotal.TabIndex = 45;
-            this.txbSubtotal.Text = "SUBTOTAL:";
-            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.ActiveCaption;
@@ -473,6 +463,26 @@
             this.dgvCarrinho.TabIndex = 60;
             this.dgvCarrinho.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCarrinho_CellDoubleClick);
             // 
+            // lblSubTotal
+            // 
+            this.lblSubTotal.AutoSize = true;
+            this.lblSubTotal.Font = new System.Drawing.Font("Verdana", 14F, System.Drawing.FontStyle.Bold);
+            this.lblSubTotal.Location = new System.Drawing.Point(12, 361);
+            this.lblSubTotal.Name = "lblSubTotal";
+            this.lblSubTotal.Size = new System.Drawing.Size(130, 23);
+            this.lblSubTotal.TabIndex = 61;
+            this.lblSubTotal.Text = "SUBTOTAL:";
+            // 
+            // lblTotal
+            // 
+            this.lblTotal.AutoSize = true;
+            this.lblTotal.Font = new System.Drawing.Font("Verdana", 14F, System.Drawing.FontStyle.Bold);
+            this.lblTotal.Location = new System.Drawing.Point(148, 361);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(24, 23);
+            this.lblTotal.TabIndex = 62;
+            this.lblTotal.Text = "0";
+            // 
             // frmTelaPdv
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -481,8 +491,9 @@
             this.BackColor = System.Drawing.Color.SteelBlue;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(933, 450);
+            this.Controls.Add(this.lblTotal);
+            this.Controls.Add(this.lblSubTotal);
             this.Controls.Add(this.dgvCarrinho);
-            this.Controls.Add(this.txbSubtotal);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -543,7 +554,6 @@
         private System.Windows.Forms.Button btnAdicionar;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.TextBox txbSubtotal;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
@@ -553,5 +563,7 @@
         private System.Windows.Forms.Label lblHora;
         private System.Windows.Forms.Timer timerData;
         private System.Windows.Forms.DataGridView dgvCarrinho;
+        private System.Windows.Forms.Label lblSubTotal;
+        private System.Windows.Forms.Label lblTotal;
     }
 }

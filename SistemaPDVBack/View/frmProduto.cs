@@ -31,11 +31,23 @@ namespace SistemaPDVBack
         }
         private void Listar()
         {
+
+
             controllerProduto = new ControllerProduto();
+
             dgvProduto.DataSource = controllerProduto.ListarProduto();
             cmbFornecedor.DataSource = controllerProduto.PreencherFornecedor();
-            cmbFornecedor.ValueMember = "idFornecedor";
             cmbFornecedor.DisplayMember = "nomeFantasia";
+            cmbFornecedor.ValueMember = "idFornecedor";
+
+            cmbFornecedor.SelectedIndex = 0;
+           
+           
+
+
+
+
+
             DefinirCabecalhos(new List<string>() { "Código de barras", "Nome", "Fornecedor", "Descrição", "Quantidade", "Preço de Custo","Margem", "Preço de Venda", "Data Fabricação", "Data Vencimento", "Categoria", "Ativo" });
 
         }

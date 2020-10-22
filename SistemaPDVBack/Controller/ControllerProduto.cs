@@ -21,6 +21,16 @@ namespace SistemaPDVBack.Controller
         Conexao conexao = new Conexao();
         Produto produto = new Produto();
 
+        DataSet ds = new DataSet("Retorno");
+
+
+        public DataSet Retorno
+        {
+            get { return ds; }
+            set { ds = value; }
+        }
+
+
         public ControllerProduto()
         {
 
@@ -178,32 +188,24 @@ namespace SistemaPDVBack.Controller
         }
         public DataTable PreencherFornecedor()
         {
-
-            MySqlDataAdapter da = new MySqlDataAdapter();
-            cmd.CommandText = "select *from Fornecedor";
-
-
+            cmd.CommandText =  "select *from Fornecedor";
             try
             {
                 cmd.Connection = conexao.AbrirBanco();
-                MySqlDataReader dr = cmd.ExecuteReader();
-                DataTable dt = new DataTable();
-                dt.Load(dr);
-
-                return dt;
-
+                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                DataTable dtLista = new DataTable();
+                da.Fill(dtLista);
+                return dtLista;
 
             }
-
-            catch (Exception ex)
+            catch (Exception e)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(e.Message);
                 throw;
             }
             finally
             {
                 conexao.FecharBanco();
-
             }
 
         }

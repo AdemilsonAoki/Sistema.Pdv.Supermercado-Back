@@ -29,3 +29,4 @@ F:\Users\PC\Desktop\Projetos\PimSupermercadoPdVback\Sistema.Pdv.Supermercado-Bac
 F:\Users\PC\Desktop\Projetos\PimSupermercadoPdVback\Sistema.Pdv.Supermercado-Back\SistemaPDVBack\obj\Debug\SistemaPDVBack.frmTelaPdv.resources
 F:\Users\PC\Desktop\Projetos\PimSupermercadoPdVback\Sistema.Pdv.Supermercado-Back\SistemaPDVBack\obj\Debug\SistemaPDVBack.frmFinalizarVenda.resources
 F:\Users\PC\Desktop\Projetos\PimSupermercadoPdVback\Sistema.Pdv.Supermercado-Back\SistemaPDVBack\obj\Debug\SistemaPDVBack.frmCliente.resources
+F:\Users\PC\Desktop\Projetos\PimSupermercadoPdVback\Sistema.Pdv.Supermercado-Back\SistemaPDVBack\obj\Debug\SistemaPDVBack.View.frmDinheiro.resources

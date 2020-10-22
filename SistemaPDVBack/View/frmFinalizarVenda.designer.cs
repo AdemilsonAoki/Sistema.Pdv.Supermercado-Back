@@ -32,26 +32,26 @@
             this.label18 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
+            this.lblTotal = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.label10 = new System.Windows.Forms.Label();
+            this.lblTotalApagar = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label12 = new System.Windows.Forms.Label();
+            this.lblValorPago = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label13 = new System.Windows.Forms.Label();
+            this.lblSaldo = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.label14 = new System.Windows.Forms.Label();
+            this.lblTroco = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.btnDinheiro = new FontAwesome.Sharp.IconButton();
@@ -74,7 +74,7 @@
             this.panel1.Controls.Add(this.label18);
             this.panel1.Controls.Add(this.label17);
             this.panel1.Controls.Add(this.label16);
-            this.panel1.Controls.Add(this.label15);
+            this.panel1.Controls.Add(this.lblTotal);
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.label6);
@@ -111,14 +111,14 @@
             this.label16.TabIndex = 7;
             this.label16.Text = "label16";
             // 
-            // label15
+            // lblTotal
             // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(417, 19);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(41, 13);
-            this.label15.TabIndex = 6;
-            this.label15.Text = "label15";
+            this.lblTotal.AutoSize = true;
+            this.lblTotal.Location = new System.Drawing.Point(417, 19);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(13, 13);
+            this.lblTotal.TabIndex = 6;
+            this.lblTotal.Text = "0";
             // 
             // label8
             // 
@@ -163,7 +163,7 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.panel3.Controls.Add(this.label10);
+            this.panel3.Controls.Add(this.lblTotalApagar);
             this.panel3.Controls.Add(this.label9);
             this.panel3.Controls.Add(this.panel4);
             this.panel3.Location = new System.Drawing.Point(487, 0);
@@ -171,21 +171,21 @@
             this.panel3.Size = new System.Drawing.Size(446, 150);
             this.panel3.TabIndex = 2;
             // 
-            // label10
+            // lblTotalApagar
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Verdana", 14F, System.Drawing.FontStyle.Bold);
-            this.label10.Location = new System.Drawing.Point(321, 99);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(84, 23);
-            this.label10.TabIndex = 2;
-            this.label10.Text = "PAGAR";
+            this.lblTotalApagar.AutoSize = true;
+            this.lblTotalApagar.Font = new System.Drawing.Font("Verdana", 14F, System.Drawing.FontStyle.Bold);
+            this.lblTotalApagar.Location = new System.Drawing.Point(230, 77);
+            this.lblTotalApagar.Name = "lblTotalApagar";
+            this.lblTotalApagar.Size = new System.Drawing.Size(24, 23);
+            this.lblTotalApagar.TabIndex = 2;
+            this.lblTotalApagar.Text = "0";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold);
-            this.label9.Location = new System.Drawing.Point(231, 43);
+            this.label9.Location = new System.Drawing.Point(164, 19);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(181, 18);
             this.label9.TabIndex = 1;
@@ -214,9 +214,9 @@
             this.label11.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold);
             this.label11.Location = new System.Drawing.Point(59, 62);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(70, 18);
+            this.label11.Size = new System.Drawing.Size(19, 18);
             this.label11.TabIndex = 1;
-            this.label11.Text = "PAGAR";
+            this.label11.Text = "0";
             // 
             // label1
             // 
@@ -230,7 +230,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.label12);
+            this.groupBox2.Controls.Add(this.lblValorPago);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Location = new System.Drawing.Point(241, 274);
             this.groupBox2.Name = "groupBox2";
@@ -238,15 +238,15 @@
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
             // 
-            // label12
+            // lblValorPago
             // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold);
-            this.label12.Location = new System.Drawing.Point(85, 62);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(59, 18);
-            this.label12.TabIndex = 2;
-            this.label12.Text = "PAGO";
+            this.lblValorPago.AutoSize = true;
+            this.lblValorPago.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold);
+            this.lblValorPago.Location = new System.Drawing.Point(85, 62);
+            this.lblValorPago.Name = "lblValorPago";
+            this.lblValorPago.Size = new System.Drawing.Size(19, 18);
+            this.lblValorPago.TabIndex = 2;
+            this.lblValorPago.Text = "0";
             // 
             // label2
             // 
@@ -260,7 +260,7 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.label13);
+            this.groupBox3.Controls.Add(this.lblSaldo);
             this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Location = new System.Drawing.Point(468, 274);
             this.groupBox3.Name = "groupBox3";
@@ -268,15 +268,15 @@
             this.groupBox3.TabIndex = 6;
             this.groupBox3.TabStop = false;
             // 
-            // label13
+            // lblSaldo
             // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold);
-            this.label13.Location = new System.Drawing.Point(76, 62);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(68, 18);
-            this.label13.TabIndex = 3;
-            this.label13.Text = "SALDO";
+            this.lblSaldo.AutoSize = true;
+            this.lblSaldo.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold);
+            this.lblSaldo.Location = new System.Drawing.Point(76, 62);
+            this.lblSaldo.Name = "lblSaldo";
+            this.lblSaldo.Size = new System.Drawing.Size(19, 18);
+            this.lblSaldo.TabIndex = 3;
+            this.lblSaldo.Text = "0";
             // 
             // label3
             // 
@@ -290,7 +290,7 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.label14);
+            this.groupBox4.Controls.Add(this.lblTroco);
             this.groupBox4.Controls.Add(this.label4);
             this.groupBox4.Location = new System.Drawing.Point(696, 274);
             this.groupBox4.Name = "groupBox4";
@@ -298,15 +298,15 @@
             this.groupBox4.TabIndex = 6;
             this.groupBox4.TabStop = false;
             // 
-            // label14
+            // lblTroco
             // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold);
-            this.label14.Location = new System.Drawing.Point(80, 62);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(73, 18);
-            this.label14.TabIndex = 4;
-            this.label14.Text = "TROCO";
+            this.lblTroco.AutoSize = true;
+            this.lblTroco.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold);
+            this.lblTroco.Location = new System.Drawing.Point(80, 62);
+            this.lblTroco.Name = "lblTroco";
+            this.lblTroco.Size = new System.Drawing.Size(19, 18);
+            this.lblTroco.TabIndex = 4;
+            this.lblTroco.Text = "0";
             // 
             // label4
             // 
@@ -345,6 +345,7 @@
             this.btnDinheiro.Text = "DINHEIRO";
             this.btnDinheiro.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnDinheiro.UseVisualStyleBackColor = false;
+            this.btnDinheiro.Click += new System.EventHandler(this.btnDinheiro_Click);
             // 
             // btnCartaoCred
             // 
@@ -363,6 +364,7 @@
             this.btnCartaoCred.Text = "CARTÃO DE CRÉDITO";
             this.btnCartaoCred.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnCartaoCred.UseVisualStyleBackColor = false;
+            this.btnCartaoCred.Click += new System.EventHandler(this.btnCartaoCred_Click);
             // 
             // btnCartaoDeb
             // 
@@ -381,6 +383,7 @@
             this.btnCartaoDeb.Text = "CARTÃO DE DÉBITO";
             this.btnCartaoDeb.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnCartaoDeb.UseVisualStyleBackColor = false;
+            this.btnCartaoDeb.Click += new System.EventHandler(this.btnCartaoDeb_Click);
             // 
             // btnOutros
             // 
@@ -399,6 +402,7 @@
             this.btnOutros.Text = "OUTROS";
             this.btnOutros.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnOutros.UseVisualStyleBackColor = false;
+            this.btnOutros.Click += new System.EventHandler(this.btnOutros_Click);
             // 
             // btnCancelar
             // 
@@ -433,6 +437,7 @@
             this.btnConfirmar.Text = "Confirmar";
             this.btnConfirmar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnConfirmar.UseVisualStyleBackColor = false;
+            this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
             // 
             // frmFinalizarVenda
             // 
@@ -455,6 +460,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "frmFinalizarVenda";
             this.Text = "frmFinalizarVenda";
+            this.Load += new System.EventHandler(this.frmFinalizarVenda_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel3.ResumeLayout(false);
@@ -485,20 +491,20 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label lblTotalApagar;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label lblValorPago;
+        private System.Windows.Forms.Label lblSaldo;
+        private System.Windows.Forms.Label lblTroco;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.Label label19;
         private FontAwesome.Sharp.IconButton btnDinheiro;
         private FontAwesome.Sharp.IconButton btnCartaoCred;

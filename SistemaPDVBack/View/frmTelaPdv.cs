@@ -39,9 +39,11 @@ namespace SistemaPDVBack
             switch (keyData)
             {
                 case Keys.F2:
+                    controllerPedido = new ControllerPedido(lblTotal.Text);
+                    controllerPedido.AtualizaValorPedido();
                     frmFinalizarVenda frmFinalizar = new frmFinalizarVenda();
-                    frmFinalizar.Show();
-                    this.Hide();
+                    frmFinalizar.ShowDialog();
+                    i = false;
 
                     break;
                 case Keys.A:
@@ -49,10 +51,9 @@ namespace SistemaPDVBack
                     controllerProdutoPedido = new ControllerProdutoPedido(txbCodBarras.Text, txbQuantidade.Text, txbTotalRecebido.Text);
                     controllerProdutoPedido.AdicionarProdutoPedido();
                     dgvCarrinho.DataSource = controllerProdutoPedido.ListarProdutoPedido();
-
-
-
+                    CalculaTotal();
                     break;
+                
             
             }
 
@@ -85,6 +86,7 @@ namespace SistemaPDVBack
             total = quantidade * preco;
 
 
+
             txbTotalRecebido.Text = total.ToString();
         }
 
@@ -95,7 +97,7 @@ namespace SistemaPDVBack
             string temp = "1";
             
 
-            controllerPedido = new ControllerPedido(temp, lblData.Text + lblHora.Text);
+            controllerPedido = new ControllerPedido(temp, lblData.Text + lblHora.Text, lblTotal.Text);
 
             if (i == false)
             {
@@ -168,11 +170,6 @@ namespace SistemaPDVBack
         }
 
 
-        private void Remover()
-        {
-          
-
-        }
 
         private void dgvCarrinho_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -192,9 +189,27 @@ namespace SistemaPDVBack
                 controllerProdutoPedido = new ControllerProdutoPedido(temp);
                 controllerProdutoPedido.DeeletarProdutoPedido();
                 dgvCarrinho.DataSource = controllerProdutoPedido.ListarProdutoPedido();
+                CalculaTotal();
+
 
             }
 
+        }
+
+
+        private void CalculaTotal()
+        {
+            decimal calc = 0;
+        
+
+            for (int i = 0; i < dgvCarrinho.Rows.Count; i++)
+            {
+                calc += Convert.ToDecimal(dgvCarrinho.Rows[i].Cells[3].Value);
+
+
+            }
+
+            lblTotal.Text = calc.ToString(); 
         }
 
 

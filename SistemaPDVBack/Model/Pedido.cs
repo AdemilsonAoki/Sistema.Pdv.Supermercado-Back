@@ -14,7 +14,9 @@ namespace SistemaPDVBack.Model
         public int Status { get; set; }
         public string DataDoPedido { get; set; }
         public string FormaDePagamento { get; set; }
-        public string TipoCliente { get; set; }
+        public decimal TotalPedido { get; set; }
+
+
 
 
     }
