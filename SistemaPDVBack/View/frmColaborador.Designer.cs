@@ -365,6 +365,7 @@
             this.dgvColaborador.GridColor = System.Drawing.Color.Yellow;
             this.dgvColaborador.Location = new System.Drawing.Point(12, 239);
             this.dgvColaborador.Name = "dgvColaborador";
+            this.dgvColaborador.ReadOnly = true;
             this.dgvColaborador.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.Maroon;

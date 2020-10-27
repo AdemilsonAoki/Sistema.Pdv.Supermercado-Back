@@ -28,11 +28,12 @@ namespace SistemaPDVBack
             rbPerecivel.Checked = true;
             rbProdutoAtivo.Checked = true;
 
+
+          
+
         }
         private void Listar()
         {
-
-
             controllerProduto = new ControllerProduto();
 
             dgvProduto.DataSource = controllerProduto.ListarProduto();
@@ -42,13 +43,7 @@ namespace SistemaPDVBack
 
             cmbFornecedor.SelectedIndex = 0;
            
-           
-
-
-
-
-
-            DefinirCabecalhos(new List<string>() { "Código de barras", "Nome", "Fornecedor", "Descrição", "Quantidade", "Preço de Custo","Margem", "Preço de Venda", "Data Fabricação", "Data Vencimento", "Categoria", "Ativo" });
+             DefinirCabecalhos(new List<string>() { "Código de barras", "Nome", "Fornecedor", "Descrição", "Quantidade", "Preço de Custo","Margem", "Preço de Venda", "Data Fabricação", "Data Vencimento", "Categoria", "Ativo" });
 
         }
 
@@ -75,24 +70,32 @@ namespace SistemaPDVBack
 
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
-
-
             InseriValorRb();
-
-
-
             controllerProduto = new ControllerProduto(txbCodigoBarras.Text, cmbFornecedor.SelectedValue.ToString(), txbNome.Text, rtbDescricao.Text, txbPrecoCusto.Text, txbPrecoDeVenda.Text,
                                                         txbMargemDeLucro.Text, dtpDataFabricacao.Text, dtpDataVencimento.Text, txbQuantidadeEstoque.Text, _perecivel, _ativo);
 
-            controllerProduto.AdicionarProduto();
+            if (controllerProduto.Ds_Msg != "")
+            {
+                // Exibir erro!
+              
+                txbCodigoBarras.Focus();
+               const string caption = "Ocorreu um erro?";
+                var result = MessageBox.Show(controllerProduto.Ds_Msg, caption,
+                                             MessageBoxButtons.OK,
+                                             MessageBoxIcon.Warning);
+
+            }
+            else
+            {
+                // Tudo certinho!
+                controllerProduto.AdicionarProduto();
+
+
+            }
             Listar();
         }
 
-        private void txbMargemDeLucro_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
+      
         private void txbPrecoDeVenda_TextChanged(object sender, EventArgs e)
         {
             float porcentagem = 0;
@@ -128,17 +131,6 @@ namespace SistemaPDVBack
 
         }
 
-        private void txbPrecoCusto_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txbMargemDeLucro_MouseLeave(object sender, EventArgs e)
-        {
-
-
-        }
-
         private void txbMargemDeLucro_TextChanged_1(object sender, EventArgs e)
         {
             float porcentagem = 0;
@@ -162,28 +154,13 @@ namespace SistemaPDVBack
 
         }
 
-        private void txbPrecoDeVenda_MouseLeave(object sender, EventArgs e)
-        {
-
-
-
-
-
-
-        }
-
+      
         private void PrecoVendaMargem()
         {
-
-
             decimal precoVenda = 0;
             decimal porcentagem = 0;
-
-
             decimal precoCusto = 0;
             decimal total = 0;
-
-
 
             if (txbPrecoDeVenda.Focus() != true)
             {
@@ -246,12 +223,8 @@ namespace SistemaPDVBack
         private void btnAlterar_Click(object sender, EventArgs e)
         {
             InseriValorRb();
-
-
-
             controllerProduto = new ControllerProduto(txbCodigoBarras.Text, cmbFornecedor.SelectedValue.ToString(), txbNome.Text, rtbDescricao.Text, txbPrecoCusto.Text, txbPrecoDeVenda.Text,
                                                         txbMargemDeLucro.Text, dtpDataFabricacao.Text, dtpDataVencimento.Text, txbQuantidadeEstoque.Text, _perecivel, _ativo);
-
             controllerProduto.AlterarProduto();
             Listar();
         }
@@ -269,5 +242,9 @@ namespace SistemaPDVBack
                 }
             }
         }
+
+
+
+      
     }
 }

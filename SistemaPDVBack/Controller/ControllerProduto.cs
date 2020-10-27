@@ -16,20 +16,16 @@ namespace SistemaPDVBack.Controller
 
         private readonly string _alterar = "update Produto set codFornecedor = @codFornecedor , nomeProduto = @nomeProduto, descricaoProduto = @descricaoProduto, precoCusto =@precoCusto, precoVenda = @precoVenda, margemLucro = @margemLucro, dataFabricacao = @dataFabricacao, dataVencimento = @dataVencimento, quantidadeEstoqueProduto = @quantidadeEstoqueProduto, categoria = @categoria, statusAtivo = @statusAtivo where codBarras = @codBarras ";
         private readonly string _listar = "select p.codBarras, p.nomeProduto, f.nomeFantasia, p.descricaoProduto,p.quantidadeEstoqueProduto, p.precoCusto, p.margemLucro, p.precoVenda, p.dataFabricacao, p.dataVencimento, p.categoria, p.statusAtivo  From Produto p join Fornecedor f on p.codFornecedor = f.idFornecedor";
-        string mensagem;
+        string mensagem = "";
+
+        public string Ds_Msg
+        {
+            get { return mensagem; }
+            set { mensagem = value; }
+        }
 
         Conexao conexao = new Conexao();
         Produto produto = new Produto();
-
-        DataSet ds = new DataSet("Retorno");
-
-
-        public DataSet Retorno
-        {
-            get { return ds; }
-            set { ds = value; }
-        }
-
 
         public ControllerProduto()
         {
@@ -46,29 +42,89 @@ namespace SistemaPDVBack.Controller
         }
         private void ConverterValidar(string codBarras, string codFornecedor, string nomeProduto, string descricaoProduto, string precoCusto, string precoVenda, string margemLucro, string dataFabricacao, string dataVencimento, string quantidadeEstoqueProduto, string categoria, string statusAtivo)
         {
-            try
+
+            string validar = "Preencha os produtos";
+            if (mensagem == "")
             {
-                produto.CodBarras = int.Parse(codBarras);
-                produto.CodFornecedor = int.Parse(codFornecedor);
-                produto.NomeProduto = nomeProduto;
-                produto.DescricaoProduto = descricaoProduto;
-                produto.PrecoCusto = decimal.Parse(precoCusto);
-                produto.PrecoVenda = decimal.Parse(precoVenda);
-                produto.MargemLucro = decimal.Parse(margemLucro);
-                produto.DataFabricacao = dataFabricacao;
-                produto.DataVencimento = dataVencimento;
-                produto.QuantidadeEstoqueProduto = int.Parse(quantidadeEstoqueProduto);
-                produto.Categoria = categoria;
-                produto.StatusAtivo = int.Parse(statusAtivo);
+                try
+                {
+                    if (codBarras.Equals(""))
+                    {
+                        mensagem = validar;
+                    }
+                    else
+                    {
+                        produto.CodBarras = int.Parse(codBarras);
 
+                    }
+                    if (nomeProduto.Equals(""))
+                    {
+                        mensagem = validar;
+                    }
+                    else
+                    {
+                        produto.NomeProduto = nomeProduto;
 
+                    }
+                    if (codFornecedor.Equals(""))
+                    {
+                        mensagem = validar;
+                    }
+                    else
+                    {
+                        produto.CodFornecedor = int.Parse(codFornecedor);
+
+                    }
+                    if (precoCusto.Equals(""))
+                    {
+                        mensagem = validar;
+                    }
+                    else
+                    {
+                        produto.PrecoCusto = decimal.Parse(precoCusto);
+
+                    }
+                    if (precoVenda.Equals(""))
+                    {
+                        mensagem = validar;
+                    }
+                    else
+                    {
+                        produto.PrecoVenda = decimal.Parse(precoVenda);
+
+                    }
+                    produto.DescricaoProduto = descricaoProduto;
+                    if (margemLucro.Equals(""))
+                    {
+                        mensagem = validar;
+                    }
+                    else
+                    {
+                        produto.MargemLucro = decimal.Parse(margemLucro);
+
+                    }
+                    if (quantidadeEstoqueProduto.Equals(""))
+                    {
+                        mensagem = validar;
+                    }
+                    else
+                    {
+                        produto.QuantidadeEstoqueProduto = int.Parse(quantidadeEstoqueProduto);
+
+                    }
+
+                    produto.DataFabricacao = dataFabricacao;
+                    produto.DataVencimento = dataVencimento;
+                    produto.Categoria = categoria;
+                    produto.StatusAtivo = int.Parse(statusAtivo);
+
+                }
+
+                catch (Exception e)
+                {
+                    mensagem = e.Message;
+                }
             }
-            catch(Exception e)
-            {
-                MessageBox.Show( e.Message);
-                return;
-            }
-
         }
 
         public void AdicionarProduto()
@@ -98,8 +154,7 @@ namespace SistemaPDVBack.Controller
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message);
-                return;
+                mensagem = e.Message;
 
             }
             finally
@@ -107,7 +162,6 @@ namespace SistemaPDVBack.Controller
                 cmd.Parameters.Clear();
                 conexao.FecharBanco();
             }
-
 
         }
 
@@ -170,7 +224,7 @@ namespace SistemaPDVBack.Controller
             catch (Exception e)
             {
                 MessageBox.Show(e.Message);
-                throw ;
+                throw;
             }
             finally
             {
@@ -188,7 +242,7 @@ namespace SistemaPDVBack.Controller
         }
         public DataTable PreencherFornecedor()
         {
-            cmd.CommandText =  "select *from Fornecedor";
+            cmd.CommandText = "select *from Fornecedor";
             try
             {
                 cmd.Connection = conexao.AbrirBanco();
