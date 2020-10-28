@@ -28,11 +28,7 @@ namespace SistemaPDVBack.Controller
             login.Senha = senha;
 
         }
-        public ControllerUsuario( string cpfColaborador)
-        {
-            colaborador.CpfColaborador = cpfColaborador;
-
-        }
+       
 
         private void ValidarConverter(string usuario, string senha, string cpf, string statusAtivo)
         {
@@ -119,6 +115,27 @@ namespace SistemaPDVBack.Controller
             {
                 cmd.Parameters.Clear();
                 conexao.FecharBanco();
+            }
+        }
+
+        public void AlterarUsuario()
+        {
+            try
+            {
+                cmd.CommandText = "Update Usuario set usuario = @usuario, senha = @senha where cpfColaborador = @cpfColaborador";
+                cmd.Parameters.AddWithValue("@usuario", login.Login);
+                cmd.Parameters.AddWithValue("@senha", login.Senha);
+                cmd.Parameters.AddWithValue("@cpfColaborador", colaborador.CpfColaborador);
+
+
+                cmd.Connection = conexao.AbrirBanco();
+                cmd.ExecuteNonQuery();
+
+
+            }
+            catch (Exception e)
+            {
+                throw;
             }
         }
 

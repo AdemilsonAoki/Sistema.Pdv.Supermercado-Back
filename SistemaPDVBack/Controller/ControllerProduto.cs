@@ -4,6 +4,7 @@ using SistemaPDVBack.Model;
 
 using System;
 using System.Data;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace SistemaPDVBack.Controller
@@ -15,7 +16,7 @@ namespace SistemaPDVBack.Controller
                                             "values(@codBarras, @codFornecedor, @nomeProduto, @descricaoProduto, @precoCusto, @precoVenda, @margemLucro, @dataFabricacao, @dataVencimento, @quantidadeEstoqueProduto, @categoria, @statusAtivo ) ";
 
         private readonly string _alterar = "update Produto set codFornecedor = @codFornecedor , nomeProduto = @nomeProduto, descricaoProduto = @descricaoProduto, precoCusto =@precoCusto, precoVenda = @precoVenda, margemLucro = @margemLucro, dataFabricacao = @dataFabricacao, dataVencimento = @dataVencimento, quantidadeEstoqueProduto = @quantidadeEstoqueProduto, categoria = @categoria, statusAtivo = @statusAtivo where codBarras = @codBarras ";
-        private readonly string _listar = "select p.codBarras, p.nomeProduto, f.nomeFantasia, p.descricaoProduto,p.quantidadeEstoqueProduto, p.precoCusto, p.margemLucro, p.precoVenda, p.dataFabricacao, p.dataVencimento, p.categoria, p.statusAtivo  From Produto p join Fornecedor f on p.codFornecedor = f.idFornecedor";
+        private readonly string _listar = "select p.codBarras, p.nomeProduto, f.nomeFantasia, p.descricaoProduto,p.quantidadeEstoqueProduto, p.precoCusto, p.margemLucro, p.precoVenda, p.dataFabricacao, p.dataVencimento, p.categoria, p.statusAtivo  From Produto p join Fornecedor f on p.codFornecedor = f.idFornecedor where p.statusAtivo = 1";
         string mensagem = "";
 
         public string Ds_Msg
@@ -26,11 +27,20 @@ namespace SistemaPDVBack.Controller
 
         Conexao conexao = new Conexao();
         Produto produto = new Produto();
-
+        Regex r;
         public ControllerProduto()
         {
 
         }
+        public ControllerProduto(string nome)
+        {
+            if (nome != "")
+            {
+                produto.NomeProduto = nome;
+
+            }
+        }
+
 
 
         public ControllerProduto(string codBarras, string codFornecedor, string nomeProduto, string descricaoProduto, string precoCusto, string precoVenda, string margemLucro, string dataFabricacao, string dataVencimento, string quantidadeEstoqueProduto, string categoria, string statusAtivo)
@@ -42,83 +52,42 @@ namespace SistemaPDVBack.Controller
         }
         private void ConverterValidar(string codBarras, string codFornecedor, string nomeProduto, string descricaoProduto, string precoCusto, string precoVenda, string margemLucro, string dataFabricacao, string dataVencimento, string quantidadeEstoqueProduto, string categoria, string statusAtivo)
         {
-
+            string validaNumero = "^[0-9]*$";
             string validar = "Preencha os produtos";
             if (mensagem == "")
             {
                 try
                 {
-                    if (codBarras.Equals(""))
-                    {
-                        mensagem = validar;
-                    }
-                    else
-                    {
-                        produto.CodBarras = int.Parse(codBarras);
 
-                    }
-                    if (nomeProduto.Equals(""))
+                    produto.CodBarras = int.Parse(codBarras);
+
+                    if (nomeProduto != "" && descricaoProduto != "" && dataFabricacao != "" && dataVencimento != "" && categoria != "")
                     {
-                        mensagem = validar;
-                    }
-                    else
-                    {
+                        produto.DescricaoProduto = descricaoProduto;
                         produto.NomeProduto = nomeProduto;
+                        produto.DataFabricacao = dataFabricacao;
+                        produto.DataVencimento = dataVencimento;
+                        produto.Categoria = categoria;
 
-                    }
-                    if (codFornecedor.Equals(""))
-                    {
-                        mensagem = validar;
                     }
                     else
                     {
-                        produto.CodFornecedor = int.Parse(codFornecedor);
-
-                    }
-                    if (precoCusto.Equals(""))
-                    {
                         mensagem = validar;
-                    }
-                    else
-                    {
-                        produto.PrecoCusto = decimal.Parse(precoCusto);
-
-                    }
-                    if (precoVenda.Equals(""))
-                    {
-                        mensagem = validar;
-                    }
-                    else
-                    {
-                        produto.PrecoVenda = decimal.Parse(precoVenda);
-
-                    }
-                    produto.DescricaoProduto = descricaoProduto;
-                    if (margemLucro.Equals(""))
-                    {
-                        mensagem = validar;
-                    }
-                    else
-                    {
-                        produto.MargemLucro = decimal.Parse(margemLucro);
-
-                    }
-                    if (quantidadeEstoqueProduto.Equals(""))
-                    {
-                        mensagem = validar;
-                    }
-                    else
-                    {
-                        produto.QuantidadeEstoqueProduto = int.Parse(quantidadeEstoqueProduto);
 
                     }
 
-                    produto.DataFabricacao = dataFabricacao;
-                    produto.DataVencimento = dataVencimento;
-                    produto.Categoria = categoria;
+
+                    produto.CodFornecedor = int.Parse(codFornecedor);
+                    produto.PrecoCusto = decimal.Parse(precoCusto);
+                    produto.PrecoVenda = decimal.Parse(precoVenda);
+                    produto.MargemLucro = decimal.Parse(margemLucro);
+                    produto.QuantidadeEstoqueProduto = int.Parse(quantidadeEstoqueProduto);
                     produto.StatusAtivo = int.Parse(statusAtivo);
 
+
+
                 }
+
 
                 catch (Exception e)
                 {
@@ -234,15 +203,10 @@ namespace SistemaPDVBack.Controller
         }
 
 
-        public void PesquisaProduto()
+        public DataTable PesquisaProduto()
         {
-
-
-
-        }
-        public DataTable PreencherFornecedor()
-        {
-            cmd.CommandText = "select *from Fornecedor";
+            cmd.CommandText = "select p.codBarras, p.nomeProduto, f.nomeFantasia, p.descricaoProduto,p.quantidadeEstoqueProduto, p.precoCusto, p.margemLucro, p.precoVenda, p.dataFabricacao, p.dataVencimento, p.categoria, p.statusAtivo  From Produto p join Fornecedor f on p.codFornecedor = f.idFornecedor where nomeProduto LIKE'%' @nomeProduto '%' order by nomeProduto";
+            cmd.Parameters.AddWithValue("@nomeProduto", produto.NomeProduto);
             try
             {
                 cmd.Connection = conexao.AbrirBanco();
@@ -262,6 +226,52 @@ namespace SistemaPDVBack.Controller
                 conexao.FecharBanco();
             }
 
+        }
+        public DataTable PreencherFornecedor()
+        {
+            cmd.CommandText = "Select *from Fornecedor";
+            try
+            {
+                cmd.Connection = conexao.AbrirBanco();
+                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                DataTable dtLista = new DataTable();
+                da.Fill(dtLista);
+                return dtLista;
+
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                throw;
+            }
+            finally
+            {
+                conexao.FecharBanco();
+            }
+
+        }
+
+        public DataTable ListarTodosProdutos()
+        {
+            cmd.CommandText = "select p.codBarras, p.nomeProduto, f.nomeFantasia, p.descricaoProduto,p.quantidadeEstoqueProduto, p.precoCusto, p.margemLucro, p.precoVenda, p.dataFabricacao, p.dataVencimento, p.categoria, p.statusAtivo  From Produto p join Fornecedor f on p.codFornecedor = f.idFornecedor ";
+            try
+            {
+                cmd.Connection = conexao.AbrirBanco();
+                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                DataTable dtLista = new DataTable();
+                da.Fill(dtLista);
+                return dtLista;
+
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                throw;
+            }
+            finally
+            {
+                conexao.FecharBanco();
+            }
         }
 
 

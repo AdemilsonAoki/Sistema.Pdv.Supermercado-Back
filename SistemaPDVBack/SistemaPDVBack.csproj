@@ -132,12 +132,6 @@
     <Compile Include="View\frmFornecedor.designer.cs">
       <DependentUpon>frmFornecedor.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\frmTelaPdv.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\frmTelaPdv.designer.cs">
-      <DependentUpon>frmTelaPdv.cs</DependentUpon>
-    </Compile>
     <Compile Include="View\frmFinalizarVenda.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -186,6 +180,12 @@
     <Compile Include="View\frmPesquisaRelatorio.designer.cs">
       <DependentUpon>frmPesquisaRelatorio.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\frmTelaPdv.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmTelaPdv.designer.cs">
+      <DependentUpon>frmTelaPdv.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\MoverForm.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -214,9 +214,6 @@
     <EmbeddedResource Include="View\frmFornecedor.resx">
       <DependentUpon>frmFornecedor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\frmTelaPdv.resx">
-      <DependentUpon>frmTelaPdv.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="View\frmFinalizarVenda.resx">
       <DependentUpon>frmFinalizarVenda.cs</DependentUpon>
     </EmbeddedResource>
@@ -237,6 +234,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmPesquisaRelatorio.resx">
       <DependentUpon>frmPesquisaRelatorio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmTelaPdv.resx">
+      <DependentUpon>frmTelaPdv.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Report1.rdlc" />
     <None Include="bancopim2semestre2020DataSet.xsc">

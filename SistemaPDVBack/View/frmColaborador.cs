@@ -34,13 +34,31 @@ namespace SistemaPDVBack
                 _ativo = "0";
             }
 
-            controllerColaborador = new ControllerColaborador (txbNome.Text, msktCpf.Text, cmbDepartamento.SelectedValue.ToString(), _ativo, txtCargo.Text, mskTxtCelular.Text, txbEmail.Text, txbEmailCorporativo.Text);
-            controllerColaborador.AdicionarColaborador();
+            controllerColaborador = new ControllerColaborador (txbNome.Text, msktCpf.Text, cmbDepartamento.SelectedValue.ToString(), _ativo, cmbCargo.Text, mskTxtCelular.Text, txbEmail.Text, txbEmailCorporativo.Text);
 
-            controllerUsuario = new ControllerUsuario(txbUsuario.Text, txbSenha.Text, msktCpf.Text, _ativo);
-            controllerUsuario.AdicionarUsuario();
+            if (controllerColaborador.Ds_Msg != "")
+            {
+                // Exibir erro!
 
-            controllerColaborador.ListarColaborador();
+                txbNome.Focus();
+                const string caption = "Ocorreu um erro?";
+                var result = MessageBox.Show(controllerColaborador.Ds_Msg, caption,
+                                              MessageBoxButtons.OK,
+                                              MessageBoxIcon.Warning);
+
+            }
+            else
+            {
+                // Tudo certinho!
+                controllerColaborador.AdicionarColaborador();
+                controllerUsuario = new ControllerUsuario(txbUsuario.Text, txbSenha.Text, msktCpf.Text, _ativo);
+                controllerUsuario.AdicionarUsuario();
+                Listar();
+                LimpaCampos();
+
+
+
+            }
 
 
         }
@@ -51,22 +69,26 @@ namespace SistemaPDVBack
             controllerColaborador = new ControllerColaborador();
             dgvColaborador.DataSource = controllerColaborador.ListarColaborador();
             cmbDepartamento.DataSource = controllerColaborador.PreencherDepartamento();
-            cmbDepartamento.DisplayMember = "nomeDepartamento";
-            cmbDepartamento.ValueMember = "idDepartamento";
+            DefinirCabecalhos(new List<string>() { "Nome", "Cpf", "Departamento", "Cargo", "Telefone", "E-mail Pessoal", "E-mail Coorp.", "Usuario", "Senha", "Status" });
+
+
         }
 
         private void frmColaborador_Load(object sender, EventArgs e)
         {
-            Listar();
+            
+            cmbDepartamento.DisplayMember = "nomeDepartamento";
+            cmbDepartamento.ValueMember = "idDepartamento";
+            rbColaboradorAtivo.Checked = true;
         }
 
         private void dgvColaborador_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             string _temp;
-            cmbDepartamento.Text = this.dgvColaborador.CurrentRow.Cells[0].Value.ToString();
-            txbNome.Text = this.dgvColaborador.CurrentRow.Cells[1].Value.ToString();
-            msktCpf.Text = this.dgvColaborador.CurrentRow.Cells[2].Value.ToString();
-            txtCargo.Text = this.dgvColaborador.CurrentRow.Cells[3].Value.ToString();
+            cmbDepartamento.Text = this.dgvColaborador.CurrentRow.Cells[2].Value.ToString();
+            txbNome.Text = this.dgvColaborador.CurrentRow.Cells[0].Value.ToString();
+            msktCpf.Text = this.dgvColaborador.CurrentRow.Cells[1].Value.ToString();
+            cmbCargo.Text = this.dgvColaborador.CurrentRow.Cells[3].Value.ToString();
             mskTxtCelular.Text = this.dgvColaborador.CurrentRow.Cells[4].Value.ToString();
             txbEmailCorporativo.Text = this.dgvColaborador.CurrentRow.Cells[5].Value.ToString();
             txbEmail.Text = this.dgvColaborador.CurrentRow.Cells[6].Value.ToString();
@@ -79,6 +101,7 @@ namespace SistemaPDVBack
                 rbColaboradorAtivo.Checked = true;
             else
                 rbColaboradorInativo.Checked = true;
+            btnAdicionar.Enabled = false;
         }
         private void DefinirCabecalhos(List<String> ListaCabecalhos)
         {
@@ -93,5 +116,91 @@ namespace SistemaPDVBack
                 }
             }
         }
+
+        private void btnAlterar_Click(object sender, EventArgs e)
+        {
+            string _ativo = "";
+            if (rbColaboradorAtivo.Checked == true)
+            {
+                _ativo = "1";
+
+            }
+            else
+            {
+                _ativo = "0";
+            }
+
+            controllerColaborador = new ControllerColaborador(txbNome.Text, msktCpf.Text, cmbDepartamento.SelectedValue.ToString(), _ativo, cmbCargo.Text, mskTxtCelular.Text, txbEmail.Text, txbEmailCorporativo.Text);
+            controllerUsuario = new ControllerUsuario(txbUsuario.Text, txbSenha.Text, msktCpf.Text, _ativo);
+
+            if (controllerColaborador.Ds_Msg != "")
+            {
+                // Exibir erro!
+
+                txbNome.Focus();
+                const string caption = "Ocorreu um erro?";
+                var result = MessageBox.Show(controllerColaborador.Ds_Msg, caption,
+                                              MessageBoxButtons.OK,
+                                              MessageBoxIcon.Warning);
+
+            }
+            else
+            {
+                // Tudo certinho!
+                controllerColaborador.AlterarColaborador();
+                controllerUsuario.AlterarUsuario();
+                LimpaCampos();
+       
+                Listar();
+
+
+            }
+
+            btnAdicionar.Enabled = true;
+
+        }
+
+        private void LimpaCampos()
+        {
+            txbNome.Clear();
+            msktCpf.Text = "";
+            mskTxtCelular.Text = "";
+            rbColaboradorAtivo.Checked = true;
+            txbEmail.Clear();
+            txbEmailCorporativo.Clear();
+            txbUsuario.Clear();
+            txbSenha.Clear();
+            cmbDepartamento.SelectedIndex = 0;
+            cmbCargo.SelectedIndex = 0;
+
+        }
+
+        private void btnConsulta_Click(object sender, EventArgs e)
+        {
+            controllerColaborador = new ControllerColaborador(txbNome.Text);
+            if(txbNome.Text != "")
+            {
+                dgvColaborador.DataSource = controllerColaborador.PesquisaColaborador();
+              
+            }
+            else
+            {
+                if (ckbIntativo.Checked)
+                {
+                    dgvColaborador.DataSource = controllerColaborador.ListarTodosColaboradores();
+                }
+                else
+                {
+                    Listar();
+
+                }
+            }
+
+
+
+        }
+       
+
+
     }
 }
