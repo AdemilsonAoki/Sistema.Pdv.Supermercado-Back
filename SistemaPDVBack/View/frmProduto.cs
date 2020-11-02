@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SistemaPDVBack.Controller;
+using SistemaPDVBack.Validacoes;
 
 namespace SistemaPDVBack
 {
@@ -18,6 +19,7 @@ namespace SistemaPDVBack
             InitializeComponent();
         }
         ControllerProduto controllerProduto;
+        Moeda moeda = new Moeda();
         string _perecivel = "";
         string _ativo = "";
 
@@ -49,6 +51,9 @@ namespace SistemaPDVBack
            
              DefinirCabecalhos(new List<string>() { "Cód de barras", "Nome", "Fornecedor", "Descrição", "Quantidade", "Preço Custo","Margem", "Preço Venda", "Data Fabri.", "Data Venci.", "Categoria", "Ativo" });
 
+
+
+            LimpaCampos();
         }
 
         private void InseriValorRb()
@@ -77,14 +82,26 @@ namespace SistemaPDVBack
            
 
             InseriValorRb();
-            controllerProduto = new ControllerProduto(txbCodigoBarras.Text, cmbFornecedor.SelectedValue.ToString(), txbNome.Text, rtbDescricao.Text, txbPrecoCusto.Text, txbPrecoDeVenda.Text,
-                                                        txbMargemDeLucro.Text, dtpDataFabricacao.Text, dtpDataVencimento.Text, txbQuantidadeEstoque.Text, _perecivel, _ativo);
+
+            if (rbNaoPerecivel.Checked == true)
+            {
+                msktDataFabricacao.Text = "00/00/0000";
+                msktDataVencimento.Text = "00/00/0000";
+                controllerProduto = new ControllerProduto(txbCodigoBarras.Text, cmbFornecedor.SelectedValue.ToString(), txbNome.Text, rtbDescricao.Text, txbPrecoCusto.Text, txbPrecoDeVenda.Text,
+                                                    txbMargemDeLucro.Text, msktDataFabricacao.Text, msktDataVencimento.Text, txbQuantidadeEstoque.Text, _perecivel, _ativo);
+            }
+            else
+            {
+                controllerProduto = new ControllerProduto(txbCodigoBarras.Text, cmbFornecedor.SelectedValue.ToString(), txbNome.Text, rtbDescricao.Text, txbPrecoCusto.Text, txbPrecoDeVenda.Text,
+                                                    txbMargemDeLucro.Text, msktDataFabricacao.Text, msktDataVencimento.Text, txbQuantidadeEstoque.Text, _perecivel, _ativo);
+            }
+        
 
             if (controllerProduto.Ds_Msg != "")
             {
                 // Exibir erro!
               
-                txbCodigoBarras.Focus();
+               txbCodigoBarras.Focus();
                const string caption = "Ocorreu um erro?";
                var result = MessageBox.Show(controllerProduto.Ds_Msg, caption,
                                              MessageBoxButtons.OK,
@@ -96,15 +113,18 @@ namespace SistemaPDVBack
                 // Tudo certinho!
                 controllerProduto.AdicionarProduto();
 
+                Listar();
+
 
             }
-            Listar();
+
         }
 
-      
+
         private void txbPrecoDeVenda_TextChanged(object sender, EventArgs e)
         {
-           
+            ValidaMoeda(txbPrecoDeVenda);
+
 
             decimal precoVenda = 0;
             decimal porcentagem = 0;
@@ -113,75 +133,21 @@ namespace SistemaPDVBack
             decimal precoCusto = 0;
             decimal total = 0;
 
-            if (txbPrecoDeVenda.Text != "" && txbPrecoCusto.Text != "" && txbPrecoDeVenda.Text != "0" && txbPrecoCusto.Text != "0")
+            if (txbPrecoDeVenda.Text != "" && txbPrecoCusto.Text != ""  && txbPrecoCusto.Text !="0,00" && txbPrecoDeVenda.Text != "0,00")
             {
                 precoVenda = decimal.Parse(txbPrecoDeVenda.Text);
                 precoCusto = decimal.Parse(txbPrecoCusto.Text);
-
+                total = (((precoVenda/ precoCusto)-1)) * 100;
+                txbMargemDeLucro.Text = total.ToString("F2");
             }
-            total = (((precoVenda - precoCusto) / precoVenda)) * 200;
-            txbMargemDeLucro.Text = total.ToString("F2");
-
-
-        }
-
-        private void txbMargemDeLucro_TextChanged_1(object sender, EventArgs e)
-        {
-            float porcentagem = 0;
-            float total = 0;
-
-            float precoCusto = 0;
-
-            if (txbPrecoCusto.Text != "" && txbMargemDeLucro.Text != "")
-            {
-                porcentagem = float.Parse(txbMargemDeLucro.Text);
-                precoCusto = float.Parse(txbPrecoCusto.Text);
-            }
-
-
-            porcentagem += 100;
-            total = (porcentagem / 100) * precoCusto;
-
-            txbPrecoDeVenda.Text = total.ToString("F2");
-
 
 
         }
 
       
-        private void PrecoVendaMargem()
-        {
-            decimal precoVenda = 0;
-            decimal porcentagem = 0;
-            decimal precoCusto = 0;
-            decimal total = 0;
-
-            if (txbPrecoDeVenda.Focus() != true)
-            {
-                if (txbPrecoDeVenda.Text != "" && txbPrecoCusto.Text != "" && txbPrecoDeVenda.Text != "0" && txbPrecoCusto.Text != "0")
-                {
-                    precoVenda = decimal.Parse(txbPrecoDeVenda.Text);
-                    precoCusto = decimal.Parse(txbPrecoCusto.Text);
-                    total = (((precoVenda - precoCusto) / precoVenda)) * 200;
-                    txbMargemDeLucro.Text = total.ToString("F2");
-                }
-            }
-
-            else if (txbMargemDeLucro.Focus() != true)
-            {
-                if (txbMargemDeLucro.Text != "" && txbPrecoCusto.Text != "")
-                {
-                    porcentagem = decimal.Parse(txbMargemDeLucro.Text);
-                    precoCusto = decimal.Parse(txbPrecoCusto.Text);
-                    porcentagem += 100;
-                    total = (porcentagem / 100) * precoCusto;
-
-                    txbPrecoDeVenda.Text = total.ToString();
-                }
-
-            }
-
-        }
+      
+       
+        
 
         private void dgvProduto_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -196,8 +162,8 @@ namespace SistemaPDVBack
             txbPrecoCusto.Text = this.dgvProduto.CurrentRow.Cells[5].Value.ToString();
             txbMargemDeLucro.Text = this.dgvProduto.CurrentRow.Cells[6].Value.ToString();
             txbPrecoDeVenda.Text = this.dgvProduto.CurrentRow.Cells[7].Value.ToString();
-            dtpDataFabricacao.Text = this.dgvProduto.CurrentRow.Cells[8].Value.ToString();
-            dtpDataVencimento.Text = this.dgvProduto.CurrentRow.Cells[9].Value.ToString();
+            msktDataFabricacao.Text = this.dgvProduto.CurrentRow.Cells[8].Value.ToString();
+            msktDataVencimento.Text = this.dgvProduto.CurrentRow.Cells[9].Value.ToString();
             _tempPerecivel = this.dgvProduto.CurrentRow.Cells[10].Value.ToString();
             _tempAtivo = this.dgvProduto.CurrentRow.Cells[11].Value.ToString();
 
@@ -218,7 +184,7 @@ namespace SistemaPDVBack
         {
             InseriValorRb();
             controllerProduto = new ControllerProduto(txbCodigoBarras.Text, cmbFornecedor.SelectedValue.ToString(), txbNome.Text, rtbDescricao.Text, txbPrecoCusto.Text, txbPrecoDeVenda.Text,
-                                                        txbMargemDeLucro.Text, dtpDataFabricacao.Text, dtpDataVencimento.Text, txbQuantidadeEstoque.Text, _perecivel, _ativo);
+                                                        txbMargemDeLucro.Text, msktDataFabricacao.Text, msktDataVencimento.Text, txbQuantidadeEstoque.Text, _perecivel, _ativo);
             controllerProduto.AlterarProduto();
             Listar();
         }
@@ -235,21 +201,6 @@ namespace SistemaPDVBack
                     _index++;
                 }
             }
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txbQuantidadeEstoque_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label9_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void btnConsulta_Click(object sender, EventArgs e)
@@ -272,6 +223,77 @@ namespace SistemaPDVBack
 
                 }
             }
+        }
+
+        private void txbPrecoCusto_TextChanged(object sender, EventArgs e)
+        {
+            ValidaMoeda(txbPrecoCusto);
+            decimal precoVenda = 0;
+            decimal porcentagem = 0;
+
+
+            decimal precoCusto = 0;
+            decimal total = 0;
+
+            if (txbPrecoDeVenda.Text != "" && txbPrecoCusto.Text != "" && txbPrecoCusto.Text != "0,00" && txbPrecoDeVenda.Text != "0,00")
+            {
+                precoVenda = decimal.Parse(txbPrecoDeVenda.Text);
+                precoCusto = decimal.Parse(txbPrecoCusto.Text);
+                total = (((precoVenda / precoCusto) - 1)) * 100;
+                txbMargemDeLucro.Text = total.ToString("F2");
+            }
+        }
+
+        private void rbNaoPerecivel_CheckedChanged(object sender, EventArgs e)
+        {
+            msktDataFabricacao.Enabled = false;
+            msktDataVencimento.Enabled = false;
+        }
+
+        private void LimpaCampos()
+        {
+            txbCodigoBarras.Clear();
+            txbMargemDeLucro.Clear();
+            txbNome.Clear();
+            txbPrecoDeVenda.Clear();
+            txbPrecoCusto.Clear();
+            txbQuantidadeEstoque.Clear();
+            cmbFornecedor.SelectedIndex = 0;
+            rbProdutoAtivo.Checked = true;
+            rbPerecivel.Checked = true;
+            rtbDescricao.Clear();
+            msktDataFabricacao.Text = "";
+            msktDataVencimento.Text = "";
+        }
+
+        private void rbPerecivel_CheckedChanged(object sender, EventArgs e)
+        {
+            msktDataFabricacao.Enabled = true;
+            msktDataVencimento.Enabled = true;
+            
+        }
+
+        private void ValidaMoeda(TextBox txt)
+        {
+            string m = string.Empty;
+            double v = 0;
+            try
+            {
+                m = txt.Text.Replace(",", "").Replace(".", "");
+                if (m.Equals(""))
+                    m = "";
+                m = m.PadLeft(3, '0');
+                if (m.Length > 3 & m.Substring(0, 1) == "0")
+                    m = m.Substring(1, m.Length - 1);
+                v = Convert.ToDouble(m) / 100;
+                txt.Text = string.Format("{0:N}", v);
+                txt.SelectionStart = txt.Text.Length;
+            }
+            catch (Exception)
+            {
+
+            }
+
         }
     }
 }

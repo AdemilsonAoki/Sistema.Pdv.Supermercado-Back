@@ -40,7 +40,6 @@
             this.rtbDescricao = new System.Windows.Forms.RichTextBox();
             this.lblNome = new System.Windows.Forms.Label();
             this.txbNome = new System.Windows.Forms.TextBox();
-            this.btnGerarCodBarras = new FontAwesome.Sharp.IconButton();
             this.gpCategoria = new System.Windows.Forms.GroupBox();
             this.rbNaoPerecivel = new System.Windows.Forms.RadioButton();
             this.rbPerecivel = new System.Windows.Forms.RadioButton();
@@ -53,8 +52,6 @@
             this.txbPrecoCusto = new System.Windows.Forms.TextBox();
             this.lblPrecoCusto = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.dtpDataFabricacao = new System.Windows.Forms.DateTimePicker();
-            this.dtpDataVencimento = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.btnAlterar = new FontAwesome.Sharp.IconButton();
@@ -65,6 +62,8 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.ckbInativo = new System.Windows.Forms.CheckBox();
             this.btnConsulta = new FontAwesome.Sharp.IconButton();
+            this.msktDataFabricacao = new System.Windows.Forms.MaskedTextBox();
+            this.msktDataVencimento = new System.Windows.Forms.MaskedTextBox();
             this.groupBox1.SuspendLayout();
             this.gpCategoria.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -89,7 +88,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txbCodigoBarras.Location = new System.Drawing.Point(24, 38);
             this.txbCodigoBarras.Name = "txbCodigoBarras";
-            this.txbCodigoBarras.Size = new System.Drawing.Size(191, 20);
+            this.txbCodigoBarras.Size = new System.Drawing.Size(264, 20);
             this.txbCodigoBarras.TabIndex = 1;
             // 
             // lblFornecedor
@@ -174,23 +173,6 @@
             this.txbNome.Size = new System.Drawing.Size(519, 20);
             this.txbNome.TabIndex = 11;
             // 
-            // btnGerarCodBarras
-            // 
-            this.btnGerarCodBarras.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGerarCodBarras.FlatAppearance.BorderSize = 0;
-            this.btnGerarCodBarras.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGerarCodBarras.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btnGerarCodBarras.IconChar = FontAwesome.Sharp.IconChar.Barcode;
-            this.btnGerarCodBarras.IconColor = System.Drawing.Color.Black;
-            this.btnGerarCodBarras.IconSize = 65;
-            this.btnGerarCodBarras.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnGerarCodBarras.Location = new System.Drawing.Point(221, 36);
-            this.btnGerarCodBarras.Name = "btnGerarCodBarras";
-            this.btnGerarCodBarras.Rotation = 0D;
-            this.btnGerarCodBarras.Size = new System.Drawing.Size(59, 23);
-            this.btnGerarCodBarras.TabIndex = 8;
-            this.btnGerarCodBarras.UseVisualStyleBackColor = true;
-            // 
             // gpCategoria
             // 
             this.gpCategoria.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -213,6 +195,7 @@
             this.rbNaoPerecivel.TabStop = true;
             this.rbNaoPerecivel.Text = "Não Perecível";
             this.rbNaoPerecivel.UseVisualStyleBackColor = true;
+            this.rbNaoPerecivel.CheckedChanged += new System.EventHandler(this.rbNaoPerecivel_CheckedChanged);
             // 
             // rbPerecivel
             // 
@@ -224,6 +207,7 @@
             this.rbPerecivel.TabStop = true;
             this.rbPerecivel.Text = "Perecível";
             this.rbPerecivel.UseVisualStyleBackColor = true;
+            this.rbPerecivel.CheckedChanged += new System.EventHandler(this.rbPerecivel_CheckedChanged);
             // 
             // groupBox2
             // 
@@ -245,11 +229,11 @@
             // txbMargemDeLucro
             // 
             this.txbMargemDeLucro.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txbMargemDeLucro.Enabled = false;
             this.txbMargemDeLucro.Location = new System.Drawing.Point(12, 119);
             this.txbMargemDeLucro.Name = "txbMargemDeLucro";
             this.txbMargemDeLucro.Size = new System.Drawing.Size(242, 20);
             this.txbMargemDeLucro.TabIndex = 7;
-            this.txbMargemDeLucro.TextChanged += new System.EventHandler(this.txbMargemDeLucro_TextChanged_1);
             // 
             // label6
             // 
@@ -270,7 +254,6 @@
             this.txbPrecoDeVenda.Name = "txbPrecoDeVenda";
             this.txbPrecoDeVenda.Size = new System.Drawing.Size(242, 20);
             this.txbPrecoDeVenda.TabIndex = 5;
-            this.txbPrecoDeVenda.Text = "0";
             this.txbPrecoDeVenda.TextChanged += new System.EventHandler(this.txbPrecoDeVenda_TextChanged);
             // 
             // label9
@@ -284,7 +267,6 @@
             this.label9.Size = new System.Drawing.Size(82, 15);
             this.label9.TabIndex = 26;
             this.label9.Text = "Quantidade";
-            this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
             // txbQuantidadeEstoque
             // 
@@ -293,7 +275,6 @@
             this.txbQuantidadeEstoque.Name = "txbQuantidadeEstoque";
             this.txbQuantidadeEstoque.Size = new System.Drawing.Size(242, 20);
             this.txbQuantidadeEstoque.TabIndex = 25;
-            this.txbQuantidadeEstoque.TextChanged += new System.EventHandler(this.txbQuantidadeEstoque_TextChanged);
             // 
             // txbPrecoCusto
             // 
@@ -302,7 +283,7 @@
             this.txbPrecoCusto.Name = "txbPrecoCusto";
             this.txbPrecoCusto.Size = new System.Drawing.Size(242, 20);
             this.txbPrecoCusto.TabIndex = 3;
-            this.txbPrecoCusto.Text = "0";
+            this.txbPrecoCusto.TextChanged += new System.EventHandler(this.txbPrecoCusto_TextChanged);
             // 
             // lblPrecoCusto
             // 
@@ -327,23 +308,6 @@
             this.label5.Size = new System.Drawing.Size(109, 15);
             this.label5.TabIndex = 4;
             this.label5.Text = "Preço de Venda";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
-            // 
-            // dtpDataFabricacao
-            // 
-            this.dtpDataFabricacao.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDataFabricacao.Location = new System.Drawing.Point(24, 283);
-            this.dtpDataFabricacao.Name = "dtpDataFabricacao";
-            this.dtpDataFabricacao.Size = new System.Drawing.Size(131, 20);
-            this.dtpDataFabricacao.TabIndex = 12;
-            // 
-            // dtpDataVencimento
-            // 
-            this.dtpDataVencimento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDataVencimento.Location = new System.Drawing.Point(188, 282);
-            this.dtpDataVencimento.Name = "dtpDataVencimento";
-            this.dtpDataVencimento.Size = new System.Drawing.Size(131, 20);
-            this.dtpDataVencimento.TabIndex = 13;
             // 
             // label7
             // 
@@ -529,12 +493,30 @@
             this.btnConsulta.UseVisualStyleBackColor = false;
             this.btnConsulta.Click += new System.EventHandler(this.btnConsulta_Click);
             // 
+            // msktDataFabricacao
+            // 
+            this.msktDataFabricacao.Location = new System.Drawing.Point(24, 281);
+            this.msktDataFabricacao.Mask = "00/00/0000";
+            this.msktDataFabricacao.Name = "msktDataFabricacao";
+            this.msktDataFabricacao.Size = new System.Drawing.Size(85, 20);
+            this.msktDataFabricacao.TabIndex = 30;
+            // 
+            // msktDataVencimento
+            // 
+            this.msktDataVencimento.Location = new System.Drawing.Point(188, 281);
+            this.msktDataVencimento.Mask = "00/00/0000";
+            this.msktDataVencimento.Name = "msktDataVencimento";
+            this.msktDataVencimento.Size = new System.Drawing.Size(100, 20);
+            this.msktDataVencimento.TabIndex = 31;
+            // 
             // frmProduto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SteelBlue;
             this.ClientSize = new System.Drawing.Size(868, 522);
+            this.Controls.Add(this.msktDataVencimento);
+            this.Controls.Add(this.msktDataFabricacao);
             this.Controls.Add(this.btnConsulta);
             this.Controls.Add(this.ckbInativo);
             this.Controls.Add(this.groupBox3);
@@ -543,11 +525,8 @@
             this.Controls.Add(this.btnAdicionar);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.dtpDataVencimento);
-            this.Controls.Add(this.dtpDataFabricacao);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.gpCategoria);
-            this.Controls.Add(this.btnGerarCodBarras);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.cmbFornecedor);
             this.Controls.Add(this.lblFornecedor);
@@ -578,7 +557,6 @@
         private System.Windows.Forms.Label lblFornecedor;
         private System.Windows.Forms.ComboBox cmbFornecedor;
         private System.Windows.Forms.GroupBox groupBox1;
-        private FontAwesome.Sharp.IconButton btnGerarCodBarras;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.RichTextBox rtbDescricao;
         private System.Windows.Forms.Label lblNome;
@@ -593,8 +571,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txbPrecoCusto;
         private System.Windows.Forms.Label lblPrecoCusto;
-        private System.Windows.Forms.DateTimePicker dtpDataFabricacao;
-        private System.Windows.Forms.DateTimePicker dtpDataVencimento;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private FontAwesome.Sharp.IconButton btnAlterar;
@@ -607,5 +583,7 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.CheckBox ckbInativo;
         private FontAwesome.Sharp.IconButton btnConsulta;
+        private System.Windows.Forms.MaskedTextBox msktDataFabricacao;
+        private System.Windows.Forms.MaskedTextBox msktDataVencimento;
     }
 }

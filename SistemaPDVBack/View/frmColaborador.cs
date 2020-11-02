@@ -192,14 +192,14 @@ namespace SistemaPDVBack
                 else
                 {
                     Listar();
-
                 }
             }
 
 
 
         }
-       
+
+     
 
 
     }

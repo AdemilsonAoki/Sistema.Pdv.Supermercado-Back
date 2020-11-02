@@ -52,7 +52,9 @@ namespace SistemaPDVBack.Controller
         }
         private void ConverterValidar(string codBarras, string codFornecedor, string nomeProduto, string descricaoProduto, string precoCusto, string precoVenda, string margemLucro, string dataFabricacao, string dataVencimento, string quantidadeEstoqueProduto, string categoria, string statusAtivo)
         {
-            string validaNumero = "^[0-9]*$";
+            
+            string validarData = "(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[012])/(19|20)\\d{2}";
+           
             string validar = "Preencha os produtos";
             if (mensagem == "")
             {
@@ -65,8 +67,6 @@ namespace SistemaPDVBack.Controller
                     {
                         produto.DescricaoProduto = descricaoProduto;
                         produto.NomeProduto = nomeProduto;
-                        produto.DataFabricacao = dataFabricacao;
-                        produto.DataVencimento = dataVencimento;
                         produto.Categoria = categoria;
 
                     }
@@ -75,6 +75,28 @@ namespace SistemaPDVBack.Controller
                         mensagem = validar;
 
                     }
+                    if (Regex.IsMatch(dataFabricacao, validarData) || dataFabricacao == "00/00/0000" )
+                    {
+                        produto.DataFabricacao = dataFabricacao;
+
+
+
+                    }
+                    else
+                    {
+                        mensagem = "formato incorreto";
+                    }
+
+                    if (Regex.IsMatch(dataVencimento, validarData) || dataVencimento == "00/00/0000")
+                    {
+                        produto.DataVencimento = dataVencimento;
+
+                    }
+                    else
+                    {
+                        mensagem = "formato incorreto";
+                    }
+
 
 
                     produto.CodFornecedor = int.Parse(codFornecedor);

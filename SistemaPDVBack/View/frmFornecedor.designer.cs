@@ -46,7 +46,6 @@
             this.lblBairro = new System.Windows.Forms.Label();
             this.txbRua = new System.Windows.Forms.TextBox();
             this.lblRua = new System.Windows.Forms.Label();
-            this.txbCep = new System.Windows.Forms.TextBox();
             this.lblCep = new System.Windows.Forms.Label();
             this.gbDadosForncedor = new System.Windows.Forms.GroupBox();
             this.txbId = new System.Windows.Forms.TextBox();
@@ -63,6 +62,10 @@
             this.btnAdicionar = new FontAwesome.Sharp.IconButton();
             this.dgvFornecedor = new System.Windows.Forms.DataGridView();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.btnConsulta = new FontAwesome.Sharp.IconButton();
+            this.ckbInativo = new System.Windows.Forms.CheckBox();
+            this.btnLocalizar = new System.Windows.Forms.Button();
+            this.txbCep = new System.Windows.Forms.TextBox();
             this.gbEndereco.SuspendLayout();
             this.gbDadosForncedor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFornecedor)).BeginInit();
@@ -72,6 +75,8 @@
             // 
             this.gbEndereco.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbEndereco.Controls.Add(this.txbCep);
+            this.gbEndereco.Controls.Add(this.btnLocalizar);
             this.gbEndereco.Controls.Add(this.txbLogradouro);
             this.gbEndereco.Controls.Add(this.lblLogradouro);
             this.gbEndereco.Controls.Add(this.txbNumero);
@@ -86,7 +91,6 @@
             this.gbEndereco.Controls.Add(this.lblBairro);
             this.gbEndereco.Controls.Add(this.txbRua);
             this.gbEndereco.Controls.Add(this.lblRua);
-            this.gbEndereco.Controls.Add(this.txbCep);
             this.gbEndereco.Controls.Add(this.lblCep);
             this.gbEndereco.Location = new System.Drawing.Point(21, 149);
             this.gbEndereco.Name = "gbEndereco";
@@ -236,13 +240,6 @@
             this.lblRua.Size = new System.Drawing.Size(32, 15);
             this.lblRua.TabIndex = 8;
             this.lblRua.Text = "Rua";
-            // 
-            // txbCep
-            // 
-            this.txbCep.Location = new System.Drawing.Point(9, 34);
-            this.txbCep.Name = "txbCep";
-            this.txbCep.Size = new System.Drawing.Size(161, 20);
-            this.txbCep.TabIndex = 7;
             // 
             // lblCep
             // 
@@ -433,7 +430,7 @@
             this.dgvFornecedor.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvFornecedor.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgvFornecedor.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvFornecedor.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvFornecedor.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.dgvFornecedor.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -464,6 +461,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvFornecedor.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvFornecedor.RowHeadersVisible = false;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
@@ -475,12 +473,63 @@
             this.dgvFornecedor.TabIndex = 28;
             this.dgvFornecedor.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFornecedor_CellDoubleClick);
             // 
+            // btnConsulta
+            // 
+            this.btnConsulta.BackColor = System.Drawing.Color.Azure;
+            this.btnConsulta.FlatAppearance.BorderSize = 0;
+            this.btnConsulta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnConsulta.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnConsulta.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConsulta.ForeColor = System.Drawing.Color.Green;
+            this.btnConsulta.IconChar = FontAwesome.Sharp.IconChar.Search;
+            this.btnConsulta.IconColor = System.Drawing.Color.Green;
+            this.btnConsulta.IconSize = 32;
+            this.btnConsulta.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnConsulta.Location = new System.Drawing.Point(285, 282);
+            this.btnConsulta.Name = "btnConsulta";
+            this.btnConsulta.Rotation = 0D;
+            this.btnConsulta.Size = new System.Drawing.Size(127, 35);
+            this.btnConsulta.TabIndex = 32;
+            this.btnConsulta.Text = "Consulta";
+            this.btnConsulta.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnConsulta.UseVisualStyleBackColor = false;
+            this.btnConsulta.Click += new System.EventHandler(this.btnConsulta_Click);
+            // 
+            // ckbInativo
+            // 
+            this.ckbInativo.AutoSize = true;
+            this.ckbInativo.Location = new System.Drawing.Point(430, 292);
+            this.ckbInativo.Name = "ckbInativo";
+            this.ckbInativo.Size = new System.Drawing.Size(58, 17);
+            this.ckbInativo.TabIndex = 31;
+            this.ckbInativo.Text = "Inativo";
+            this.ckbInativo.UseVisualStyleBackColor = true;
+            // 
+            // btnLocalizar
+            // 
+            this.btnLocalizar.Location = new System.Drawing.Point(114, 32);
+            this.btnLocalizar.Name = "btnLocalizar";
+            this.btnLocalizar.Size = new System.Drawing.Size(70, 23);
+            this.btnLocalizar.TabIndex = 23;
+            this.btnLocalizar.Text = "Localizar";
+            this.btnLocalizar.UseVisualStyleBackColor = true;
+            this.btnLocalizar.Click += new System.EventHandler(this.btnLocalizar_Click);
+            // 
+            // txbCep
+            // 
+            this.txbCep.Location = new System.Drawing.Point(8, 32);
+            this.txbCep.Name = "txbCep";
+            this.txbCep.Size = new System.Drawing.Size(100, 20);
+            this.txbCep.TabIndex = 24;
+            // 
             // frmFornecedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SteelBlue;
             this.ClientSize = new System.Drawing.Size(868, 522);
+            this.Controls.Add(this.btnConsulta);
+            this.Controls.Add(this.ckbInativo);
             this.Controls.Add(this.btnAlterar);
             this.Controls.Add(this.btnAdicionar);
             this.Controls.Add(this.dgvFornecedor);
@@ -490,12 +539,14 @@
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmFornecedor";
+            this.Load += new System.EventHandler(this.frmFornecedor_Load);
             this.gbEndereco.ResumeLayout(false);
             this.gbEndereco.PerformLayout();
             this.gbDadosForncedor.ResumeLayout(false);
             this.gbDadosForncedor.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFornecedor)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -513,7 +564,6 @@
         private System.Windows.Forms.Label lblBairro;
         private System.Windows.Forms.TextBox txbRua;
         private System.Windows.Forms.Label lblRua;
-        private System.Windows.Forms.TextBox txbCep;
         private System.Windows.Forms.Label lblCep;
         private System.Windows.Forms.GroupBox gbDadosForncedor;
         private System.Windows.Forms.Label lblCnpj;
@@ -533,5 +583,9 @@
         private System.Windows.Forms.Label lblId;
         private System.Windows.Forms.TextBox txbLogradouro;
         private System.Windows.Forms.Label lblLogradouro;
+        private FontAwesome.Sharp.IconButton btnConsulta;
+        private System.Windows.Forms.CheckBox ckbInativo;
+        private System.Windows.Forms.Button btnLocalizar;
+        private System.Windows.Forms.TextBox txbCep;
     }
 }

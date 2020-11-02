@@ -8,6 +8,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SistemaPDVBack.Controller;
+using System.Text.RegularExpressions;
+using System.IO;
+using System.Net;
+
 namespace SistemaPDVBack
 {
     public partial class frmFornecedor : Form
@@ -18,7 +22,7 @@ namespace SistemaPDVBack
         public frmFornecedor()
         {
             InitializeComponent();
-            Listar();
+
         }
 
         private void btnAdicionar_Click(object sender, EventArgs e)
@@ -27,8 +31,26 @@ namespace SistemaPDVBack
 
             controllerFornecedor = new ControllerFornecedor(txbId.Text, txbInscricaoEstadual.Text, txbNomeFantasia.Text, txbLogradouro.Text, txbEstado.Text, txbNumero.Text,
                                                             txbComplemento.Text, txbBairro.Text, txbCidade.Text, txbCep.Text, _ativo, txbRua.Text, mskTxbCnpj.Text);
-            controllerFornecedor.AdicionarFornecedor();
-            Listar();
+            if (controllerFornecedor.Ds_Msg != "")
+            {
+                // Exibir erro!
+
+                const string caption = "Ocorreu um erro?";
+                var result = MessageBox.Show(controllerFornecedor.Ds_Msg, caption,
+                                              MessageBoxButtons.OK,
+                                              MessageBoxIcon.Warning);
+
+            }
+            else
+            {
+                // Tudo certinho!
+                controllerFornecedor.AdicionarFornecedor();
+                LimpaCampos();
+
+                Listar();
+
+            }
+
 
         }
 
@@ -37,7 +59,7 @@ namespace SistemaPDVBack
             //verificar
             controllerFornecedor = new ControllerFornecedor();
             dgvFornecedor.DataSource = controllerFornecedor.ListarFornecedor();
-            DefinirCabecalhos(new List<string>() { "Id", "Nome", "CNPJ", "Inscrição Estadual", "CEP", "Rua", "Logradouro", "Estado", "Numero","Complemnto","Bairro","Cidade", "Ativo" });
+            DefinirCabecalhos(new List<string>() { "Id", "Nome", "CNPJ", "Insc. Estadual", "CEP", "Rua", "Logradouro", "Estado", "Numero", "Complemnto", "Bairro", "Cidade", "Ativo" });
         }
 
         private void dgvFornecedor_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -64,12 +86,6 @@ namespace SistemaPDVBack
                 rbFornecedorAtivo.Checked = true;
             else
                 rbFornecedorInativo.Checked = true;
-
-
-
-
-
-
         }
 
         private void gbEndereco_Enter(object sender, EventArgs e)
@@ -83,15 +99,31 @@ namespace SistemaPDVBack
             controllerFornecedor = new ControllerFornecedor(txbId.Text, txbInscricaoEstadual.Text, txbNomeFantasia.Text, txbLogradouro.Text, txbEstado.Text, txbNumero.Text,
                                                             txbComplemento.Text, txbBairro.Text, txbCidade.Text, txbCep.Text, _ativo, txbRua.Text, mskTxbCnpj.Text);
 
-            controllerFornecedor.AlterarFornecedor();
-            Listar();
+            if (controllerFornecedor.Ds_Msg != "")
+            {
+                // Exibir erro!
+
+                const string caption = "Ocorreu um erro?";
+                var result = MessageBox.Show(controllerFornecedor.Ds_Msg, caption,
+                                              MessageBoxButtons.OK,
+                                              MessageBoxIcon.Warning);
+
+            }
+            else
+            {
+                // Tudo certinho!
+                controllerFornecedor.AlterarFornecedor();
+                LimpaCampos();
+
+                Listar();
+
+            }
         }
 
 
         private void AtribuirValorRb()
         {
 
-            
             if (rbFornecedorAtivo.Checked == true)
             {
                 _ativo = "1";
@@ -106,7 +138,7 @@ namespace SistemaPDVBack
         }
         private void DefinirCabecalhos(List<String> ListaCabecalhos)
         {
-            int _index =0;
+            int _index = 0;
 
             foreach (DataGridViewColumn coluna in dgvFornecedor.Columns)
             {
@@ -116,6 +148,137 @@ namespace SistemaPDVBack
                     _index++;
                 }
             }
+        }
+
+
+
+
+        private void btnLocalizar_Click(object sender, EventArgs e)
+        {
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://viacep.com.br/ws/" + txbCep.Text + "/json/");
+            request.AllowAutoRedirect = false;
+            HttpWebResponse ChecaServidor = (HttpWebResponse)request.GetResponse();
+
+            if (ChecaServidor.StatusCode != HttpStatusCode.OK)
+            {
+                MessageBox.Show("Servidor indisponível");
+                return; // Sai da rotina
+            }
+
+            using (Stream webStream = ChecaServidor.GetResponseStream())
+            {
+
+
+
+                if (webStream != null)
+                {
+                    using (StreamReader responseReader = new StreamReader(webStream))
+                    {
+                        string response = responseReader.ReadToEnd();
+                        response = Regex.Replace(response, "[{},]", string.Empty);
+                        response = response.Replace("\"", "");
+
+                        String[] substrings = response.Split('\n');
+
+                        int cont = 0;
+                        foreach (var substring in substrings)
+                        {
+                            if (cont == 1)
+                            {
+                                string[] valor = substring.Split(":".ToCharArray());
+                                if (valor[0] == "  erro")
+                                {
+                                    MessageBox.Show("CEP não encontrado");
+                                    txbCep.Focus();
+                                    return;
+                                }
+                            }
+
+                            //Logradouro
+                            if (cont == 2)
+                            {
+                                string[] valor = substring.Split(":".ToCharArray());
+                                txbRua.Text = valor[1];
+                            }
+
+                            //Complemento
+                            if (cont == 3)
+                            {
+                                string[] valor = substring.Split(":".ToCharArray());
+                                txbComplemento.Text = valor[1];
+                            }
+
+                            //Bairro
+                            if (cont == 4)
+                            {
+                                string[] valor = substring.Split(":".ToCharArray());
+                                txbBairro.Text = valor[1];
+                            }
+
+                            //Localidade (Cidade)
+                            if (cont == 5)
+                            {
+                                string[] valor = substring.Split(":".ToCharArray());
+                                txbCidade.Text = valor[1];
+                            }
+
+                            //Estado (UF)
+                            if (cont == 6)
+                            {
+                                string[] valor = substring.Split(":".ToCharArray());
+                                txbEstado.Text = valor[1];
+                            }
+
+                            cont++;
+                        }
+                    }
+                }
+
+            }
+
+        }
+
+        private void frmFornecedor_Load(object sender, EventArgs e)
+        {
+            rbFornecedorAtivo.Checked = true;
+        }
+
+        private void btnConsulta_Click(object sender, EventArgs e)
+        {
+            controllerFornecedor = new ControllerFornecedor(txbNomeFantasia.Text);
+            if (txbNomeFantasia.Text != "")
+            {
+                dgvFornecedor.DataSource = controllerFornecedor.PesquisaFornecedor();
+
+            }
+            else
+            {
+                if (ckbInativo.Checked)
+                {
+                    dgvFornecedor.DataSource = controllerFornecedor.ListarTodosFornecedores();
+                }
+                else
+                {
+                    Listar();
+                }
+            }
+        }
+        private void LimpaCampos()
+        {
+            rbFornecedorAtivo.Checked = true;
+            txbBairro.Clear();
+            txbCep.Clear();
+            txbCidade.Clear();
+            txbComplemento.Clear();
+            txbEstado.Clear();
+            txbId.Clear();
+            txbInscricaoEstadual.Clear();
+            txbLogradouro.Clear();
+            txbNomeFantasia.Clear();
+            txbNumero.Clear();
+            txbRua.Clear();
+            mskTxbCnpj.Text = "";
+
         }
     }
 }

@@ -38,5 +38,10 @@ namespace SistemaPDVBack
 
             this.Close();
         }
+
+        private void frmCliente_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

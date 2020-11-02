@@ -16,16 +16,25 @@ namespace SistemaPDVBack.Controller
         private readonly string _inserir = "insert into Fornecedor(nomeFantasia,Cnpj, inscricaoEstadual, cepFornecedor, Rua, logradouro, uf, numero, complemento,bairro, cidade, statusAtivo ) " +
                                             "values(@nomeFantasia, @cnpj, @inscricaoEstadual, @cepFornecedor,@rua,@logradouro, @uf, @numero, @complemento, @bairro, @cidade, @statusAtivo)";
         private readonly string _alterar = "update Fornecedor set cnpj= @cnpj, inscricaoEstadual = @inscricaoEstadual, nomeFantasia = @nomeFantasia, logradouro = @logradouro , uf = @uf , numero = @numero, complemento = @complemento, bairro = @bairro,cidade = @cidade, cepFornecedor = @cepFornecedor, statusAtivo = @statusAtivo, rua = @rua where idFornecedor = @idFornecedor  ";
-        private readonly string _listar = "select *from Fornecedor";
+        private readonly string _listar = "select *from Fornecedor where statusAtivo = 1 ";
 
 
         Fornecedor fornecedor = new Fornecedor();
         Conexao conexao = new Conexao();
-        string mensagem;
+        string mensagem = "";
+        public string Ds_Msg
+        {
+            get { return mensagem; }
+            set { mensagem = value; }
+        }
 
         public ControllerFornecedor()
         {
 
+        }
+        public ControllerFornecedor(string nome)
+        {
+            fornecedor.NomeFantasia = nome;
         }
         public ControllerFornecedor(string idFornecedor, string inscricaoEstadual, string nomeFantasia, string logradouro, string uf, string numero, string complemento, string bairro, string cidade,
                                     string cep, string statusAtivo, string rua, string cnpj )
@@ -35,28 +44,42 @@ namespace SistemaPDVBack.Controller
 
         private void ConverterValidar(string idFornecedor, string inscricaoEstadual, string nomeFantasia, string logradouro, string uf, string numero, string complemento, string bairro, string cidade, string cep, string statusAtivo, string rua, string cnpj)
         {
-            try
+            if (mensagem == "")
             {
-                if (!idFornecedor.Equals(""))
+
+
+                try
                 {
-                    fornecedor.IdFornecedor = int.Parse(idFornecedor);
+
+                    if(idFornecedor != "")
+                    {
+                        fornecedor.IdFornecedor = int.Parse(idFornecedor);
+
+                    }
+                    if (rua != "" && nomeFantasia != "" && bairro != "" && cidade != "" && uf != "")
+                    {
+                        fornecedor.Rua = rua;
+                        fornecedor.NomeFantasia = nomeFantasia;
+                        fornecedor.NumeroPessoa = numero;
+                        fornecedor.BairroPessoa = bairro;
+                        fornecedor.CidadePessoa = cidade;
+                        fornecedor.UfPessoa = uf;
+                    }
+                    else
+                    {
+                        mensagem = "Preencha os campos";
+                    }
+                    fornecedor.Cnpj = cnpj;
+                    fornecedor.StatusAtivo = int.Parse(statusAtivo);
+                    fornecedor.InscricaoEstadual = int.Parse(inscricaoEstadual);
+                    fornecedor.LogradouroPessoa = logradouro;
+                    fornecedor.ComplementoPessoa = complemento;
+                    fornecedor.CepFornecedor = int.Parse(cep);
                 }
-                fornecedor.Rua = rua;
-                fornecedor.Cnpj = cnpj;
-                fornecedor.StatusAtivo = int.Parse(statusAtivo);
-                fornecedor.InscricaoEstadual = int.Parse(inscricaoEstadual);
-                fornecedor.NomeFantasia = nomeFantasia;
-                fornecedor.LogradouroPessoa = logradouro;
-                fornecedor.UfPessoa = uf;
-                fornecedor.NumeroPessoa = numero;
-                fornecedor.ComplementoPessoa = complemento;
-                fornecedor.BairroPessoa = bairro;
-                fornecedor.CidadePessoa = cidade;
-                fornecedor.CepFornecedor = int.Parse(cep);
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message);
+                catch (Exception e)
+                {
+                    mensagem = e.Message;
+                }
             }
 
 
@@ -170,10 +193,45 @@ namespace SistemaPDVBack.Controller
         }
 
 
-        public void PesquisaFornecedor()
+        public DataTable PesquisaFornecedor()
         {
+            try
+            {
+                cmd.CommandText = "select *from Fornecedor where nomeFantasia LIKE'%' @nomeFantasia '%' order by nomeFantasia";
+                cmd.Parameters.AddWithValue("@nomeFantasia", fornecedor.NomeFantasia);
+                cmd.Connection = conexao.AbrirBanco();
+                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                DataTable dtLista = new DataTable();
+                da.Fill(dtLista);
+                return dtLista;
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
 
 
+        }
+        public DataTable ListarTodosFornecedores()
+        {
+            cmd.CommandText = "select *from Fornecedor";
+            try
+            {
+                cmd.Connection = conexao.AbrirBanco();
+                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                DataTable dtLista = new DataTable();
+                da.Fill(dtLista);
+                return dtLista;
+
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
+            finally
+            {
+                conexao.FecharBanco();
+            }
 
         }
     }
