@@ -20,9 +20,25 @@ namespace SistemaPDVBack.Model
         public int QuantidadeEstoqueProduto { get; set; }
         public string Categoria { get; set; }
         public int StatusAtivo { get; set; }
+        public string StatusTeste { get; set; }
 
-    
+
+
+        public Produto()
+        {
+                
+        }
+
+        public Produto(int codBarras, string descricaoProduto, int quantidadeEstoqueProduto, decimal precoVenda,  string statusTeste)
+        {
+
+            CodBarras = codBarras;
+            DescricaoProduto = descricaoProduto;
+            PrecoVenda = precoVenda;
+            QuantidadeEstoqueProduto = quantidadeEstoqueProduto;
+            StatusTeste = statusTeste;
+        }
     }
-    
-    
+
+
 }

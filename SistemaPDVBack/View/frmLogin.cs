@@ -87,6 +87,7 @@ namespace SistemaPDVBack
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            string cargo = "";
             ControllerUsuario controllerUsuario = new ControllerUsuario(txbUsuario.Text , txbSenha.Text);
           
             if(controllerUsuario.Login() == false)
@@ -95,9 +96,23 @@ namespace SistemaPDVBack
             }
             else
             {
-                frmTelaPdv frmMenu = new frmTelaPdv();
-                //frmMenuTeste frmMenu = new frmMenuTeste();
-                frmMenu.Show();
+                cargo = controllerUsuario.VerificaCargo();
+
+                if(cargo  == "admin")
+                {
+                    frmMenuTeste frmMenu = new frmMenuTeste();
+
+                    //frmMenuTeste frmMenu = new frmMenuTeste();
+                    frmMenu.Show();
+                }
+                else
+                {
+                    frmTelaPdv frmPdv = new frmTelaPdv();
+
+                    //frmMenuTeste frmMenu = new frmMenuTeste();
+                    frmPdv.Show();
+                }
+                
             }
         }
 

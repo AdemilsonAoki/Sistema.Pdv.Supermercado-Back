@@ -20,7 +20,7 @@ namespace SistemaPDVBack
         }
         ControllerPedido controllerPedido = new ControllerPedido();
 
-     
+        public decimal TotalAPagar { get; set; }
 
         private void frmFinalizarVenda_Load(object sender, EventArgs e)
         {
@@ -56,17 +56,12 @@ namespace SistemaPDVBack
 
             using (var dinheiro = new frmDinheiro())
             {
-              
-
+     
                 dinheiro.ShowDialog();
-                lblValorPago.Text = dinheiro.Parametro;
-                CalulaValores(lblValorPago.Text, lblSaldo.Text);
-
-
-
+                lblValorPago.Text = dinheiro.ValorRecibido;
+                //CalulaValores(lblValorPago.Text, lblSaldo.Text);
 
             }
-
 
             controllerPedido.AtualizaFormaPagamento(btnDinheiro.Text);
         }

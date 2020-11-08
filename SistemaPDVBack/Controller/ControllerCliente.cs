@@ -18,6 +18,8 @@ namespace SistemaPDVBack.Controller
         public ControllerCliente(string cpfCnpj)
         {
 
+           
+
             cli.CpfCnpj = cpfCnpj;
 
             if(cpfCnpj.Length <= 14)

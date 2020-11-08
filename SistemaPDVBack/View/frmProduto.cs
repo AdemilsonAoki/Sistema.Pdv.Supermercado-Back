@@ -26,7 +26,7 @@ namespace SistemaPDVBack
 
         private void frmProduto_Load(object sender, EventArgs e)
         {
-           
+
             rbPerecivel.Checked = true;
             rbProdutoAtivo.Checked = true;
             controllerProduto = new ControllerProduto();
@@ -48,8 +48,8 @@ namespace SistemaPDVBack
 
 
             cmbFornecedor.SelectedIndex = 0;
-           
-             DefinirCabecalhos(new List<string>() { "Cód de barras", "Nome", "Fornecedor", "Descrição", "Quantidade", "Preço Custo","Margem", "Preço Venda", "Data Fabri.", "Data Venci.", "Categoria", "Ativo" });
+
+            DefinirCabecalhos(new List<string>() { "Cód de barras", "Nome", "Fornecedor", "Descrição", "Quantidade", "Preço Custo", "Margem", "Preço Venda", "Data Fabri.", "Data Venci.", "Categoria", "Ativo" });
 
 
 
@@ -79,7 +79,7 @@ namespace SistemaPDVBack
 
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
-           
+
 
             InseriValorRb();
 
@@ -95,17 +95,17 @@ namespace SistemaPDVBack
                 controllerProduto = new ControllerProduto(txbCodigoBarras.Text, cmbFornecedor.SelectedValue.ToString(), txbNome.Text, rtbDescricao.Text, txbPrecoCusto.Text, txbPrecoDeVenda.Text,
                                                     txbMargemDeLucro.Text, msktDataFabricacao.Text, msktDataVencimento.Text, txbQuantidadeEstoque.Text, _perecivel, _ativo);
             }
-        
+
 
             if (controllerProduto.Ds_Msg != "")
             {
                 // Exibir erro!
-              
-               txbCodigoBarras.Focus();
-               const string caption = "Ocorreu um erro?";
-               var result = MessageBox.Show(controllerProduto.Ds_Msg, caption,
-                                             MessageBoxButtons.OK,
-                                             MessageBoxIcon.Warning);
+
+                txbCodigoBarras.Focus();
+                const string caption = "Ocorreu um erro?";
+                var result = MessageBox.Show(controllerProduto.Ds_Msg, caption,
+                                              MessageBoxButtons.OK,
+                                              MessageBoxIcon.Warning);
 
             }
             else
@@ -133,21 +133,21 @@ namespace SistemaPDVBack
             decimal precoCusto = 0;
             decimal total = 0;
 
-            if (txbPrecoDeVenda.Text != "" && txbPrecoCusto.Text != ""  && txbPrecoCusto.Text !="0,00" && txbPrecoDeVenda.Text != "0,00")
+            if (txbPrecoDeVenda.Text != "" && txbPrecoCusto.Text != "" && txbPrecoCusto.Text != "0,00" && txbPrecoDeVenda.Text != "0,00")
             {
                 precoVenda = decimal.Parse(txbPrecoDeVenda.Text);
                 precoCusto = decimal.Parse(txbPrecoCusto.Text);
-                total = (((precoVenda/ precoCusto)-1)) * 100;
+                total = (((precoVenda / precoCusto) - 1)) * 100;
                 txbMargemDeLucro.Text = total.ToString("F2");
             }
 
 
         }
 
-      
-      
-       
-        
+
+
+
+
 
         private void dgvProduto_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -193,14 +193,14 @@ namespace SistemaPDVBack
         {
             int _index = 0;
 
-            foreach (DataGridViewColumn coluna in dgvProduto.Columns)
-            {
-                if (coluna.Visible)
-                {
-                    coluna.HeaderText = ListaCabecalhos[_index];
-                    _index++;
-                }
-            }
+            //foreach (DataGridViewColumn coluna in dgvProduto.Columns)
+            //{
+            //    if (coluna.Visible)
+            //    {
+            //        coluna.HeaderText = ListaCabecalhos[_index];
+            //        _index++;
+            //    }
+            //}
         }
 
         private void btnConsulta_Click(object sender, EventArgs e)
@@ -270,7 +270,7 @@ namespace SistemaPDVBack
         {
             msktDataFabricacao.Enabled = true;
             msktDataVencimento.Enabled = true;
-            
+
         }
 
         private void ValidaMoeda(TextBox txt)
@@ -294,6 +294,26 @@ namespace SistemaPDVBack
 
             }
 
+
+
+        }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            switch (keyData)
+            {
+                case Keys.Enter:
+                    txbNome.Focus();
+                    break;
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
+
+        }
+
+        private void txbCodigoBarras_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((Char.IsLetter(e.KeyChar)))
+                e.Handled = true;
         }
     }
 }

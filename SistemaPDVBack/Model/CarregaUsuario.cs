@@ -10,6 +10,7 @@ namespace SistemaPDVBack.Model
     {
         public static string IdUser { get; set; }
         public static string Nome { get; set; }
+        public static string Cpf { get; set; }
 
 
 

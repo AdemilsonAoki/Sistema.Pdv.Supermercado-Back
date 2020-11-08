@@ -1,7 +1,7 @@
 ﻿using MySqlX.XDevAPI.Relational;
 using SistemaPDVBack.Controller;
 using SistemaPDVBack.Model;
-
+using SistemaPDVBack.View;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,38 +23,163 @@ namespace SistemaPDVBack
 
         ControllerProdutoPedido controllerProdutoPedido;
         ControllerPedido controllerPedido;
-        ControllerUsuario controllerUsuario;
+
+
+
 
 
         private void frmTelaPdv_Load(object sender, EventArgs e)
         {
             CarregarUsuario();
             timerData.Start();
+
+            controllerPedido = new ControllerPedido();
+            lblCaixa.Text = controllerPedido.VerificarCaixa();
+            txbCodBarras.Focus();
+
         }
 
 
-
+        bool verificadorTecla = false;
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
             switch (keyData)
             {
                 case Keys.F2:
-                    controllerPedido = new ControllerPedido(lblTotal.Text);
-                    controllerPedido.AtualizaValorPedido();
-                    frmFinalizarVenda frmFinalizar = new frmFinalizarVenda();
-                    frmFinalizar.ShowDialog();
-                    i = false;
+                    decimal valorTotal;
+                    decimal valorRecibido;
+                    //controllerPedido = new ControllerPedido(lblTotal.Text);
+                    //controllerPedido.AtualizaValorPedido();
+                    //frmFinalizarVenda frmFinalizar = new frmFinalizarVenda();
+                    //frmFinalizar.ShowDialog();
+                    if (verificadorTecla == true)
+                    {
+                        valorTotal = decimal.Parse(lblTotal.Text);
+                        valorRecibido = decimal.Parse(lblValorAReceber.Text);
+
+
+                        if (valorRecibido >= valorTotal)
+                        {
+                            FinalizarVenda();
+                            LimpaDgv();
+
+
+
+
+                            lblNomeFormaPagamento.Visible = false;
+                            lblFormaPagamento.Visible = false;
+                            lblNomeTroco.Visible = false;
+                            lblTroco.Visible = false;
+                            lblNomeValorPago.Visible = false;
+                            lblValorAReceber.Visible = false;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Valor rebido menor que o total");
+                        }
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Por favor selecione a forma de pagamento!");
+                    }
 
                     break;
                 case Keys.A:
                     Adicionar();
-                    controllerProdutoPedido = new ControllerProdutoPedido(txbCodBarras.Text, txbQuantidade.Text, txbTotalRecebido.Text);
-                    controllerProdutoPedido.AdicionarProdutoPedido();
-                    dgvCarrinho.DataSource = controllerProdutoPedido.ListarProdutoPedido();
                     CalculaTotal();
+
+                    LimpaCampos();
+
+
                     break;
-                
-            
+                case Keys.D:
+
+                    if (lblTotal.Text != "0")
+                    {
+                        using (var dinheiro = new frmDinheiro())
+                        {
+
+                            dinheiro.ReceberValor(lblTotal.Text);
+
+                            dinheiro.ShowDialog();
+
+                            lblValorAReceber.Text = dinheiro.ValorRecibido;
+                            lblTroco.Text = dinheiro.Troco;
+
+
+
+                            //  CalulaValores(lblValorAReceber.Text, lblTotal.Text);
+                        }
+
+                        if (lblValorAReceber.Text != "0,00")
+                        {
+                            lblFormaPagamento.Text = "Dinheiro";
+                            lblNomeFormaPagamento.Visible = true;
+                            lblFormaPagamento.Visible = true;
+                            lblNomeTroco.Visible = true;
+                            lblTroco.Visible = true;
+                            lblNomeValorPago.Visible = true;
+                            lblValorAReceber.Visible = true;
+                        }
+
+                        // controllerPedido.AtualizaFormaPagamento(btnDinheiro.Text);
+                        verificadorTecla = true;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Por favor insira um produto!!");
+                    }
+
+
+                    break;
+                case Keys.C:
+                    if (lblTotal.Text != "0")
+                    {
+                        lblFormaPagamento.Text = "Cartão";
+                        lblTroco.Text = "0.00";
+                        lblValorAReceber.Text = lblTotal.Text;
+                        lblNomeFormaPagamento.Visible = true;
+                        lblFormaPagamento.Visible = true;
+                        lblNomeTroco.Visible = true;
+                        lblTroco.Visible = true;
+                        lblNomeValorPago.Visible = true;
+                        lblValorAReceber.Visible = true;
+
+                        verificadorTecla = true;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Por favor insira um produto!!");
+                    }
+                    break;
+
+                case Keys.I:
+                    if (lblTotal.Text != "0")
+                    {
+                        CancelarItem();
+                    }
+                    break;
+                case Keys.Enter:
+                    txbQuantidade.Focus();
+                    break;
+                case Keys.F8:
+                    const string message = "Deseja cancelar a venda?";
+                    const string caption = "Atenção";
+                    var result = MessageBox.Show(message, caption,
+                                                 MessageBoxButtons.YesNo,
+                                                 MessageBoxIcon.Question);
+
+                    if (result == DialogResult.Yes)
+                    {
+
+                        LimpaDgv();
+                        txbCodBarras.Focus();
+
+                    }
+
+                    break;
+
             }
 
             return base.ProcessCmdKey(ref msg, keyData);
@@ -62,10 +187,12 @@ namespace SistemaPDVBack
 
         private void txbCodBarras_TextChanged(object sender, EventArgs e)
         {
-
-            controllerProdutoPedido = new ControllerProdutoPedido(txbCodBarras.Text, txbQuantidade.Text, txbTotalRecebido.Text);
-            txbPrecoUnit.Text = controllerProdutoPedido.VerificaProdutoPreco();
-            txbDescricao.Text = controllerProdutoPedido.VerificaProdutoNome();
+            if (txbCodBarras.Text != "")
+            {
+                controllerProdutoPedido = new ControllerProdutoPedido(txbCodBarras.Text, txbQuantidade.Text, txbTotalRecebido.Text);
+                txbPrecoUnit.Text = controllerProdutoPedido.VerificaProdutoPreco();
+                txbDescricao.Text = controllerProdutoPedido.VerificaProdutoNome();
+            }
 
         }
 
@@ -91,43 +218,59 @@ namespace SistemaPDVBack
         }
 
         bool i = false;
-
+        string cpfCnpjCliente;
+        bool verificador = false;
+        int codigo = 1;
         private void Adicionar()
         {
-            string temp = "1";
-            
 
-            controllerPedido = new ControllerPedido(temp, lblData.Text + lblHora.Text, lblTotal.Text);
-
-            if (i == false)
+            if (VerificaVazio() == false)
             {
-                const string message = "Deseja Colacar CPF na nota?";
-                const string caption = "CPF?";
-                var result = MessageBox.Show(message, caption,
-                                             MessageBoxButtons.YesNo,
-                                             MessageBoxIcon.Question);
 
-                if (result == DialogResult.Yes)
+                if (i == false)
                 {
-                    frmCliente cliente = new frmCliente();
-                    cliente.ShowDialog();
-                    controllerPedido.CarregaCpf();
-                    controllerPedido.AdicionarPedido();
+                    const string message = "Deseja inserir CPF/CNPJ na nota?";
+                    const string caption = "Atenção";
+                    var result = MessageBox.Show(message, caption,
+                                                 MessageBoxButtons.YesNo,
+                                                 MessageBoxIcon.Question);
 
+                    if (result == DialogResult.Yes)
+                    {
 
+                        using (var cliente = new frmCliente())
+                        {
+
+                            cliente.ShowDialog();
+                            cpfCnpjCliente = cliente.Parametro;
+
+                        }
+
+                    }
+
+                    i = true;
+
+                    dgvCarrinho.Columns.Add("codVenda", "Cód.");
+                    dgvCarrinho.Columns.Add("CodBarras", "Cod. barras");
+                    dgvCarrinho.Columns.Add("Nome", "Produto");
+                    dgvCarrinho.Columns.Add("ProdutoVenda", "P. Venda");
+                    dgvCarrinho.Columns.Add("Quantidade", "Quant.");
+                    dgvCarrinho.Columns.Add("Total", "Total");
+
+                    verificador = true;
 
                 }
 
-
-                else
-                {
-                    controllerPedido.AdicionarPedido();
-
-                }
-                i = true;
+                dgvCarrinho.Rows.Add(codigo, txbCodBarras.Text, txbDescricao.Text, txbPrecoUnit.Text, txbQuantidade.Text, txbTotalRecebido.Text);
+                codigo++;
 
             }
-        
+
+            else
+            {
+                MessageBox.Show("Por favor preencha todos os campos!!");
+            }
+
         }
 
         private void CarregarUsuario()
@@ -150,6 +293,8 @@ namespace SistemaPDVBack
         {
             if ((Char.IsLetter(e.KeyChar)))
                 e.Handled = true;
+
+
         }
 
         private void timerData_Tick(object sender, EventArgs e)
@@ -169,50 +314,236 @@ namespace SistemaPDVBack
                 e.Handled = true;
         }
 
+        string codItem;
 
-
-        private void dgvCarrinho_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void CancelarItem()
         {
-            dgvCarrinho.CurrentRow.Selected = true;
-            string temp = dgvCarrinho.CurrentRow.Cells[4].Value.ToString(); 
+            int idex = 0;
 
-          //  temp = dgvCarrinho.CurrentRow.Cells[]
-
-            string mensagem = "Deseja retirar da lista?";
-            string fechar = "Retirado com sucesso!!";
-            var result = MessageBox.Show(mensagem, fechar,
-                             MessageBoxButtons.YesNo,
-                             MessageBoxIcon.Question);
-
-            if (result == DialogResult.Yes)
+            using (var cancelarItem = new frmCancelarItem())
             {
-                controllerProdutoPedido = new ControllerProdutoPedido(temp);
-                controllerProdutoPedido.DeeletarProdutoPedido();
-                dgvCarrinho.DataSource = controllerProdutoPedido.ListarProdutoPedido();
-                CalculaTotal();
 
+                cancelarItem.ShowDialog();
+                codItem = cancelarItem.Parametro;
 
             }
 
+            if (codItem != "")
+            {
+                foreach (DataGridViewRow linha in dgvCarrinho.Rows)
+                {
+
+                    if (linha.Visible)
+                    {
+                        if (codItem == dgvCarrinho.Rows[idex].Cells[0].Value.ToString())
+                        {
+                            dgvCarrinho.Rows[idex].DefaultCellStyle.BackColor = Color.Red;
+
+                        }
+
+                    }
+                    idex++;
+                }
+                CalculaTotal();
+            }
+
         }
+
 
 
         private void CalculaTotal()
         {
+            int cont = 0;
+            int idex = 0;
+
+
             decimal calc = 0;
-        
+            decimal calcNegativo = 0;
 
-            for (int i = 0; i < dgvCarrinho.Rows.Count; i++)
+
+            foreach (DataGridViewRow coluna in dgvCarrinho.Rows)
             {
-                calc += Convert.ToDecimal(dgvCarrinho.Rows[i].Cells[3].Value);
 
+                if (coluna.Visible)
+                {
+                    if (coluna.DefaultCellStyle.BackColor == Color.Red)
+                    {
+
+                    }
+                    else
+                    {
+
+                        //label3.Text += this.dgvCarrinho.Rows[idex].Cells[0].Value.ToString();
+
+
+                        calc += Convert.ToDecimal(dgvCarrinho.Rows[idex].Cells[5].Value);
+
+
+                    }
+                    lblTotal.Text = calc.ToString();
+
+
+                    idex++;
+
+                }
 
             }
 
-            lblTotal.Text = calc.ToString(); 
         }
 
 
-        
+        string codBarras;
+        string quantidade;
+        string totalProduto;
+        string preco;
+        string descricao;
+
+
+        private void FinalizarVenda()
+        {
+
+            Form1 form1 = new Form1();
+            string temp = "1";
+            controllerPedido = new ControllerPedido(temp, lblData.Text + lblHora.Text, lblTotal.Text, lblFormaPagamento.Text);
+
+
+            if (cpfCnpjCliente != null && cpfCnpjCliente != "")
+            {
+                ControllerCliente cliente = new ControllerCliente(cpfCnpjCliente);
+                cliente.AdicionarCliente();
+                controllerPedido.CarregaCpf();
+
+            }
+
+
+            int cont = 0;
+            int idex = 0;
+            int codItem = 1;
+
+
+            controllerPedido.AdicionarPedido();
+
+
+            foreach (DataGridViewRow coluna in dgvCarrinho.Rows)
+            {
+
+                if (coluna.Visible)
+                {
+                    if (coluna.DefaultCellStyle.BackColor == Color.Red)
+                    {
+                        string cancelado = "Cancelado";
+                        codBarras = this.dgvCarrinho.Rows[idex].Cells[1].Value.ToString();
+                        descricao = this.dgvCarrinho.Rows[idex].Cells[2].Value.ToString();
+                        preco = this.dgvCarrinho.Rows[idex].Cells[3].Value.ToString();
+                        quantidade = this.dgvCarrinho.Rows[idex].Cells[4].Value.ToString();
+                        totalProduto = this.dgvCarrinho.Rows[idex].Cells[5].Value.ToString();
+                        form1.CumpomImpresso(codItem.ToString(), codBarras, descricao, quantidade, preco, totalProduto, cancelado, cpfCnpjCliente, lblTotal.Text, "teste", lblData.Text, lblHora.Text, lblCaixa.Text);
+                        form1.Show();
+
+                        cont++;
+                    }
+                    else
+                    {
+
+                        string ativo = "Ativo";
+                        if (dgvCarrinho.Rows[idex].Cells[cont].Value != null)
+                        {
+                            codBarras = this.dgvCarrinho.Rows[idex].Cells[1].Value.ToString();
+                            descricao = this.dgvCarrinho.Rows[idex].Cells[2].Value.ToString();
+                            preco = this.dgvCarrinho.Rows[idex].Cells[3].Value.ToString();
+                            quantidade = this.dgvCarrinho.Rows[idex].Cells[4].Value.ToString();
+                            totalProduto = this.dgvCarrinho.Rows[idex].Cells[5].Value.ToString();
+
+
+
+                            controllerProdutoPedido = new ControllerProdutoPedido(codBarras, quantidade, totalProduto);
+                            controllerProdutoPedido.AdicionarProdutoPedido();
+                            form1.CumpomImpresso(codItem.ToString(), codBarras, descricao, quantidade, preco, totalProduto, ativo, cpfCnpjCliente, lblTotal.Text, "teste", lblData.Text, lblHora.Text, lblCaixa.Text);
+                            form1.ShowDialog();
+
+                        }
+                    }
+                    codItem++;
+
+                    idex++;
+
+                }
+
+            }
+            //dgvCarrinho.DataSource = controllerProdutoPedido.ListarProdutoPedido();
+            controllerPedido = new ControllerPedido(lblTotal.Text);
+            controllerPedido.AtualizaValorPedido();
+
+            i = false;
+        }
+
+
+        private void CalulaValores(string valorpago, string total)
+
+        {
+
+            decimal valorRecebido = decimal.Parse(valorpago);
+            decimal totalDaVenda = decimal.Parse(total);
+
+            if (totalDaVenda > valorRecebido)
+            {
+                totalDaVenda = totalDaVenda - valorRecebido;
+                lblValorAReceber.Text = totalDaVenda.ToString();
+
+
+            }
+            else
+            {
+                totalDaVenda = valorRecebido - totalDaVenda;
+
+                lblTroco.Text = totalDaVenda.ToString();
+
+                lblValorAReceber.Text = "0.00";
+            }
+
+
+
+        }
+
+        private void LimpaCampos()
+        {
+            txbCodBarras.Clear();
+            txbPrecoUnit.Clear();
+            txbDescricao.Clear();
+            txbQuantidade.Clear();
+            txbTotalRecebido.Clear();
+            txbCodBarras.Focus();
+
+        }
+
+        private void LimpaDgv()
+        {
+            i = false;
+            verificador = false;
+            codigo = 1;
+            dgvCarrinho.Rows.Clear();
+            dgvCarrinho.Columns.Clear();
+            lblTotal.Text = "0";
+
+        }
+
+
+        private bool VerificaVazio()
+        {
+            if (txbCodBarras.Text == "" || txbDescricao.Text == "" || txbPrecoUnit.Text == "" || txbQuantidade.Text == "" || txbTotalRecebido.Text == "")
+            {
+                return true;
+
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+
+
     }
+
+
 }

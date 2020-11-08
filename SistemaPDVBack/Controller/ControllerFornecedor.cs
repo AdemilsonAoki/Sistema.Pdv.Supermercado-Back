@@ -155,7 +155,7 @@ namespace SistemaPDVBack.Controller
             }
             catch (Exception e)
             {
-                throw;
+       throw;
 
             }
             finally

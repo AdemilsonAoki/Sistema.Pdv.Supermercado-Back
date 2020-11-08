@@ -2,6 +2,7 @@
 using SistemaPDVBack.Model;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,11 +18,11 @@ namespace SistemaPDVBack.Controller
         Conexao conexao = new Conexao();
         private MySqlDataReader reader;
 
-        public ControllerPedido(string status, string dataDoPedido, string total)
+        public ControllerPedido(string status, string dataDoPedido, string total, string formaPagamento)
         {
             // CarregaCpf();
 
-            ConverterValidar(status, dataDoPedido, total);
+            ConverterValidar(status, dataDoPedido, total, formaPagamento);
         }
         public ControllerPedido(string total)
         {
@@ -31,7 +32,7 @@ namespace SistemaPDVBack.Controller
            
         }
 
-        private void ConverterValidar(string status, string dataDoPedido, string total)
+        private void ConverterValidar(string status, string dataDoPedido, string total, string formaPagamento)
         {
             try
             {
@@ -39,6 +40,7 @@ namespace SistemaPDVBack.Controller
                 pedido.DataDoPedido = dataDoPedido;
                 pedido.CpfColaborador = CarregaUsuario.IdUser;
                 pedido.TotalPedido = decimal.Parse(total);
+                pedido.FormaDePagamento = formaPagamento;
 
 
             }
@@ -122,7 +124,6 @@ namespace SistemaPDVBack.Controller
 
                         pedido.CodCliente = reader.GetInt32(0);
                     }
-
 
                 }
                 else
@@ -282,6 +283,22 @@ namespace SistemaPDVBack.Controller
 
 
 
+        }
+        public string VerificarCaixa()
+        {
+            using (StreamReader reader = new StreamReader("F:\\Users\\PC\\Desktop\\Projetos\\PimSupermercadoPdVback\\Sistema.Pdv.Supermercado-Back\\Caixa.txt"))
+            {
+                string Caixa = "";
+
+                string line;
+
+                while ((line = reader.ReadLine()) != null)
+                {
+                    Caixa = line;
+                }
+
+                return Caixa;
+            }
         }
 
 

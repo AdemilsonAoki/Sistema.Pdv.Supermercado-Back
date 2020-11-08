@@ -19,7 +19,6 @@ namespace SistemaPDVBack
             leftBorder = new Panel();
             leftBorder.Size = new Size(7, 60);
             pnMenuVertical.Controls.Add(leftBorder);
-            DesignCustomizado();
             //Form
             this.Text = string.Empty;
             this.ControlBox = false;
@@ -32,8 +31,6 @@ namespace SistemaPDVBack
         string colaborador = "Colaborador";
         string dashBoard = "Dashboard";
         string relatorio = "Relatório";
-        string salvar = "Salvar";
-        string pesquisa = "Pesquisa";
         string fornecedor = "Fornecedor";
 
         private void ActivateButton(object senderBtn, Color color)
@@ -108,7 +105,7 @@ namespace SistemaPDVBack
 
 
             lblNomeForms.Text = dashBoard;
-            OcultarSubMenu();
+   
 
 
         }
@@ -174,13 +171,6 @@ namespace SistemaPDVBack
                 btnHome.Text = "";
                 btnProduto.Text = "";
                 btnRelatorios.Text = "";
-                btnPesquisaColaborador.Text = "";
-                btnPesquisaProduto.Text = "";
-                btnPesquisaRelatorios.Text = "";
-                btnPesquisaFornecedor.Text = "";
-                btnSalvarColaborador.Text = "";
-                btnSalvarProduto.Text = "";
-                btnSalvarFornecedor.Text = "";
                 pnMenuVertical.Width = 70;
                 btnFornecedor.Text = ""; 
 
@@ -191,15 +181,8 @@ namespace SistemaPDVBack
                 btnHome.Text = dashBoard;
                 btnProduto.Text = produto;
                 btnRelatorios.Text = relatorio;
-                btnPesquisaColaborador.Text = pesquisa;
-                btnPesquisaProduto.Text = pesquisa;
-                btnPesquisaRelatorios.Text = pesquisa;
-                btnSalvarColaborador.Text = salvar;
-                btnSalvarProduto.Text = salvar;
                 btnFornecedor.Text = fornecedor;
-                btnPesquisaFornecedor.Text = pesquisa;
-                btnSalvarFornecedor.Text = salvar;
-
+               
                 pnMenuVertical.Width = 200;
             }
         }
@@ -229,31 +212,11 @@ namespace SistemaPDVBack
             this.WindowState = FormWindowState.Minimized;
         }
 
-        private void DesignCustomizado()
-        {
-            pnSubMenuColaborador.Visible = false;
-            pnSubMenuRelatorio.Visible = false;
-            pnSubMenuProduto.Visible = false;
-            pnSubMenuFornecedor.Visible = false;
-            
-        }
-
-        private void OcultarSubMenu()
-        {
-            if (pnSubMenuColaborador.Visible == true)
-                pnSubMenuColaborador.Visible = false;
-            if (pnSubMenuProduto.Visible == true)
-                pnSubMenuProduto.Visible = false;
-            if (pnSubMenuRelatorio.Visible == true)
-                pnSubMenuRelatorio.Visible = false; 
-            if (pnSubMenuFornecedor.Visible == true)
-                pnSubMenuFornecedor.Visible = false;
-        }
+    
         private void showSubMenu(Panel submenu)
         {
             if(submenu.Visible == false)
             {
-                OcultarSubMenu();
                 submenu.Visible = true;
             }
             else
@@ -265,73 +228,40 @@ namespace SistemaPDVBack
         private void btnProduto_Click_1(object sender, EventArgs e)
         {
 
-            showSubMenu(pnSubMenuProduto);
+            //showSubMenu(pnSubMenuProduto);
 
 
             ActivateButton(sender, RGBColors.color2);
-            pnHorizontal.BackColor = RGBColors.color7;
-
-           // lblNomeForms.Text = produto;
-           
-      
-        }
-
-
-
-        private void btnPesquisaProduto_Click(object sender, EventArgs e)
-        {
-            AbrirForm(new frmPesquisaProduto());
-            lblNomeForms.Text = produto;
-            MudaCorIcone(RGBColors.color2);
-
-        }
-
-        private void btnSalvarProduto_Click(object sender, EventArgs e)
-        {
             AbrirForm(new frmProduto());
             lblNomeForms.Text = produto;
-            MudaCorIcone(RGBColors.color2);
+            MudaCorIcone(RGBColors.color4);
 
-
+            // lblNomeForms.Text = produto;
 
 
         }
+
+
+
+
+   
 
         private void btnColaborador_Click(object sender, EventArgs e)
         {
-            showSubMenu(pnSubMenuColaborador);
+
 
             ActivateButton(sender, RGBColors.color3);
-            pnHorizontal.BackColor = RGBColors.color5;
-            //lblNomeForms.Text = colaborador;
-        }
-
-        private void btnSalvarColaborador_Click_1(object sender, EventArgs e)
-        {
             AbrirForm(new frmColaborador());
             lblNomeForms.Text = colaborador;
             MudaCorIcone(RGBColors.color2);
-
-
-
-
-
+         
         }
 
-        private void btnPesquisaColaborador_Click(object sender, EventArgs e)
-        {
-            AbrirForm(new frmPesquisaColaborador());
-            lblNomeForms.Text = colaborador;
-            MudaCorIcone(RGBColors.color2);
 
-
-
-
-        }
+   
 
         private void btnRelatorios_Click(object sender, EventArgs e)
         {
-            showSubMenu(pnSubMenuRelatorio);
 
             ActivateButton(sender, RGBColors.color5);
             pnHorizontal.BackColor = RGBColors.color5;
@@ -341,40 +271,13 @@ namespace SistemaPDVBack
 
         private void btnFornecedor_Click(object sender, EventArgs e)
         {
-            showSubMenu(pnSubMenuFornecedor);
-
             ActivateButton(sender, RGBColors.color4);
-            pnHorizontal.BackColor = RGBColors.color5;
-           // lblNomeForms.Text = fornecedor;
-        }
-
-        private void btnSalvarFornecedor_Click(object sender, EventArgs e)
-        {
             AbrirForm(new frmFornecedor());
             lblNomeForms.Text = fornecedor;
             MudaCorIcone(RGBColors.color4);
-
-
+            // lblNomeForms.Text = fornecedor;
         }
 
-        private void btnPesquisaFornecedor_Click(object sender, EventArgs e)
-        {
-            AbrirForm(new frmPesquisaFornecedor());
-            lblNomeForms.Text = fornecedor;
-            MudaCorIcone(RGBColors.color4);
 
-
-
-        }
-
-        private void btnPesquisaRelatorios_Click(object sender, EventArgs e)
-        {
-            AbrirForm(new frmPesquisaRelatorio());
-            lblNomeForms.Text = relatorio;
-            MudaCorIcone(RGBColors.color6);
-
-
-
-        }
     }
 }

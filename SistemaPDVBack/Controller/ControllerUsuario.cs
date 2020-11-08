@@ -64,6 +64,8 @@ namespace SistemaPDVBack.Controller
                     {
                         CarregaUsuario.Nome = reader.GetString(2);
                         CarregaUsuario.IdUser = reader.GetString(1);
+                        
+
                     }
                     return true;
 
@@ -126,8 +128,6 @@ namespace SistemaPDVBack.Controller
                 cmd.Parameters.AddWithValue("@usuario", login.Login);
                 cmd.Parameters.AddWithValue("@senha", login.Senha);
                 cmd.Parameters.AddWithValue("@cpfColaborador", colaborador.CpfColaborador);
-
-
                 cmd.Connection = conexao.AbrirBanco();
                 cmd.ExecuteNonQuery();
 
@@ -136,6 +136,43 @@ namespace SistemaPDVBack.Controller
             catch (Exception e)
             {
                 throw;
+            }
+        }
+
+        string cargo = "";
+
+        public string VerificaCargo()
+        {
+            try
+            {
+                cmd.CommandText = "Select *from colaborador where cpfColaborador = @cpfColaborador";
+                cmd.Parameters.AddWithValue("@cpfColaborador", CarregaUsuario.IdUser);
+                cmd.Connection = conexao.AbrirBanco();
+
+                reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                      
+
+                        cargo = reader.GetString(4);
+                    }
+                   // return cargo;
+
+
+                }
+                return cargo;
+
+            }
+            catch (Exception )
+            {
+                return cargo = "Não encontrado";
+            }
+            finally
+            {
+                cmd.Parameters.Clear();
+                conexao.FecharBanco();
             }
         }
 

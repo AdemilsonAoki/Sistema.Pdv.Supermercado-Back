@@ -39,9 +39,9 @@
             // 
             this.btnAdicionar.Location = new System.Drawing.Point(62, 98);
             this.btnAdicionar.Name = "btnAdicionar";
-            this.btnAdicionar.Size = new System.Drawing.Size(75, 23);
+            this.btnAdicionar.Size = new System.Drawing.Size(95, 23);
             this.btnAdicionar.TabIndex = 0;
-            this.btnAdicionar.Text = "Adicionar";
+            this.btnAdicionar.Text = "Adicionar (Enter)";
             this.btnAdicionar.UseVisualStyleBackColor = true;
             this.btnAdicionar.Click += new System.EventHandler(this.btnAdicionar_Click);
             // 
@@ -49,10 +49,11 @@
             // 
             this.btnCancelar.Location = new System.Drawing.Point(308, 98);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(75, 23);
+            this.btnCancelar.Size = new System.Drawing.Size(88, 23);
             this.btnCancelar.TabIndex = 1;
-            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.Text = "Cancelar (Esc)";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // rbCpf
             // 
@@ -84,6 +85,7 @@
             this.msktCnpjCpf.Name = "msktCnpjCpf";
             this.msktCnpjCpf.Size = new System.Drawing.Size(222, 20);
             this.msktCnpjCpf.TabIndex = 4;
+            this.msktCnpjCpf.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.msktCnpjCpf_MaskInputRejected);
             // 
             // frmCliente
             // 
@@ -95,6 +97,7 @@
             this.Controls.Add(this.rbCpf);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAdicionar);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmCliente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmCliente";

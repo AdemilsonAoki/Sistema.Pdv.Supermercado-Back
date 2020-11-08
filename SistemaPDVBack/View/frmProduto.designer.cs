@@ -90,6 +90,7 @@
             this.txbCodigoBarras.Name = "txbCodigoBarras";
             this.txbCodigoBarras.Size = new System.Drawing.Size(264, 20);
             this.txbCodigoBarras.TabIndex = 1;
+            this.txbCodigoBarras.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbCodigoBarras_KeyPress);
             // 
             // lblFornecedor
             // 

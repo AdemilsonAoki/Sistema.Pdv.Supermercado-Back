@@ -1,4 +1,4 @@
-﻿namespace SistemaPDVBack.View
+﻿namespace SistemaPDVBack
 {
     partial class Form1
     {
@@ -28,63 +28,60 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.bancopim2semestre2020DataSet = new SistemaPDVBack.bancopim2semestre2020DataSet();
-            this.pedidoBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.pedidoTableAdapter = new SistemaPDVBack.bancopim2semestre2020DataSetTableAdapters.pedidoTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.bancopim2semestre2020DataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pedidoBindingSource)).BeginInit();
+            this.listBox1 = new System.Windows.Forms.ListView();
+            this.btnClose = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // reportViewer1
+            // listBox1
             // 
-            this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            reportDataSource1.Name = "DataSet1";
-            reportDataSource1.Value = this.pedidoBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "SistemaPDVBack.View.Report1.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(0, 0);
-            this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(800, 450);
-            this.reportViewer1.TabIndex = 0;
+            this.listBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.listBox1.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listBox1.ForeColor = System.Drawing.SystemColors.MenuText;
+            this.listBox1.FullRowSelect = true;
+            this.listBox1.GridLines = true;
+            this.listBox1.HideSelection = false;
+            this.listBox1.Location = new System.Drawing.Point(19, 12);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(330, 581);
+            this.listBox1.TabIndex = 0;
+            this.listBox1.UseCompatibleStateImageBehavior = false;
+            this.listBox1.View = System.Windows.Forms.View.List;
             // 
-            // bancopim2semestre2020DataSet
+            // btnClose
             // 
-            this.bancopim2semestre2020DataSet.DataSetName = "bancopim2semestre2020DataSet";
-            this.bancopim2semestre2020DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // pedidoBindingSource
-            // 
-            this.pedidoBindingSource.DataMember = "pedido";
-            this.pedidoBindingSource.DataSource = this.bancopim2semestre2020DataSet;
-            // 
-            // pedidoTableAdapter
-            // 
-            this.pedidoTableAdapter.ClearBeforeFill = true;
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClose.FlatAppearance.BorderSize = 0;
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.ForeColor = System.Drawing.Color.White;
+            this.btnClose.Location = new System.Drawing.Point(351, -1);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(24, 23);
+            this.btnClose.TabIndex = 4;
+            this.btnClose.Text = "X";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.reportViewer1);
+            this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.ClientSize = new System.Drawing.Size(374, 607);
+            this.Controls.Add(this.btnClose);
+            this.Controls.Add(this.listBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.bancopim2semestre2020DataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pedidoBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
-        private bancopim2semestre2020DataSet bancopim2semestre2020DataSet;
-        private System.Windows.Forms.BindingSource pedidoBindingSource;
-        private bancopim2semestre2020DataSetTableAdapters.pedidoTableAdapter pedidoTableAdapter;
+        private System.Windows.Forms.ListView listBox1;
+        private System.Windows.Forms.Button btnClose;
     }
 }
