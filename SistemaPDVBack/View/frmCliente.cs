@@ -109,36 +109,22 @@ namespace SistemaPDVBack
                     msktCnpjCpf.Mask = null;
                     this.Close();
                     break;
-                case Keys.D1:
+                case Keys.F1:
 
                     rbCpf.Focus();
-                    btnAdicionar.Focus();
+                    msktCnpjCpf.ReadOnly = false;
+
                     msktCnpjCpf.Focus();
 
-
-                    msktCnpjCpf.ReadOnly = false;
-                    msktCnpjCpf.Text = "";
-                    if (rbCpf.Checked == false)
-                    {
-                        msktCnpjCpf.ReadOnly = true;
-                    }
-
+           
                     break;
-                case Keys.D2:
+                case Keys.F2:
 
                     rbCNPJ.Focus();
-                    btnAdicionar.Focus();
+                    msktCnpjCpf.ReadOnly = false;
 
                     msktCnpjCpf.Focus();
-
-
-                    msktCnpjCpf.ReadOnly = false;
-                    msktCnpjCpf.Text = "";
-
-                    msktCnpjCpf.ReadOnly = true;
-
-
-
+ 
                     break;
 
 

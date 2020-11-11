@@ -35,7 +35,8 @@ namespace SistemaPDVBack
             foreach (ProdutoPedidoDTO obj in produtos)
             {
 
-                x.WriteLine(obj.CodigoItem + ";" + obj.CodBarras + ";" + obj.NomeProduto + ";" + obj.Quantidade + ";" + obj.PrecoUnit + ";" + obj.Total + ";" + obj.StatusAtivo + ";");
+               // x.WriteLine(obj.CodigoItem + ";" + obj.CodBarras + ";" + obj.NomeProduto + ";" + obj.Quantidade + ";" + obj.PrecoUnit + ";" + obj.Total + ";" + obj.StatusAtivo + ";");
+                x.WriteLine(obj.CodigoItem + ";" + obj.CodBarras + ";" + obj.NomeProduto + ";" + obj.Quantidade + ";" + obj.PrecoUnit + ";" + obj.Total + ";" );
             }
 
             x.Close();
@@ -54,20 +55,20 @@ namespace SistemaPDVBack
                                Quantidade = ProdutoDados[3],
                                PrecoUnit = ProdutoDados[4],
                                Total = ProdutoDados[5],
-                               StatusAtivo = ProdutoDados[6],
+                              //StatusAtivo = ProdutoDados[6],
                            };
 
 
             foreach (var item in consulta)
             {
-                sb.AppendFormat("{0,-6}{1,-6}{2,-12}{3,-5}{4,-8}{5,-35}{6,-30}{7}",
+                sb.AppendFormat("{0,-6}{1,-6}{2,-12}{3,-5}{4,-8}{5,-35}{6}",
                    item.CodigoItem,
                    item.CodBarras,
                    item.NomeProduto,
                    item.Quantidade,
                    item.PrecoUnit,
                    item.Total,
-                   item.StatusAtivo,
+                  // item.StatusAtivo,
 
                    Environment.NewLine);
             }

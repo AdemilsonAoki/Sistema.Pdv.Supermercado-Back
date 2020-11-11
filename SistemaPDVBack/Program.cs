@@ -17,7 +17,7 @@ namespace SistemaPDVBack
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmTelaPdv());
+            Application.Run(new frmLogin());
         }
     }
 }

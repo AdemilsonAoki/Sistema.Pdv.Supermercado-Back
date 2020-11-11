@@ -60,10 +60,10 @@
             this.rbCpf.AutoSize = true;
             this.rbCpf.Location = new System.Drawing.Point(328, 12);
             this.rbCpf.Name = "rbCpf";
-            this.rbCpf.Size = new System.Drawing.Size(45, 17);
+            this.rbCpf.Size = new System.Drawing.Size(66, 17);
             this.rbCpf.TabIndex = 2;
             this.rbCpf.TabStop = true;
-            this.rbCpf.Text = "CPF";
+            this.rbCpf.Text = "CPF (F1)";
             this.rbCpf.UseVisualStyleBackColor = true;
             this.rbCpf.CheckedChanged += new System.EventHandler(this.rbCpf_CheckedChanged);
             // 
@@ -72,10 +72,10 @@
             this.rbCNPJ.AutoSize = true;
             this.rbCNPJ.Location = new System.Drawing.Point(328, 45);
             this.rbCNPJ.Name = "rbCNPJ";
-            this.rbCNPJ.Size = new System.Drawing.Size(52, 17);
+            this.rbCNPJ.Size = new System.Drawing.Size(73, 17);
             this.rbCNPJ.TabIndex = 3;
             this.rbCNPJ.TabStop = true;
-            this.rbCNPJ.Text = "CNPJ";
+            this.rbCNPJ.Text = "CNPJ (F2)";
             this.rbCNPJ.UseVisualStyleBackColor = true;
             this.rbCNPJ.CheckedChanged += new System.EventHandler(this.rbCNPJ_CheckedChanged);
             // 
