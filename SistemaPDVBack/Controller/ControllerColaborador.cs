@@ -11,10 +11,10 @@ namespace SistemaPDVBack.Controller
     {
 
         private readonly MySqlCommand cmd = new MySqlCommand();
-        private readonly string _inserir = "insert into Colaborador(nomeColaborador, cpfColaborador,idDepartamento, statusAtivo, cargoColaborador, telefoneColaborador, emailPessoalColaborador, emailCorporativo)" +
-                                            "values(@nomeColaborador, @cpfColaborador, @idDepartamento, @statusAtivo, @cargoColaborador, @telefoneColaborador,@emailPessoalColaborador, @emailCorporativo)";
-        private readonly string _alterar = "update Colaborador set nomeColaborador = @nomeColaborador, cpfColaborador = @cpfColaborador,idDepartamento =@idDepartamento,  statusAtivo = @statusAtivo, cargoColaborador = @cargoColaborador,telefoneColaborador = @telefoneColaborador,emailPessoalColaborador= @emailPessoalColaborador, emailCorporativo =@emailCorporativo where cpfColaborador = @cpfColaborador";
-        private readonly string _listar = "select c.nomeColaborador,c.cpfColaborador, d.nomeDepartamento,c.cargoColaborador, c.telefoneColaborador,c.emailCorporativo, c.emailPessoalColaborador, u.usuario, u.senha, c.statusAtivo from Colaborador c join departamento d on c.idDepartamento = d.idDepartamento join Usuario u on u.cpfColaborador = c.cpfColaborador where c.statusAtivo = 1 ";
+        private readonly string _inserir = "insert into Colaborador(cpfColaborador,nomeColaborador,  statusAtivo, cargoColaborador, telefoneColaborador, emailPessoalColaborador, emailCorporativo, idDepartamento)" +
+                                            "values(@cpfColaborador, @nomeColaborador, @statusAtivo, @cargoColaborador, @telefoneColaborador,@emailPessoalColaborador, @emailCorporativo,@idDepartamento)";
+        private readonly string _alterar = "update Colaborador set cpfColaborador = @cpfColaborador, nomeColaborador = @nomeColaborador,   statusAtivo = @statusAtivo, cargoColaborador = @cargoColaborador,telefoneColaborador = @telefoneColaborador,emailPessoalColaborador= @emailPessoalColaborador, emailCorporativo =@emailCorporativo, idDepartamento =@idDepartamento where idColaborador = @idColaborador";
+        private readonly string _listar = "select c.idColaborador, c.nomeColaborador,c.cpfColaborador, d.nomeDepartamento,c.cargoColaborador, c.telefoneColaborador,c.emailCorporativo, c.emailPessoalColaborador, u.usuario, u.senha, c.statusAtivo from Colaborador c join departamento d on c.idDepartamento = d.idDepartamento join Usuario u on u.cpfColaborador = c.cpfColaborador where c.statusAtivo = 1 ";
         string mensagem = "";
         Colaborador colaborador = new Colaborador();
         Conexao conexao = new Conexao();
@@ -38,11 +38,11 @@ namespace SistemaPDVBack.Controller
           
         }
 
-        public ControllerColaborador(string nomeColaborador, string cpfColaborador, string codDepartamento, string statusAtivo, string cargoColaborador, string telefoneColaborador, string emailPessoalColaborador, string emailColaborador)
+        public ControllerColaborador(string id, string nomeColaborador, string cpfColaborador, string codDepartamento, string statusAtivo, string cargoColaborador, string telefoneColaborador, string emailPessoalColaborador, string emailColaborador)
         {
-            ConverterValidar(nomeColaborador, cpfColaborador, codDepartamento, statusAtivo, cargoColaborador, telefoneColaborador, emailPessoalColaborador, emailColaborador);
+            ConverterValidar(id ,nomeColaborador, cpfColaborador, codDepartamento, statusAtivo, cargoColaborador, telefoneColaborador, emailPessoalColaborador, emailColaborador);
         }
-        public void ConverterValidar(string nomeColaborador, string cpfColaborador, string codDepartamento, string statusAtivo, string cargoColaborador, string telefoneColaborador, string emailPessoalColaborador, string emailColaborador)
+        public void ConverterValidar(string id, string nomeColaborador, string cpfColaborador, string codDepartamento, string statusAtivo, string cargoColaborador, string telefoneColaborador, string emailPessoalColaborador, string emailColaborador)
         {
             if (mensagem == "")
             {
@@ -51,6 +51,11 @@ namespace SistemaPDVBack.Controller
                 string validaNumero = "^[0-9]*$";
                 try
                 {
+                    if (id != "")
+                    {
+                        colaborador.IdColaborador = int.Parse(id);
+
+                    }
                     if (Regex.IsMatch(emailColaborador, validaEmail))
                     {
                         colaborador.EmailCorporativo = emailColaborador;
@@ -187,7 +192,9 @@ namespace SistemaPDVBack.Controller
         {
             cmd.CommandText = _alterar;
             cmd.Parameters.AddWithValue("@idDepartamento", colaborador.CodDepartamento);
-            cmd.Parameters.AddWithValue("@nomeColaborador", colaborador.NomeColaborador);
+            cmd.Parameters.AddWithValue("@idDepartamento", colaborador.CodDepartamento);
+
+            cmd.Parameters.AddWithValue("@idColaborador", colaborador.IdColaborador);
 
             cmd.Parameters.AddWithValue("@cpfColaborador", colaborador.CpfColaborador);
             cmd.Parameters.AddWithValue("@statusAtivo", colaborador.StatusAtivo);
@@ -245,7 +252,7 @@ namespace SistemaPDVBack.Controller
 
         public DataTable ListarTodosColaboradores()
         {
-            cmd.CommandText = "select c.nomeColaborador,c.cpfColaborador, d.nomeDepartamento,c.cargoColaborador, c.telefoneColaborador,c.emailCorporativo, c.emailPessoalColaborador, u.usuario, u.senha, c.statusAtivo from Colaborador c join departamento d on c.idDepartamento = d.idDepartamento join Usuario u on u.cpfColaborador = c.cpfColaborador";
+            cmd.CommandText = "select c.idColaborador, c.nomeColaborador,c.cpfColaborador, d.nomeDepartamento,c.cargoColaborador, c.telefoneColaborador,c.emailCorporativo, c.emailPessoalColaborador, u.usuario, u.senha, c.statusAtivo from Colaborador c join departamento d on c.idDepartamento = d.idDepartamento join Usuario u on u.cpfColaborador = c.cpfColaborador";
             try
             {
                 cmd.Connection = conexao.AbrirBanco();

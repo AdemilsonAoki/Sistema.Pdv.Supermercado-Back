@@ -49,7 +49,7 @@ namespace SistemaPDVBack
 
             cmbFornecedor.SelectedIndex = 0;
 
-            DefinirCabecalhos(new List<string>() { "Cód de barras", "Nome", "Fornecedor", "Descrição", "Quantidade", "Preço Custo", "Margem", "Preço Venda", "Data Fabri.", "Data Venci.", "Categoria", "Ativo" });
+            DefinirCabecalhos(new List<string>() { "ID", "Cód de barras", "Nome", "Fornecedor", "Descrição", "Quantidade", "Preço Custo", "Margem", "Preço Venda", "Data Fabri.", "Data Venci.", "Categoria", "Ativo" });
 
 
 
@@ -87,12 +87,12 @@ namespace SistemaPDVBack
             {
                 msktDataFabricacao.Text = "00/00/0000";
                 msktDataVencimento.Text = "00/00/0000";
-                controllerProduto = new ControllerProduto(txbCodigoBarras.Text, cmbFornecedor.SelectedValue.ToString(), txbNome.Text, rtbDescricao.Text, txbPrecoCusto.Text, txbPrecoDeVenda.Text,
+                controllerProduto = new ControllerProduto(txbId.Text, txbCodigoBarras.Text, cmbFornecedor.SelectedValue.ToString(), txbNome.Text, rtbDescricao.Text, txbPrecoCusto.Text, txbPrecoDeVenda.Text,
                                                     txbMargemDeLucro.Text, msktDataFabricacao.Text, msktDataVencimento.Text, txbQuantidadeEstoque.Text, _perecivel, _ativo);
             }
             else
             {
-                controllerProduto = new ControllerProduto(txbCodigoBarras.Text, cmbFornecedor.SelectedValue.ToString(), txbNome.Text, rtbDescricao.Text, txbPrecoCusto.Text, txbPrecoDeVenda.Text,
+                controllerProduto = new ControllerProduto(txbId.Text, txbCodigoBarras.Text, cmbFornecedor.SelectedValue.ToString(), txbNome.Text, rtbDescricao.Text, txbPrecoCusto.Text, txbPrecoDeVenda.Text,
                                                     txbMargemDeLucro.Text, msktDataFabricacao.Text, msktDataVencimento.Text, txbQuantidadeEstoque.Text, _perecivel, _ativo);
             }
 
@@ -154,18 +154,20 @@ namespace SistemaPDVBack
             string _tempAtivo;
             string _tempPerecivel;
 
-            txbCodigoBarras.Text = this.dgvProduto.CurrentRow.Cells[0].Value.ToString();
-            txbNome.Text = this.dgvProduto.CurrentRow.Cells[1].Value.ToString();
-            cmbFornecedor.Text = this.dgvProduto.CurrentRow.Cells[2].Value.ToString();
-            rtbDescricao.Text = this.dgvProduto.CurrentRow.Cells[3].Value.ToString();
-            txbQuantidadeEstoque.Text = this.dgvProduto.CurrentRow.Cells[4].Value.ToString();
-            txbPrecoCusto.Text = this.dgvProduto.CurrentRow.Cells[5].Value.ToString();
-            txbMargemDeLucro.Text = this.dgvProduto.CurrentRow.Cells[6].Value.ToString();
-            txbPrecoDeVenda.Text = this.dgvProduto.CurrentRow.Cells[7].Value.ToString();
-            msktDataFabricacao.Text = this.dgvProduto.CurrentRow.Cells[8].Value.ToString();
-            msktDataVencimento.Text = this.dgvProduto.CurrentRow.Cells[9].Value.ToString();
-            _tempPerecivel = this.dgvProduto.CurrentRow.Cells[10].Value.ToString();
-            _tempAtivo = this.dgvProduto.CurrentRow.Cells[11].Value.ToString();
+            txbCodigoBarras.Text = this.dgvProduto.CurrentRow.Cells[1].Value.ToString();
+            txbId.Text = this.dgvProduto.CurrentRow.Cells[0].Value.ToString();
+
+            txbNome.Text = this.dgvProduto.CurrentRow.Cells[2].Value.ToString();
+            cmbFornecedor.Text = this.dgvProduto.CurrentRow.Cells[3].Value.ToString();
+            rtbDescricao.Text = this.dgvProduto.CurrentRow.Cells[4].Value.ToString();
+            txbQuantidadeEstoque.Text = this.dgvProduto.CurrentRow.Cells[5].Value.ToString();
+            txbPrecoCusto.Text = this.dgvProduto.CurrentRow.Cells[6].Value.ToString();
+            txbMargemDeLucro.Text = this.dgvProduto.CurrentRow.Cells[7].Value.ToString();
+            txbPrecoDeVenda.Text = this.dgvProduto.CurrentRow.Cells[8].Value.ToString();
+            msktDataFabricacao.Text = this.dgvProduto.CurrentRow.Cells[9].Value.ToString();
+            msktDataVencimento.Text = this.dgvProduto.CurrentRow.Cells[10].Value.ToString();
+            _tempPerecivel = this.dgvProduto.CurrentRow.Cells[11].Value.ToString();
+            _tempAtivo = this.dgvProduto.CurrentRow.Cells[12].Value.ToString();
 
             bool _tempAtivoV = bool.Parse(_tempAtivo);
 
@@ -183,7 +185,7 @@ namespace SistemaPDVBack
         private void btnAlterar_Click(object sender, EventArgs e)
         {
             InseriValorRb();
-            controllerProduto = new ControllerProduto(txbCodigoBarras.Text, cmbFornecedor.SelectedValue.ToString(), txbNome.Text, rtbDescricao.Text, txbPrecoCusto.Text, txbPrecoDeVenda.Text,
+            controllerProduto = new ControllerProduto(txbId.Text,txbCodigoBarras.Text, cmbFornecedor.SelectedValue.ToString(), txbNome.Text, rtbDescricao.Text, txbPrecoCusto.Text, txbPrecoDeVenda.Text,
                                                         txbMargemDeLucro.Text, msktDataFabricacao.Text, msktDataVencimento.Text, txbQuantidadeEstoque.Text, _perecivel, _ativo);
             controllerProduto.AlterarProduto();
             Listar();
@@ -252,6 +254,7 @@ namespace SistemaPDVBack
 
         private void LimpaCampos()
         {
+            txbId.Clear();
             txbCodigoBarras.Clear();
             txbMargemDeLucro.Clear();
             txbNome.Clear();

@@ -59,6 +59,8 @@
             this.btnAdicionar = new FontAwesome.Sharp.IconButton();
             this.btnConsulta = new FontAwesome.Sharp.IconButton();
             this.ckbIntativo = new System.Windows.Forms.CheckBox();
+            this.txbId = new System.Windows.Forms.TextBox();
+            this.lblId = new System.Windows.Forms.Label();
             this.gbDadosColaborador.SuspendLayout();
             this.gpAtivo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvColaborador)).BeginInit();
@@ -68,6 +70,8 @@
             // 
             this.gbDadosColaborador.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbDadosColaborador.Controls.Add(this.txbId);
+            this.gbDadosColaborador.Controls.Add(this.lblId);
             this.gbDadosColaborador.Controls.Add(this.cmbCargo);
             this.gbDadosColaborador.Controls.Add(this.txbSenha);
             this.gbDadosColaborador.Controls.Add(this.lblSenha);
@@ -304,9 +308,9 @@
             // 
             this.txbNome.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txbNome.Location = new System.Drawing.Point(6, 30);
+            this.txbNome.Location = new System.Drawing.Point(68, 30);
             this.txbNome.Name = "txbNome";
-            this.txbNome.Size = new System.Drawing.Size(341, 20);
+            this.txbNome.Size = new System.Drawing.Size(279, 20);
             this.txbNome.TabIndex = 5;
             // 
             // lblNome
@@ -316,7 +320,7 @@
             this.lblNome.AutoSize = true;
             this.lblNome.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNome.ForeColor = System.Drawing.Color.Black;
-            this.lblNome.Location = new System.Drawing.Point(6, 10);
+            this.lblNome.Location = new System.Drawing.Point(65, 10);
             this.lblNome.Name = "lblNome";
             this.lblNome.Size = new System.Drawing.Size(45, 15);
             this.lblNome.TabIndex = 4;
@@ -454,6 +458,25 @@
             this.ckbIntativo.Text = "Inativo";
             this.ckbIntativo.UseVisualStyleBackColor = true;
             // 
+            // txbId
+            // 
+            this.txbId.Enabled = false;
+            this.txbId.Location = new System.Drawing.Point(6, 30);
+            this.txbId.Name = "txbId";
+            this.txbId.Size = new System.Drawing.Size(51, 20);
+            this.txbId.TabIndex = 48;
+            // 
+            // lblId
+            // 
+            this.lblId.AutoSize = true;
+            this.lblId.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblId.ForeColor = System.Drawing.Color.Black;
+            this.lblId.Location = new System.Drawing.Point(6, 10);
+            this.lblId.Name = "lblId";
+            this.lblId.Size = new System.Drawing.Size(21, 15);
+            this.lblId.TabIndex = 47;
+            this.lblId.Text = "ID";
+            // 
             // frmColaborador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -508,5 +531,7 @@
         private System.Windows.Forms.ComboBox cmbCargo;
         private FontAwesome.Sharp.IconButton btnConsulta;
         private System.Windows.Forms.CheckBox ckbIntativo;
+        private System.Windows.Forms.TextBox txbId;
+        private System.Windows.Forms.Label lblId;
     }
 }

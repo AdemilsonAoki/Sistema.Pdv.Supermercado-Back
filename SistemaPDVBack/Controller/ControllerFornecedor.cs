@@ -13,9 +13,9 @@ namespace SistemaPDVBack.Controller
     class ControllerFornecedor
     {
         private readonly MySqlCommand cmd = new MySqlCommand();
-        private readonly string _inserir = "insert into Fornecedor(nomeFantasia,Cnpj, inscricaoEstadual, cepFornecedor, Rua, logradouro, uf, numero, complemento,bairro, cidade, statusAtivo ) " +
-                                            "values(@nomeFantasia, @cnpj, @inscricaoEstadual, @cepFornecedor,@rua,@logradouro, @uf, @numero, @complemento, @bairro, @cidade, @statusAtivo)";
-        private readonly string _alterar = "update Fornecedor set cnpj= @cnpj, inscricaoEstadual = @inscricaoEstadual, nomeFantasia = @nomeFantasia, logradouro = @logradouro , uf = @uf , numero = @numero, complemento = @complemento, bairro = @bairro,cidade = @cidade, cepFornecedor = @cepFornecedor, statusAtivo = @statusAtivo, rua = @rua where idFornecedor = @idFornecedor  ";
+        private readonly string _inserir = "insert into Fornecedor(Cnpj,nomeFantasia, inscricaoEstadual, cepFornecedor, Rua,  uf, numero, complemento,bairro, cidade, statusAtivo ) " +
+                                            "values(@cnpj,@nomeFantasia,  @inscricaoEstadual, @cepFornecedor,@rua, @uf, @numero, @complemento, @bairro, @cidade, @statusAtivo)";
+        private readonly string _alterar = "update Fornecedor set   cnpj = @cnpj ,nomeFantasia = @nomeFantasia, inscricaoEstadual = @inscricaoEstadual, uf = @uf , numero = @numero, complemento = @complemento, bairro = @bairro,cidade = @cidade, cepFornecedor = @cepFornecedor, statusAtivo = @statusAtivo, rua = @rua where idFornecedor = @idFornecedor  ";
         private readonly string _listar = "select *from Fornecedor where statusAtivo = 1 ";
 
 
@@ -36,13 +36,13 @@ namespace SistemaPDVBack.Controller
         {
             fornecedor.NomeFantasia = nome;
         }
-        public ControllerFornecedor(string idFornecedor, string inscricaoEstadual, string nomeFantasia, string logradouro, string uf, string numero, string complemento, string bairro, string cidade,
+        public ControllerFornecedor(string idFornecedor, string inscricaoEstadual, string nomeFantasia, string uf, string numero, string complemento, string bairro, string cidade,
                                     string cep, string statusAtivo, string rua, string cnpj )
         {
-            ConverterValidar(idFornecedor, inscricaoEstadual, nomeFantasia, logradouro, uf, numero, complemento, bairro, cidade, cep, statusAtivo, rua, cnpj);
+            ConverterValidar(idFornecedor, inscricaoEstadual, nomeFantasia, uf, numero, complemento, bairro, cidade, cep, statusAtivo, rua, cnpj);
         }
 
-        private void ConverterValidar(string idFornecedor, string inscricaoEstadual, string nomeFantasia, string logradouro, string uf, string numero, string complemento, string bairro, string cidade, string cep, string statusAtivo, string rua, string cnpj)
+        private void ConverterValidar(string idFornecedor, string inscricaoEstadual, string nomeFantasia, string uf, string numero, string complemento, string bairro, string cidade, string cep, string statusAtivo, string rua, string cnpj)
         {
             if (mensagem == "")
             {
@@ -72,7 +72,6 @@ namespace SistemaPDVBack.Controller
                     fornecedor.Cnpj = cnpj;
                     fornecedor.StatusAtivo = int.Parse(statusAtivo);
                     fornecedor.InscricaoEstadual = int.Parse(inscricaoEstadual);
-                    fornecedor.LogradouroPessoa = logradouro;
                     fornecedor.ComplementoPessoa = complemento;
                     fornecedor.CepFornecedor = int.Parse(cep);
                 }
@@ -95,7 +94,6 @@ namespace SistemaPDVBack.Controller
             cmd.Parameters.AddWithValue("@cnpj", fornecedor.Cnpj);
             cmd.Parameters.AddWithValue("@rua", fornecedor.Rua);
             cmd.Parameters.AddWithValue("@nomeFantasia", fornecedor.NomeFantasia);
-            cmd.Parameters.AddWithValue("@logradouro", fornecedor.LogradouroPessoa);
             cmd.Parameters.AddWithValue("@uf", fornecedor.UfPessoa);
             cmd.Parameters.AddWithValue("@numero", fornecedor.NumeroPessoa);
             cmd.Parameters.AddWithValue("@complemento", fornecedor.ComplementoPessoa);
@@ -134,7 +132,6 @@ namespace SistemaPDVBack.Controller
             cmd.Parameters.AddWithValue("@idFornecedor", fornecedor.IdFornecedor);
             cmd.Parameters.AddWithValue("@inscricaoEstadual", fornecedor.InscricaoEstadual);
             cmd.Parameters.AddWithValue("@nomeFantasia", fornecedor.NomeFantasia);
-            cmd.Parameters.AddWithValue("@logradouro", fornecedor.LogradouroPessoa);
             cmd.Parameters.AddWithValue("@uf", fornecedor.UfPessoa);
             cmd.Parameters.AddWithValue("@numero", fornecedor.NumeroPessoa);
             cmd.Parameters.AddWithValue("@complemento", fornecedor.ComplementoPessoa);

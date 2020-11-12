@@ -34,7 +34,7 @@ namespace SistemaPDVBack
                 _ativo = "0";
             }
 
-            controllerColaborador = new ControllerColaborador (txbNome.Text, msktCpf.Text, cmbDepartamento.SelectedValue.ToString(), _ativo, cmbCargo.Text, mskTxtCelular.Text, txbEmail.Text, txbEmailCorporativo.Text);
+            controllerColaborador = new ControllerColaborador (txbId.Text,txbNome.Text, msktCpf.Text, cmbDepartamento.SelectedValue.ToString(), _ativo, cmbCargo.Text, mskTxtCelular.Text, txbEmail.Text, txbEmailCorporativo.Text);
 
             if (controllerColaborador.Ds_Msg != "")
             {
@@ -69,7 +69,7 @@ namespace SistemaPDVBack
             controllerColaborador = new ControllerColaborador();
             dgvColaborador.DataSource = controllerColaborador.ListarColaborador();
             cmbDepartamento.DataSource = controllerColaborador.PreencherDepartamento();
-            DefinirCabecalhos(new List<string>() { "Nome", "Cpf", "Departamento", "Cargo", "Telefone", "E-mail Pessoal", "E-mail Coorp.", "Usuario", "Senha", "Status" });
+            DefinirCabecalhos(new List<string>() {"ID", "Nome", "Cpf", "Departamento", "Cargo", "Telefone", "E-mail Pessoal", "E-mail Coorp.", "Usuario", "Senha", "Status" });
 
 
         }
@@ -85,16 +85,18 @@ namespace SistemaPDVBack
         private void dgvColaborador_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             string _temp;
-            cmbDepartamento.Text = this.dgvColaborador.CurrentRow.Cells[2].Value.ToString();
-            txbNome.Text = this.dgvColaborador.CurrentRow.Cells[0].Value.ToString();
-            msktCpf.Text = this.dgvColaborador.CurrentRow.Cells[1].Value.ToString();
-            cmbCargo.Text = this.dgvColaborador.CurrentRow.Cells[3].Value.ToString();
-            mskTxtCelular.Text = this.dgvColaborador.CurrentRow.Cells[4].Value.ToString();
-            txbEmailCorporativo.Text = this.dgvColaborador.CurrentRow.Cells[5].Value.ToString();
-            txbEmail.Text = this.dgvColaborador.CurrentRow.Cells[6].Value.ToString();
-            txbUsuario.Text = this.dgvColaborador.CurrentRow.Cells[7].Value.ToString();
-            txbSenha.Text = this.dgvColaborador.CurrentRow.Cells[8].Value.ToString();
-            _temp = this.dgvColaborador.CurrentRow.Cells[9].Value.ToString();
+            cmbDepartamento.Text = this.dgvColaborador.CurrentRow.Cells[3].Value.ToString();
+            txbNome.Text = this.dgvColaborador.CurrentRow.Cells[1].Value.ToString();
+            txbId.Text = this.dgvColaborador.CurrentRow.Cells[0].Value.ToString();
+
+            msktCpf.Text = this.dgvColaborador.CurrentRow.Cells[2].Value.ToString();
+            cmbCargo.Text = this.dgvColaborador.CurrentRow.Cells[4].Value.ToString();
+            mskTxtCelular.Text = this.dgvColaborador.CurrentRow.Cells[5].Value.ToString();
+            txbEmailCorporativo.Text = this.dgvColaborador.CurrentRow.Cells[6].Value.ToString();
+            txbEmail.Text = this.dgvColaborador.CurrentRow.Cells[7].Value.ToString();
+            txbUsuario.Text = this.dgvColaborador.CurrentRow.Cells[8].Value.ToString();
+            txbSenha.Text = this.dgvColaborador.CurrentRow.Cells[9].Value.ToString();
+            _temp = this.dgvColaborador.CurrentRow.Cells[10].Value.ToString();
 
             bool _tempV = bool.Parse(_temp);
             if (_tempV == true)
@@ -130,7 +132,7 @@ namespace SistemaPDVBack
                 _ativo = "0";
             }
 
-            controllerColaborador = new ControllerColaborador(txbNome.Text, msktCpf.Text, cmbDepartamento.SelectedValue.ToString(), _ativo, cmbCargo.Text, mskTxtCelular.Text, txbEmail.Text, txbEmailCorporativo.Text);
+            controllerColaborador = new ControllerColaborador(txbId.Text, txbNome.Text, msktCpf.Text, cmbDepartamento.SelectedValue.ToString(), _ativo, cmbCargo.Text, mskTxtCelular.Text, txbEmail.Text, txbEmailCorporativo.Text);
             controllerUsuario = new ControllerUsuario(txbUsuario.Text, txbSenha.Text, msktCpf.Text, _ativo);
 
             if (controllerColaborador.Ds_Msg != "")
@@ -162,6 +164,7 @@ namespace SistemaPDVBack
 
         private void LimpaCampos()
         {
+            txbId.Clear();
             txbNome.Clear();
             msktCpf.Text = "";
             mskTxtCelular.Text = "";

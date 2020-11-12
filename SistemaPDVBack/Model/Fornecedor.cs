@@ -13,7 +13,6 @@ namespace SistemaPDVBack.Model
         public int IdFornecedor { get; set; }
         public int InscricaoEstadual { get; set; }
         public string NomeFantasia { get; set; }
-        public string LogradouroPessoa { get; set; }
         public string UfPessoa { get; set; }
         public string NumeroPessoa { get; set; }
         public string ComplementoPessoa { get; set; }

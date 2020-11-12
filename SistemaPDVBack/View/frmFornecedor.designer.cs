@@ -32,8 +32,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gbEndereco = new System.Windows.Forms.GroupBox();
-            this.txbLogradouro = new System.Windows.Forms.TextBox();
-            this.lblLogradouro = new System.Windows.Forms.Label();
+            this.txbCep = new System.Windows.Forms.TextBox();
+            this.btnLocalizar = new System.Windows.Forms.Button();
             this.txbNumero = new System.Windows.Forms.TextBox();
             this.lblNumero = new System.Windows.Forms.Label();
             this.txbComplemento = new System.Windows.Forms.TextBox();
@@ -64,8 +64,6 @@
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.btnConsulta = new FontAwesome.Sharp.IconButton();
             this.ckbInativo = new System.Windows.Forms.CheckBox();
-            this.btnLocalizar = new System.Windows.Forms.Button();
-            this.txbCep = new System.Windows.Forms.TextBox();
             this.gbEndereco.SuspendLayout();
             this.gbDadosForncedor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFornecedor)).BeginInit();
@@ -77,8 +75,6 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gbEndereco.Controls.Add(this.txbCep);
             this.gbEndereco.Controls.Add(this.btnLocalizar);
-            this.gbEndereco.Controls.Add(this.txbLogradouro);
-            this.gbEndereco.Controls.Add(this.lblLogradouro);
             this.gbEndereco.Controls.Add(this.txbNumero);
             this.gbEndereco.Controls.Add(this.lblNumero);
             this.gbEndereco.Controls.Add(this.txbComplemento);
@@ -99,25 +95,22 @@
             this.gbEndereco.TabStop = false;
             this.gbEndereco.Enter += new System.EventHandler(this.gbEndereco_Enter);
             // 
-            // txbLogradouro
+            // txbCep
             // 
-            this.txbLogradouro.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txbLogradouro.Location = new System.Drawing.Point(613, 84);
-            this.txbLogradouro.Name = "txbLogradouro";
-            this.txbLogradouro.Size = new System.Drawing.Size(192, 20);
-            this.txbLogradouro.TabIndex = 21;
+            this.txbCep.Location = new System.Drawing.Point(8, 32);
+            this.txbCep.Name = "txbCep";
+            this.txbCep.Size = new System.Drawing.Size(100, 20);
+            this.txbCep.TabIndex = 24;
             // 
-            // lblLogradouro
+            // btnLocalizar
             // 
-            this.lblLogradouro.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblLogradouro.AutoSize = true;
-            this.lblLogradouro.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLogradouro.ForeColor = System.Drawing.Color.Black;
-            this.lblLogradouro.Location = new System.Drawing.Point(610, 66);
-            this.lblLogradouro.Name = "lblLogradouro";
-            this.lblLogradouro.Size = new System.Drawing.Size(83, 15);
-            this.lblLogradouro.TabIndex = 20;
-            this.lblLogradouro.Text = "Logradouro";
+            this.btnLocalizar.Location = new System.Drawing.Point(114, 32);
+            this.btnLocalizar.Name = "btnLocalizar";
+            this.btnLocalizar.Size = new System.Drawing.Size(70, 23);
+            this.btnLocalizar.TabIndex = 23;
+            this.btnLocalizar.Text = "Localizar";
+            this.btnLocalizar.UseVisualStyleBackColor = true;
+            this.btnLocalizar.Click += new System.EventHandler(this.btnLocalizar_Click);
             // 
             // txbNumero
             // 
@@ -505,23 +498,6 @@
             this.ckbInativo.Text = "Inativo";
             this.ckbInativo.UseVisualStyleBackColor = true;
             // 
-            // btnLocalizar
-            // 
-            this.btnLocalizar.Location = new System.Drawing.Point(114, 32);
-            this.btnLocalizar.Name = "btnLocalizar";
-            this.btnLocalizar.Size = new System.Drawing.Size(70, 23);
-            this.btnLocalizar.TabIndex = 23;
-            this.btnLocalizar.Text = "Localizar";
-            this.btnLocalizar.UseVisualStyleBackColor = true;
-            this.btnLocalizar.Click += new System.EventHandler(this.btnLocalizar_Click);
-            // 
-            // txbCep
-            // 
-            this.txbCep.Location = new System.Drawing.Point(8, 32);
-            this.txbCep.Name = "txbCep";
-            this.txbCep.Size = new System.Drawing.Size(100, 20);
-            this.txbCep.TabIndex = 24;
-            // 
             // frmFornecedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -581,8 +557,6 @@
         private System.Windows.Forms.TextBox txbBairro;
         private System.Windows.Forms.TextBox txbId;
         private System.Windows.Forms.Label lblId;
-        private System.Windows.Forms.TextBox txbLogradouro;
-        private System.Windows.Forms.Label lblLogradouro;
         private FontAwesome.Sharp.IconButton btnConsulta;
         private System.Windows.Forms.CheckBox ckbInativo;
         private System.Windows.Forms.Button btnLocalizar;

@@ -29,7 +29,7 @@ namespace SistemaPDVBack
         {
             AtribuirValorRb();
 
-            controllerFornecedor = new ControllerFornecedor(txbId.Text, txbInscricaoEstadual.Text, txbNomeFantasia.Text, txbLogradouro.Text, txbEstado.Text, txbNumero.Text,
+            controllerFornecedor = new ControllerFornecedor(txbId.Text, txbInscricaoEstadual.Text, txbNomeFantasia.Text,  txbEstado.Text, txbNumero.Text,
                                                             txbComplemento.Text, txbBairro.Text, txbCidade.Text, txbCep.Text, _ativo, txbRua.Text, mskTxbCnpj.Text);
             if (controllerFornecedor.Ds_Msg != "")
             {
@@ -59,7 +59,7 @@ namespace SistemaPDVBack
             //verificar
             controllerFornecedor = new ControllerFornecedor();
             dgvFornecedor.DataSource = controllerFornecedor.ListarFornecedor();
-            DefinirCabecalhos(new List<string>() { "Id", "Nome", "CNPJ", "Insc. Estadual", "CEP", "Rua", "Logradouro", "Estado", "Numero", "Complemnto", "Bairro", "Cidade", "Ativo" });
+            DefinirCabecalhos(new List<string>() { "Id", "Nome", "CNPJ", "Insc. Estadual", "CEP", "Rua",  "Estado", "Numero", "Complemnto", "Bairro", "Cidade", "Ativo" });
         }
 
         private void dgvFornecedor_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -73,13 +73,13 @@ namespace SistemaPDVBack
             txbInscricaoEstadual.Text = this.dgvFornecedor.CurrentRow.Cells[3].Value.ToString();
             txbCep.Text = this.dgvFornecedor.CurrentRow.Cells[4].Value.ToString();
             txbRua.Text = this.dgvFornecedor.CurrentRow.Cells[5].Value.ToString();
-            txbLogradouro.Text = this.dgvFornecedor.CurrentRow.Cells[6].Value.ToString();
-            txbEstado.Text = this.dgvFornecedor.CurrentRow.Cells[7].Value.ToString();
-            txbNumero.Text = this.dgvFornecedor.CurrentRow.Cells[8].Value.ToString();
-            txbComplemento.Text = this.dgvFornecedor.CurrentRow.Cells[9].Value.ToString();
-            txbBairro.Text = this.dgvFornecedor.CurrentRow.Cells[10].Value.ToString();
-            txbCidade.Text = this.dgvFornecedor.CurrentRow.Cells[11].Value.ToString();
-            _temp = this.dgvFornecedor.CurrentRow.Cells[12].Value.ToString();
+       
+            txbEstado.Text = this.dgvFornecedor.CurrentRow.Cells[6].Value.ToString();
+            txbNumero.Text = this.dgvFornecedor.CurrentRow.Cells[7].Value.ToString();
+            txbComplemento.Text = this.dgvFornecedor.CurrentRow.Cells[8].Value.ToString();
+            txbBairro.Text = this.dgvFornecedor.CurrentRow.Cells[9].Value.ToString();
+            txbCidade.Text = this.dgvFornecedor.CurrentRow.Cells[10].Value.ToString();
+            _temp = this.dgvFornecedor.CurrentRow.Cells[11].Value.ToString();
 
             bool _temp2 = bool.Parse(_temp);
             if (_temp2 == true)
@@ -96,7 +96,7 @@ namespace SistemaPDVBack
         private void btnAlterar_Click(object sender, EventArgs e)
         {
             AtribuirValorRb();
-            controllerFornecedor = new ControllerFornecedor(txbId.Text, txbInscricaoEstadual.Text, txbNomeFantasia.Text, txbLogradouro.Text, txbEstado.Text, txbNumero.Text,
+            controllerFornecedor = new ControllerFornecedor(txbId.Text, txbInscricaoEstadual.Text, txbNomeFantasia.Text,  txbEstado.Text, txbNumero.Text,
                                                             txbComplemento.Text, txbBairro.Text, txbCidade.Text, txbCep.Text, _ativo, txbRua.Text, mskTxbCnpj.Text);
 
             if (controllerFornecedor.Ds_Msg != "")

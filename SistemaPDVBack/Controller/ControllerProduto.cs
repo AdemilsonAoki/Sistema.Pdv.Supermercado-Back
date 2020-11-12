@@ -15,8 +15,8 @@ namespace SistemaPDVBack.Controller
         private readonly string _inserir = "insert into Produto(codBarras, codFornecedor, nomeProduto, descricaoProduto,precoCusto,precoVenda,margemLucro,dataFabricacao,dataVencimento, quantidadeEstoqueProduto, categoria, statusAtivo)" +
                                             "values(@codBarras, @codFornecedor, @nomeProduto, @descricaoProduto, @precoCusto, @precoVenda, @margemLucro, @dataFabricacao, @dataVencimento, @quantidadeEstoqueProduto, @categoria, @statusAtivo ) ";
 
-        private readonly string _alterar = "update Produto set codFornecedor = @codFornecedor , nomeProduto = @nomeProduto, descricaoProduto = @descricaoProduto, precoCusto =@precoCusto, precoVenda = @precoVenda, margemLucro = @margemLucro, dataFabricacao = @dataFabricacao, dataVencimento = @dataVencimento, quantidadeEstoqueProduto = @quantidadeEstoqueProduto, categoria = @categoria, statusAtivo = @statusAtivo where codBarras = @codBarras ";
-        private readonly string _listar = "select p.codBarras, p.nomeProduto, f.nomeFantasia, p.descricaoProduto,p.quantidadeEstoqueProduto, p.precoCusto, p.margemLucro, p.precoVenda, p.dataFabricacao, p.dataVencimento, p.categoria, p.statusAtivo  From Produto p join Fornecedor f on p.codFornecedor = f.idFornecedor where p.statusAtivo = 1";
+        private readonly string _alterar = "update Produto set codFornecedor = @codFornecedor , nomeProduto = @nomeProduto, descricaoProduto = @descricaoProduto, precoCusto =@precoCusto, precoVenda = @precoVenda, margemLucro = @margemLucro, dataFabricacao = @dataFabricacao, dataVencimento = @dataVencimento, quantidadeEstoqueProduto = @quantidadeEstoqueProduto, categoria = @categoria, statusAtivo = @statusAtivo where idProduto = @idProduto ";
+        private readonly string _listar = "select p.idProduto, p.codBarras, p.nomeProduto, f.nomeFantasia, p.descricaoProduto,p.quantidadeEstoqueProduto, p.precoCusto, p.margemLucro, p.precoVenda, p.dataFabricacao, p.dataVencimento, p.categoria, p.statusAtivo  From Produto p join Fornecedor f on p.codFornecedor = f.idFornecedor where p.statusAtivo = 1";
         string mensagem = "";
 
         public string Ds_Msg
@@ -43,14 +43,14 @@ namespace SistemaPDVBack.Controller
 
 
 
-        public ControllerProduto(string codBarras, string codFornecedor, string nomeProduto, string descricaoProduto, string precoCusto, string precoVenda, string margemLucro, string dataFabricacao, string dataVencimento, string quantidadeEstoqueProduto, string categoria, string statusAtivo)
+        public ControllerProduto(string idProduto, string codBarras, string codFornecedor, string nomeProduto, string descricaoProduto, string precoCusto, string precoVenda, string margemLucro, string dataFabricacao, string dataVencimento, string quantidadeEstoqueProduto, string categoria, string statusAtivo)
         {
 
-            ConverterValidar(codBarras, codFornecedor, nomeProduto, descricaoProduto, precoCusto, precoVenda, margemLucro, dataFabricacao, dataVencimento, quantidadeEstoqueProduto, categoria, statusAtivo);
+            ConverterValidar(idProduto, codBarras, codFornecedor, nomeProduto, descricaoProduto, precoCusto, precoVenda, margemLucro, dataFabricacao, dataVencimento, quantidadeEstoqueProduto, categoria, statusAtivo);
 
 
         }
-        private void ConverterValidar(string codBarras, string codFornecedor, string nomeProduto, string descricaoProduto, string precoCusto, string precoVenda, string margemLucro, string dataFabricacao, string dataVencimento, string quantidadeEstoqueProduto, string categoria, string statusAtivo)
+        private void ConverterValidar(string idProduto, string codBarras, string codFornecedor, string nomeProduto, string descricaoProduto, string precoCusto, string precoVenda, string margemLucro, string dataFabricacao, string dataVencimento, string quantidadeEstoqueProduto, string categoria, string statusAtivo)
         {
             
             string validarData = "(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[012])/(19|20)\\d{2}";
@@ -60,8 +60,12 @@ namespace SistemaPDVBack.Controller
             {
                 try
                 {
+                    if(idProduto != "")
+                    {
+                        produto.IdProduto = int.Parse(idProduto);
+                    }
 
-                    produto.CodBarras = int.Parse(codBarras);
+                    produto.CodBarras = float.Parse(codBarras);
 
                     if (nomeProduto != "" && descricaoProduto != "" && dataFabricacao != "" && dataVencimento != "" && categoria != "")
                     {
@@ -160,6 +164,8 @@ namespace SistemaPDVBack.Controller
         public void AlterarProduto()
         {
             cmd.CommandText = _alterar;
+
+            cmd.Parameters.AddWithValue("@idProduto", produto.IdProduto);
 
             cmd.Parameters.AddWithValue("@codBarras", produto.CodBarras);
             cmd.Parameters.AddWithValue("@codFornecedor", produto.CodFornecedor);
@@ -275,7 +281,7 @@ namespace SistemaPDVBack.Controller
 
         public DataTable ListarTodosProdutos()
         {
-            cmd.CommandText = "select p.codBarras, p.nomeProduto, f.nomeFantasia, p.descricaoProduto,p.quantidadeEstoqueProduto, p.precoCusto, p.margemLucro, p.precoVenda, p.dataFabricacao, p.dataVencimento, p.categoria, p.statusAtivo  From Produto p join Fornecedor f on p.codFornecedor = f.idFornecedor ";
+            cmd.CommandText = "select  p.idProduto, p.codBarras, p.nomeProduto, f.nomeFantasia, p.descricaoProduto,p.quantidadeEstoqueProduto, p.precoCusto, p.margemLucro, p.precoVenda, p.dataFabricacao, p.dataVencimento, p.categoria, p.statusAtivo  From Produto p join Fornecedor f on p.codFornecedor = f.idFornecedor ";
             try
             {
                 cmd.Connection = conexao.AbrirBanco();

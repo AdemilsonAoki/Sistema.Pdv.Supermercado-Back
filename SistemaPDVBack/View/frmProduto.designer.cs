@@ -64,6 +64,8 @@
             this.btnConsulta = new FontAwesome.Sharp.IconButton();
             this.msktDataFabricacao = new System.Windows.Forms.MaskedTextBox();
             this.msktDataVencimento = new System.Windows.Forms.MaskedTextBox();
+            this.txbId = new System.Windows.Forms.TextBox();
+            this.lblId = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.gpCategoria.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -76,7 +78,7 @@
             this.lblCodBarras.AutoSize = true;
             this.lblCodBarras.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCodBarras.ForeColor = System.Drawing.Color.Black;
-            this.lblCodBarras.Location = new System.Drawing.Point(21, 20);
+            this.lblCodBarras.Location = new System.Drawing.Point(89, 18);
             this.lblCodBarras.Name = "lblCodBarras";
             this.lblCodBarras.Size = new System.Drawing.Size(118, 15);
             this.lblCodBarras.TabIndex = 0;
@@ -86,7 +88,7 @@
             // 
             this.txbCodigoBarras.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txbCodigoBarras.Location = new System.Drawing.Point(24, 38);
+            this.txbCodigoBarras.Location = new System.Drawing.Point(92, 36);
             this.txbCodigoBarras.Name = "txbCodigoBarras";
             this.txbCodigoBarras.Size = new System.Drawing.Size(264, 20);
             this.txbCodigoBarras.TabIndex = 1;
@@ -98,7 +100,7 @@
             this.lblFornecedor.AutoSize = true;
             this.lblFornecedor.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFornecedor.ForeColor = System.Drawing.Color.Black;
-            this.lblFornecedor.Location = new System.Drawing.Point(295, 18);
+            this.lblFornecedor.Location = new System.Drawing.Point(371, 18);
             this.lblFornecedor.Name = "lblFornecedor";
             this.lblFornecedor.Size = new System.Drawing.Size(83, 15);
             this.lblFornecedor.TabIndex = 3;
@@ -110,9 +112,9 @@
             this.cmbFornecedor.FormattingEnabled = true;
             this.cmbFornecedor.Items.AddRange(new object[] {
             "Selecione"});
-            this.cmbFornecedor.Location = new System.Drawing.Point(298, 36);
+            this.cmbFornecedor.Location = new System.Drawing.Point(374, 36);
             this.cmbFornecedor.Name = "cmbFornecedor";
-            this.cmbFornecedor.Size = new System.Drawing.Size(235, 21);
+            this.cmbFornecedor.Size = new System.Drawing.Size(195, 21);
             this.cmbFornecedor.TabIndex = 4;
             // 
             // groupBox1
@@ -510,12 +512,33 @@
             this.msktDataVencimento.Size = new System.Drawing.Size(100, 20);
             this.msktDataVencimento.TabIndex = 31;
             // 
+            // txbId
+            // 
+            this.txbId.Enabled = false;
+            this.txbId.Location = new System.Drawing.Point(19, 36);
+            this.txbId.Name = "txbId";
+            this.txbId.Size = new System.Drawing.Size(54, 20);
+            this.txbId.TabIndex = 45;
+            // 
+            // lblId
+            // 
+            this.lblId.AutoSize = true;
+            this.lblId.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblId.ForeColor = System.Drawing.Color.Black;
+            this.lblId.Location = new System.Drawing.Point(17, 18);
+            this.lblId.Name = "lblId";
+            this.lblId.Size = new System.Drawing.Size(21, 15);
+            this.lblId.TabIndex = 44;
+            this.lblId.Text = "ID";
+            // 
             // frmProduto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SteelBlue;
             this.ClientSize = new System.Drawing.Size(868, 522);
+            this.Controls.Add(this.txbId);
+            this.Controls.Add(this.lblId);
             this.Controls.Add(this.msktDataVencimento);
             this.Controls.Add(this.msktDataFabricacao);
             this.Controls.Add(this.btnConsulta);
@@ -586,5 +609,7 @@
         private FontAwesome.Sharp.IconButton btnConsulta;
         private System.Windows.Forms.MaskedTextBox msktDataFabricacao;
         private System.Windows.Forms.MaskedTextBox msktDataVencimento;
+        private System.Windows.Forms.TextBox txbId;
+        private System.Windows.Forms.Label lblId;
     }
 }
