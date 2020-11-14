@@ -15,7 +15,7 @@ namespace SistemaPDVBack.Controller
         private readonly string _inserir = "insert into Produto(codBarras, codFornecedor, nomeProduto, descricaoProduto,precoCusto,precoVenda,margemLucro,dataFabricacao,dataVencimento, quantidadeEstoqueProduto, categoria, statusAtivo)" +
                                             "values(@codBarras, @codFornecedor, @nomeProduto, @descricaoProduto, @precoCusto, @precoVenda, @margemLucro, @dataFabricacao, @dataVencimento, @quantidadeEstoqueProduto, @categoria, @statusAtivo ) ";
 
-        private readonly string _alterar = "update Produto set codFornecedor = @codFornecedor , nomeProduto = @nomeProduto, descricaoProduto = @descricaoProduto, precoCusto =@precoCusto, precoVenda = @precoVenda, margemLucro = @margemLucro, dataFabricacao = @dataFabricacao, dataVencimento = @dataVencimento, quantidadeEstoqueProduto = @quantidadeEstoqueProduto, categoria = @categoria, statusAtivo = @statusAtivo where idProduto = @idProduto ";
+        private readonly string _alterar = "update Produto set codBarras = @codBarras, codFornecedor = @codFornecedor , nomeProduto = @nomeProduto, descricaoProduto = @descricaoProduto, precoCusto =@precoCusto, precoVenda = @precoVenda, margemLucro = @margemLucro, dataFabricacao = @dataFabricacao, dataVencimento = @dataVencimento, quantidadeEstoqueProduto = @quantidadeEstoqueProduto, categoria = @categoria, statusAtivo = @statusAtivo where idProduto = @idProduto ";
         private readonly string _listar = "select p.idProduto, p.codBarras, p.nomeProduto, f.nomeFantasia, p.descricaoProduto,p.quantidadeEstoqueProduto, p.precoCusto, p.margemLucro, p.precoVenda, p.dataFabricacao, p.dataVencimento, p.categoria, p.statusAtivo  From Produto p join Fornecedor f on p.codFornecedor = f.idFornecedor where p.statusAtivo = 1";
         string mensagem = "";
 
@@ -32,11 +32,11 @@ namespace SistemaPDVBack.Controller
         {
 
         }
-        public ControllerProduto(string nome)
+        public ControllerProduto(string codBarras)
         {
-            if (nome != "")
+            if (codBarras != "")
             {
-                produto.NomeProduto = nome;
+                produto.CodBarras = codBarras;
 
             }
         }
@@ -52,20 +52,28 @@ namespace SistemaPDVBack.Controller
         }
         private void ConverterValidar(string idProduto, string codBarras, string codFornecedor, string nomeProduto, string descricaoProduto, string precoCusto, string precoVenda, string margemLucro, string dataFabricacao, string dataVencimento, string quantidadeEstoqueProduto, string categoria, string statusAtivo)
         {
-            
+
             string validarData = "(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[012])/(19|20)\\d{2}";
-           
+
             string validar = "Preencha os produtos";
             if (mensagem == "")
             {
                 try
                 {
-                    if(idProduto != "")
+                    if (idProduto != "")
                     {
                         produto.IdProduto = int.Parse(idProduto);
                     }
 
-                    produto.CodBarras = float.Parse(codBarras);
+                    if(codBarras.Length > 14)
+                    {
+                        mensagem = "Tamanho do código invalido!!";
+                    }
+                    else
+                    {
+                        produto.CodBarras = codBarras;
+
+                    }
 
                     if (nomeProduto != "" && descricaoProduto != "" && dataFabricacao != "" && dataVencimento != "" && categoria != "")
                     {
@@ -79,7 +87,7 @@ namespace SistemaPDVBack.Controller
                         mensagem = validar;
 
                     }
-                    if (Regex.IsMatch(dataFabricacao, validarData) || dataFabricacao == "00/00/0000" )
+                    if (Regex.IsMatch(dataFabricacao, validarData) || dataFabricacao == "00/00/0000")
                     {
                         produto.DataFabricacao = dataFabricacao;
 
@@ -233,8 +241,8 @@ namespace SistemaPDVBack.Controller
 
         public DataTable PesquisaProduto()
         {
-            cmd.CommandText = "select p.codBarras, p.nomeProduto, f.nomeFantasia, p.descricaoProduto,p.quantidadeEstoqueProduto, p.precoCusto, p.margemLucro, p.precoVenda, p.dataFabricacao, p.dataVencimento, p.categoria, p.statusAtivo  From Produto p join Fornecedor f on p.codFornecedor = f.idFornecedor where nomeProduto LIKE'%' @nomeProduto '%' order by nomeProduto";
-            cmd.Parameters.AddWithValue("@nomeProduto", produto.NomeProduto);
+            cmd.CommandText = "select p.idProduto, p.codBarras, p.nomeProduto, f.nomeFantasia, p.descricaoProduto,p.quantidadeEstoqueProduto, p.precoCusto, p.margemLucro, p.precoVenda, p.dataFabricacao, p.dataVencimento, p.categoria, p.statusAtivo  From Produto p join Fornecedor f on p.codFornecedor = f.idFornecedor where p.codBarras LIKE'%' @codBarras '%' order by p.codBarras";
+            cmd.Parameters.AddWithValue("@codBarras", produto.CodBarras);
             try
             {
                 cmd.Connection = conexao.AbrirBanco();
@@ -301,6 +309,40 @@ namespace SistemaPDVBack.Controller
                 conexao.FecharBanco();
             }
         }
+        public bool VerificarCodBarras()
+        {
+
+
+            cmd.CommandText = "select Count(1) from produto where codBarras= @codBarras ";
+            cmd.Parameters.AddWithValue("@codBarras", produto.CodBarras);
+
+            try
+            {
+                cmd.Connection = conexao.AbrirBanco();
+
+                var resultado = cmd.ExecuteScalar();
+                if (resultado.ToString() != "0")
+                {
+                    return true;
+                }
+                else
+                    return false;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return false;
+            }
+            finally
+            {
+                cmd.Parameters.Clear();
+                conexao.FecharBanco();
+            }
+
+
+        }
+
 
 
     }

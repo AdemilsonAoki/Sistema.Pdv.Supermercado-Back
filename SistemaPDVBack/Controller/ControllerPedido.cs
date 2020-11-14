@@ -43,7 +43,7 @@ namespace SistemaPDVBack.Controller
             {
                 pedido.Status = int.Parse(status);
                 pedido.DataDoPedido = dataDoPedido;
-                pedido.CpfColaborador = CarregaUsuario.IdUser;
+                pedido.IdColaborador = int.Parse(CarregaUsuario.IdUser);
                 pedido.TotalPedido = decimal.Parse(total);
                 pedido.FormaDePagamento = formaPagamento;
 
@@ -67,9 +67,9 @@ namespace SistemaPDVBack.Controller
         {
 
 
-            cmd.CommandText = "insert into Pedido(cpfColaborador, codCliente, status,dataDoPedido,formaPagamento, totalPedido) values(@cpfColaborador,@codCliente, @status,@dataDoPedido, @formaPagamento, @totalPedido)";
+            cmd.CommandText = "insert into Pedido(idColaborador,status, dataDoPedido,codCliente, formaPagamento, totalPedido) values(@idColaborador,@status,@dataDoPedido,@codCliente,  @formaPagamento, @totalPedido)";
 
-            cmd.Parameters.AddWithValue("@cpfColaborador", pedido.CpfColaborador);
+            cmd.Parameters.AddWithValue("@idColaborador", pedido.IdColaborador);
             if (!pedido.CodCliente.Equals(null))
             {
                 cmd.Parameters.AddWithValue("@codCliente", pedido.CodCliente);
@@ -84,6 +84,7 @@ namespace SistemaPDVBack.Controller
             cmd.Parameters.AddWithValue("@dataDoPedido", pedido.DataDoPedido);
             cmd.Parameters.AddWithValue("@formaPagamento", pedido.FormaDePagamento);
             cmd.Parameters.AddWithValue("@totalPedido", pedido.TotalPedido);
+
 
             //  cmd.Parameters.AddWithValue("@tipoCliente", pedido.TipoCliente);
 

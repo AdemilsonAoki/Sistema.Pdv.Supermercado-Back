@@ -36,6 +36,7 @@ namespace SistemaPDVBack.Controller
         {
             ConverterValidar(codBarras, quantidade, total);
             CarregaPedido();
+            CarregaProduto();
 
         }
 
@@ -51,7 +52,7 @@ namespace SistemaPDVBack.Controller
             {
                 if (!codBarras.Equals(""))
                 {
-                    produtoPedido.CodProduto = int.Parse(codBarras);
+                    produtoPedido.CodBarras = codBarras;
 
                 }
                 if (!quantidade.Equals(""))
@@ -70,7 +71,7 @@ namespace SistemaPDVBack.Controller
 
             catch (Exception e)
             {
-                throw;
+               throw;
             }
 
 
@@ -81,7 +82,7 @@ namespace SistemaPDVBack.Controller
 
 
             cmd.CommandText = "select *from Produto where codBarras = @codBarras";
-            cmd.Parameters.AddWithValue("@codBarras", produtoPedido.CodProduto);
+            cmd.Parameters.AddWithValue("@codBarras", produtoPedido.CodBarras);
 
             string venda = "";
             try
@@ -114,13 +115,15 @@ namespace SistemaPDVBack.Controller
             }
 
         }
+    
 
         public string VerificaProdutoNome()
+      
         {
 
 
             cmd.CommandText = "select *from Produto where codBarras = @codBarras";
-            cmd.Parameters.AddWithValue("@codBarras", produtoPedido.CodProduto);
+            cmd.Parameters.AddWithValue("@codBarras", produtoPedido.CodBarras);
 
             string nome = "";
             try
@@ -133,9 +136,51 @@ namespace SistemaPDVBack.Controller
                 {
 
                     nome = reader.GetString(3);
+                    
 
                 }
+               
                 return nome;
+
+
+            }
+            catch (Exception e)
+            {
+                throw;
+                //MessageBox.Show(e.Message);
+
+            }
+            finally
+            {
+                conexao.FecharBanco();
+                cmd.Parameters.Clear();
+            }
+
+        }
+        private void CarregaProduto()
+
+        {
+
+
+            cmd.CommandText = "select *from Produto where codBarras = @codBarras";
+            cmd.Parameters.AddWithValue("@codBarras", produtoPedido.CodBarras);
+
+           
+            try
+            {
+                cmd.Connection = conexao.AbrirBanco();
+
+                reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+
+                    produtoPedido.CodProduto = reader.GetInt32(0);
+
+
+                }
+
+               
 
 
             }

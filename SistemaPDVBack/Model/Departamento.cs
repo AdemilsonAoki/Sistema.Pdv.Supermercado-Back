@@ -9,7 +9,7 @@ namespace SistemaPDVBack.Model
     class Departamento
     {
         public int IdDEpartamento { get; set; }
-        public int NomeDepartamento { get; set; }
+        public string NomeDepartamento { get; set; }
 
     }
     

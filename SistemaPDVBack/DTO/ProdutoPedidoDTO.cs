@@ -21,10 +21,8 @@ namespace SistemaPDVBack.DTO
        
 
 
-        public ProdutoPedidoDTO()
-        {
-
-        }
+       
+      
 
 
 

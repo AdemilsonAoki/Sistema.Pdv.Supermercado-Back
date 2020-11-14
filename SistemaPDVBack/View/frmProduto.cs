@@ -110,10 +110,19 @@ namespace SistemaPDVBack
             }
             else
             {
-                // Tudo certinho!
-                controllerProduto.AdicionarProduto();
 
-                Listar();
+                // Tudo certinho!
+                if(controllerProduto.VerificarCodBarras() == false)
+                {
+                    controllerProduto.AdicionarProduto();
+
+                    Listar();
+                }
+                else
+                {
+                    MessageBox.Show("Esse código de barras já existe !!");
+                }
+                
 
 
             }
@@ -180,6 +189,10 @@ namespace SistemaPDVBack
                 rbPerecivel.Checked = true;
             else
                 rbNaoPerecivel.Checked = true;
+
+
+            btnAdicionar.Enabled = false;
+
         }
 
         private void btnAlterar_Click(object sender, EventArgs e)
@@ -188,6 +201,7 @@ namespace SistemaPDVBack
             controllerProduto = new ControllerProduto(txbId.Text,txbCodigoBarras.Text, cmbFornecedor.SelectedValue.ToString(), txbNome.Text, rtbDescricao.Text, txbPrecoCusto.Text, txbPrecoDeVenda.Text,
                                                         txbMargemDeLucro.Text, msktDataFabricacao.Text, msktDataVencimento.Text, txbQuantidadeEstoque.Text, _perecivel, _ativo);
             controllerProduto.AlterarProduto();
+            btnAdicionar.Enabled = true;
             Listar();
         }
 
@@ -195,22 +209,24 @@ namespace SistemaPDVBack
         {
             int _index = 0;
 
-            //foreach (DataGridViewColumn coluna in dgvProduto.Columns)
-            //{
-            //    if (coluna.Visible)
-            //    {
-            //        coluna.HeaderText = ListaCabecalhos[_index];
-            //        _index++;
-            //    }
-            //}
+            foreach (DataGridViewColumn coluna in dgvProduto.Columns)
+            {
+                if (coluna.Visible)
+                {
+                    coluna.HeaderText = ListaCabecalhos[_index];
+                    _index++;
+                }
+            }
         }
 
         private void btnConsulta_Click(object sender, EventArgs e)
         {
-            controllerProduto = new ControllerProduto(txbNome.Text);
-            if (txbNome.Text != "")
+            controllerProduto = new ControllerProduto(txbCodigoBarras.Text);
+            if (txbCodigoBarras.Text != "")
             {
                 dgvProduto.DataSource = controllerProduto.PesquisaProduto();
+                DefinirCabecalhos(new List<string>() { "ID", "Cód de barras", "Nome", "Fornecedor", "Descrição", "Quantidade", "Preço Custo", "Margem", "Preço Venda", "Data Fabri.", "Data Venci.", "Categoria", "Ativo" });
+
 
             }
             else

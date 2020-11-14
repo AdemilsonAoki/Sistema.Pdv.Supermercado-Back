@@ -20,6 +20,8 @@ namespace SistemaPDVBack.Controller
         public ControllerUsuario(string usuario, string senha, string cpfColaborador, string statusAtivo)
         {
             ValidarConverter(usuario, senha, cpfColaborador, statusAtivo);
+            LerColaborador();
+
 
         }
         public ControllerUsuario(string usuario, string senha)
@@ -89,11 +91,50 @@ namespace SistemaPDVBack.Controller
 
         }
 
+
+        private void LerColaborador()
+        {
+            cmd.CommandText = "select *from Colaborador where cpfColaborador = @cpfColaborador ";
+            cmd.Parameters.AddWithValue("@cpfColaborador", colaborador.CpfColaborador);
+            
+            try
+            {
+                cmd.Connection = conexao.AbrirBanco();
+
+                reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+
+                        colaborador.IdColaborador = reader.GetInt32(0);
+
+                    }
+                  
+
+
+                }
+                else
+                {
+                    
+                }
+
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+              
+            }
+            finally
+            {
+                conexao.FecharBanco();
+            }
+        }
         public void AdicionarUsuario()
         {
-            cmd.CommandText = "insert into Usuario(cpfColaborador, usuario, senha, statusAtivo) values (@cpfColaborador, @usuario, @senha, @statusAtivo) ";
+            cmd.CommandText = "insert into Usuario(idColaborador, usuario, senha, statusAtivo) values (@idColaborador, @usuario, @senha, @statusAtivo) ";
 
-            cmd.Parameters.AddWithValue("@cpfColaborador", colaborador.CpfColaborador);
+            cmd.Parameters.AddWithValue("@idColaborador", colaborador.IdColaborador);
             cmd.Parameters.AddWithValue("@usuario", login.Login);
             cmd.Parameters.AddWithValue("@senha", login.Senha);
             cmd.Parameters.AddWithValue("@statusAtivo", login.StatusAtivo);
@@ -124,10 +165,10 @@ namespace SistemaPDVBack.Controller
         {
             try
             {
-                cmd.CommandText = "Update Usuario set usuario = @usuario, senha = @senha where cpfColaborador = @cpfColaborador";
+                cmd.CommandText = "Update Usuario set usuario = @usuario, senha = @senha where idColaborador = @idColaborador";
                 cmd.Parameters.AddWithValue("@usuario", login.Login);
                 cmd.Parameters.AddWithValue("@senha", login.Senha);
-                cmd.Parameters.AddWithValue("@cpfColaborador", colaborador.CpfColaborador);
+                cmd.Parameters.AddWithValue("@idColaborador", colaborador.IdColaborador);
                 cmd.Connection = conexao.AbrirBanco();
                 cmd.ExecuteNonQuery();
 

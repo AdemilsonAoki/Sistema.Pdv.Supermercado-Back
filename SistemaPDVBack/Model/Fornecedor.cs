@@ -11,7 +11,7 @@ namespace SistemaPDVBack.Model
     class Fornecedor
     {
         public int IdFornecedor { get; set; }
-        public int InscricaoEstadual { get; set; }
+        public string InscricaoEstadual { get; set; }
         public string NomeFantasia { get; set; }
         public string UfPessoa { get; set; }
         public string NumeroPessoa { get; set; }

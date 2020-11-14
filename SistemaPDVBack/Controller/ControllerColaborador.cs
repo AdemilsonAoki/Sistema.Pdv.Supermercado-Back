@@ -14,7 +14,7 @@ namespace SistemaPDVBack.Controller
         private readonly string _inserir = "insert into Colaborador(cpfColaborador,nomeColaborador,  statusAtivo, cargoColaborador, telefoneColaborador, emailPessoalColaborador, emailCorporativo, idDepartamento)" +
                                             "values(@cpfColaborador, @nomeColaborador, @statusAtivo, @cargoColaborador, @telefoneColaborador,@emailPessoalColaborador, @emailCorporativo,@idDepartamento)";
         private readonly string _alterar = "update Colaborador set cpfColaborador = @cpfColaborador, nomeColaborador = @nomeColaborador,   statusAtivo = @statusAtivo, cargoColaborador = @cargoColaborador,telefoneColaborador = @telefoneColaborador,emailPessoalColaborador= @emailPessoalColaborador, emailCorporativo =@emailCorporativo, idDepartamento =@idDepartamento where idColaborador = @idColaborador";
-        private readonly string _listar = "select c.idColaborador, c.nomeColaborador,c.cpfColaborador, d.nomeDepartamento,c.cargoColaborador, c.telefoneColaborador,c.emailCorporativo, c.emailPessoalColaborador, u.usuario, u.senha, c.statusAtivo from Colaborador c join departamento d on c.idDepartamento = d.idDepartamento join Usuario u on u.cpfColaborador = c.cpfColaborador where c.statusAtivo = 1 ";
+        private readonly string _listar = "select c.idColaborador, c.nomeColaborador,c.cpfColaborador, d.nomeDepartamento,c.cargoColaborador, c.telefoneColaborador,c.emailCorporativo, c.emailPessoalColaborador, u.usuario, u.senha, c.statusAtivo from Colaborador c join departamento d on c.idDepartamento = d.idDepartamento join Usuario u on u.idColaborador = c.idColaborador where c.statusAtivo = 1 ";
         string mensagem = "";
         Colaborador colaborador = new Colaborador();
         Conexao conexao = new Conexao();
@@ -35,14 +35,14 @@ namespace SistemaPDVBack.Controller
             {
                 colaborador.NomeColaborador = nome;
             }
-          
+
         }
 
         public ControllerColaborador(string id, string nomeColaborador, string cpfColaborador, string codDepartamento, string statusAtivo, string cargoColaborador, string telefoneColaborador, string emailPessoalColaborador, string emailColaborador)
         {
-            ConverterValidar(id ,nomeColaborador, cpfColaborador, codDepartamento, statusAtivo, cargoColaborador, telefoneColaborador, emailPessoalColaborador, emailColaborador);
+            ConverterValidar(id, nomeColaborador, cpfColaborador, codDepartamento, statusAtivo, cargoColaborador, telefoneColaborador, emailPessoalColaborador, emailColaborador);
         }
-        public void ConverterValidar(string id, string nomeColaborador, string cpfColaborador, string codDepartamento, string statusAtivo, string cargoColaborador, string telefoneColaborador, string emailPessoalColaborador, string emailColaborador)
+        private void ConverterValidar(string id, string nomeColaborador, string cpfColaborador, string codDepartamento, string statusAtivo, string cargoColaborador, string telefoneColaborador, string emailPessoalColaborador, string emailColaborador)
         {
             if (mensagem == "")
             {
@@ -110,37 +110,15 @@ namespace SistemaPDVBack.Controller
                         mensagem = "formato incorreto";
 
                     }
-                    if (Regex.IsMatch(codDepartamento, validaNumero))
-                    {
-                        colaborador.CodDepartamento = int.Parse(codDepartamento);
 
-                    }
-                    else
-                    {
-                        mensagem = "formato incorreto";
+                    colaborador.CodDepartamento = int.Parse(codDepartamento);
 
-                    }
-                    if (Regex.IsMatch(statusAtivo, validaNumero))
-                    {
-                        colaborador.StatusAtivo = int.Parse(statusAtivo);
 
-                    }
-                    else
-                    {
-                        mensagem = "formato incorreto";
+                    colaborador.StatusAtivo = int.Parse(statusAtivo);
 
-                    }
-                    if (Regex.IsMatch(codDepartamento, validaNumero))
-                    {
-                        colaborador.CodDepartamento = int.Parse(codDepartamento);
 
-                    }
-                    else
-                    {
-                        mensagem = "formato incorreto";
+                    colaborador.CodDepartamento = int.Parse(codDepartamento);
 
-                    }
-             
 
 
                 }
@@ -192,9 +170,10 @@ namespace SistemaPDVBack.Controller
         {
             cmd.CommandText = _alterar;
             cmd.Parameters.AddWithValue("@idDepartamento", colaborador.CodDepartamento);
-            cmd.Parameters.AddWithValue("@idDepartamento", colaborador.CodDepartamento);
 
             cmd.Parameters.AddWithValue("@idColaborador", colaborador.IdColaborador);
+            cmd.Parameters.AddWithValue("@nomeColaborador", colaborador.NomeColaborador);
+
 
             cmd.Parameters.AddWithValue("@cpfColaborador", colaborador.CpfColaborador);
             cmd.Parameters.AddWithValue("@statusAtivo", colaborador.StatusAtivo);
@@ -278,7 +257,7 @@ namespace SistemaPDVBack.Controller
         {
             try
             {
-                cmd.CommandText = "select c.nomeColaborador,c.cpfColaborador, d.nomeDepartamento,c.cargoColaborador, c.telefoneColaborador,c.emailCorporativo, c.emailPessoalColaborador, u.usuario, u.senha, c.statusAtivo from Colaborador c join departamento d on c.idDepartamento = d.idDepartamento join Usuario u on u.cpfColaborador = c.cpfColaborador where nomeColaborador LIKE'%' @nomeColaborador '%' order by nomeColaborador";
+                cmd.CommandText = "select c.idColaborador, c.nomeColaborador,c.cpfColaborador, d.nomeDepartamento,c.cargoColaborador, c.telefoneColaborador,c.emailCorporativo, c.emailPessoalColaborador, u.usuario, u.senha, c.statusAtivo from Colaborador c join departamento d on c.idDepartamento = d.idDepartamento join Usuario u on u.idColaborador = c.idColaborador where nomeColaborador LIKE'%' @nomeColaborador '%' order by nomeColaborador";
                 cmd.Parameters.AddWithValue("@nomeColaborador", colaborador.NomeColaborador);
                 cmd.Connection = conexao.AbrirBanco();
                 MySqlDataAdapter da = new MySqlDataAdapter(cmd);
@@ -286,7 +265,7 @@ namespace SistemaPDVBack.Controller
                 da.Fill(dtLista);
                 return dtLista;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 throw;
             }
@@ -297,7 +276,7 @@ namespace SistemaPDVBack.Controller
         {
 
             MySqlDataAdapter da = new MySqlDataAdapter();
-            cmd.CommandText = "select *from Departamento";
+            cmd.CommandText = "select *from departamento";
 
 
             try
@@ -325,6 +304,41 @@ namespace SistemaPDVBack.Controller
 
         }
 
-   
+
+        public bool Verificarcpf()
+        {
+
+
+            cmd.CommandText = "select Count(1) from Colaborador where cpfColaborador= @cpfColaborador ";
+            cmd.Parameters.AddWithValue("@cpfColaborador", colaborador.CpfColaborador);
+
+            try
+            {
+                cmd.Connection = conexao.AbrirBanco();
+
+                var resultado = cmd.ExecuteScalar();
+                if (resultado.ToString() != "0")
+                {
+                    return true;
+                }
+                else
+                    return false;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return false;
+            }
+            finally
+            {
+                cmd.Parameters.Clear();
+                conexao.FecharBanco();
+            }
+
+
+        }
+
+
     }
 }

@@ -37,7 +37,7 @@ namespace SistemaPDVBack.Controller
             fornecedor.NomeFantasia = nome;
         }
         public ControllerFornecedor(string idFornecedor, string inscricaoEstadual, string nomeFantasia, string uf, string numero, string complemento, string bairro, string cidade,
-                                    string cep, string statusAtivo, string rua, string cnpj )
+                                    string cep, string statusAtivo, string rua, string cnpj)
         {
             ConverterValidar(idFornecedor, inscricaoEstadual, nomeFantasia, uf, numero, complemento, bairro, cidade, cep, statusAtivo, rua, cnpj);
         }
@@ -51,27 +51,30 @@ namespace SistemaPDVBack.Controller
                 try
                 {
 
-                    if(idFornecedor != "")
+                    if (idFornecedor != "")
                     {
                         fornecedor.IdFornecedor = int.Parse(idFornecedor);
 
                     }
                     if (rua != "" && nomeFantasia != "" && bairro != "" && cidade != "" && uf != "")
                     {
+                        string temp;
                         fornecedor.Rua = rua;
                         fornecedor.NomeFantasia = nomeFantasia;
                         fornecedor.NumeroPessoa = numero;
                         fornecedor.BairroPessoa = bairro;
                         fornecedor.CidadePessoa = cidade;
-                        fornecedor.UfPessoa = uf;
+                        temp = uf.Replace(" ", "");
+                        fornecedor.UfPessoa = temp;
                     }
                     else
                     {
                         mensagem = "Preencha os campos";
                     }
+                    string inscricao = inscricaoEstadual.Replace(".","");
                     fornecedor.Cnpj = cnpj;
                     fornecedor.StatusAtivo = int.Parse(statusAtivo);
-                    fornecedor.InscricaoEstadual = int.Parse(inscricaoEstadual);
+                    fornecedor.InscricaoEstadual = inscricao;
                     fornecedor.ComplementoPessoa = complemento;
                     fornecedor.CepFornecedor = int.Parse(cep);
                 }
@@ -152,7 +155,7 @@ namespace SistemaPDVBack.Controller
             }
             catch (Exception e)
             {
-       throw;
+                throw;
 
             }
             finally
@@ -229,6 +232,38 @@ namespace SistemaPDVBack.Controller
             {
                 conexao.FecharBanco();
             }
+
+        }
+        public bool VerificarCnpj()
+        {
+
+            cmd.CommandText = "select Count(1) from fornecedor where cnpj= @cnpj ";
+            cmd.Parameters.AddWithValue("@cnpj", fornecedor.Cnpj);
+
+            try
+            {
+                cmd.Connection = conexao.AbrirBanco();
+
+                var resultado = cmd.ExecuteScalar();
+                if (resultado.ToString() != "0")
+                {
+                    return true;
+                }
+                else
+                    return false;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return false;
+            }
+            finally
+            {
+                cmd.Parameters.Clear();
+                conexao.FecharBanco();
+            }
+
 
         }
     }

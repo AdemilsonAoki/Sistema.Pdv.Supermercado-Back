@@ -34,6 +34,7 @@ namespace SistemaPDVBack
             if (controllerFornecedor.Ds_Msg != "")
             {
                 // Exibir erro!
+    
 
                 const string caption = "Ocorreu um erro?";
                 var result = MessageBox.Show(controllerFornecedor.Ds_Msg, caption,
@@ -43,11 +44,22 @@ namespace SistemaPDVBack
             }
             else
             {
-                // Tudo certinho!
-                controllerFornecedor.AdicionarFornecedor();
-                LimpaCampos();
+                if (controllerFornecedor.VerificarCnpj() == false)
+                {
 
-                Listar();
+                    controllerFornecedor.AdicionarFornecedor();
+                    LimpaCampos();
+
+                    Listar();
+
+                }
+
+                else
+                {
+                    MessageBox.Show("Esse CNPJ ja existe!!");
+                }
+                // Tudo certinho!
+               
 
             }
 
@@ -59,7 +71,7 @@ namespace SistemaPDVBack
             //verificar
             controllerFornecedor = new ControllerFornecedor();
             dgvFornecedor.DataSource = controllerFornecedor.ListarFornecedor();
-            DefinirCabecalhos(new List<string>() { "Id", "Nome", "CNPJ", "Insc. Estadual", "CEP", "Rua",  "Estado", "Numero", "Complemnto", "Bairro", "Cidade", "Ativo" });
+            DefinirCabecalhos(new List<string>() { "Id", "CNPJ", "Nome", "Insc. Estadual", "CEP", "Rua",  "Estado", "Numero", "Complemnto", "Bairro", "Cidade", "Ativo" });
         }
 
         private void dgvFornecedor_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -68,8 +80,8 @@ namespace SistemaPDVBack
             string _temp;
 
             txbId.Text = this.dgvFornecedor.CurrentRow.Cells[0].Value.ToString();
-            txbNomeFantasia.Text = this.dgvFornecedor.CurrentRow.Cells[1].Value.ToString();
-            mskTxbCnpj.Text = this.dgvFornecedor.CurrentRow.Cells[2].Value.ToString();
+            txbNomeFantasia.Text = this.dgvFornecedor.CurrentRow.Cells[2].Value.ToString();
+            mskTxbCnpj.Text = this.dgvFornecedor.CurrentRow.Cells[1].Value.ToString();
             txbInscricaoEstadual.Text = this.dgvFornecedor.CurrentRow.Cells[3].Value.ToString();
             txbCep.Text = this.dgvFornecedor.CurrentRow.Cells[4].Value.ToString();
             txbRua.Text = this.dgvFornecedor.CurrentRow.Cells[5].Value.ToString();
@@ -86,6 +98,9 @@ namespace SistemaPDVBack
                 rbFornecedorAtivo.Checked = true;
             else
                 rbFornecedorInativo.Checked = true;
+
+
+            btnAdicionar.Enabled = false;
         }
 
         private void gbEndereco_Enter(object sender, EventArgs e)
@@ -96,7 +111,7 @@ namespace SistemaPDVBack
         private void btnAlterar_Click(object sender, EventArgs e)
         {
             AtribuirValorRb();
-            controllerFornecedor = new ControllerFornecedor(txbId.Text, txbInscricaoEstadual.Text, txbNomeFantasia.Text,  txbEstado.Text, txbNumero.Text,
+            controllerFornecedor = new ControllerFornecedor(txbId.Text,  txbInscricaoEstadual.Text, txbNomeFantasia.Text, txbEstado.Text, txbNumero.Text,
                                                             txbComplemento.Text, txbBairro.Text, txbCidade.Text, txbCep.Text, _ativo, txbRua.Text, mskTxbCnpj.Text);
 
             if (controllerFornecedor.Ds_Msg != "")
@@ -118,6 +133,8 @@ namespace SistemaPDVBack
                 Listar();
 
             }
+            btnAdicionar.Enabled = false;
+
         }
 
 
@@ -155,7 +172,10 @@ namespace SistemaPDVBack
 
         private void btnLocalizar_Click(object sender, EventArgs e)
         {
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://viacep.com.br/ws/" + txbCep.Text + "/json/");
+
+            string temp = "";
+            temp = txbCep.Text.Replace(".", "").Replace("-", "");
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://viacep.com.br/ws/" + temp + "/json/");
             request.AllowAutoRedirect = false;
             HttpWebResponse ChecaServidor = (HttpWebResponse)request.GetResponse();
 
@@ -273,12 +293,24 @@ namespace SistemaPDVBack
             txbEstado.Clear();
             txbId.Clear();
             txbInscricaoEstadual.Clear();
-            txbLogradouro.Clear();
+       
             txbNomeFantasia.Clear();
             txbNumero.Clear();
             txbRua.Clear();
             mskTxbCnpj.Text = "";
 
+        }
+
+        private void txbInscricaoEstadual_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((Char.IsLetter(e.KeyChar)))
+                e.Handled = true;
+        }
+
+        private void txbCep_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((Char.IsLetter(e.KeyChar)))
+                e.Handled = true;
         }
     }
 }

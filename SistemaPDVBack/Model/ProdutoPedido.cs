@@ -11,6 +11,7 @@ namespace SistemaPDVBack.Model
         public int IdProdutoPedido { get; set; }
         public int CodPedido { get; set; }
         public int CodProduto { get; set; }
+        public string CodBarras { get; set; }
 
         public int QuantidadeItemPedido { get; set; }
         public decimal TotalProdutoPedido { get; set; }

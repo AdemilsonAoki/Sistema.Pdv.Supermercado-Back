@@ -49,12 +49,21 @@ namespace SistemaPDVBack
             }
             else
             {
+                if (controllerColaborador.Verificarcpf() == false)
+                {
+
                 // Tudo certinho!
                 controllerColaborador.AdicionarColaborador();
                 controllerUsuario = new ControllerUsuario(txbUsuario.Text, txbSenha.Text, msktCpf.Text, _ativo);
                 controllerUsuario.AdicionarUsuario();
                 Listar();
                 LimpaCampos();
+                }
+                else
+                {
+                    MessageBox.Show("CPF já existe!!"); 
+                }
+
 
 
 
@@ -68,15 +77,19 @@ namespace SistemaPDVBack
             //verificar
             controllerColaborador = new ControllerColaborador();
             dgvColaborador.DataSource = controllerColaborador.ListarColaborador();
-            cmbDepartamento.DataSource = controllerColaborador.PreencherDepartamento();
             DefinirCabecalhos(new List<string>() {"ID", "Nome", "Cpf", "Departamento", "Cargo", "Telefone", "E-mail Pessoal", "E-mail Coorp.", "Usuario", "Senha", "Status" });
 
 
         }
 
         private void frmColaborador_Load(object sender, EventArgs e)
+
         {
-            
+            controllerColaborador = new ControllerColaborador();
+
+            cmbDepartamento.DataSource = controllerColaborador.PreencherDepartamento();
+
+
             cmbDepartamento.DisplayMember = "nomeDepartamento";
             cmbDepartamento.ValueMember = "idDepartamento";
             rbColaboradorAtivo.Checked = true;
@@ -184,7 +197,9 @@ namespace SistemaPDVBack
             if(txbNome.Text != "")
             {
                 dgvColaborador.DataSource = controllerColaborador.PesquisaColaborador();
-              
+                DefinirCabecalhos(new List<string>() { "ID", "Nome", "Cpf", "Departamento", "Cargo", "Telefone", "E-mail Pessoal", "E-mail Coorp.", "Usuario", "Senha", "Status" });
+
+
             }
             else
             {
@@ -201,6 +216,7 @@ namespace SistemaPDVBack
 
 
         }
+
 
      
 

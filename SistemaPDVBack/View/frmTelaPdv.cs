@@ -181,6 +181,10 @@ namespace SistemaPDVBack
                     }
 
                     break;
+                case Keys.F5:
+                    LimpaCampos();
+                    break;
+           
 
             }
 
