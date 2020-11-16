@@ -1,6 +1,6 @@
 ﻿namespace SistemaPDVBack
 {
-    partial class Form1
+    partial class frmCupom
     {
         /// <summary>
         /// Required designer variable.
@@ -35,14 +35,14 @@
             // listBox1
             // 
             this.listBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.listBox1.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listBox1.Font = new System.Drawing.Font("Courier New", 7.26F);
             this.listBox1.ForeColor = System.Drawing.SystemColors.MenuText;
             this.listBox1.FullRowSelect = true;
             this.listBox1.GridLines = true;
             this.listBox1.HideSelection = false;
-            this.listBox1.Location = new System.Drawing.Point(19, 12);
+            this.listBox1.Location = new System.Drawing.Point(21, 12);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(330, 581);
+            this.listBox1.Size = new System.Drawing.Size(373, 642);
             this.listBox1.TabIndex = 0;
             this.listBox1.UseCompatibleStateImageBehavior = false;
             this.listBox1.View = System.Windows.Forms.View.List;
@@ -54,7 +54,7 @@
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(351, -1);
+            this.btnClose.Location = new System.Drawing.Point(391, -1);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(24, 23);
             this.btnClose.TabIndex = 4;
@@ -62,16 +62,16 @@
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // Form1
+            // frmCupom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ClientSize = new System.Drawing.Size(374, 607);
+            this.ClientSize = new System.Drawing.Size(414, 607);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.listBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Form1";
+            this.Name = "frmCupom";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);

@@ -36,26 +36,29 @@
             // 
             // txbItemCancelar
             // 
-            this.txbItemCancelar.Location = new System.Drawing.Point(26, 81);
+            this.txbItemCancelar.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbItemCancelar.Location = new System.Drawing.Point(12, 71);
             this.txbItemCancelar.Name = "txbItemCancelar";
-            this.txbItemCancelar.Size = new System.Drawing.Size(235, 20);
+            this.txbItemCancelar.Size = new System.Drawing.Size(274, 23);
             this.txbItemCancelar.TabIndex = 0;
             this.txbItemCancelar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbItemCancelar_KeyPress);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(23, 50);
+            this.label1.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(1, 34);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(217, 13);
+            this.label1.Size = new System.Drawing.Size(285, 16);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Digite o numero do item que deseja cancelar";
+            this.label1.Text = "Digite o n do item que deseja cancelar";
             // 
             // btnOk
             // 
-            this.btnOk.Location = new System.Drawing.Point(26, 136);
+            this.btnOk.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOk.Location = new System.Drawing.Point(12, 136);
             this.btnOk.Name = "btnOk";
-            this.btnOk.Size = new System.Drawing.Size(75, 23);
+            this.btnOk.Size = new System.Drawing.Size(105, 23);
             this.btnOk.TabIndex = 2;
             this.btnOk.Text = "OK (Enter)";
             this.btnOk.UseVisualStyleBackColor = true;
@@ -63,9 +66,10 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(152, 136);
+            this.btnCancelar.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.Location = new System.Drawing.Point(161, 136);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(88, 23);
+            this.btnCancelar.Size = new System.Drawing.Size(125, 23);
             this.btnCancelar.TabIndex = 3;
             this.btnCancelar.Text = "Cancelar (Esc)";
             this.btnCancelar.UseVisualStyleBackColor = true;
@@ -75,7 +79,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(339, 184);
+            this.BackColor = System.Drawing.Color.SteelBlue;
+            this.ClientSize = new System.Drawing.Size(307, 184);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.label1);

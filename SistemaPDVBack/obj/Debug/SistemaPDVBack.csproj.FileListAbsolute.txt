@@ -23,7 +23,6 @@ F:\Users\PC\Desktop\Projetos\PimSupermercadoPdVback\Sistema.Pdv.Supermercado-Bac
 F:\Users\PC\Desktop\Projetos\PimSupermercadoPdVback\Sistema.Pdv.Supermercado-Back\SistemaPDVBack\bin\Debug\Microsoft.VisualBasic.PowerPacks.dll
 F:\Users\PC\Desktop\Projetos\PimSupermercadoPdVback\Sistema.Pdv.Supermercado-Back\SistemaPDVBack\bin\Debug\Microsoft.VisualBasic.PowerPacks.xml
 F:\Users\PC\Desktop\Projetos\PimSupermercadoPdVback\Sistema.Pdv.Supermercado-Back\SistemaPDVBack\obj\Debug\SistemaPDVBack.frmTelaPdv.resources
-F:\Users\PC\Desktop\Projetos\PimSupermercadoPdVback\Sistema.Pdv.Supermercado-Back\SistemaPDVBack\obj\Debug\SistemaPDVBack.frmFinalizarVenda.resources
 F:\Users\PC\Desktop\Projetos\PimSupermercadoPdVback\Sistema.Pdv.Supermercado-Back\SistemaPDVBack\obj\Debug\SistemaPDVBack.frmCliente.resources
 F:\Users\PC\Desktop\Projetos\PimSupermercadoPdVback\Sistema.Pdv.Supermercado-Back\SistemaPDVBack\obj\Debug\SistemaPDVBack.View.frmDinheiro.resources
 F:\Users\PC\Desktop\Projetos\PimSupermercadoPdVback\Sistema.Pdv.Supermercado-Back\SistemaPDVBack\bin\Debug\Microsoft.ReportViewer.Common.dll
@@ -82,5 +81,6 @@ F:\Users\PC\Desktop\Projetos\PimSupermercadoPdVback\Sistema.Pdv.Supermercado-Bac
 F:\Users\PC\Desktop\Projetos\PimSupermercadoPdVback\Sistema.Pdv.Supermercado-Back\SistemaPDVBack\bin\Debug\zh-CHT\Microsoft.ReportViewer.WinForms.resources.dll
 F:\Users\PC\Desktop\Projetos\PimSupermercadoPdVback\Sistema.Pdv.Supermercado-Back\SistemaPDVBack\obj\Debug\RdlCompile.cache
 F:\Users\PC\Desktop\Projetos\PimSupermercadoPdVback\Sistema.Pdv.Supermercado-Back\SistemaPDVBack\obj\Debug\RdlCompile.compiled
-F:\Users\PC\Desktop\Projetos\PimSupermercadoPdVback\Sistema.Pdv.Supermercado-Back\SistemaPDVBack\obj\Debug\SistemaPDVBack.Form1.resources
 F:\Users\PC\Desktop\Projetos\PimSupermercadoPdVback\Sistema.Pdv.Supermercado-Back\SistemaPDVBack\obj\Debug\SistemaPDVBack.View.frmCancelarItem.resources
+F:\Users\PC\Desktop\Projetos\PimSupermercadoPdVback\Sistema.Pdv.Supermercado-Back\SistemaPDVBack\obj\Debug\SistemaPDVBack.frmCupom.resources
+F:\Users\PC\Desktop\Projetos\PimSupermercadoPdVback\Sistema.Pdv.Supermercado-Back\SistemaPDVBack\obj\Debug\SistemaPDVBack.frmDashboard.resources

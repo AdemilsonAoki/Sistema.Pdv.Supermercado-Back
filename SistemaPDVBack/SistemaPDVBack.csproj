@@ -71,11 +71,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="bancopim2semestre2020DataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>bancopim2semestre2020DataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Controller\ControllerCliente.cs" />
     <Compile Include="Controller\ControllerColaborador.cs" />
     <Compile Include="Controller\ControllerFornecedor.cs" />
@@ -84,17 +79,18 @@
     <Compile Include="Controller\ControllerProdutoPedido.cs" />
     <Compile Include="Controller\ControllerRelatorio.cs" />
     <Compile Include="Controller\ControllerUsuario.cs" />
+    <Compile Include="Controller\DadosRelatorio.cs" />
     <Compile Include="DTO\ProdutoPedidoDTO.cs" />
     <Compile Include="Model\CarregaUsuario.cs" />
     <Compile Include="Model\Cliente.cs" />
     <Compile Include="Model\Colaborador.cs" />
     <Compile Include="Model\Conexao.cs" />
     <Compile Include="Model\Departamento.cs" />
-    <Compile Include="View\Form1.cs">
+    <Compile Include="View\frmCupom.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Form1.designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="View\frmCupom.designer.cs">
+      <DependentUpon>frmCupom.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\Fornecedor.cs" />
     <Compile Include="Model\Pedido.cs" />
@@ -140,12 +136,6 @@
     <Compile Include="View\frmFornecedor.designer.cs">
       <DependentUpon>frmFornecedor.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\frmFinalizarVenda.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\frmFinalizarVenda.designer.cs">
-      <DependentUpon>frmFinalizarVenda.cs</DependentUpon>
-    </Compile>
     <Compile Include="View\frmDashboard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -171,8 +161,9 @@
       <DependentUpon>frmTelaPdv.cs</DependentUpon>
     </Compile>
     <Compile Include="View\MoverForm.cs" />
-    <EmbeddedResource Include="View\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="Report1.rdlc" />
+    <EmbeddedResource Include="View\frmCupom.resx">
+      <DependentUpon>frmCupom.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -182,6 +173,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="View\frmCancelarItem.resx">
       <DependentUpon>frmCancelarItem.cs</DependentUpon>
@@ -192,6 +184,9 @@
     <EmbeddedResource Include="View\frmColaborador.resx">
       <DependentUpon>frmColaborador.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\frmDashboard.resx">
+      <DependentUpon>frmDashboard.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\frmDinheiro.resx">
       <DependentUpon>frmDinheiro.cs</DependentUpon>
     </EmbeddedResource>
@@ -200,9 +195,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmFornecedor.resx">
       <DependentUpon>frmFornecedor.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\frmFinalizarVenda.resx">
-      <DependentUpon>frmFinalizarVenda.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
@@ -213,18 +205,6 @@
     <EmbeddedResource Include="View\frmTelaPdv.resx">
       <DependentUpon>frmTelaPdv.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Report1.rdlc" />
-    <None Include="bancopim2semestre2020DataSet.xsc">
-      <DependentUpon>bancopim2semestre2020DataSet.xsd</DependentUpon>
-    </None>
-    <None Include="bancopim2semestre2020DataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>bancopim2semestre2020DataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="bancopim2semestre2020DataSet.xss">
-      <DependentUpon>bancopim2semestre2020DataSet.xsd</DependentUpon>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -238,6 +218,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logoEmpresa.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Logo_Empresafinal1.png" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

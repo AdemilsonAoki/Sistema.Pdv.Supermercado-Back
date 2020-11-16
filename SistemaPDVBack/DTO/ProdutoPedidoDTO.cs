@@ -18,10 +18,13 @@ namespace SistemaPDVBack.DTO
         public string Quantidade{ get; set; }
         public string Total { get; set; }
         public string StatusAtivo { get; set; }
-       
 
 
-       
+
+        public ProdutoPedidoDTO()
+        {
+
+        }
       
 
 

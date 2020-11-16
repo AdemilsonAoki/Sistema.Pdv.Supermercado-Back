@@ -138,5 +138,10 @@ namespace SistemaPDVBack.View
             txbValorRecebido.Text = "0";
             this.Close();
         }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

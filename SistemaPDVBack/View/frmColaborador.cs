@@ -34,7 +34,7 @@ namespace SistemaPDVBack
                 _ativo = "0";
             }
 
-            controllerColaborador = new ControllerColaborador (txbId.Text,txbNome.Text, msktCpf.Text, cmbDepartamento.SelectedValue.ToString(), _ativo, cmbCargo.Text, mskTxtCelular.Text, txbEmail.Text, txbEmailCorporativo.Text);
+            controllerColaborador = new ControllerColaborador(txbId.Text, txbNome.Text, msktCpf.Text, cmbDepartamento.SelectedValue.ToString(), _ativo, cmbCargo.Text, mskTxtCelular.Text, txbEmail.Text, txbEmailCorporativo.Text);
 
             if (controllerColaborador.Ds_Msg != "")
             {
@@ -52,16 +52,27 @@ namespace SistemaPDVBack
                 if (controllerColaborador.Verificarcpf() == false)
                 {
 
-                // Tudo certinho!
-                controllerColaborador.AdicionarColaborador();
-                controllerUsuario = new ControllerUsuario(txbUsuario.Text, txbSenha.Text, msktCpf.Text, _ativo);
-                controllerUsuario.AdicionarUsuario();
-                Listar();
-                LimpaCampos();
+                    // Tudo certinho!
+                    controllerColaborador.AdicionarColaborador();
+                    if (controllerColaborador.Ds_Msg != "")
+                    {
+                        // Exibir erro!
+
+                        txbNome.Focus();
+                        const string caption = "Ocorreu um erro?";
+                        var result = MessageBox.Show(controllerColaborador.Ds_Msg, caption,
+                                                      MessageBoxButtons.OK,
+                                                      MessageBoxIcon.Warning);
+
+                    }
+                    controllerUsuario = new ControllerUsuario(txbUsuario.Text, txbSenha.Text, msktCpf.Text, _ativo);
+                    controllerUsuario.AdicionarUsuario();
+                    Listar();
+                    LimpaCampos();
                 }
                 else
                 {
-                    MessageBox.Show("CPF já existe!!"); 
+                    MessageBox.Show("CPF já existe!!");
                 }
 
 
@@ -77,7 +88,7 @@ namespace SistemaPDVBack
             //verificar
             controllerColaborador = new ControllerColaborador();
             dgvColaborador.DataSource = controllerColaborador.ListarColaborador();
-            DefinirCabecalhos(new List<string>() {"ID", "Nome", "Cpf", "Departamento", "Cargo", "Telefone", "E-mail Pessoal", "E-mail Coorp.", "Usuario", "Senha", "Status" });
+            DefinirCabecalhos(new List<string>() { "ID", "Nome", "Cpf", "Departamento", "Cargo", "Telefone", "E-mail Pessoal", "E-mail Coorp.", "Usuario", "Senha", "Status" });
 
 
         }
@@ -163,9 +174,21 @@ namespace SistemaPDVBack
             {
                 // Tudo certinho!
                 controllerColaborador.AlterarColaborador();
+
+                if (controllerColaborador.Ds_Msg != "")
+                {
+                    // Exibir erro!
+
+                    txbNome.Focus();
+                    const string caption = "Ocorreu um erro?";
+                    var result = MessageBox.Show(controllerColaborador.Ds_Msg, caption,
+                                                  MessageBoxButtons.OK,
+                                                  MessageBoxIcon.Warning);
+
+                }
                 controllerUsuario.AlterarUsuario();
                 LimpaCampos();
-       
+
                 Listar();
 
 
@@ -194,7 +217,7 @@ namespace SistemaPDVBack
         private void btnConsulta_Click(object sender, EventArgs e)
         {
             controllerColaborador = new ControllerColaborador(txbNome.Text);
-            if(txbNome.Text != "")
+            if (txbNome.Text != "")
             {
                 dgvColaborador.DataSource = controllerColaborador.PesquisaColaborador();
                 DefinirCabecalhos(new List<string>() { "ID", "Nome", "Cpf", "Departamento", "Cargo", "Telefone", "E-mail Pessoal", "E-mail Coorp.", "Usuario", "Senha", "Status" });
@@ -218,7 +241,7 @@ namespace SistemaPDVBack
         }
 
 
-     
+
 
 
     }

@@ -15,9 +15,9 @@ using SistemaPDVBack.Model;
 
 namespace SistemaPDVBack
 {
-    public partial class Form1 : Form
+    public partial class frmCupom : Form
     {
-        public Form1()
+        public frmCupom()
         {
             InitializeComponent();
             

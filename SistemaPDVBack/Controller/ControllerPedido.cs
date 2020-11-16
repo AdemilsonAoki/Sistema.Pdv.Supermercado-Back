@@ -29,13 +29,13 @@ namespace SistemaPDVBack.Controller
 
             ConverterValidar(status, dataDoPedido, total, formaPagamento);
         }
-        public ControllerPedido(string total)
-        {
-            CarregaPedido();
+        //public ControllerPedido(string total)
+        //{
+        //    CarregaPedido();
 
-            pedido.TotalPedido = decimal.Parse(total);
+        //    pedido.TotalPedido = decimal.Parse(total);
 
-        }
+        //}
 
         private void ConverterValidar(string status, string dataDoPedido, string total, string formaPagamento)
         {
@@ -150,39 +150,39 @@ namespace SistemaPDVBack.Controller
         }
 
 
-        public void AtualizaValorPedido()
-        {
+        //public void AtualizaValorPedido()
+        //{
 
-            cmd.CommandText = "update Pedido set totalPedido = @totalPedido where idPedido = @idPedido";
-            cmd.Parameters.AddWithValue("@totalPedido", pedido.TotalPedido);
-            cmd.Parameters.AddWithValue("@idPedido", pedido.IdPedido);
-
-
-
-
-            try
-            {
-                cmd.Connection = conexao.AbrirBanco();
-                cmd.ExecuteNonQuery();
-
-
-            }
-            catch (Exception e)
-            {
-                throw;
-
-            }
-            finally
-            {
-                cmd.Parameters.Clear();
-                conexao.FecharBanco();
-            }
+        //    cmd.CommandText = "update Pedido set totalPedido = @totalPedido where idPedido = @idPedido";
+        //    cmd.Parameters.AddWithValue("@totalPedido", pedido.TotalPedido);
+        //    cmd.Parameters.AddWithValue("@idPedido", pedido.IdPedido);
 
 
 
-        }
 
-        public void CarregaPedido()
+        //    try
+        //    {
+        //        cmd.Connection = conexao.AbrirBanco();
+        //        cmd.ExecuteNonQuery();
+
+
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        throw;
+
+        //    }
+        //    finally
+        //    {
+        //        cmd.Parameters.Clear();
+        //        conexao.FecharBanco();
+        //    }
+
+
+
+        //}
+
+        private void CarregaPedido()
         {
 
 
@@ -219,77 +219,77 @@ namespace SistemaPDVBack.Controller
             }
         }
 
-        public string CarregaTotal()
-        {
-            cmd.CommandText = "select *from Pedido where idPedido = @idPedido";
-            cmd.Parameters.AddWithValue("@idPedido", pedido.IdPedido);
+        //public string CarregaTotal()
+        //{
+        //    cmd.CommandText = "select *from Pedido where idPedido = @idPedido";
+        //    cmd.Parameters.AddWithValue("@idPedido", pedido.IdPedido);
 
-            string total = "";
-            try
-            {
-                cmd.Connection = conexao.AbrirBanco();
+        //    string total = "";
+        //    try
+        //    {
+        //        cmd.Connection = conexao.AbrirBanco();
 
-                reader = cmd.ExecuteReader();
-                if (reader.HasRows)
-                {
+        //        reader = cmd.ExecuteReader();
+        //        if (reader.HasRows)
+        //        {
 
-                    while (reader.Read())
-                    {
+        //            while (reader.Read())
+        //            {
 
-                        total = reader.GetString(6);
-
-
-                    }
-                }
-                return total;
+        //                total = reader.GetString(6);
 
 
-            }
-            catch (Exception e)
-            {
-                throw;
-                //MessageBox.Show(e.Message);
-
-            }
-            finally
-            {
-                conexao.FecharBanco();
-                cmd.Parameters.Clear();
-            }
-        }
-
-        public void AtualizaFormaPagamento(string formaPagamento)
-        {
-
-            pedido.FormaDePagamento = formaPagamento;
-            cmd.CommandText = "update Pedido set formaPagamento = @formaPagamento where idPedido = @idPedido";
-            cmd.Parameters.AddWithValue("@formaPagamento", pedido.FormaDePagamento);
-            cmd.Parameters.AddWithValue("@idPedido", pedido.IdPedido);
+        //            }
+        //        }
+        //        return total;
 
 
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        throw;
+        //        //MessageBox.Show(e.Message);
 
+        //    }
+        //    finally
+        //    {
+        //        conexao.FecharBanco();
+        //        cmd.Parameters.Clear();
+        //    }
+        //}
 
-            try
-            {
-                cmd.Connection = conexao.AbrirBanco();
-                cmd.ExecuteNonQuery();
+        //public void AtualizaFormaPagamento(string formaPagamento)
+        //{
 
-
-            }
-            catch (Exception e)
-            {
-                throw;
-
-            }
-            finally
-            {
-                cmd.Parameters.Clear();
-                conexao.FecharBanco();
-            }
+        //    pedido.FormaDePagamento = formaPagamento;
+        //    cmd.CommandText = "update Pedido set formaPagamento = @formaPagamento where idPedido = @idPedido";
+        //    cmd.Parameters.AddWithValue("@formaPagamento", pedido.FormaDePagamento);
+        //    cmd.Parameters.AddWithValue("@idPedido", pedido.IdPedido);
 
 
 
-        }
+
+        //    try
+        //    {
+        //        cmd.Connection = conexao.AbrirBanco();
+        //        cmd.ExecuteNonQuery();
+
+
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        throw;
+
+        //    }
+        //    finally
+        //    {
+        //        cmd.Parameters.Clear();
+        //        conexao.FecharBanco();
+        //    }
+
+
+
+        //}
         public string VerificarCaixa()
         {
             using (StreamReader reader = new StreamReader("F:\\Users\\PC\\Desktop\\Projetos\\PimSupermercadoPdVback\\Sistema.Pdv.Supermercado-Back\\Caixa.txt"))
@@ -313,7 +313,9 @@ namespace SistemaPDVBack.Controller
         {
 
 
-            produtos.Add(new ProdutoPedidoDTO(codItem, codigoBarras, Descricao, quantidade, valorUnitario, total, Status));
+            var novaDescricao = Descricao.Substring(0, 20);
+
+            produtos.Add(new ProdutoPedidoDTO(codItem, codigoBarras, novaDescricao, quantidade, valorUnitario, total, Status));
 
             StreamWriter x;
 
@@ -361,7 +363,7 @@ namespace SistemaPDVBack.Controller
 
             foreach (var item in consulta)
             {
-                sb.AppendFormat("{0,-6}{1,-6}{2,-12}{3,-5}{4,-8}{5,-35}{6,-30}{7}",
+                sb.AppendFormat("{0,-3}{1,-15}{2,-23}{3,-4}{4,-7}{5,-28}{6,-30}{7}",
                    item.CodigoItem,
                    item.CodBarras,
                    item.NomeProduto,
@@ -382,19 +384,20 @@ namespace SistemaPDVBack.Controller
                 Layout.Add(" LUCAS GABRIEL SOUZA SILVA - LTDA ");
                 Layout.Add(" Rua Orelio Sabadin n° 210");
                 Layout.Add(" Sorocaba-Sp");
-                Layout.Add(" -------------------------------------------");
-                Layout.Add(" CNPJ: 71.564.173/0001-80        " + data);
-                Layout.Add(" IE: 714.145.789                 " + hora);
+                Layout.Add(" -----------------------------------------------------------");
+                Layout.Add(" CNPJ: 71.564.173/0001-80                         " + data);
+                Layout.Add(" IE: 714.145.789                                  " + hora);
                 Layout.Add(" IM: 4567412                     ");
-                Layout.Add(" -------------------------------------------");
+                Layout.Add(" -----------------------------------------------------------");
                 Layout.Add(" CODIGO:" + pedido.IdPedido);
 
                 Layout.Add(" CPF/CNPJ:" + cpf);
 
-                Layout.Add(" -------------------------------------------");
-                Layout.Add(" ---------------CUPOM FISCAL----------------");
-                Layout.Add(" -------------------------------------------");
-                Layout.Add(" Cod   CD    DESC.      QTDE   UN     TOTAL ");
+                Layout.Add(" -----------------------------------------------------------");
+                Layout.Add(" ------------------------CUPOM FISCAL-----------------------");
+                Layout.Add(" -----------------------------------------------------------");
+
+                Layout.Add("COD CDB            DESC.                 QTDE   UN   VALOR");
 
                 Layout.Add("");
 
@@ -451,7 +454,9 @@ namespace SistemaPDVBack.Controller
                 {
                     if (vericadora == false)
                     {
-                        Layout.Add(" -----------------Cancelado-----------------");
+                        Layout.Add(" -----------------------------------------------------------");
+                        Layout.Add(" ------------------------CANCELADO--------------------------");
+                        Layout.Add(" -----------------------------------------------------------");
                         vericadora = true;
 
                     }
@@ -460,7 +465,7 @@ namespace SistemaPDVBack.Controller
 
 
                 }
-                Layout.Add(" -------------------------------------------");
+                Layout.Add(" -----------------------------------------------------------");
 
 
 
@@ -468,17 +473,17 @@ namespace SistemaPDVBack.Controller
                 {
                     Layout.Add(" " + obj);
                 }
-             
 
-                Layout.Add(" -------------------------------------------");
-                Layout.Add(" -------------------------------------------");
+
+                Layout.Add(" -----------------------------------------------------------");
+                Layout.Add(" -----------------------------------------------------------");
 
                 Layout.Add(" CAIXA:" + caixa);
                 Layout.Add(" COLABORAR:" + CarregaUsuario.Nome);
                 Layout.Add(" PDVR 2.0.3");
                 Layout.Add(" BEMATECH MP -2100");
-                Layout.Add(" -------------------------------------------");
-              
+                Layout.Add(" -----------------------------------------------------------");
+
 
             }
             x = File.CreateText(caminho);

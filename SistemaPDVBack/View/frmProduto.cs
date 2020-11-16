@@ -116,6 +116,18 @@ namespace SistemaPDVBack
                 {
                     controllerProduto.AdicionarProduto();
 
+                    if (controllerProduto.Ds_Msg != "")
+                    {
+                        // Exibir erro!
+
+                        txbCodigoBarras.Focus();
+                        const string caption = "Ocorreu um erro?";
+                        var result = MessageBox.Show(controllerProduto.Ds_Msg, caption,
+                                                      MessageBoxButtons.OK,
+                                                      MessageBoxIcon.Warning);
+
+                    }
+
                     Listar();
                 }
                 else

@@ -29,36 +29,49 @@
         private void InitializeComponent()
         {
             this.pnLogo = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.txbUsuario = new System.Windows.Forms.TextBox();
             this.txbSenha = new System.Windows.Forms.TextBox();
             this.lblLogin = new System.Windows.Forms.Label();
             this.btnLogin = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
-            this.lineShape2 = new Microsoft.VisualBasic.PowerPacks.LineShape();
-            this.lineShape1 = new Microsoft.VisualBasic.PowerPacks.LineShape();
+            this.lineUsuario = new Microsoft.VisualBasic.PowerPacks.LineShape();
+            this.lineSenha = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.rectangleShape1 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
-            this.lblLinkSenha = new System.Windows.Forms.LinkLabel();
-            this.btnMin = new FontAwesome.Sharp.IconButton();
             this.btnClose = new System.Windows.Forms.Button();
+            this.btnMin = new FontAwesome.Sharp.IconButton();
+            this.pnLogo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // pnLogo
             // 
-            this.pnLogo.BackColor = System.Drawing.Color.Red;
+            this.pnLogo.BackColor = System.Drawing.Color.Black;
+            this.pnLogo.Controls.Add(this.pictureBox1);
             this.pnLogo.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnLogo.Location = new System.Drawing.Point(0, 0);
             this.pnLogo.Name = "pnLogo";
             this.pnLogo.Size = new System.Drawing.Size(250, 330);
             this.pnLogo.TabIndex = 0;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Black;
+            this.pictureBox1.Image = global::SistemaPDVBack.Properties.Resources.Logo_Empresafinal1;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(250, 330);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
             // txbUsuario
             // 
             this.txbUsuario.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txbUsuario.BackColor = System.Drawing.Color.Black;
+            this.txbUsuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
             this.txbUsuario.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txbUsuario.ForeColor = System.Drawing.Color.White;
             this.txbUsuario.Location = new System.Drawing.Point(278, 56);
@@ -74,7 +87,7 @@
             this.txbSenha.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txbSenha.BackColor = System.Drawing.Color.Black;
+            this.txbSenha.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
             this.txbSenha.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txbSenha.ForeColor = System.Drawing.Color.White;
             this.txbSenha.Location = new System.Drawing.Point(278, 103);
@@ -82,6 +95,7 @@
             this.txbSenha.Size = new System.Drawing.Size(373, 13);
             this.txbSenha.TabIndex = 2;
             this.txbSenha.Text = "SENHA";
+            this.txbSenha.TextChanged += new System.EventHandler(this.txbSenha_TextChanged);
             this.txbSenha.Enter += new System.EventHandler(this.txbSenha_Enter);
             this.txbSenha.Leave += new System.EventHandler(this.txbSenha_Leave);
             // 
@@ -128,31 +142,31 @@
             this.shapeContainer1.Margin = new System.Windows.Forms.Padding(0);
             this.shapeContainer1.Name = "shapeContainer1";
             this.shapeContainer1.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
-            this.lineShape2,
-            this.lineShape1,
+            this.lineUsuario,
+            this.lineSenha,
             this.rectangleShape1});
             this.shapeContainer1.Size = new System.Drawing.Size(780, 330);
             this.shapeContainer1.TabIndex = 7;
             this.shapeContainer1.TabStop = false;
             // 
-            // lineShape2
+            // lineUsuario
             // 
-            this.lineShape2.BorderColor = System.Drawing.Color.White;
-            this.lineShape2.Name = "lineShape2";
-            this.lineShape2.X1 = 277;
-            this.lineShape2.X2 = 691;
-            this.lineShape2.Y1 = 72;
-            this.lineShape2.Y2 = 72;
+            this.lineUsuario.BorderColor = System.Drawing.Color.White;
+            this.lineUsuario.Name = "lineUsuario";
+            this.lineUsuario.X1 = 277;
+            this.lineUsuario.X2 = 691;
+            this.lineUsuario.Y1 = 72;
+            this.lineUsuario.Y2 = 72;
             // 
-            // lineShape1
+            // lineSenha
             // 
-            this.lineShape1.BorderColor = System.Drawing.Color.White;
-            this.lineShape1.Name = "lineShape1";
-            this.lineShape1.X1 = 278;
-            this.lineShape1.X2 = 692;
-            this.lineShape1.Y1 = 122;
-            this.lineShape1.Y2 = 122;
-            this.lineShape1.Click += new System.EventHandler(this.lineShape1_Click);
+            this.lineSenha.BorderColor = System.Drawing.Color.White;
+            this.lineSenha.Name = "lineSenha";
+            this.lineSenha.X1 = 278;
+            this.lineSenha.X2 = 692;
+            this.lineSenha.Y1 = 122;
+            this.lineSenha.Y2 = 122;
+            this.lineSenha.Click += new System.EventHandler(this.lineShape1_Click);
             // 
             // rectangleShape1
             // 
@@ -160,18 +174,20 @@
             this.rectangleShape1.Name = "rectangleShape1";
             this.rectangleShape1.Size = new System.Drawing.Size(75, 23);
             // 
-            // lblLinkSenha
+            // btnClose
             // 
-            this.lblLinkSenha.ActiveLinkColor = System.Drawing.Color.Blue;
-            this.lblLinkSenha.AutoSize = true;
-            this.lblLinkSenha.LinkColor = System.Drawing.Color.White;
-            this.lblLinkSenha.Location = new System.Drawing.Point(409, 247);
-            this.lblLinkSenha.Name = "lblLinkSenha";
-            this.lblLinkSenha.Size = new System.Drawing.Size(102, 13);
-            this.lblLinkSenha.TabIndex = 0;
-            this.lblLinkSenha.TabStop = true;
-            this.lblLinkSenha.Text = "Esqueceu a senha?";
-            this.lblLinkSenha.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClose.FlatAppearance.BorderSize = 0;
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.ForeColor = System.Drawing.Color.White;
+            this.btnClose.Location = new System.Drawing.Point(740, -4);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(24, 23);
+            this.btnClose.TabIndex = 9;
+            this.btnClose.Text = "X";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnMin
             // 
@@ -190,21 +206,6 @@
             this.btnMin.UseVisualStyleBackColor = true;
             this.btnMin.Click += new System.EventHandler(this.btnMin_Click);
             // 
-            // btnClose
-            // 
-            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClose.FlatAppearance.BorderSize = 0;
-            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(740, -4);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(24, 23);
-            this.btnClose.TabIndex = 9;
-            this.btnClose.Text = "X";
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -213,7 +214,6 @@
             this.ClientSize = new System.Drawing.Size(780, 330);
             this.Controls.Add(this.btnMin);
             this.Controls.Add(this.btnClose);
-            this.Controls.Add(this.lblLinkSenha);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.lblLogin);
@@ -227,6 +227,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmLogin";
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.frmLogin_MouseDown);
+            this.pnLogo.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -240,13 +242,12 @@
         private System.Windows.Forms.Label lblLogin;
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Label label1;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer1;
-        private Microsoft.VisualBasic.PowerPacks.LineShape lineShape2;
-        private Microsoft.VisualBasic.PowerPacks.LineShape lineShape1;
+        private Microsoft.VisualBasic.PowerPacks.LineShape lineUsuario;
+        private Microsoft.VisualBasic.PowerPacks.LineShape lineSenha;
         private Microsoft.VisualBasic.PowerPacks.RectangleShape rectangleShape1;
-        private System.Windows.Forms.LinkLabel lblLinkSenha;
         private FontAwesome.Sharp.IconButton btnMin;
         private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

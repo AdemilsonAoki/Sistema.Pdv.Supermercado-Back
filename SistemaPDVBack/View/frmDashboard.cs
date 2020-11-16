@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using SistemaPDVBack.Controller;
 namespace SistemaPDVBack
 {
     public partial class frmDashboard : Form
@@ -15,6 +15,13 @@ namespace SistemaPDVBack
         public frmDashboard()
         {
             InitializeComponent();
+        }
+
+        
+        private void frmDashboard_Load(object sender, EventArgs e)
+        {
+
+      
         }
     }
 }

@@ -37,9 +37,10 @@
             // 
             // btnAdicionar
             // 
-            this.btnAdicionar.Location = new System.Drawing.Point(62, 98);
+            this.btnAdicionar.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdicionar.Location = new System.Drawing.Point(12, 122);
             this.btnAdicionar.Name = "btnAdicionar";
-            this.btnAdicionar.Size = new System.Drawing.Size(95, 23);
+            this.btnAdicionar.Size = new System.Drawing.Size(148, 38);
             this.btnAdicionar.TabIndex = 0;
             this.btnAdicionar.Text = "Adicionar (Enter)";
             this.btnAdicionar.UseVisualStyleBackColor = true;
@@ -47,9 +48,10 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(308, 98);
+            this.btnCancelar.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.Location = new System.Drawing.Point(183, 122);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(88, 23);
+            this.btnCancelar.Size = new System.Drawing.Size(127, 38);
             this.btnCancelar.TabIndex = 1;
             this.btnCancelar.Text = "Cancelar (Esc)";
             this.btnCancelar.UseVisualStyleBackColor = true;
@@ -58,9 +60,10 @@
             // rbCpf
             // 
             this.rbCpf.AutoSize = true;
-            this.rbCpf.Location = new System.Drawing.Point(328, 12);
+            this.rbCpf.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbCpf.Location = new System.Drawing.Point(51, 23);
             this.rbCpf.Name = "rbCpf";
-            this.rbCpf.Size = new System.Drawing.Size(66, 17);
+            this.rbCpf.Size = new System.Drawing.Size(90, 20);
             this.rbCpf.TabIndex = 2;
             this.rbCpf.TabStop = true;
             this.rbCpf.Text = "CPF (F1)";
@@ -70,9 +73,10 @@
             // rbCNPJ
             // 
             this.rbCNPJ.AutoSize = true;
-            this.rbCNPJ.Location = new System.Drawing.Point(328, 45);
+            this.rbCNPJ.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbCNPJ.Location = new System.Drawing.Point(183, 23);
             this.rbCNPJ.Name = "rbCNPJ";
-            this.rbCNPJ.Size = new System.Drawing.Size(73, 17);
+            this.rbCNPJ.Size = new System.Drawing.Size(98, 20);
             this.rbCNPJ.TabIndex = 3;
             this.rbCNPJ.TabStop = true;
             this.rbCNPJ.Text = "CNPJ (F2)";
@@ -81,9 +85,10 @@
             // 
             // msktCnpjCpf
             // 
-            this.msktCnpjCpf.Location = new System.Drawing.Point(51, 45);
+            this.msktCnpjCpf.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.msktCnpjCpf.Location = new System.Drawing.Point(51, 62);
             this.msktCnpjCpf.Name = "msktCnpjCpf";
-            this.msktCnpjCpf.Size = new System.Drawing.Size(222, 20);
+            this.msktCnpjCpf.Size = new System.Drawing.Size(222, 23);
             this.msktCnpjCpf.TabIndex = 4;
             this.msktCnpjCpf.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.msktCnpjCpf_MaskInputRejected);
             // 
@@ -91,7 +96,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(490, 149);
+            this.BackColor = System.Drawing.Color.SteelBlue;
+            this.ClientSize = new System.Drawing.Size(342, 172);
             this.Controls.Add(this.msktCnpjCpf);
             this.Controls.Add(this.rbCNPJ);
             this.Controls.Add(this.rbCpf);

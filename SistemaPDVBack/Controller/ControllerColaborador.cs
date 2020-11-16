@@ -132,76 +132,81 @@ namespace SistemaPDVBack.Controller
 
         public void AdicionarColaborador()
         {
-
-            cmd.CommandText = _inserir;
-
-            cmd.Parameters.AddWithValue("@cpfColaborador", colaborador.CpfColaborador);
-            cmd.Parameters.AddWithValue("@nomeColaborador", colaborador.NomeColaborador);
-            cmd.Parameters.AddWithValue("@idDepartamento", colaborador.CodDepartamento);
-            cmd.Parameters.AddWithValue("@statusAtivo", colaborador.StatusAtivo);
-            cmd.Parameters.AddWithValue("@cargoColaborador", colaborador.CargoColaborador);
-            cmd.Parameters.AddWithValue("@telefoneColaborador", colaborador.TelefoneColaborador);
-            cmd.Parameters.AddWithValue("@emailPessoalColaborador", colaborador.EmailPessoalColaborador);
-            cmd.Parameters.AddWithValue("@emailCorporativo", colaborador.EmailCorporativo);
-
-            try
+            if (mensagem == "")
             {
-                cmd.Connection = conexao.AbrirBanco();
-                cmd.ExecuteNonQuery();
+
+                cmd.CommandText = _inserir;
+
+                cmd.Parameters.AddWithValue("@cpfColaborador", colaborador.CpfColaborador);
+                cmd.Parameters.AddWithValue("@nomeColaborador", colaborador.NomeColaborador);
+                cmd.Parameters.AddWithValue("@idDepartamento", colaborador.CodDepartamento);
+                cmd.Parameters.AddWithValue("@statusAtivo", colaborador.StatusAtivo);
+                cmd.Parameters.AddWithValue("@cargoColaborador", colaborador.CargoColaborador);
+                cmd.Parameters.AddWithValue("@telefoneColaborador", colaborador.TelefoneColaborador);
+                cmd.Parameters.AddWithValue("@emailPessoalColaborador", colaborador.EmailPessoalColaborador);
+                cmd.Parameters.AddWithValue("@emailCorporativo", colaborador.EmailCorporativo);
+
+                try
+                {
+                    cmd.Connection = conexao.AbrirBanco();
+                    cmd.ExecuteNonQuery();
 
 
+                }
+                catch (Exception e)
+                {
+                    mensagem = e.Message;
+
+                }
+                finally
+                {
+                    cmd.Parameters.Clear();
+                    conexao.FecharBanco();
+                }
             }
-            catch (Exception e)
-            {
-                throw;
-
-            }
-            finally
-            {
-                cmd.Parameters.Clear();
-                conexao.FecharBanco();
-            }
-
 
         }
 
 
         public void AlterarColaborador()
         {
-            cmd.CommandText = _alterar;
-            cmd.Parameters.AddWithValue("@idDepartamento", colaborador.CodDepartamento);
-
-            cmd.Parameters.AddWithValue("@idColaborador", colaborador.IdColaborador);
-            cmd.Parameters.AddWithValue("@nomeColaborador", colaborador.NomeColaborador);
-
-
-            cmd.Parameters.AddWithValue("@cpfColaborador", colaborador.CpfColaborador);
-            cmd.Parameters.AddWithValue("@statusAtivo", colaborador.StatusAtivo);
-            cmd.Parameters.AddWithValue("@cargoColaborador", colaborador.CargoColaborador);
-            cmd.Parameters.AddWithValue("@telefoneColaborador", colaborador.TelefoneColaborador);
-            cmd.Parameters.AddWithValue("@emailPessoalColaborador", colaborador.EmailPessoalColaborador);
-            cmd.Parameters.AddWithValue("@emailCorporativo", colaborador.EmailCorporativo);
-
-
-            try
+            if (mensagem == "")
             {
-                cmd.Connection = conexao.AbrirBanco();
-                cmd.ExecuteNonQuery();
+                cmd.CommandText = _alterar;
+                cmd.Parameters.AddWithValue("@idDepartamento", colaborador.CodDepartamento);
 
+                cmd.Parameters.AddWithValue("@idColaborador", colaborador.IdColaborador);
+                cmd.Parameters.AddWithValue("@nomeColaborador", colaborador.NomeColaborador);
+
+
+                cmd.Parameters.AddWithValue("@cpfColaborador", colaborador.CpfColaborador);
+                cmd.Parameters.AddWithValue("@statusAtivo", colaborador.StatusAtivo);
+                cmd.Parameters.AddWithValue("@cargoColaborador", colaborador.CargoColaborador);
+                cmd.Parameters.AddWithValue("@telefoneColaborador", colaborador.TelefoneColaborador);
+                cmd.Parameters.AddWithValue("@emailPessoalColaborador", colaborador.EmailPessoalColaborador);
+                cmd.Parameters.AddWithValue("@emailCorporativo", colaborador.EmailCorporativo);
+
+
+                try
+                {
+                    cmd.Connection = conexao.AbrirBanco();
+                    cmd.ExecuteNonQuery();
+
+
+                }
+                catch (Exception e)
+                {
+                    mensagem = e.Message;
+
+
+                }
+                finally
+                {
+                    cmd.Parameters.Clear();
+                    conexao.FecharBanco();
+                }
 
             }
-            catch (Exception e)
-            {
-                throw;
-
-            }
-            finally
-            {
-                cmd.Parameters.Clear();
-                conexao.FecharBanco();
-            }
-
-
 
         }
 

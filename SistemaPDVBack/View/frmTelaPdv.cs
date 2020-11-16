@@ -409,7 +409,7 @@ namespace SistemaPDVBack
         private void FinalizarVenda()
         {
 
-            Form1 form1 = new Form1();
+            frmCupom cupom = new frmCupom();
             string temp = "1";
             controllerPedido = new ControllerPedido(temp, lblData.Text + lblHora.Text, lblTotal.Text, lblFormaPagamento.Text);
 
@@ -444,7 +444,7 @@ namespace SistemaPDVBack
                         preco = this.dgvCarrinho.Rows[idex].Cells[3].Value.ToString();
                         quantidade = this.dgvCarrinho.Rows[idex].Cells[4].Value.ToString();
                         totalProduto = this.dgvCarrinho.Rows[idex].Cells[5].Value.ToString();
-                        form1.CumpomImpresso(codItem.ToString(), codBarras, descricao, quantidade, preco, totalProduto, cancelado, cpfCnpjCliente, lblTotal.Text,  lblData.Text, lblHora.Text, lblCaixa.Text, lblFormaPagamento.Text, lblValorAReceber.Text, lblTroco.Text);
+                        cupom.CumpomImpresso(codItem.ToString(), codBarras, descricao, quantidade, preco, totalProduto, cancelado, cpfCnpjCliente, lblTotal.Text,  lblData.Text, lblHora.Text, lblCaixa.Text, lblFormaPagamento.Text, lblValorAReceber.Text, lblTroco.Text);
                        
 
                         cont++;
@@ -465,7 +465,7 @@ namespace SistemaPDVBack
 
                             controllerProdutoPedido = new ControllerProdutoPedido(codBarras, quantidade, totalProduto);
                             controllerProdutoPedido.AdicionarProdutoPedido();
-                            form1.CumpomImpresso(codItem.ToString(), codBarras, descricao, quantidade, preco, totalProduto, ativo, cpfCnpjCliente, lblTotal.Text, lblData.Text, lblHora.Text, lblCaixa.Text, lblFormaPagamento.Text, lblValorAReceber.Text, lblTroco.Text) ;
+                            cupom.CumpomImpresso(codItem.ToString(), codBarras, descricao, quantidade, preco, totalProduto, ativo, cpfCnpjCliente, lblTotal.Text, lblData.Text, lblHora.Text, lblCaixa.Text, lblFormaPagamento.Text, lblValorAReceber.Text, lblTroco.Text) ;
                             
 
                         }
@@ -478,9 +478,9 @@ namespace SistemaPDVBack
 
             }
             //dgvCarrinho.DataSource = controllerProdutoPedido.ListarProdutoPedido();
-            controllerPedido = new ControllerPedido(lblTotal.Text);
-            controllerPedido.AtualizaValorPedido();
-            form1.ShowDialog();
+            //controllerPedido = new ControllerPedido(lblTotal.Text);
+            //controllerPedido.AtualizaValorPedido();
+            cupom.ShowDialog();
 
             i = false;
         }

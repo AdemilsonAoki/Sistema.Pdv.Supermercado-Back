@@ -132,38 +132,41 @@ namespace SistemaPDVBack.Controller
 
         public void AdicionarProduto()
         {
-
-            cmd.CommandText = _inserir;
-
-            cmd.Parameters.AddWithValue("@codBarras", produto.CodBarras);
-            cmd.Parameters.AddWithValue("@codFornecedor", produto.CodFornecedor);
-            cmd.Parameters.AddWithValue("@nomeProduto", produto.NomeProduto);
-            cmd.Parameters.AddWithValue("@descricaoProduto", produto.DescricaoProduto);
-            cmd.Parameters.AddWithValue("@precoCusto", produto.PrecoCusto);
-            cmd.Parameters.AddWithValue("@precoVenda", produto.PrecoVenda);
-            cmd.Parameters.AddWithValue("@margemLucro", produto.MargemLucro);
-            cmd.Parameters.AddWithValue("@dataFabricacao", produto.DataFabricacao);
-            cmd.Parameters.AddWithValue("@dataVencimento", produto.DataVencimento);
-            cmd.Parameters.AddWithValue("@quantidadeEstoqueProduto", produto.QuantidadeEstoqueProduto);
-            cmd.Parameters.AddWithValue("@categoria", produto.Categoria);
-            cmd.Parameters.AddWithValue("@statusAtivo", produto.StatusAtivo);
-
-            try
+            if (mensagem == "")
             {
-                cmd.Connection = conexao.AbrirBanco();
-                cmd.ExecuteNonQuery();
+
+                cmd.CommandText = _inserir;
+
+                cmd.Parameters.AddWithValue("@codBarras", produto.CodBarras);
+                cmd.Parameters.AddWithValue("@codFornecedor", produto.CodFornecedor);
+                cmd.Parameters.AddWithValue("@nomeProduto", produto.NomeProduto);
+                cmd.Parameters.AddWithValue("@descricaoProduto", produto.DescricaoProduto);
+                cmd.Parameters.AddWithValue("@precoCusto", produto.PrecoCusto);
+                cmd.Parameters.AddWithValue("@precoVenda", produto.PrecoVenda);
+                cmd.Parameters.AddWithValue("@margemLucro", produto.MargemLucro);
+                cmd.Parameters.AddWithValue("@dataFabricacao", produto.DataFabricacao);
+                cmd.Parameters.AddWithValue("@dataVencimento", produto.DataVencimento);
+                cmd.Parameters.AddWithValue("@quantidadeEstoqueProduto", produto.QuantidadeEstoqueProduto);
+                cmd.Parameters.AddWithValue("@categoria", produto.Categoria);
+                cmd.Parameters.AddWithValue("@statusAtivo", produto.StatusAtivo);
+
+                try
+                {
+                    cmd.Connection = conexao.AbrirBanco();
+                    cmd.ExecuteNonQuery();
 
 
-            }
-            catch (Exception e)
-            {
-                mensagem = e.Message;
+                }
+                catch (Exception e)
+                {
+                    mensagem = e.Message;
 
-            }
-            finally
-            {
-                cmd.Parameters.Clear();
-                conexao.FecharBanco();
+                }
+                finally
+                {
+                    cmd.Parameters.Clear();
+                    conexao.FecharBanco();
+                }
             }
 
         }
@@ -171,42 +174,47 @@ namespace SistemaPDVBack.Controller
 
         public void AlterarProduto()
         {
-            cmd.CommandText = _alterar;
-
-            cmd.Parameters.AddWithValue("@idProduto", produto.IdProduto);
-
-            cmd.Parameters.AddWithValue("@codBarras", produto.CodBarras);
-            cmd.Parameters.AddWithValue("@codFornecedor", produto.CodFornecedor);
-            cmd.Parameters.AddWithValue("@nomeProduto", produto.NomeProduto);
-            cmd.Parameters.AddWithValue("@descricaoProduto", produto.DescricaoProduto);
-            cmd.Parameters.AddWithValue("@precoCusto", produto.PrecoCusto);
-            cmd.Parameters.AddWithValue("@precoVenda", produto.PrecoVenda);
-            cmd.Parameters.AddWithValue("@margemLucro", produto.MargemLucro);
-            cmd.Parameters.AddWithValue("@dataFabricacao", produto.DataFabricacao);
-            cmd.Parameters.AddWithValue("@dataVencimento", produto.DataVencimento);
-            cmd.Parameters.AddWithValue("@quantidadeEstoqueProduto", produto.QuantidadeEstoqueProduto);
-            cmd.Parameters.AddWithValue("@categoria", produto.Categoria);
-            cmd.Parameters.AddWithValue("@statusAtivo", produto.StatusAtivo);
-
-
-
-
-            try
+            if (mensagem == "")
             {
-                cmd.Connection = conexao.AbrirBanco();
-                cmd.ExecuteNonQuery();
 
 
-            }
-            catch (Exception e)
-            {
-                throw;
+                cmd.CommandText = _alterar;
 
-            }
-            finally
-            {
-                cmd.Parameters.Clear();
-                conexao.FecharBanco();
+                cmd.Parameters.AddWithValue("@idProduto", produto.IdProduto);
+
+                cmd.Parameters.AddWithValue("@codBarras", produto.CodBarras);
+                cmd.Parameters.AddWithValue("@codFornecedor", produto.CodFornecedor);
+                cmd.Parameters.AddWithValue("@nomeProduto", produto.NomeProduto);
+                cmd.Parameters.AddWithValue("@descricaoProduto", produto.DescricaoProduto);
+                cmd.Parameters.AddWithValue("@precoCusto", produto.PrecoCusto);
+                cmd.Parameters.AddWithValue("@precoVenda", produto.PrecoVenda);
+                cmd.Parameters.AddWithValue("@margemLucro", produto.MargemLucro);
+                cmd.Parameters.AddWithValue("@dataFabricacao", produto.DataFabricacao);
+                cmd.Parameters.AddWithValue("@dataVencimento", produto.DataVencimento);
+                cmd.Parameters.AddWithValue("@quantidadeEstoqueProduto", produto.QuantidadeEstoqueProduto);
+                cmd.Parameters.AddWithValue("@categoria", produto.Categoria);
+                cmd.Parameters.AddWithValue("@statusAtivo", produto.StatusAtivo);
+
+
+
+
+                try
+                {
+                    cmd.Connection = conexao.AbrirBanco();
+                    cmd.ExecuteNonQuery();
+
+
+                }
+                catch (Exception e)
+                {
+                    mensagem = e.Message;
+
+                }
+                finally
+                {
+                    cmd.Parameters.Clear();
+                    conexao.FecharBanco();
+                }
             }
 
 

@@ -48,6 +48,18 @@ namespace SistemaPDVBack
                 {
 
                     controllerFornecedor.AdicionarFornecedor();
+                    if (controllerFornecedor.Ds_Msg != "")
+                    {
+                        // Exibir erro!
+
+
+                        const string caption = "Ocorreu um erro?";
+                        var result = MessageBox.Show(controllerFornecedor.Ds_Msg, caption,
+                                                      MessageBoxButtons.OK,
+                                                      MessageBoxIcon.Warning);
+
+                    }
+
                     LimpaCampos();
 
                     Listar();
@@ -128,6 +140,16 @@ namespace SistemaPDVBack
             {
                 // Tudo certinho!
                 controllerFornecedor.AlterarFornecedor();
+                if (controllerFornecedor.Ds_Msg != "")
+                {
+                    // Exibir erro!
+
+                    const string caption = "Ocorreu um erro?";
+                    var result = MessageBox.Show(controllerFornecedor.Ds_Msg, caption,
+                                                  MessageBoxButtons.OK,
+                                                  MessageBoxIcon.Warning);
+
+                }
                 LimpaCampos();
 
                 Listar();
@@ -173,11 +195,13 @@ namespace SistemaPDVBack
         private void btnLocalizar_Click(object sender, EventArgs e)
         {
 
+
             string temp = "";
             temp = txbCep.Text.Replace(".", "").Replace("-", "");
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://viacep.com.br/ws/" + temp + "/json/");
             request.AllowAutoRedirect = false;
             HttpWebResponse ChecaServidor = (HttpWebResponse)request.GetResponse();
+
 
             if (ChecaServidor.StatusCode != HttpStatusCode.OK)
             {

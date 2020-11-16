@@ -30,6 +30,14 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMenuTeste));
             this.pnMenuVertical = new System.Windows.Forms.Panel();
+            this.pnHorizontal = new System.Windows.Forms.Panel();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.lblNomeForms = new System.Windows.Forms.Label();
+            this.pnForm = new System.Windows.Forms.Panel();
+            this.btnMax = new FontAwesome.Sharp.IconButton();
+            this.btnMin = new FontAwesome.Sharp.IconButton();
+            this.iconMenu = new FontAwesome.Sharp.IconPictureBox();
+            this.iconFilho = new FontAwesome.Sharp.IconPictureBox();
             this.btnRelatorios = new FontAwesome.Sharp.IconButton();
             this.btnFornecedor = new FontAwesome.Sharp.IconButton();
             this.btnColaborador = new FontAwesome.Sharp.IconButton();
@@ -37,20 +45,12 @@
             this.btnLogo = new System.Windows.Forms.PictureBox();
             this.btnHome = new FontAwesome.Sharp.IconButton();
             this.pictBoxLogo = new System.Windows.Forms.PictureBox();
-            this.pnHorizontal = new System.Windows.Forms.Panel();
-            this.btnMax = new FontAwesome.Sharp.IconButton();
-            this.btnMin = new FontAwesome.Sharp.IconButton();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.lblNomeForms = new System.Windows.Forms.Label();
-            this.iconMenu = new FontAwesome.Sharp.IconPictureBox();
-            this.iconFilho = new FontAwesome.Sharp.IconPictureBox();
-            this.pnForm = new System.Windows.Forms.Panel();
             this.pnMenuVertical.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnLogo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictBoxLogo)).BeginInit();
             this.pnHorizontal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconFilho)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnLogo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictBoxLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // pnMenuVertical
@@ -69,6 +69,116 @@
             this.pnMenuVertical.Name = "pnMenuVertical";
             this.pnMenuVertical.Size = new System.Drawing.Size(200, 611);
             this.pnMenuVertical.TabIndex = 0;
+            // 
+            // pnHorizontal
+            // 
+            this.pnHorizontal.BackColor = System.Drawing.Color.Black;
+            this.pnHorizontal.Controls.Add(this.btnMax);
+            this.pnHorizontal.Controls.Add(this.btnMin);
+            this.pnHorizontal.Controls.Add(this.btnClose);
+            this.pnHorizontal.Controls.Add(this.lblNomeForms);
+            this.pnHorizontal.Controls.Add(this.iconMenu);
+            this.pnHorizontal.Controls.Add(this.iconFilho);
+            this.pnHorizontal.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnHorizontal.Location = new System.Drawing.Point(200, 0);
+            this.pnHorizontal.Name = "pnHorizontal";
+            this.pnHorizontal.Size = new System.Drawing.Size(884, 50);
+            this.pnHorizontal.TabIndex = 1;
+            this.pnHorizontal.Paint += new System.Windows.Forms.PaintEventHandler(this.pnHorizontal_Paint);
+            this.pnHorizontal.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnHorizontal_MouseDown);
+            // 
+            // btnClose
+            // 
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClose.FlatAppearance.BorderSize = 0;
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.ForeColor = System.Drawing.Color.White;
+            this.btnClose.Location = new System.Drawing.Point(848, 12);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(24, 23);
+            this.btnClose.TabIndex = 3;
+            this.btnClose.Text = "X";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // lblNomeForms
+            // 
+            this.lblNomeForms.AutoSize = true;
+            this.lblNomeForms.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNomeForms.ForeColor = System.Drawing.Color.White;
+            this.lblNomeForms.Location = new System.Drawing.Point(94, 9);
+            this.lblNomeForms.Name = "lblNomeForms";
+            this.lblNomeForms.Size = new System.Drawing.Size(54, 19);
+            this.lblNomeForms.TabIndex = 2;
+            this.lblNomeForms.Text = "Home";
+            // 
+            // pnForm
+            // 
+            this.pnForm.BackColor = System.Drawing.Color.Black;
+            this.pnForm.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pnForm.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnForm.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.pnForm.Location = new System.Drawing.Point(200, 50);
+            this.pnForm.Name = "pnForm";
+            this.pnForm.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.pnForm.Size = new System.Drawing.Size(884, 561);
+            this.pnForm.TabIndex = 4;
+            // 
+            // btnMax
+            // 
+            this.btnMax.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMax.FlatAppearance.BorderSize = 0;
+            this.btnMax.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMax.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnMax.IconChar = FontAwesome.Sharp.IconChar.Square;
+            this.btnMax.IconColor = System.Drawing.Color.White;
+            this.btnMax.IconSize = 16;
+            this.btnMax.Location = new System.Drawing.Point(817, 16);
+            this.btnMax.Name = "btnMax";
+            this.btnMax.Rotation = 0D;
+            this.btnMax.Size = new System.Drawing.Size(26, 23);
+            this.btnMax.TabIndex = 6;
+            this.btnMax.UseVisualStyleBackColor = true;
+            this.btnMax.Click += new System.EventHandler(this.btnMax_Click);
+            // 
+            // btnMin
+            // 
+            this.btnMin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMin.FlatAppearance.BorderSize = 0;
+            this.btnMin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMin.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnMin.IconChar = FontAwesome.Sharp.IconChar.Minus;
+            this.btnMin.IconColor = System.Drawing.Color.White;
+            this.btnMin.IconSize = 16;
+            this.btnMin.Location = new System.Drawing.Point(795, 16);
+            this.btnMin.Name = "btnMin";
+            this.btnMin.Rotation = 0D;
+            this.btnMin.Size = new System.Drawing.Size(16, 23);
+            this.btnMin.TabIndex = 5;
+            this.btnMin.UseVisualStyleBackColor = true;
+            this.btnMin.Click += new System.EventHandler(this.btnMin_Click);
+            // 
+            // iconMenu
+            // 
+            this.iconMenu.IconChar = FontAwesome.Sharp.IconChar.List;
+            this.iconMenu.IconColor = System.Drawing.Color.White;
+            this.iconMenu.Location = new System.Drawing.Point(6, 3);
+            this.iconMenu.Name = "iconMenu";
+            this.iconMenu.Size = new System.Drawing.Size(32, 32);
+            this.iconMenu.TabIndex = 2;
+            this.iconMenu.TabStop = false;
+            this.iconMenu.Click += new System.EventHandler(this.iconMenu_Click);
+            // 
+            // iconFilho
+            // 
+            this.iconFilho.IconChar = FontAwesome.Sharp.IconChar.Home;
+            this.iconFilho.IconColor = System.Drawing.Color.White;
+            this.iconFilho.Location = new System.Drawing.Point(56, 3);
+            this.iconFilho.Name = "iconFilho";
+            this.iconFilho.Size = new System.Drawing.Size(32, 32);
+            this.iconFilho.TabIndex = 2;
+            this.iconFilho.TabStop = false;
             // 
             // btnRelatorios
             // 
@@ -210,116 +320,6 @@
             this.pictBoxLogo.TabIndex = 0;
             this.pictBoxLogo.TabStop = false;
             // 
-            // pnHorizontal
-            // 
-            this.pnHorizontal.BackColor = System.Drawing.Color.Black;
-            this.pnHorizontal.Controls.Add(this.btnMax);
-            this.pnHorizontal.Controls.Add(this.btnMin);
-            this.pnHorizontal.Controls.Add(this.btnClose);
-            this.pnHorizontal.Controls.Add(this.lblNomeForms);
-            this.pnHorizontal.Controls.Add(this.iconMenu);
-            this.pnHorizontal.Controls.Add(this.iconFilho);
-            this.pnHorizontal.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnHorizontal.Location = new System.Drawing.Point(200, 0);
-            this.pnHorizontal.Name = "pnHorizontal";
-            this.pnHorizontal.Size = new System.Drawing.Size(884, 50);
-            this.pnHorizontal.TabIndex = 1;
-            this.pnHorizontal.Paint += new System.Windows.Forms.PaintEventHandler(this.pnHorizontal_Paint);
-            this.pnHorizontal.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnHorizontal_MouseDown);
-            // 
-            // btnMax
-            // 
-            this.btnMax.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMax.FlatAppearance.BorderSize = 0;
-            this.btnMax.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMax.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btnMax.IconChar = FontAwesome.Sharp.IconChar.Square;
-            this.btnMax.IconColor = System.Drawing.Color.White;
-            this.btnMax.IconSize = 16;
-            this.btnMax.Location = new System.Drawing.Point(817, 16);
-            this.btnMax.Name = "btnMax";
-            this.btnMax.Rotation = 0D;
-            this.btnMax.Size = new System.Drawing.Size(26, 23);
-            this.btnMax.TabIndex = 6;
-            this.btnMax.UseVisualStyleBackColor = true;
-            this.btnMax.Click += new System.EventHandler(this.btnMax_Click);
-            // 
-            // btnMin
-            // 
-            this.btnMin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMin.FlatAppearance.BorderSize = 0;
-            this.btnMin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMin.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btnMin.IconChar = FontAwesome.Sharp.IconChar.Minus;
-            this.btnMin.IconColor = System.Drawing.Color.White;
-            this.btnMin.IconSize = 16;
-            this.btnMin.Location = new System.Drawing.Point(795, 16);
-            this.btnMin.Name = "btnMin";
-            this.btnMin.Rotation = 0D;
-            this.btnMin.Size = new System.Drawing.Size(16, 23);
-            this.btnMin.TabIndex = 5;
-            this.btnMin.UseVisualStyleBackColor = true;
-            this.btnMin.Click += new System.EventHandler(this.btnMin_Click);
-            // 
-            // btnClose
-            // 
-            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClose.FlatAppearance.BorderSize = 0;
-            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(848, 12);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(24, 23);
-            this.btnClose.TabIndex = 3;
-            this.btnClose.Text = "X";
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // lblNomeForms
-            // 
-            this.lblNomeForms.AutoSize = true;
-            this.lblNomeForms.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNomeForms.ForeColor = System.Drawing.Color.White;
-            this.lblNomeForms.Location = new System.Drawing.Point(94, 9);
-            this.lblNomeForms.Name = "lblNomeForms";
-            this.lblNomeForms.Size = new System.Drawing.Size(54, 19);
-            this.lblNomeForms.TabIndex = 2;
-            this.lblNomeForms.Text = "Home";
-            // 
-            // iconMenu
-            // 
-            this.iconMenu.IconChar = FontAwesome.Sharp.IconChar.List;
-            this.iconMenu.IconColor = System.Drawing.Color.White;
-            this.iconMenu.Location = new System.Drawing.Point(6, 3);
-            this.iconMenu.Name = "iconMenu";
-            this.iconMenu.Size = new System.Drawing.Size(32, 32);
-            this.iconMenu.TabIndex = 2;
-            this.iconMenu.TabStop = false;
-            this.iconMenu.Click += new System.EventHandler(this.iconMenu_Click);
-            // 
-            // iconFilho
-            // 
-            this.iconFilho.IconChar = FontAwesome.Sharp.IconChar.Home;
-            this.iconFilho.IconColor = System.Drawing.Color.White;
-            this.iconFilho.Location = new System.Drawing.Point(56, 3);
-            this.iconFilho.Name = "iconFilho";
-            this.iconFilho.Size = new System.Drawing.Size(32, 32);
-            this.iconFilho.TabIndex = 2;
-            this.iconFilho.TabStop = false;
-            // 
-            // pnForm
-            // 
-            this.pnForm.BackColor = System.Drawing.Color.Black;
-            this.pnForm.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pnForm.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnForm.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.pnForm.Location = new System.Drawing.Point(200, 50);
-            this.pnForm.Name = "pnForm";
-            this.pnForm.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.pnForm.Size = new System.Drawing.Size(884, 561);
-            this.pnForm.TabIndex = 4;
-            // 
             // frmMenuTeste
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -337,12 +337,12 @@
             this.TransparencyKey = System.Drawing.Color.Transparent;
             this.Load += new System.EventHandler(this.frmMenuTeste_Load);
             this.pnMenuVertical.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.btnLogo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictBoxLogo)).EndInit();
             this.pnHorizontal.ResumeLayout(false);
             this.pnHorizontal.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconFilho)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnLogo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictBoxLogo)).EndInit();
             this.ResumeLayout(false);
 
         }

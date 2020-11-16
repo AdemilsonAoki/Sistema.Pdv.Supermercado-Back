@@ -29,38 +29,36 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.lblValorTotal = new System.Windows.Forms.Label();
+            this.lblValorUnitario = new System.Windows.Forms.Label();
+            this.lblQuantidade = new System.Windows.Forms.Label();
+            this.lblCodigoProduto = new System.Windows.Forms.Label();
             this.txbTotalRecebido = new System.Windows.Forms.TextBox();
             this.txbPrecoUnit = new System.Windows.Forms.TextBox();
             this.txbQuantidade = new System.Windows.Forms.TextBox();
             this.txbCodBarras = new System.Windows.Forms.TextBox();
             this.txbDescricao = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.panel4 = new System.Windows.Forms.Panel();
+            this.lblDescricao = new System.Windows.Forms.Label();
+            this.pnInfos = new System.Windows.Forms.Panel();
             this.lblCaixa = new System.Windows.Forms.Label();
             this.lblHora = new System.Windows.Forms.Label();
             this.lblData = new System.Windows.Forms.Label();
             this.lblNomeOperador = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
+            this.lblNomeHora = new System.Windows.Forms.Label();
+            this.lblOperador = new System.Windows.Forms.Label();
+            this.lblNomeData = new System.Windows.Forms.Label();
+            this.lblPdvEcf = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.label13 = new System.Windows.Forms.Label();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.lblAtalhos = new System.Windows.Forms.Label();
+            this.btnLimpaCampos = new System.Windows.Forms.Button();
+            this.btnFinalizarVendas = new System.Windows.Forms.Button();
             this.btnAdicionar = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
+            this.btnAjuda = new System.Windows.Forms.Button();
+            this.pnTitulo = new System.Windows.Forms.Panel();
+            this.lblNomeCaixa = new System.Windows.Forms.Label();
             this.timerData = new System.Windows.Forms.Timer(this.components);
             this.dgvCarrinho = new System.Windows.Forms.DataGridView();
             this.lblSubTotal = new System.Windows.Forms.Label();
@@ -71,53 +69,53 @@
             this.lblTroco = new System.Windows.Forms.Label();
             this.lblNomeValorPago = new System.Windows.Forms.Label();
             this.lblValorAReceber = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel4.SuspendLayout();
+            this.pnFormaPagamento = new System.Windows.Forms.Panel();
+            this.pnInfos.SuspendLayout();
             this.panel3.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.pnTitulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCarrinho)).BeginInit();
-            this.panel2.SuspendLayout();
+            this.pnFormaPagamento.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label7
+            // lblValorTotal
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Verdana", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(951, 385);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(250, 32);
-            this.label7.TabIndex = 59;
-            this.label7.Text = "Valor Total(R$)";
+            this.lblValorTotal.AutoSize = true;
+            this.lblValorTotal.Font = new System.Drawing.Font("Verdana", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblValorTotal.Location = new System.Drawing.Point(951, 385);
+            this.lblValorTotal.Name = "lblValorTotal";
+            this.lblValorTotal.Size = new System.Drawing.Size(250, 32);
+            this.lblValorTotal.TabIndex = 59;
+            this.lblValorTotal.Text = "Valor Total(R$)";
             // 
-            // label6
+            // lblValorUnitario
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Verdana", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(950, 222);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(292, 32);
-            this.label6.TabIndex = 58;
-            this.label6.Text = "Valor unitário(R$)";
+            this.lblValorUnitario.AutoSize = true;
+            this.lblValorUnitario.Font = new System.Drawing.Font("Verdana", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblValorUnitario.Location = new System.Drawing.Point(950, 222);
+            this.lblValorUnitario.Name = "lblValorUnitario";
+            this.lblValorUnitario.Size = new System.Drawing.Size(292, 32);
+            this.lblValorUnitario.TabIndex = 58;
+            this.lblValorUnitario.Text = "Valor unitário(R$)";
             // 
-            // label5
+            // lblQuantidade
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Verdana", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(950, 311);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(189, 32);
-            this.label5.TabIndex = 57;
-            this.label5.Text = "Quantidade";
+            this.lblQuantidade.AutoSize = true;
+            this.lblQuantidade.Font = new System.Drawing.Font("Verdana", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblQuantidade.Location = new System.Drawing.Point(950, 311);
+            this.lblQuantidade.Name = "lblQuantidade";
+            this.lblQuantidade.Size = new System.Drawing.Size(189, 32);
+            this.lblQuantidade.TabIndex = 57;
+            this.lblQuantidade.Text = "Quantidade";
             // 
-            // label4
+            // lblCodigoProduto
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Verdana", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(950, 124);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(296, 32);
-            this.label4.TabIndex = 56;
-            this.label4.Text = "Código do produto";
+            this.lblCodigoProduto.AutoSize = true;
+            this.lblCodigoProduto.Font = new System.Drawing.Font("Verdana", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCodigoProduto.Location = new System.Drawing.Point(950, 124);
+            this.lblCodigoProduto.Name = "lblCodigoProduto";
+            this.lblCodigoProduto.Size = new System.Drawing.Size(296, 32);
+            this.lblCodigoProduto.TabIndex = 56;
+            this.lblCodigoProduto.Text = "Código do produto";
             // 
             // txbTotalRecebido
             // 
@@ -173,33 +171,33 @@
             this.txbDescricao.TabIndex = 50;
             this.txbDescricao.TextChanged += new System.EventHandler(this.txbDescricao_TextChanged);
             // 
-            // label3
+            // lblDescricao
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Verdana", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(9, 43);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(194, 32);
-            this.label3.TabIndex = 49;
-            this.label3.Text = "DESCRIÇÃO";
+            this.lblDescricao.AutoSize = true;
+            this.lblDescricao.Font = new System.Drawing.Font("Verdana", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDescricao.Location = new System.Drawing.Point(9, 43);
+            this.lblDescricao.Name = "lblDescricao";
+            this.lblDescricao.Size = new System.Drawing.Size(194, 32);
+            this.lblDescricao.TabIndex = 49;
+            this.lblDescricao.Text = "DESCRIÇÃO";
             // 
-            // panel4
+            // pnInfos
             // 
-            this.panel4.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel4.Controls.Add(this.lblCaixa);
-            this.panel4.Controls.Add(this.lblHora);
-            this.panel4.Controls.Add(this.lblData);
-            this.panel4.Controls.Add(this.lblNomeOperador);
-            this.panel4.Controls.Add(this.label12);
-            this.panel4.Controls.Add(this.label11);
-            this.panel4.Controls.Add(this.label10);
-            this.panel4.Controls.Add(this.label9);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel4.Location = new System.Drawing.Point(0, 689);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1350, 40);
-            this.panel4.TabIndex = 48;
+            this.pnInfos.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.pnInfos.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnInfos.Controls.Add(this.lblCaixa);
+            this.pnInfos.Controls.Add(this.lblHora);
+            this.pnInfos.Controls.Add(this.lblData);
+            this.pnInfos.Controls.Add(this.lblNomeOperador);
+            this.pnInfos.Controls.Add(this.lblNomeHora);
+            this.pnInfos.Controls.Add(this.lblOperador);
+            this.pnInfos.Controls.Add(this.lblNomeData);
+            this.pnInfos.Controls.Add(this.lblPdvEcf);
+            this.pnInfos.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnInfos.Location = new System.Drawing.Point(0, 689);
+            this.pnInfos.Name = "pnInfos";
+            this.pnInfos.Size = new System.Drawing.Size(1350, 40);
+            this.pnInfos.TabIndex = 48;
             // 
             // lblCaixa
             // 
@@ -241,119 +239,93 @@
             this.lblNomeOperador.TabIndex = 4;
             this.lblNomeOperador.Text = "Nome";
             // 
-            // label12
+            // lblNomeHora
             // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(1141, 5);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(88, 25);
-            this.label12.TabIndex = 3;
-            this.label12.Text = "HORA:";
+            this.lblNomeHora.AutoSize = true;
+            this.lblNomeHora.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNomeHora.Location = new System.Drawing.Point(1141, 5);
+            this.lblNomeHora.Name = "lblNomeHora";
+            this.lblNomeHora.Size = new System.Drawing.Size(88, 25);
+            this.lblNomeHora.TabIndex = 3;
+            this.lblNomeHora.Text = "HORA:";
             // 
-            // label11
+            // lblOperador
             // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(409, 5);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(150, 25);
-            this.label11.TabIndex = 2;
-            this.label11.Text = "OPERADOR:";
+            this.lblOperador.AutoSize = true;
+            this.lblOperador.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOperador.Location = new System.Drawing.Point(409, 5);
+            this.lblOperador.Name = "lblOperador";
+            this.lblOperador.Size = new System.Drawing.Size(150, 25);
+            this.lblOperador.TabIndex = 2;
+            this.lblOperador.Text = "OPERADOR:";
             // 
-            // label10
+            // lblNomeData
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(880, 5);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(83, 25);
-            this.label10.TabIndex = 1;
-            this.label10.Text = "DATA:";
+            this.lblNomeData.AutoSize = true;
+            this.lblNomeData.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNomeData.Location = new System.Drawing.Point(880, 5);
+            this.lblNomeData.Name = "lblNomeData";
+            this.lblNomeData.Size = new System.Drawing.Size(83, 25);
+            this.lblNomeData.TabIndex = 1;
+            this.lblNomeData.Text = "DATA:";
             // 
-            // label9
+            // lblPdvEcf
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(11, 5);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(125, 25);
-            this.label9.TabIndex = 0;
-            this.label9.Text = "PDV/ECF:";
+            this.lblPdvEcf.AutoSize = true;
+            this.lblPdvEcf.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPdvEcf.Location = new System.Drawing.Point(11, 5);
+            this.lblPdvEcf.Name = "lblPdvEcf";
+            this.lblPdvEcf.Size = new System.Drawing.Size(125, 25);
+            this.lblPdvEcf.TabIndex = 0;
+            this.lblPdvEcf.Text = "PDV/ECF:";
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Controls.Add(this.label13);
-            this.panel3.Controls.Add(this.button6);
-            this.panel3.Controls.Add(this.button5);
-            this.panel3.Controls.Add(this.button4);
-            this.panel3.Controls.Add(this.button3);
+            this.panel3.Controls.Add(this.lblAtalhos);
+            this.panel3.Controls.Add(this.btnLimpaCampos);
+            this.panel3.Controls.Add(this.btnFinalizarVendas);
             this.panel3.Controls.Add(this.btnAdicionar);
-            this.panel3.Controls.Add(this.button1);
-            this.panel3.Location = new System.Drawing.Point(961, 480);
+            this.panel3.Controls.Add(this.btnAjuda);
+            this.panel3.Location = new System.Drawing.Point(961, 504);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(211, 145);
+            this.panel3.Size = new System.Drawing.Size(211, 111);
             this.panel3.TabIndex = 47;
             // 
-            // label13
+            // lblAtalhos
             // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(3, 3);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(53, 13);
-            this.label13.TabIndex = 6;
-            this.label13.Text = "Atalhos:";
+            this.lblAtalhos.AutoSize = true;
+            this.lblAtalhos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAtalhos.Location = new System.Drawing.Point(3, 3);
+            this.lblAtalhos.Name = "lblAtalhos";
+            this.lblAtalhos.Size = new System.Drawing.Size(53, 13);
+            this.lblAtalhos.TabIndex = 6;
+            this.lblAtalhos.Text = "Atalhos:";
             // 
-            // button6
+            // btnLimpaCampos
             // 
-            this.button6.BackColor = System.Drawing.SystemColors.Info;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button6.Font = new System.Drawing.Font("Verdana", 8.25F);
-            this.button6.Location = new System.Drawing.Point(3, 103);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(100, 36);
-            this.button6.TabIndex = 5;
-            this.button6.Text = "Desconto Item (F7)";
-            this.button6.UseVisualStyleBackColor = false;
+            this.btnLimpaCampos.BackColor = System.Drawing.SystemColors.Info;
+            this.btnLimpaCampos.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnLimpaCampos.Font = new System.Drawing.Font("Verdana", 8.25F);
+            this.btnLimpaCampos.Location = new System.Drawing.Point(3, 61);
+            this.btnLimpaCampos.Name = "btnLimpaCampos";
+            this.btnLimpaCampos.Size = new System.Drawing.Size(100, 36);
+            this.btnLimpaCampos.TabIndex = 4;
+            this.btnLimpaCampos.Text = "Limpa campos (F5)";
+            this.btnLimpaCampos.UseVisualStyleBackColor = false;
             // 
-            // button5
+            // btnFinalizarVendas
             // 
-            this.button5.BackColor = System.Drawing.SystemColors.Info;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button5.Font = new System.Drawing.Font("Verdana", 8.25F);
-            this.button5.Location = new System.Drawing.Point(3, 61);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(100, 36);
-            this.button5.TabIndex = 4;
-            this.button5.Text = "Limpa campos (F5)";
-            this.button5.UseVisualStyleBackColor = false;
-            // 
-            // button4
-            // 
-            this.button4.BackColor = System.Drawing.SystemColors.Info;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button4.Font = new System.Drawing.Font("Verdana", 8.25F);
-            this.button4.Location = new System.Drawing.Point(106, 103);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(100, 36);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "Cancelar Venda (F8)";
-            this.button4.UseVisualStyleBackColor = false;
-            // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.SystemColors.Info;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button3.Font = new System.Drawing.Font("Verdana", 8.25F);
-            this.button3.Location = new System.Drawing.Point(106, 19);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(100, 36);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Finalizar Venda (F2)";
-            this.button3.UseVisualStyleBackColor = false;
+            this.btnFinalizarVendas.BackColor = System.Drawing.SystemColors.Info;
+            this.btnFinalizarVendas.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnFinalizarVendas.Font = new System.Drawing.Font("Verdana", 8.25F);
+            this.btnFinalizarVendas.Location = new System.Drawing.Point(106, 19);
+            this.btnFinalizarVendas.Name = "btnFinalizarVendas";
+            this.btnFinalizarVendas.Size = new System.Drawing.Size(100, 36);
+            this.btnFinalizarVendas.TabIndex = 2;
+            this.btnFinalizarVendas.Text = "Finalizar Venda (F2)";
+            this.btnFinalizarVendas.UseVisualStyleBackColor = false;
             // 
             // btnAdicionar
             // 
@@ -368,38 +340,38 @@
             this.btnAdicionar.UseVisualStyleBackColor = false;
             this.btnAdicionar.Click += new System.EventHandler(this.btnAdicionar_Click);
             // 
-            // button1
+            // btnAjuda
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.Info;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Font = new System.Drawing.Font("Verdana", 8.25F);
-            this.button1.Location = new System.Drawing.Point(3, 19);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 36);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Ajuda (F1)";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnAjuda.BackColor = System.Drawing.SystemColors.Info;
+            this.btnAjuda.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnAjuda.Font = new System.Drawing.Font("Verdana", 8.25F);
+            this.btnAjuda.Location = new System.Drawing.Point(3, 19);
+            this.btnAjuda.Name = "btnAjuda";
+            this.btnAjuda.Size = new System.Drawing.Size(100, 36);
+            this.btnAjuda.TabIndex = 0;
+            this.btnAjuda.Text = "Ajuda (F1)";
+            this.btnAjuda.UseVisualStyleBackColor = false;
             // 
-            // panel1
+            // pnTitulo
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1350, 40);
-            this.panel1.TabIndex = 43;
+            this.pnTitulo.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.pnTitulo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnTitulo.Controls.Add(this.lblNomeCaixa);
+            this.pnTitulo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnTitulo.Location = new System.Drawing.Point(0, 0);
+            this.pnTitulo.Name = "pnTitulo";
+            this.pnTitulo.Size = new System.Drawing.Size(1350, 40);
+            this.pnTitulo.TabIndex = 43;
             // 
-            // label2
+            // lblNomeCaixa
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Verdana", 20F);
-            this.label2.Location = new System.Drawing.Point(623, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(190, 32);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "CAIXA LIVRE";
+            this.lblNomeCaixa.AutoSize = true;
+            this.lblNomeCaixa.Font = new System.Drawing.Font("Verdana", 20F);
+            this.lblNomeCaixa.Location = new System.Drawing.Point(623, 0);
+            this.lblNomeCaixa.Name = "lblNomeCaixa";
+            this.lblNomeCaixa.Size = new System.Drawing.Size(190, 32);
+            this.lblNomeCaixa.TabIndex = 0;
+            this.lblNomeCaixa.Text = "CAIXA LIVRE";
             // 
             // timerData
             // 
@@ -416,14 +388,14 @@
             this.dgvCarrinho.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvCarrinho.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvCarrinho.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Green;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Arial", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCarrinho.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.Green;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Arial", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCarrinho.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.dgvCarrinho.ColumnHeadersHeight = 30;
             this.dgvCarrinho.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvCarrinho.EnableHeadersVisualStyles = false;
@@ -432,21 +404,21 @@
             this.dgvCarrinho.Name = "dgvCarrinho";
             this.dgvCarrinho.ReadOnly = true;
             this.dgvCarrinho.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Maroon;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCarrinho.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.Maroon;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCarrinho.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
             this.dgvCarrinho.RowHeadersVisible = false;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Green;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
-            this.dgvCarrinho.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.Green;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.White;
+            this.dgvCarrinho.RowsDefaultCellStyle = dataGridViewCellStyle12;
             this.dgvCarrinho.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCarrinho.Size = new System.Drawing.Size(900, 501);
             this.dgvCarrinho.TabIndex = 60;
@@ -543,22 +515,22 @@
             this.lblValorAReceber.Text = "0";
             this.lblValorAReceber.Visible = false;
             // 
-            // panel2
+            // pnFormaPagamento
             // 
-            this.panel2.BackColor = System.Drawing.Color.Transparent;
-            this.panel2.Controls.Add(this.lblNomeFormaPagamento);
-            this.panel2.Controls.Add(this.lblValorAReceber);
-            this.panel2.Controls.Add(this.lblSubTotal);
-            this.panel2.Controls.Add(this.lblNomeValorPago);
-            this.panel2.Controls.Add(this.lblTotal);
-            this.panel2.Controls.Add(this.lblTroco);
-            this.panel2.Controls.Add(this.lblFormaPagamento);
-            this.panel2.Controls.Add(this.lblNomeTroco);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 653);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1350, 36);
-            this.panel2.TabIndex = 69;
+            this.pnFormaPagamento.BackColor = System.Drawing.Color.Transparent;
+            this.pnFormaPagamento.Controls.Add(this.lblNomeFormaPagamento);
+            this.pnFormaPagamento.Controls.Add(this.lblValorAReceber);
+            this.pnFormaPagamento.Controls.Add(this.lblSubTotal);
+            this.pnFormaPagamento.Controls.Add(this.lblNomeValorPago);
+            this.pnFormaPagamento.Controls.Add(this.lblTotal);
+            this.pnFormaPagamento.Controls.Add(this.lblTroco);
+            this.pnFormaPagamento.Controls.Add(this.lblFormaPagamento);
+            this.pnFormaPagamento.Controls.Add(this.lblNomeTroco);
+            this.pnFormaPagamento.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnFormaPagamento.Location = new System.Drawing.Point(0, 653);
+            this.pnFormaPagamento.Name = "pnFormaPagamento";
+            this.pnFormaPagamento.Size = new System.Drawing.Size(1350, 36);
+            this.pnFormaPagamento.TabIndex = 69;
             // 
             // frmTelaPdv
             // 
@@ -568,67 +540,65 @@
             this.BackColor = System.Drawing.Color.SteelBlue;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(1350, 729);
-            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.pnFormaPagamento);
             this.Controls.Add(this.dgvCarrinho);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.lblValorTotal);
+            this.Controls.Add(this.lblValorUnitario);
+            this.Controls.Add(this.lblQuantidade);
+            this.Controls.Add(this.lblCodigoProduto);
             this.Controls.Add(this.txbTotalRecebido);
             this.Controls.Add(this.txbPrecoUnit);
             this.Controls.Add(this.txbQuantidade);
             this.Controls.Add(this.txbCodBarras);
             this.Controls.Add(this.txbDescricao);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.panel4);
+            this.Controls.Add(this.lblDescricao);
+            this.Controls.Add(this.pnInfos);
             this.Controls.Add(this.panel3);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.pnTitulo);
             this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmTelaPdv";
             this.Text = "frmTelaPdv";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmTelaPdv_Load);
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
+            this.pnInfos.ResumeLayout(false);
+            this.pnInfos.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.pnTitulo.ResumeLayout(false);
+            this.pnTitulo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCarrinho)).EndInit();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
+            this.pnFormaPagamento.ResumeLayout(false);
+            this.pnFormaPagamento.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblValorTotal;
+        private System.Windows.Forms.Label lblValorUnitario;
+        private System.Windows.Forms.Label lblQuantidade;
+        private System.Windows.Forms.Label lblCodigoProduto;
         private System.Windows.Forms.TextBox txbTotalRecebido;
         private System.Windows.Forms.TextBox txbPrecoUnit;
         private System.Windows.Forms.TextBox txbQuantidade;
         private System.Windows.Forms.TextBox txbCodBarras;
         private System.Windows.Forms.TextBox txbDescricao;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label lblDescricao;
+        private System.Windows.Forms.Panel pnInfos;
+        private System.Windows.Forms.Label lblNomeHora;
+        private System.Windows.Forms.Label lblOperador;
+        private System.Windows.Forms.Label lblNomeData;
+        private System.Windows.Forms.Label lblPdvEcf;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Label lblAtalhos;
+        private System.Windows.Forms.Button btnLimpaCampos;
+        private System.Windows.Forms.Button btnFinalizarVendas;
         private System.Windows.Forms.Button btnAdicionar;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnAjuda;
+        private System.Windows.Forms.Panel pnTitulo;
+        private System.Windows.Forms.Label lblNomeCaixa;
         private System.Windows.Forms.Label lblNomeOperador;
         private System.Windows.Forms.Label lblData;
         private System.Windows.Forms.Label lblHora;
@@ -643,6 +613,6 @@
         private System.Windows.Forms.Label lblTroco;
         private System.Windows.Forms.Label lblNomeValorPago;
         private System.Windows.Forms.Label lblValorAReceber;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel pnFormaPagamento;
     }
 }

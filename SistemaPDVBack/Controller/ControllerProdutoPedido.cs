@@ -233,38 +233,38 @@ namespace SistemaPDVBack.Controller
 
         }
 
-        public void DeeletarProdutoPedido()
-        {
+        //public void DeeletarProdutoPedido()
+        //{
 
-            cmd.CommandText = "DELETE FROM ProdutoPedido where idProdutoPedido = @idProdutoPedido";
+        //    cmd.CommandText = "DELETE FROM ProdutoPedido where idProdutoPedido = @idProdutoPedido";
 
-            cmd.Parameters.AddWithValue("@idProdutoPedido", produtoPedido.IdProdutoPedido);
-
-
+        //    cmd.Parameters.AddWithValue("@idProdutoPedido", produtoPedido.IdProdutoPedido);
 
 
 
-            try
-            {
-                cmd.Connection = conexao.AbrirBanco();
-                cmd.ExecuteNonQuery();
 
 
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message);
-                return;
-
-            }
-            finally
-            {
-                cmd.Parameters.Clear();
-                conexao.FecharBanco();
-            }
+        //    try
+        //    {
+        //        cmd.Connection = conexao.AbrirBanco();
+        //        cmd.ExecuteNonQuery();
 
 
-        }
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        MessageBox.Show(e.Message);
+        //        return;
+
+        //    }
+        //    finally
+        //    {
+        //        cmd.Parameters.Clear();
+        //        conexao.FecharBanco();
+        //    }
+
+
+        //}
         public void CarregaPedido()
         {
 

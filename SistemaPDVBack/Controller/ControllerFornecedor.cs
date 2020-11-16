@@ -71,7 +71,7 @@ namespace SistemaPDVBack.Controller
                     {
                         mensagem = "Preencha os campos";
                     }
-                    string inscricao = inscricaoEstadual.Replace(".","");
+                    string inscricao = inscricaoEstadual.Replace(".", "");
                     fornecedor.Cnpj = cnpj;
                     fornecedor.StatusAtivo = int.Parse(statusAtivo);
                     fornecedor.InscricaoEstadual = inscricao;
@@ -89,40 +89,43 @@ namespace SistemaPDVBack.Controller
 
         public void AdicionarFornecedor()
         {
-
-            cmd.CommandText = _inserir;
-
-            cmd.Parameters.AddWithValue("@inscricaoEstadual", fornecedor.InscricaoEstadual);
-            cmd.Parameters.AddWithValue("@statusAtivo", fornecedor.StatusAtivo);
-            cmd.Parameters.AddWithValue("@cnpj", fornecedor.Cnpj);
-            cmd.Parameters.AddWithValue("@rua", fornecedor.Rua);
-            cmd.Parameters.AddWithValue("@nomeFantasia", fornecedor.NomeFantasia);
-            cmd.Parameters.AddWithValue("@uf", fornecedor.UfPessoa);
-            cmd.Parameters.AddWithValue("@numero", fornecedor.NumeroPessoa);
-            cmd.Parameters.AddWithValue("@complemento", fornecedor.ComplementoPessoa);
-            cmd.Parameters.AddWithValue("@bairro", fornecedor.BairroPessoa);
-            cmd.Parameters.AddWithValue("@cidade", fornecedor.CidadePessoa);
-            cmd.Parameters.AddWithValue("@cepFornecedor", fornecedor.CepFornecedor);
-
-
-
-
-            try
+            if (mensagem == "")
             {
-                cmd.Connection = conexao.AbrirBanco();
-                cmd.ExecuteNonQuery();
+                cmd.CommandText = _inserir;
+
+                cmd.Parameters.AddWithValue("@inscricaoEstadual", fornecedor.InscricaoEstadual);
+                cmd.Parameters.AddWithValue("@statusAtivo", fornecedor.StatusAtivo);
+                cmd.Parameters.AddWithValue("@cnpj", fornecedor.Cnpj);
+                cmd.Parameters.AddWithValue("@rua", fornecedor.Rua);
+                cmd.Parameters.AddWithValue("@nomeFantasia", fornecedor.NomeFantasia);
+                cmd.Parameters.AddWithValue("@uf", fornecedor.UfPessoa);
+                cmd.Parameters.AddWithValue("@numero", fornecedor.NumeroPessoa);
+                cmd.Parameters.AddWithValue("@complemento", fornecedor.ComplementoPessoa);
+                cmd.Parameters.AddWithValue("@bairro", fornecedor.BairroPessoa);
+                cmd.Parameters.AddWithValue("@cidade", fornecedor.CidadePessoa);
+                cmd.Parameters.AddWithValue("@cepFornecedor", fornecedor.CepFornecedor);
 
 
-            }
-            catch (Exception e)
-            {
-                throw;
 
-            }
-            finally
-            {
-                cmd.Parameters.Clear();
-                conexao.FecharBanco();
+
+                try
+                {
+                    cmd.Connection = conexao.AbrirBanco();
+                    cmd.ExecuteNonQuery();
+
+
+                }
+                catch (Exception e)
+                {
+                    mensagem = e.Message;
+
+
+                }
+                finally
+                {
+                    cmd.Parameters.Clear();
+                    conexao.FecharBanco();
+                }
             }
 
 
@@ -131,85 +134,90 @@ namespace SistemaPDVBack.Controller
 
         public void AlterarFornecedor()
         {
-            cmd.CommandText = _alterar;
-            cmd.Parameters.AddWithValue("@idFornecedor", fornecedor.IdFornecedor);
-            cmd.Parameters.AddWithValue("@inscricaoEstadual", fornecedor.InscricaoEstadual);
-            cmd.Parameters.AddWithValue("@nomeFantasia", fornecedor.NomeFantasia);
-            cmd.Parameters.AddWithValue("@uf", fornecedor.UfPessoa);
-            cmd.Parameters.AddWithValue("@numero", fornecedor.NumeroPessoa);
-            cmd.Parameters.AddWithValue("@complemento", fornecedor.ComplementoPessoa);
-            cmd.Parameters.AddWithValue("@bairro", fornecedor.BairroPessoa);
-            cmd.Parameters.AddWithValue("@cidade", fornecedor.CidadePessoa);
-            cmd.Parameters.AddWithValue("@cepFornecedor", fornecedor.CepFornecedor);
-            cmd.Parameters.AddWithValue("@cnpj", fornecedor.Cnpj);
-            cmd.Parameters.AddWithValue("@rua", fornecedor.Rua);
-            cmd.Parameters.AddWithValue("@statusAtivo", fornecedor.StatusAtivo);
-
-
-            try
+            if (mensagem == "")
             {
-                cmd.Connection = conexao.AbrirBanco();
-                cmd.ExecuteNonQuery();
+                cmd.CommandText = _alterar;
+                cmd.Parameters.AddWithValue("@idFornecedor", fornecedor.IdFornecedor);
+                cmd.Parameters.AddWithValue("@inscricaoEstadual", fornecedor.InscricaoEstadual);
+                cmd.Parameters.AddWithValue("@nomeFantasia", fornecedor.NomeFantasia);
+                cmd.Parameters.AddWithValue("@uf", fornecedor.UfPessoa);
+                cmd.Parameters.AddWithValue("@numero", fornecedor.NumeroPessoa);
+                cmd.Parameters.AddWithValue("@complemento", fornecedor.ComplementoPessoa);
+                cmd.Parameters.AddWithValue("@bairro", fornecedor.BairroPessoa);
+                cmd.Parameters.AddWithValue("@cidade", fornecedor.CidadePessoa);
+                cmd.Parameters.AddWithValue("@cepFornecedor", fornecedor.CepFornecedor);
+                cmd.Parameters.AddWithValue("@cnpj", fornecedor.Cnpj);
+                cmd.Parameters.AddWithValue("@rua", fornecedor.Rua);
+                cmd.Parameters.AddWithValue("@statusAtivo", fornecedor.StatusAtivo);
+
+
+                try
+                {
+                    cmd.Connection = conexao.AbrirBanco();
+                    cmd.ExecuteNonQuery();
+
+
+                }
+                catch (Exception e)
+                {
+                    throw;
+
+                }
+                finally
+                {
+                    cmd.Parameters.Clear();
+                    conexao.FecharBanco();
+                }
 
 
             }
-            catch (Exception e)
-            {
-                throw;
-
-            }
-            finally
-            {
-                cmd.Parameters.Clear();
-                conexao.FecharBanco();
-            }
-
-
 
         }
 
 
         public DataTable ListarFornecedor()
         {
-            cmd.CommandText = _listar;
-            try
-            {
-                cmd.Connection = conexao.AbrirBanco();
-                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
-                DataTable dtLista = new DataTable();
-                da.Fill(dtLista);
-                return dtLista;
+           
+                cmd.CommandText = _listar;
+                try
+                {
+                    cmd.Connection = conexao.AbrirBanco();
+                    MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                    DataTable dtLista = new DataTable();
+                    da.Fill(dtLista);
+                    return dtLista;
 
-            }
-            catch (Exception e)
-            {
-                throw;
-            }
-            finally
-            {
-                conexao.FecharBanco();
-            }
-
+                }
+                catch (Exception e)
+                {
+                    throw;
+                }
+                finally
+                {
+                    conexao.FecharBanco();
+                }
+            
         }
 
 
         public DataTable PesquisaFornecedor()
         {
-            try
-            {
-                cmd.CommandText = "select *from Fornecedor where nomeFantasia LIKE'%' @nomeFantasia '%' order by nomeFantasia";
-                cmd.Parameters.AddWithValue("@nomeFantasia", fornecedor.NomeFantasia);
-                cmd.Connection = conexao.AbrirBanco();
-                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
-                DataTable dtLista = new DataTable();
-                da.Fill(dtLista);
-                return dtLista;
-            }
-            catch (Exception e)
-            {
-                throw;
-            }
-
+           
+                try
+                {
+                    cmd.CommandText = "select *from Fornecedor where nomeFantasia LIKE'%' @nomeFantasia '%' order by nomeFantasia";
+                    cmd.Parameters.AddWithValue("@nomeFantasia", fornecedor.NomeFantasia);
+                    cmd.Connection = conexao.AbrirBanco();
+                    MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                    DataTable dtLista = new DataTable();
+                    da.Fill(dtLista);
+                    return dtLista;
+                }
+                catch (Exception e)
+                {
+                    throw;
+                }
+            
 
         }
         public DataTable ListarTodosFornecedores()
@@ -255,7 +263,7 @@ namespace SistemaPDVBack.Controller
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+
                 return false;
             }
             finally

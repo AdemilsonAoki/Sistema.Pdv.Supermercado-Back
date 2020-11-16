@@ -186,8 +186,8 @@ namespace SistemaPDVBack.Controller
         {
             try
             {
-                cmd.CommandText = "Select *from colaborador where cpfColaborador = @cpfColaborador";
-                cmd.Parameters.AddWithValue("@cpfColaborador", CarregaUsuario.IdUser);
+                cmd.CommandText = "Select *from colaborador where idColaborador = @idColaborador";
+                cmd.Parameters.AddWithValue("@idColaborador", CarregaUsuario.IdUser);
                 cmd.Connection = conexao.AbrirBanco();
 
                 reader = cmd.ExecuteReader();

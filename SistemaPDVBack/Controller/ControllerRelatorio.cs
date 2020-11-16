@@ -13,12 +13,7 @@ namespace SistemaPDVBack.Controller
     {
         MySqlCommand cmd = new MySqlCommand();
         Conexao conexao = new Conexao();
-        DataSet mDts = new DataSet("Retorno");
-        public DataSet RetornoDts
-        {
-            get { return mDts; }
-            set { mDts = value; }
-        }
+    
 
         public void CarregarRelatorio()
         {
@@ -30,7 +25,7 @@ namespace SistemaPDVBack.Controller
 
                 MySqlDataAdapter mDtAd = new MySqlDataAdapter(cmd);
 
-                mDtAd.Fill(mDts, "Retorno");
+             //   mDtAd.Fill(mDts, "Retorno");
             }
 
             catch (Exception e)

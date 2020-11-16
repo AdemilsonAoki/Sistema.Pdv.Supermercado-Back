@@ -42,9 +42,10 @@
             // 
             // txbValorRecebido
             // 
+            this.txbValorRecebido.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbValorRecebido.Location = new System.Drawing.Point(12, 59);
             this.txbValorRecebido.Name = "txbValorRecebido";
-            this.txbValorRecebido.Size = new System.Drawing.Size(199, 20);
+            this.txbValorRecebido.Size = new System.Drawing.Size(199, 23);
             this.txbValorRecebido.TabIndex = 0;
             this.txbValorRecebido.Text = "0";
             this.txbValorRecebido.TextChanged += new System.EventHandler(this.txbValorRecebido_TextChanged);
@@ -53,17 +54,19 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 33);
+            this.label1.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(12, 34);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(80, 13);
+            this.label1.Size = new System.Drawing.Size(104, 13);
             this.label1.TabIndex = 1;
             this.label1.Text = "Valor Recebido";
             // 
             // btnOK
             // 
+            this.btnOK.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOK.Location = new System.Drawing.Point(12, 265);
             this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(75, 23);
+            this.btnOK.Size = new System.Drawing.Size(102, 23);
             this.btnOK.TabIndex = 2;
             this.btnOK.Text = "OK (Enter)";
             this.btnOK.UseVisualStyleBackColor = true;
@@ -71,9 +74,10 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(167, 265);
+            this.btnCancelar.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.Location = new System.Drawing.Point(140, 265);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(85, 23);
+            this.btnCancelar.Size = new System.Drawing.Size(123, 23);
             this.btnCancelar.TabIndex = 3;
             this.btnCancelar.Text = "Cancelar (Esc)";
             this.btnCancelar.UseVisualStyleBackColor = true;
@@ -82,62 +86,70 @@
             // lblTotal
             // 
             this.lblTotal.AutoSize = true;
+            this.lblTotal.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotal.Location = new System.Drawing.Point(12, 107);
             this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(31, 13);
+            this.lblTotal.Size = new System.Drawing.Size(44, 16);
             this.lblTotal.TabIndex = 4;
             this.lblTotal.Text = "Total";
             // 
             // lblSubTotalValor
             // 
             this.lblSubTotalValor.AutoSize = true;
-            this.lblSubTotalValor.Location = new System.Drawing.Point(94, 107);
+            this.lblSubTotalValor.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSubTotalValor.Location = new System.Drawing.Point(171, 107);
             this.lblSubTotalValor.Name = "lblSubTotalValor";
-            this.lblSubTotalValor.Size = new System.Drawing.Size(28, 13);
+            this.lblSubTotalValor.Size = new System.Drawing.Size(40, 16);
             this.lblSubTotalValor.TabIndex = 5;
             this.lblSubTotalValor.Text = "0,00";
             // 
             // lblValorTroco
             // 
             this.lblValorTroco.AutoSize = true;
-            this.lblValorTroco.Location = new System.Drawing.Point(94, 178);
+            this.lblValorTroco.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblValorTroco.Location = new System.Drawing.Point(171, 178);
             this.lblValorTroco.Name = "lblValorTroco";
-            this.lblValorTroco.Size = new System.Drawing.Size(28, 13);
+            this.lblValorTroco.Size = new System.Drawing.Size(40, 16);
             this.lblValorTroco.TabIndex = 7;
             this.lblValorTroco.Text = "0,00";
             // 
             // lblTroco
             // 
             this.lblTroco.AutoSize = true;
+            this.lblTroco.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTroco.Location = new System.Drawing.Point(12, 178);
             this.lblTroco.Name = "lblTroco";
-            this.lblTroco.Size = new System.Drawing.Size(35, 13);
+            this.lblTroco.Size = new System.Drawing.Size(48, 16);
             this.lblTroco.TabIndex = 6;
             this.lblTroco.Text = "Troco";
             // 
             // lblValorAReceber
             // 
             this.lblValorAReceber.AutoSize = true;
-            this.lblValorAReceber.Location = new System.Drawing.Point(94, 142);
+            this.lblValorAReceber.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblValorAReceber.Location = new System.Drawing.Point(171, 142);
             this.lblValorAReceber.Name = "lblValorAReceber";
-            this.lblValorAReceber.Size = new System.Drawing.Size(28, 13);
+            this.lblValorAReceber.Size = new System.Drawing.Size(40, 16);
             this.lblValorAReceber.TabIndex = 9;
             this.lblValorAReceber.Text = "0,00";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(9, 142);
+            this.label3.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(12, 142);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(79, 13);
+            this.label3.Size = new System.Drawing.Size(119, 16);
             this.label3.TabIndex = 8;
             this.label3.Text = "Valor a receber";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // frmDinheiro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(329, 300);
+            this.BackColor = System.Drawing.Color.SteelBlue;
+            this.ClientSize = new System.Drawing.Size(278, 300);
             this.Controls.Add(this.lblValorAReceber);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.lblValorTroco);

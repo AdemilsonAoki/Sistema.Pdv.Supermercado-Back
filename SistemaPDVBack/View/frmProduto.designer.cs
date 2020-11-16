@@ -35,42 +35,42 @@
             this.txbCodigoBarras = new System.Windows.Forms.TextBox();
             this.lblFornecedor = new System.Windows.Forms.Label();
             this.cmbFornecedor = new System.Windows.Forms.ComboBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.gpDescricaoNome = new System.Windows.Forms.GroupBox();
+            this.lblDescricao = new System.Windows.Forms.Label();
             this.rtbDescricao = new System.Windows.Forms.RichTextBox();
             this.lblNome = new System.Windows.Forms.Label();
             this.txbNome = new System.Windows.Forms.TextBox();
             this.gpCategoria = new System.Windows.Forms.GroupBox();
             this.rbNaoPerecivel = new System.Windows.Forms.RadioButton();
             this.rbPerecivel = new System.Windows.Forms.RadioButton();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.gpValores = new System.Windows.Forms.GroupBox();
             this.txbMargemDeLucro = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
+            this.lblMargem = new System.Windows.Forms.Label();
             this.txbPrecoDeVenda = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
+            this.lblQuantidade = new System.Windows.Forms.Label();
             this.txbQuantidadeEstoque = new System.Windows.Forms.TextBox();
             this.txbPrecoCusto = new System.Windows.Forms.TextBox();
             this.lblPrecoCusto = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
+            this.lblPrecoVenda = new System.Windows.Forms.Label();
+            this.lblDataFabricacao = new System.Windows.Forms.Label();
+            this.lblDataVencimento = new System.Windows.Forms.Label();
             this.btnAlterar = new FontAwesome.Sharp.IconButton();
             this.btnAdicionar = new FontAwesome.Sharp.IconButton();
             this.rbProdutoInativo = new System.Windows.Forms.RadioButton();
             this.rbProdutoAtivo = new System.Windows.Forms.RadioButton();
             this.dgvProduto = new System.Windows.Forms.DataGridView();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.gpAtivo = new System.Windows.Forms.GroupBox();
             this.ckbInativo = new System.Windows.Forms.CheckBox();
             this.btnConsulta = new FontAwesome.Sharp.IconButton();
             this.msktDataFabricacao = new System.Windows.Forms.MaskedTextBox();
             this.msktDataVencimento = new System.Windows.Forms.MaskedTextBox();
             this.txbId = new System.Windows.Forms.TextBox();
             this.lblId = new System.Windows.Forms.Label();
-            this.groupBox1.SuspendLayout();
+            this.gpDescricaoNome.SuspendLayout();
             this.gpCategoria.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.gpValores.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProduto)).BeginInit();
-            this.groupBox3.SuspendLayout();
+            this.gpAtivo.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblCodBarras
@@ -117,32 +117,32 @@
             this.cmbFornecedor.Size = new System.Drawing.Size(195, 21);
             this.cmbFornecedor.TabIndex = 4;
             // 
-            // groupBox1
+            // gpDescricaoNome
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.gpDescricaoNome.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.rtbDescricao);
-            this.groupBox1.Controls.Add(this.lblNome);
-            this.groupBox1.Controls.Add(this.txbNome);
-            this.groupBox1.Location = new System.Drawing.Point(24, 79);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(542, 173);
-            this.groupBox1.TabIndex = 7;
-            this.groupBox1.TabStop = false;
+            this.gpDescricaoNome.Controls.Add(this.lblDescricao);
+            this.gpDescricaoNome.Controls.Add(this.rtbDescricao);
+            this.gpDescricaoNome.Controls.Add(this.lblNome);
+            this.gpDescricaoNome.Controls.Add(this.txbNome);
+            this.gpDescricaoNome.Location = new System.Drawing.Point(24, 79);
+            this.gpDescricaoNome.Name = "gpDescricaoNome";
+            this.gpDescricaoNome.Size = new System.Drawing.Size(542, 173);
+            this.gpDescricaoNome.TabIndex = 7;
+            this.gpDescricaoNome.TabStop = false;
             // 
-            // label4
+            // lblDescricao
             // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.lblDescricao.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(6, 57);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(74, 15);
-            this.label4.TabIndex = 13;
-            this.label4.Text = "Descrição";
+            this.lblDescricao.AutoSize = true;
+            this.lblDescricao.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDescricao.ForeColor = System.Drawing.Color.Black;
+            this.lblDescricao.Location = new System.Drawing.Point(6, 57);
+            this.lblDescricao.Name = "lblDescricao";
+            this.lblDescricao.Size = new System.Drawing.Size(74, 15);
+            this.lblDescricao.TabIndex = 13;
+            this.lblDescricao.Text = "Descrição";
             // 
             // rtbDescricao
             // 
@@ -212,22 +212,22 @@
             this.rbPerecivel.UseVisualStyleBackColor = true;
             this.rbPerecivel.CheckedChanged += new System.EventHandler(this.rbPerecivel_CheckedChanged);
             // 
-            // groupBox2
+            // gpValores
             // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Controls.Add(this.txbMargemDeLucro);
-            this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.txbPrecoDeVenda);
-            this.groupBox2.Controls.Add(this.label9);
-            this.groupBox2.Controls.Add(this.txbQuantidadeEstoque);
-            this.groupBox2.Controls.Add(this.txbPrecoCusto);
-            this.groupBox2.Controls.Add(this.lblPrecoCusto);
-            this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Location = new System.Drawing.Point(580, 79);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(276, 207);
-            this.groupBox2.TabIndex = 11;
-            this.groupBox2.TabStop = false;
+            this.gpValores.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.gpValores.Controls.Add(this.txbMargemDeLucro);
+            this.gpValores.Controls.Add(this.lblMargem);
+            this.gpValores.Controls.Add(this.txbPrecoDeVenda);
+            this.gpValores.Controls.Add(this.lblQuantidade);
+            this.gpValores.Controls.Add(this.txbQuantidadeEstoque);
+            this.gpValores.Controls.Add(this.txbPrecoCusto);
+            this.gpValores.Controls.Add(this.lblPrecoCusto);
+            this.gpValores.Controls.Add(this.lblPrecoVenda);
+            this.gpValores.Location = new System.Drawing.Point(580, 79);
+            this.gpValores.Name = "gpValores";
+            this.gpValores.Size = new System.Drawing.Size(276, 207);
+            this.gpValores.TabIndex = 11;
+            this.gpValores.TabStop = false;
             // 
             // txbMargemDeLucro
             // 
@@ -238,17 +238,17 @@
             this.txbMargemDeLucro.Size = new System.Drawing.Size(242, 20);
             this.txbMargemDeLucro.TabIndex = 7;
             // 
-            // label6
+            // lblMargem
             // 
-            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(9, 101);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(120, 15);
-            this.label6.TabIndex = 6;
-            this.label6.Text = "Margem de Lucro";
+            this.lblMargem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblMargem.AutoSize = true;
+            this.lblMargem.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMargem.ForeColor = System.Drawing.Color.Black;
+            this.lblMargem.Location = new System.Drawing.Point(9, 101);
+            this.lblMargem.Name = "lblMargem";
+            this.lblMargem.Size = new System.Drawing.Size(120, 15);
+            this.lblMargem.TabIndex = 6;
+            this.lblMargem.Text = "Margem de Lucro";
             // 
             // txbPrecoDeVenda
             // 
@@ -259,17 +259,17 @@
             this.txbPrecoDeVenda.TabIndex = 5;
             this.txbPrecoDeVenda.TextChanged += new System.EventHandler(this.txbPrecoDeVenda_TextChanged);
             // 
-            // label9
+            // lblQuantidade
             // 
-            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.Black;
-            this.label9.Location = new System.Drawing.Point(7, 16);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(82, 15);
-            this.label9.TabIndex = 26;
-            this.label9.Text = "Quantidade";
+            this.lblQuantidade.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblQuantidade.AutoSize = true;
+            this.lblQuantidade.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblQuantidade.ForeColor = System.Drawing.Color.Black;
+            this.lblQuantidade.Location = new System.Drawing.Point(7, 16);
+            this.lblQuantidade.Name = "lblQuantidade";
+            this.lblQuantidade.Size = new System.Drawing.Size(82, 15);
+            this.lblQuantidade.TabIndex = 26;
+            this.lblQuantidade.Text = "Quantidade";
             // 
             // txbQuantidadeEstoque
             // 
@@ -300,39 +300,39 @@
             this.lblPrecoCusto.TabIndex = 2;
             this.lblPrecoCusto.Text = "Preço de Custo";
             // 
-            // label5
+            // lblPrecoVenda
             // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(9, 152);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(109, 15);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "Preço de Venda";
+            this.lblPrecoVenda.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblPrecoVenda.AutoSize = true;
+            this.lblPrecoVenda.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPrecoVenda.ForeColor = System.Drawing.Color.Black;
+            this.lblPrecoVenda.Location = new System.Drawing.Point(9, 152);
+            this.lblPrecoVenda.Name = "lblPrecoVenda";
+            this.lblPrecoVenda.Size = new System.Drawing.Size(109, 15);
+            this.lblPrecoVenda.TabIndex = 4;
+            this.lblPrecoVenda.Text = "Preço de Venda";
             // 
-            // label7
+            // lblDataFabricacao
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(21, 263);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(134, 15);
-            this.label7.TabIndex = 14;
-            this.label7.Text = "Data de Fabricação";
+            this.lblDataFabricacao.AutoSize = true;
+            this.lblDataFabricacao.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDataFabricacao.ForeColor = System.Drawing.Color.Black;
+            this.lblDataFabricacao.Location = new System.Drawing.Point(21, 263);
+            this.lblDataFabricacao.Name = "lblDataFabricacao";
+            this.lblDataFabricacao.Size = new System.Drawing.Size(134, 15);
+            this.lblDataFabricacao.TabIndex = 14;
+            this.lblDataFabricacao.Text = "Data de Fabricação";
             // 
-            // label8
+            // lblDataVencimento
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(185, 263);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(138, 15);
-            this.label8.TabIndex = 15;
-            this.label8.Text = "Data de Vencimento";
+            this.lblDataVencimento.AutoSize = true;
+            this.lblDataVencimento.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDataVencimento.ForeColor = System.Drawing.Color.Black;
+            this.lblDataVencimento.Location = new System.Drawing.Point(185, 263);
+            this.lblDataVencimento.Name = "lblDataVencimento";
+            this.lblDataVencimento.Size = new System.Drawing.Size(138, 15);
+            this.lblDataVencimento.TabIndex = 15;
+            this.lblDataVencimento.Text = "Data de Vencimento";
             // 
             // btnAlterar
             // 
@@ -452,17 +452,17 @@
             this.dgvProduto.TabIndex = 24;
             this.dgvProduto.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProduto_CellDoubleClick);
             // 
-            // groupBox3
+            // gpAtivo
             // 
-            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox3.Controls.Add(this.rbProdutoAtivo);
-            this.groupBox3.Controls.Add(this.rbProdutoInativo);
-            this.groupBox3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(711, 4);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(145, 69);
-            this.groupBox3.TabIndex = 11;
-            this.groupBox3.TabStop = false;
+            this.gpAtivo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.gpAtivo.Controls.Add(this.rbProdutoAtivo);
+            this.gpAtivo.Controls.Add(this.rbProdutoInativo);
+            this.gpAtivo.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gpAtivo.Location = new System.Drawing.Point(711, 4);
+            this.gpAtivo.Name = "gpAtivo";
+            this.gpAtivo.Size = new System.Drawing.Size(145, 69);
+            this.gpAtivo.TabIndex = 11;
+            this.gpAtivo.TabStop = false;
             // 
             // ckbInativo
             // 
@@ -543,15 +543,15 @@
             this.Controls.Add(this.msktDataFabricacao);
             this.Controls.Add(this.btnConsulta);
             this.Controls.Add(this.ckbInativo);
-            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.gpAtivo);
             this.Controls.Add(this.dgvProduto);
             this.Controls.Add(this.btnAlterar);
             this.Controls.Add(this.btnAdicionar);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.lblDataVencimento);
+            this.Controls.Add(this.lblDataFabricacao);
+            this.Controls.Add(this.gpValores);
             this.Controls.Add(this.gpCategoria);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.gpDescricaoNome);
             this.Controls.Add(this.cmbFornecedor);
             this.Controls.Add(this.lblFornecedor);
             this.Controls.Add(this.txbCodigoBarras);
@@ -560,15 +560,15 @@
             this.Text = "frmProduto";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmProduto_Load);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.gpDescricaoNome.ResumeLayout(false);
+            this.gpDescricaoNome.PerformLayout();
             this.gpCategoria.ResumeLayout(false);
             this.gpCategoria.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.gpValores.ResumeLayout(false);
+            this.gpValores.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProduto)).EndInit();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
+            this.gpAtivo.ResumeLayout(false);
+            this.gpAtivo.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -580,31 +580,31 @@
         private System.Windows.Forms.TextBox txbCodigoBarras;
         private System.Windows.Forms.Label lblFornecedor;
         private System.Windows.Forms.ComboBox cmbFornecedor;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.GroupBox gpDescricaoNome;
+        private System.Windows.Forms.Label lblDescricao;
         private System.Windows.Forms.RichTextBox rtbDescricao;
         private System.Windows.Forms.Label lblNome;
         private System.Windows.Forms.TextBox txbNome;
         private System.Windows.Forms.GroupBox gpCategoria;
         private System.Windows.Forms.RadioButton rbNaoPerecivel;
         private System.Windows.Forms.RadioButton rbPerecivel;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox gpValores;
         private System.Windows.Forms.TextBox txbMargemDeLucro;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lblMargem;
         private System.Windows.Forms.TextBox txbPrecoDeVenda;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblPrecoVenda;
         private System.Windows.Forms.TextBox txbPrecoCusto;
         private System.Windows.Forms.Label lblPrecoCusto;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lblDataFabricacao;
+        private System.Windows.Forms.Label lblDataVencimento;
         private FontAwesome.Sharp.IconButton btnAlterar;
         private FontAwesome.Sharp.IconButton btnAdicionar;
         private System.Windows.Forms.RadioButton rbProdutoInativo;
         private System.Windows.Forms.RadioButton rbProdutoAtivo;
         private System.Windows.Forms.DataGridView dgvProduto;
         private System.Windows.Forms.TextBox txbQuantidadeEstoque;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Label lblQuantidade;
+        private System.Windows.Forms.GroupBox gpAtivo;
         private System.Windows.Forms.CheckBox ckbInativo;
         private FontAwesome.Sharp.IconButton btnConsulta;
         private System.Windows.Forms.MaskedTextBox msktDataFabricacao;

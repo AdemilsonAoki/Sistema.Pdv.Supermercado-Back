@@ -98,7 +98,7 @@ namespace SistemaPDVBack
             {
                 cargo = controllerUsuario.VerificaCargo();
 
-                if(cargo  == "admin")
+                if(cargo  == "Admin")
                 {
                     frmMenuTeste frmMenu = new frmMenuTeste();
 
@@ -116,5 +116,9 @@ namespace SistemaPDVBack
             }
         }
 
+        private void txbSenha_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
