@@ -102,8 +102,11 @@ namespace SistemaPDVBack
                 {
                     frmMenuTeste frmMenu = new frmMenuTeste();
 
+
                     //frmMenuTeste frmMenu = new frmMenuTeste();
                     frmMenu.Show();
+                    frmMenu.FormClosed += LogOut;
+                    this.Hide();
                 }
                 else
                 {
@@ -111,13 +114,29 @@ namespace SistemaPDVBack
 
                     //frmMenuTeste frmMenu = new frmMenuTeste();
                     frmPdv.Show();
+                    frmPdv.FormClosed += LogOut;
+                    this.Hide();
+
                 }
-                
+
             }
         }
 
         private void txbSenha_TextChanged(object sender, EventArgs e)
         {
+
+        }
+
+
+        private void LogOut(object sender, FormClosedEventArgs e)
+        {
+            txbSenha.Text = "SENHA";
+            txbSenha.UseSystemPasswordChar = false;
+
+            txbUsuario.Text = "USUARIO";
+
+            this.Show();
+            txbUsuario.Focus();
 
         }
     }

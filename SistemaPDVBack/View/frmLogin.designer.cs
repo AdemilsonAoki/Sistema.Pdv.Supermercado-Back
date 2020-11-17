@@ -38,7 +38,6 @@
             this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.lineUsuario = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.lineSenha = new Microsoft.VisualBasic.PowerPacks.LineShape();
-            this.rectangleShape1 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnMin = new FontAwesome.Sharp.IconButton();
             this.pnLogo.SuspendLayout();
@@ -143,8 +142,7 @@
             this.shapeContainer1.Name = "shapeContainer1";
             this.shapeContainer1.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
             this.lineUsuario,
-            this.lineSenha,
-            this.rectangleShape1});
+            this.lineSenha});
             this.shapeContainer1.Size = new System.Drawing.Size(780, 330);
             this.shapeContainer1.TabIndex = 7;
             this.shapeContainer1.TabStop = false;
@@ -167,12 +165,6 @@
             this.lineSenha.Y1 = 122;
             this.lineSenha.Y2 = 122;
             this.lineSenha.Click += new System.EventHandler(this.lineShape1_Click);
-            // 
-            // rectangleShape1
-            // 
-            this.rectangleShape1.Location = new System.Drawing.Point(412, 108);
-            this.rectangleShape1.Name = "rectangleShape1";
-            this.rectangleShape1.Size = new System.Drawing.Size(75, 23);
             // 
             // btnClose
             // 
@@ -245,7 +237,6 @@
         private Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer1;
         private Microsoft.VisualBasic.PowerPacks.LineShape lineUsuario;
         private Microsoft.VisualBasic.PowerPacks.LineShape lineSenha;
-        private Microsoft.VisualBasic.PowerPacks.RectangleShape rectangleShape1;
         private FontAwesome.Sharp.IconButton btnMin;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.PictureBox pictureBox1;
