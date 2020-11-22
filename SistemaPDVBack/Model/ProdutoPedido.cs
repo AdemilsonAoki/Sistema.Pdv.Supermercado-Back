@@ -8,13 +8,19 @@ namespace SistemaPDVBack.Model
 {
     class ProdutoPedido
     {
-        public int IdProdutoPedido { get; set; }
-        public int CodPedido { get; set; }
-        public int CodProduto { get; set; }
-        public string CodBarras { get; set; }
+        int idProdutoPedido;
+        int codPedido;
+        int codProduto;
+        string codBarras;
+        int quantidadeItemPedido;
+        decimal totalProdutoPedido;
+        public int IdProdutoPedido { get {return  idProdutoPedido; } set {idProdutoPedido = value; } }
+        public int CodPedido { get{return codPedido;} set{codPedido = value;} }
+        public int CodProduto { get{return codProduto;} set{codProduto = value;} }
+        public string CodBarras { get{return codBarras;} set{ codBarras = value;} }
 
-        public int QuantidadeItemPedido { get; set; }
-        public decimal TotalProdutoPedido { get; set; }
+        public int QuantidadeItemPedido { get{return quantidadeItemPedido;} set{quantidadeItemPedido = value;} }
+        public decimal TotalProdutoPedido { get{return totalProdutoPedido;} set{ totalProdutoPedido = value;} }
 
 
 

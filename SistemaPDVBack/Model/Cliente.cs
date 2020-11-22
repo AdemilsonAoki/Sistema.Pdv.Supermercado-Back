@@ -8,9 +8,15 @@ namespace SistemaPDVBack.Model
 {
     class Cliente
     {
+        string cpfCnpj;
+        string tipoCliente;
 
-        public string CpfCnpj { get; set; }
-        public string TipoCliente { get; set; }
+        public string CpfCnpj
+        {
+            get { return cpfCnpj; }
+            set { cpfCnpj = value; }
+        }
+        public string TipoCliente { get { return tipoCliente; } set { tipoCliente = value; } }
 
     }
 }

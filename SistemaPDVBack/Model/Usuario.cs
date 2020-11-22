@@ -8,12 +8,17 @@ namespace SistemaPDVBack.Model
 {
     class Usuario
     {
-        public int IdUsuario { get; set; }
-        public string cpfColaborador { get; set; }
+        
+        string login;
+        string senha;
+        int statusAtivo;
 
-        public string Login { get; set; }
-        public string Senha { get; set; }
-        public int StatusAtivo { get; set; }
+     //   public int IdUsuario { get{return;} set{;} }
+       // public string cpfColaborador { get{return;} set{;} }
+
+        public string Login { get{return login;} set{login = value;} }
+        public string Senha { get{return senha ;} set{ senha = value;} }
+        public int StatusAtivo { get{return statusAtivo;} set{ statusAtivo = value;} }
 
     }
 }
