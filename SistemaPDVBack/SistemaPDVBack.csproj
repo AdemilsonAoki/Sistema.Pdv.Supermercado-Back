@@ -160,6 +160,12 @@
     <Compile Include="View\frmTelaPdv.designer.cs">
       <DependentUpon>frmTelaPdv.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\frmVerificaLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmVerificaLogin.Designer.cs">
+      <DependentUpon>frmVerificaLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\MoverForm.cs" />
     <EmbeddedResource Include="Report1.rdlc" />
     <EmbeddedResource Include="View\frmCupom.resx">
@@ -204,6 +210,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmTelaPdv.resx">
       <DependentUpon>frmTelaPdv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmVerificaLogin.resx">
+      <DependentUpon>frmVerificaLogin.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

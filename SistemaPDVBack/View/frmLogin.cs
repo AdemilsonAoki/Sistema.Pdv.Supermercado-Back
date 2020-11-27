@@ -101,9 +101,7 @@ namespace SistemaPDVBack
                 if(cargo  == "Admin")
                 {
                     frmMenuTeste frmMenu = new frmMenuTeste();
-
-
-                    //frmMenuTeste frmMenu = new frmMenuTeste();
+                                      
                     frmMenu.Show();
                     frmMenu.FormClosed += LogOut;
                     this.Hide();

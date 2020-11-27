@@ -84,3 +84,4 @@ F:\Users\PC\Desktop\Projetos\PimSupermercadoPdVback\Sistema.Pdv.Supermercado-Bac
 F:\Users\PC\Desktop\Projetos\PimSupermercadoPdVback\Sistema.Pdv.Supermercado-Back\SistemaPDVBack\obj\Debug\SistemaPDVBack.View.frmCancelarItem.resources
 F:\Users\PC\Desktop\Projetos\PimSupermercadoPdVback\Sistema.Pdv.Supermercado-Back\SistemaPDVBack\obj\Debug\SistemaPDVBack.frmCupom.resources
 F:\Users\PC\Desktop\Projetos\PimSupermercadoPdVback\Sistema.Pdv.Supermercado-Back\SistemaPDVBack\obj\Debug\SistemaPDVBack.frmDashboard.resources
+F:\Users\PC\Desktop\Projetos\PimSupermercadoPdVback\Sistema.Pdv.Supermercado-Back\SistemaPDVBack\obj\Debug\SistemaPDVBack.View.frmVerificaLogin.resources

@@ -306,18 +306,34 @@ namespace SistemaPDVBack
         }
 
         string codItem;
+        
 
         private void CancelarItem()
         {
             int idex = 0;
 
-            using (var cancelarItem = new frmCancelarItem())
+            using (var verificaLogin = new frmVerificaLogin())
             {
 
-                cancelarItem.ShowDialog();
-                codItem = cancelarItem.Parametro;
+                verificaLogin.ShowDialog();
+              
+                if(verificaLogin.Validador == true)
+                {
+                    using (var cancelarItem = new frmCancelarItem())
+                    {
+
+                        cancelarItem.ShowDialog();
+                        codItem = cancelarItem.Parametro;
+
+                    }
+
+                }
+                              
+
 
             }
+
+         
 
             if (codItem != "")
             {

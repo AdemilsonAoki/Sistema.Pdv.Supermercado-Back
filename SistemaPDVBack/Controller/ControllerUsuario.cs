@@ -26,6 +26,7 @@ namespace SistemaPDVBack.Controller
         }
         public ControllerUsuario(string usuario, string senha)
         {
+
             login.Login = usuario;
             login.Senha = senha;
 
