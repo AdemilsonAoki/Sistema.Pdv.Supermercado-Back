@@ -115,7 +115,31 @@ namespace SistemaPDVBack.Controller
             }
 
         }
-    
+
+        public void AtualizaEstoque()
+        {
+           
+            cmd.CommandText = "update Produto set quantidadeEstoqueProduto  = quantidadeEstoqueProduto - @quantidadeProduto where idProduto = @idProduto";
+            cmd.Parameters.AddWithValue("@quantidadeProduto", produtoPedido.QuantidadeItemPedido);
+            cmd.Parameters.AddWithValue("@idProduto", produtoPedido.CodProduto);
+
+            try
+            {
+                cmd.Connection = conexao.AbrirBanco();
+                cmd.ExecuteNonQuery();
+            }
+            catch(Exception e)
+            {
+                throw;
+            }
+            finally
+            {
+                conexao.FecharBanco();
+                cmd.Parameters.Clear();
+            }
+        }
+
+
 
         public string VerificaProdutoNome()
       
@@ -158,7 +182,6 @@ namespace SistemaPDVBack.Controller
 
         }
         private void CarregaProduto()
-
         {
 
 

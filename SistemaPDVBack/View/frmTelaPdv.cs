@@ -36,7 +36,7 @@ namespace SistemaPDVBack
             controllerPedido = new ControllerPedido();
             lblCaixa.Text = controllerPedido.VerificarCaixa();
             txbCodBarras.Focus();
-        
+
 
 
         }
@@ -50,10 +50,6 @@ namespace SistemaPDVBack
                 case Keys.F2:
                     decimal valorTotal;
                     decimal valorRecibido;
-                    //controllerPedido = new ControllerPedido(lblTotal.Text);
-                    //controllerPedido.AtualizaValorPedido();
-                    //frmFinalizarVenda frmFinalizar = new frmFinalizarVenda();
-                    //frmFinalizar.ShowDialog();
                     if (verificadorTecla == true)
                     {
                         valorTotal = decimal.Parse(lblTotal.Text);
@@ -184,7 +180,7 @@ namespace SistemaPDVBack
                 case Keys.F5:
                     LimpaCampos();
                     break;
-           
+
 
             }
 
@@ -444,8 +440,8 @@ namespace SistemaPDVBack
                         preco = this.dgvCarrinho.Rows[idex].Cells[3].Value.ToString();
                         quantidade = this.dgvCarrinho.Rows[idex].Cells[4].Value.ToString();
                         totalProduto = this.dgvCarrinho.Rows[idex].Cells[5].Value.ToString();
-                        cupom.CumpomImpresso(codItem.ToString(), codBarras, descricao, quantidade, preco, totalProduto, cancelado, cpfCnpjCliente, lblTotal.Text,  lblData.Text, lblHora.Text, lblCaixa.Text, lblFormaPagamento.Text, lblValorAReceber.Text, lblTroco.Text);
-                       
+                        cupom.CumpomImpresso(codItem.ToString(), codBarras, descricao, quantidade, preco, totalProduto, cancelado, cpfCnpjCliente, lblTotal.Text, lblData.Text, lblHora.Text, lblCaixa.Text, lblFormaPagamento.Text, lblValorAReceber.Text, lblTroco.Text);
+
 
                         cont++;
                     }
@@ -460,13 +456,11 @@ namespace SistemaPDVBack
                             preco = this.dgvCarrinho.Rows[idex].Cells[3].Value.ToString();
                             quantidade = this.dgvCarrinho.Rows[idex].Cells[4].Value.ToString();
                             totalProduto = this.dgvCarrinho.Rows[idex].Cells[5].Value.ToString();
-
-
-
                             controllerProdutoPedido = new ControllerProdutoPedido(codBarras, quantidade, totalProduto);
                             controllerProdutoPedido.AdicionarProdutoPedido();
-                            cupom.CumpomImpresso(codItem.ToString(), codBarras, descricao, quantidade, preco, totalProduto, ativo, cpfCnpjCliente, lblTotal.Text, lblData.Text, lblHora.Text, lblCaixa.Text, lblFormaPagamento.Text, lblValorAReceber.Text, lblTroco.Text) ;
-                            
+                            controllerProdutoPedido.AtualizaEstoque();
+                            cupom.CumpomImpresso(codItem.ToString(), codBarras, descricao, quantidade, preco, totalProduto, ativo, cpfCnpjCliente, lblTotal.Text, lblData.Text, lblHora.Text, lblCaixa.Text, lblFormaPagamento.Text, lblValorAReceber.Text, lblTroco.Text);
+
 
                         }
                     }
@@ -477,9 +471,7 @@ namespace SistemaPDVBack
                 }
 
             }
-            //dgvCarrinho.DataSource = controllerProdutoPedido.ListarProdutoPedido();
-            //controllerPedido = new ControllerPedido(lblTotal.Text);
-            //controllerPedido.AtualizaValorPedido();
+           
             cupom.ShowDialog();
 
             i = false;
@@ -548,8 +540,6 @@ namespace SistemaPDVBack
                 return false;
             }
         }
-
-
 
     }
 

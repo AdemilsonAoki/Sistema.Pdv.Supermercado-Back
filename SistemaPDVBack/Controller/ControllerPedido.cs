@@ -150,38 +150,7 @@ namespace SistemaPDVBack.Controller
         }
 
 
-        //public void AtualizaValorPedido()
-        //{
-
-        //    cmd.CommandText = "update Pedido set totalPedido = @totalPedido where idPedido = @idPedido";
-        //    cmd.Parameters.AddWithValue("@totalPedido", pedido.TotalPedido);
-        //    cmd.Parameters.AddWithValue("@idPedido", pedido.IdPedido);
-
-
-
-
-        //    try
-        //    {
-        //        cmd.Connection = conexao.AbrirBanco();
-        //        cmd.ExecuteNonQuery();
-
-
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        throw;
-
-        //    }
-        //    finally
-        //    {
-        //        cmd.Parameters.Clear();
-        //        conexao.FecharBanco();
-        //    }
-
-
-
-        //}
-
+        
         private void CarregaPedido()
         {
 
@@ -218,78 +187,7 @@ namespace SistemaPDVBack.Controller
                 conexao.FecharBanco();
             }
         }
-
-        //public string CarregaTotal()
-        //{
-        //    cmd.CommandText = "select *from Pedido where idPedido = @idPedido";
-        //    cmd.Parameters.AddWithValue("@idPedido", pedido.IdPedido);
-
-        //    string total = "";
-        //    try
-        //    {
-        //        cmd.Connection = conexao.AbrirBanco();
-
-        //        reader = cmd.ExecuteReader();
-        //        if (reader.HasRows)
-        //        {
-
-        //            while (reader.Read())
-        //            {
-
-        //                total = reader.GetString(6);
-
-
-        //            }
-        //        }
-        //        return total;
-
-
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        throw;
-        //        //MessageBox.Show(e.Message);
-
-        //    }
-        //    finally
-        //    {
-        //        conexao.FecharBanco();
-        //        cmd.Parameters.Clear();
-        //    }
-        //}
-
-        //public void AtualizaFormaPagamento(string formaPagamento)
-        //{
-
-        //    pedido.FormaDePagamento = formaPagamento;
-        //    cmd.CommandText = "update Pedido set formaPagamento = @formaPagamento where idPedido = @idPedido";
-        //    cmd.Parameters.AddWithValue("@formaPagamento", pedido.FormaDePagamento);
-        //    cmd.Parameters.AddWithValue("@idPedido", pedido.IdPedido);
-
-
-
-
-        //    try
-        //    {
-        //        cmd.Connection = conexao.AbrirBanco();
-        //        cmd.ExecuteNonQuery();
-
-
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        throw;
-
-        //    }
-        //    finally
-        //    {
-        //        cmd.Parameters.Clear();
-        //        conexao.FecharBanco();
-        //    }
-
-
-
-        //}
+      
         public string VerificarCaixa()
         {
             using (StreamReader reader = new StreamReader("F:\\Users\\PC\\Desktop\\Projetos\\PimSupermercadoPdVback\\Sistema.Pdv.Supermercado-Back\\Caixa.txt"))
@@ -311,9 +209,19 @@ namespace SistemaPDVBack.Controller
             string total, string Status, string cpf, string data, string hora, string caixa, string formaPagamento, string valorRecebido,
             string troco, string totalVendido)
         {
+            var novaDescricao = "";
 
+            if(Descricao.Length >= 20)
+            {
 
-            var novaDescricao = Descricao.Substring(0, 20);
+                 novaDescricao = Descricao.Substring(0, 20);
+
+            }
+            else
+            {
+                novaDescricao = Descricao;
+            }
+
 
             produtos.Add(new ProdutoPedidoDTO(codItem, codigoBarras, novaDescricao, quantidade, valorUnitario, total, Status));
 
@@ -500,6 +408,8 @@ namespace SistemaPDVBack.Controller
             x.Close();
 
         }
+
+      
 
 
 
