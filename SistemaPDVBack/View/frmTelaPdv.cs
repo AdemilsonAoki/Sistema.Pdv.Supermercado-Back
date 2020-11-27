@@ -54,16 +54,10 @@ namespace SistemaPDVBack
                     {
                         valorTotal = decimal.Parse(lblTotal.Text);
                         valorRecibido = decimal.Parse(lblValorAReceber.Text);
-
-
                         if (valorRecibido >= valorTotal)
                         {
                             FinalizarVenda();
                             LimpaDgv();
-
-
-
-
                             lblNomeFormaPagamento.Visible = false;
                             lblFormaPagamento.Visible = false;
                             lblNomeTroco.Visible = false;
@@ -99,15 +93,10 @@ namespace SistemaPDVBack
                         {
 
                             dinheiro.ReceberValor(lblTotal.Text);
-
                             dinheiro.ShowDialog();
-
                             lblValorAReceber.Text = dinheiro.ValorRecibido;
                             lblTroco.Text = dinheiro.Troco;
 
-
-
-                            //  CalulaValores(lblValorAReceber.Text, lblTotal.Text);
                         }
 
                         if (lblValorAReceber.Text != "0,00")
@@ -180,7 +169,6 @@ namespace SistemaPDVBack
                 case Keys.F5:
                     LimpaCampos();
                     break;
-
 
             }
 
@@ -375,10 +363,6 @@ namespace SistemaPDVBack
                     }
                     else
                     {
-
-                        //label3.Text += this.dgvCarrinho.Rows[idex].Cells[0].Value.ToString();
-
-
                         calc += Convert.ToDecimal(dgvCarrinho.Rows[idex].Cells[5].Value);
 
 
@@ -471,7 +455,7 @@ namespace SistemaPDVBack
                 }
 
             }
-           
+
             cupom.ShowDialog();
 
             i = false;
