@@ -29,13 +29,7 @@ namespace SistemaPDVBack.Controller
 
             ConverterValidar(status, dataDoPedido, total, formaPagamento);
         }
-        //public ControllerPedido(string total)
-        //{
-        //    CarregaPedido();
-
-        //    pedido.TotalPedido = decimal.Parse(total);
-
-        //}
+  
 
         private void ConverterValidar(string status, string dataDoPedido, string total, string formaPagamento)
         {

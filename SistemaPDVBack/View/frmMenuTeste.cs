@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 using FontAwesome.Sharp;
 
-namespace SistemaPDVBack
+namespace SistemaPDVBack.View
 {
     public partial class frmMenuTeste : Form
     {
@@ -25,11 +25,13 @@ namespace SistemaPDVBack
             
             this.DoubleBuffered = true;
             this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
+            AbrirForm(new frmDashboard());
+
 
         }
         string produto = "Produto";
         string colaborador = "Colaborador";
-        string dashBoard = "Dashboard";
+        string home = "Home";
         string relatorio = "Relatório";
         string fornecedor = "Fornecedor";
 
@@ -104,7 +106,7 @@ namespace SistemaPDVBack
             MudaCorIcone(RGBColors.color1);
 
 
-            lblNomeForms.Text = dashBoard;
+            lblNomeForms.Text = home;
    
 
 
@@ -178,7 +180,7 @@ namespace SistemaPDVBack
             else
             {
                 btnColaborador.Text = colaborador;
-                btnHome.Text = dashBoard;
+                btnHome.Text = home;
                 btnProduto.Text = produto;
                 btnRelatorios.Text = relatorio;
                 btnFornecedor.Text = fornecedor;
@@ -263,9 +265,11 @@ namespace SistemaPDVBack
         private void btnRelatorios_Click(object sender, EventArgs e)
         {
 
+
             ActivateButton(sender, RGBColors.color5);
-            pnHorizontal.BackColor = RGBColors.color5;
-           // lblNomeForms.Text = relatorio;
+            AbrirForm(new frmRelatorio());
+            lblNomeForms.Text = relatorio;
+            MudaCorIcone(RGBColors.color5);
 
         }
 

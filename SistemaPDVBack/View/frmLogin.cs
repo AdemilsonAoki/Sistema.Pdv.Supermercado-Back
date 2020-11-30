@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SistemaPDVBack
+namespace SistemaPDVBack.View
 {
     public partial class frmLogin : Form
     {

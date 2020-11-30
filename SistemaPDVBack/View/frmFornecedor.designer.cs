@@ -1,4 +1,4 @@
-﻿namespace SistemaPDVBack
+﻿namespace SistemaPDVBack.View
 {
     partial class frmFornecedor
     {
@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gbEndereco = new System.Windows.Forms.GroupBox();
             this.txbCep = new System.Windows.Forms.TextBox();
             this.btnLocalizar = new System.Windows.Forms.Button();
@@ -100,7 +100,7 @@
             this.txbCep.Location = new System.Drawing.Point(8, 32);
             this.txbCep.Name = "txbCep";
             this.txbCep.Size = new System.Drawing.Size(100, 20);
-            this.txbCep.TabIndex = 24;
+            this.txbCep.TabIndex = 4;
             this.txbCep.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbCep_KeyPress);
             // 
             // btnLocalizar
@@ -119,7 +119,7 @@
             this.txbNumero.Location = new System.Drawing.Point(663, 34);
             this.txbNumero.Name = "txbNumero";
             this.txbNumero.Size = new System.Drawing.Size(142, 20);
-            this.txbNumero.TabIndex = 19;
+            this.txbNumero.TabIndex = 6;
             // 
             // lblNumero
             // 
@@ -139,7 +139,7 @@
             this.txbComplemento.Location = new System.Drawing.Point(433, 84);
             this.txbComplemento.Name = "txbComplemento";
             this.txbComplemento.Size = new System.Drawing.Size(164, 20);
-            this.txbComplemento.TabIndex = 17;
+            this.txbComplemento.TabIndex = 10;
             // 
             // lblComplemento
             // 
@@ -159,7 +159,7 @@
             this.txbEstado.Location = new System.Drawing.Point(319, 84);
             this.txbEstado.Name = "txbEstado";
             this.txbEstado.Size = new System.Drawing.Size(105, 20);
-            this.txbEstado.TabIndex = 15;
+            this.txbEstado.TabIndex = 9;
             // 
             // lblEstado
             // 
@@ -179,7 +179,7 @@
             this.txbCidade.Location = new System.Drawing.Point(190, 84);
             this.txbCidade.Name = "txbCidade";
             this.txbCidade.Size = new System.Drawing.Size(113, 20);
-            this.txbCidade.TabIndex = 13;
+            this.txbCidade.TabIndex = 8;
             // 
             // lblCidade
             // 
@@ -200,7 +200,7 @@
             this.txbBairro.Location = new System.Drawing.Point(9, 84);
             this.txbBairro.Name = "txbBairro";
             this.txbBairro.Size = new System.Drawing.Size(166, 20);
-            this.txbBairro.TabIndex = 11;
+            this.txbBairro.TabIndex = 7;
             // 
             // lblBairro
             // 
@@ -220,7 +220,7 @@
             this.txbRua.Location = new System.Drawing.Point(190, 34);
             this.txbRua.Name = "txbRua";
             this.txbRua.Size = new System.Drawing.Size(457, 20);
-            this.txbRua.TabIndex = 9;
+            this.txbRua.TabIndex = 5;
             // 
             // lblRua
             // 
@@ -330,7 +330,7 @@
             this.mskTxbCnpj.Mask = "99,999,999/9999-99";
             this.mskTxbCnpj.Name = "mskTxbCnpj";
             this.mskTxbCnpj.Size = new System.Drawing.Size(110, 20);
-            this.mskTxbCnpj.TabIndex = 12;
+            this.mskTxbCnpj.TabIndex = 3;
             // 
             // txbNomeFantasia
             // 
@@ -339,7 +339,7 @@
             this.txbNomeFantasia.Location = new System.Drawing.Point(74, 34);
             this.txbNomeFantasia.Name = "txbNomeFantasia";
             this.txbNomeFantasia.Size = new System.Drawing.Size(731, 20);
-            this.txbNomeFantasia.TabIndex = 11;
+            this.txbNomeFantasia.TabIndex = 1;
             // 
             // lblNomeFantasia
             // 
@@ -362,7 +362,7 @@
             this.txbInscricaoEstadual.Location = new System.Drawing.Point(9, 87);
             this.txbInscricaoEstadual.Name = "txbInscricaoEstadual";
             this.txbInscricaoEstadual.Size = new System.Drawing.Size(183, 20);
-            this.txbInscricaoEstadual.TabIndex = 9;
+            this.txbInscricaoEstadual.TabIndex = 2;
             this.txbInscricaoEstadual.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbInscricaoEstadual_KeyPress);
             // 
             // lblInscricaoEstadual
@@ -431,14 +431,14 @@
             this.dgvFornecedor.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvFornecedor.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvFornecedor.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Green;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvFornecedor.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Green;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvFornecedor.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvFornecedor.ColumnHeadersHeight = 30;
             this.dgvFornecedor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvFornecedor.EnableHeadersVisualStyles = false;
@@ -447,22 +447,22 @@
             this.dgvFornecedor.Name = "dgvFornecedor";
             this.dgvFornecedor.ReadOnly = true;
             this.dgvFornecedor.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Maroon;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvFornecedor.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Maroon;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvFornecedor.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvFornecedor.RowHeadersVisible = false;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Aqua;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
-            this.dgvFornecedor.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Aqua;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
+            this.dgvFornecedor.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvFornecedor.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvFornecedor.Size = new System.Drawing.Size(824, 187);
             this.dgvFornecedor.TabIndex = 28;

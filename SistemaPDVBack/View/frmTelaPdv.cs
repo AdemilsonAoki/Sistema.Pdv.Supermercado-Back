@@ -12,7 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SistemaPDVBack
+namespace SistemaPDVBack.View
 {
     public partial class frmTelaPdv : Form
     {
@@ -407,7 +407,7 @@ namespace SistemaPDVBack
 
             frmCupom cupom = new frmCupom();
             string temp = "1";
-            controllerPedido = new ControllerPedido(temp, lblData.Text + lblHora.Text, lblTotal.Text, lblFormaPagamento.Text);
+            controllerPedido = new ControllerPedido(temp, lblData.Text + " " + lblHora.Text, lblTotal.Text, lblFormaPagamento.Text);
 
 
             if (cpfCnpjCliente != null && cpfCnpjCliente != "")

@@ -12,7 +12,7 @@ using System.Text.RegularExpressions;
 using System.IO;
 using System.Net;
 
-namespace SistemaPDVBack
+namespace SistemaPDVBack.View
 {
     public partial class frmFornecedor : Form
     {

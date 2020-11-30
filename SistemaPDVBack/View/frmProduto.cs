@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using SistemaPDVBack.Controller;
 using SistemaPDVBack.Validacoes;
 
-namespace SistemaPDVBack
+namespace SistemaPDVBack.View
 {
     public partial class frmProduto : Form
     {

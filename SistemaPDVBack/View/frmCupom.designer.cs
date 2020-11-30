@@ -1,4 +1,4 @@
-﻿namespace SistemaPDVBack
+﻿namespace SistemaPDVBack.View
 {
     partial class frmCupom
     {

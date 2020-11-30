@@ -1,4 +1,4 @@
-﻿namespace SistemaPDVBack
+﻿namespace SistemaPDVBack.View
 {
     partial class frmProduto
     {
@@ -115,7 +115,7 @@
             this.cmbFornecedor.Location = new System.Drawing.Point(374, 36);
             this.cmbFornecedor.Name = "cmbFornecedor";
             this.cmbFornecedor.Size = new System.Drawing.Size(195, 21);
-            this.cmbFornecedor.TabIndex = 4;
+            this.cmbFornecedor.TabIndex = 2;
             // 
             // gpDescricaoNome
             // 
@@ -151,7 +151,7 @@
             this.rtbDescricao.Location = new System.Drawing.Point(6, 75);
             this.rtbDescricao.Name = "rtbDescricao";
             this.rtbDescricao.Size = new System.Drawing.Size(519, 92);
-            this.rtbDescricao.TabIndex = 13;
+            this.rtbDescricao.TabIndex = 4;
             this.rtbDescricao.Text = "";
             // 
             // lblNome
@@ -174,7 +174,7 @@
             this.txbNome.Location = new System.Drawing.Point(6, 34);
             this.txbNome.Name = "txbNome";
             this.txbNome.Size = new System.Drawing.Size(519, 20);
-            this.txbNome.TabIndex = 11;
+            this.txbNome.TabIndex = 3;
             // 
             // gpCategoria
             // 
@@ -256,7 +256,7 @@
             this.txbPrecoDeVenda.Location = new System.Drawing.Point(12, 170);
             this.txbPrecoDeVenda.Name = "txbPrecoDeVenda";
             this.txbPrecoDeVenda.Size = new System.Drawing.Size(242, 20);
-            this.txbPrecoDeVenda.TabIndex = 5;
+            this.txbPrecoDeVenda.TabIndex = 8;
             this.txbPrecoDeVenda.TextChanged += new System.EventHandler(this.txbPrecoDeVenda_TextChanged);
             // 
             // lblQuantidade
@@ -277,7 +277,7 @@
             this.txbQuantidadeEstoque.Location = new System.Drawing.Point(12, 37);
             this.txbQuantidadeEstoque.Name = "txbQuantidadeEstoque";
             this.txbQuantidadeEstoque.Size = new System.Drawing.Size(242, 20);
-            this.txbQuantidadeEstoque.TabIndex = 25;
+            this.txbQuantidadeEstoque.TabIndex = 5;
             // 
             // txbPrecoCusto
             // 
@@ -285,7 +285,7 @@
             this.txbPrecoCusto.Location = new System.Drawing.Point(12, 78);
             this.txbPrecoCusto.Name = "txbPrecoCusto";
             this.txbPrecoCusto.Size = new System.Drawing.Size(242, 20);
-            this.txbPrecoCusto.TabIndex = 3;
+            this.txbPrecoCusto.TabIndex = 6;
             this.txbPrecoCusto.TextChanged += new System.EventHandler(this.txbPrecoCusto_TextChanged);
             // 
             // lblPrecoCusto
@@ -502,7 +502,7 @@
             this.msktDataFabricacao.Mask = "00/00/0000";
             this.msktDataFabricacao.Name = "msktDataFabricacao";
             this.msktDataFabricacao.Size = new System.Drawing.Size(85, 20);
-            this.msktDataFabricacao.TabIndex = 30;
+            this.msktDataFabricacao.TabIndex = 9;
             // 
             // msktDataVencimento
             // 
@@ -510,7 +510,7 @@
             this.msktDataVencimento.Mask = "00/00/0000";
             this.msktDataVencimento.Name = "msktDataVencimento";
             this.msktDataVencimento.Size = new System.Drawing.Size(100, 20);
-            this.msktDataVencimento.TabIndex = 31;
+            this.msktDataVencimento.TabIndex = 10;
             // 
             // txbId
             // 

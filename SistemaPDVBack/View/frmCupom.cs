@@ -13,7 +13,7 @@ using SistemaPDVBack.Controller;
 using SistemaPDVBack.Model;
 
 
-namespace SistemaPDVBack
+namespace SistemaPDVBack.View
 {
     public partial class frmCupom : Form
     {

@@ -1,4 +1,4 @@
-﻿namespace SistemaPDVBack
+﻿namespace SistemaPDVBack.View
 {
     partial class frmMenuTeste
     {
@@ -221,7 +221,7 @@
             this.btnHome.Rotation = 0D;
             this.btnHome.Size = new System.Drawing.Size(200, 60);
             this.btnHome.TabIndex = 0;
-            this.btnHome.Text = "Dashboard";
+            this.btnHome.Text = "Home";
             this.btnHome.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnHome.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnHome.UseVisualStyleBackColor = true;

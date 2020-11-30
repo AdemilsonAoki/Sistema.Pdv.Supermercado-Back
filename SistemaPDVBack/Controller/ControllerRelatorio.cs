@@ -13,33 +13,45 @@ namespace SistemaPDVBack.Controller
     {
         MySqlCommand cmd = new MySqlCommand();
         Conexao conexao = new Conexao();
-    
+        Relatorio relatorio = new Relatorio();
 
-        public void CarregarRelatorio()
+        public ControllerRelatorio(string dataInicial, string dataFinal)
+        {
+
+            relatorio.DataInicial = dataInicial;
+            relatorio.DataFinal = dataFinal; 
+        }
+
+        public DataTable BuscarPorData()
         {
             try
             {
-                // Abre banco
-                cmd.CommandText = "Select * from Vendas";
-                conexao.AbrirBanco();
+                cmd.CommandText = "SELECT idPedido, dataDoPedido, formaPagamento, totalPedido FROM pedido WHERE dataDoPedido like '%' and STR_TO_DATE(dataDoPedido, '%d/%m/%Y') BETWEEN STR_TO_DATE(@dataInicial, '%d/%m/%Y') AND STR_TO_DATE(@dataFinal, '%d/%m/%Y')";
+                cmd.Parameters.AddWithValue("@dataInicial", relatorio.DataInicial);
+                cmd.Parameters.AddWithValue("@dataFinal", relatorio.DataFinal);
+                cmd.Connection = conexao.AbrirBanco();
+                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
 
-                MySqlDataAdapter mDtAd = new MySqlDataAdapter(cmd);
+                DataTable dtLista = new DataTable();
 
-             //   mDtAd.Fill(mDts, "Retorno");
+
+                da.Fill(dtLista);
+
+
+                return (dtLista);
             }
-
             catch (Exception e)
             {
                 throw;
             }
             finally
             {
-
-                // fecha banco
+                cmd.Parameters.Clear();
                 conexao.FecharBanco();
             }
-
-
         }
+    
+
+     
     }
 }

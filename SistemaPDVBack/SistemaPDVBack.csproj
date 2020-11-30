@@ -86,6 +86,7 @@
     <Compile Include="Model\Colaborador.cs" />
     <Compile Include="Model\Conexao.cs" />
     <Compile Include="Model\Departamento.cs" />
+    <Compile Include="Model\Relatorio.cs" />
     <Compile Include="View\frmCupom.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -154,6 +155,12 @@
     <Compile Include="View\frmMenuTeste.designer.cs">
       <DependentUpon>frmMenuTeste.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\frmRelatorio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmRelatorio.Designer.cs">
+      <DependentUpon>frmRelatorio.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\frmTelaPdv.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -207,6 +214,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmMenuTeste.resx">
       <DependentUpon>frmMenuTeste.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmRelatorio.resx">
+      <DependentUpon>frmRelatorio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmTelaPdv.resx">
       <DependentUpon>frmTelaPdv.cs</DependentUpon>
