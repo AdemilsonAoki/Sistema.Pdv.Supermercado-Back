@@ -221,7 +221,10 @@ namespace SistemaPDVBack.Controller
 
             StreamWriter x;
 
-            string caminho = "F:\\Users\\PC\\Desktop\\Projetos\\" + pedido.IdPedido + ".txt";
+            string path = "C:\\Recibos\\";
+            Directory.CreateDirectory(path);
+
+            string caminho =  path + pedido.IdPedido + ".txt";
 
             x = File.CreateText(caminho);
 
@@ -247,7 +250,7 @@ namespace SistemaPDVBack.Controller
 
             StringBuilder sb = new StringBuilder();
 
-            string caminhoArquivo = "F:\\Users\\PC\\Desktop\\Projetos\\" + pedido.IdPedido + ".txt";
+            string caminhoArquivo = path + pedido.IdPedido + ".txt";
 
             var consulta = from linha in File.ReadAllLines(caminhoArquivo)
                            let ProdutoDados = linha.Split(';')
@@ -276,11 +279,11 @@ namespace SistemaPDVBack.Controller
 
                    Environment.NewLine);
             }
-            File.WriteAllText(@"F:\\Users\\PC\\Desktop\\Projetos\\" + pedido.IdPedido + ".txt", sb.ToString());
+            File.WriteAllText(path + pedido.IdPedido + ".txt", sb.ToString());
 
             Layout.Clear();
 
-            using (StreamReader reader = new StreamReader("F:\\Users\\PC\\Desktop\\Projetos\\" + pedido.IdPedido + ".txt"))
+            using (StreamReader reader = new StreamReader(path + pedido.IdPedido + ".txt"))
             {
                 Layout.Add("");
                 Layout.Add(" LUCAS GABRIEL SOUZA SILVA - LTDA ");
