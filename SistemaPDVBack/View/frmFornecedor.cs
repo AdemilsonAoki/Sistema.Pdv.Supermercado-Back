@@ -86,34 +86,7 @@ namespace SistemaPDVBack.View
             DefinirCabecalhos(new List<string>() { "Id", "CNPJ", "Nome", "Insc. Estadual", "CEP", "Rua",  "Estado", "Numero", "Complemnto", "Bairro", "Cidade", "Ativo" });
         }
 
-        private void dgvFornecedor_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-            string _temp;
-
-            txbId.Text = this.dgvFornecedor.CurrentRow.Cells[0].Value.ToString();
-            txbNomeFantasia.Text = this.dgvFornecedor.CurrentRow.Cells[2].Value.ToString();
-            mskTxbCnpj.Text = this.dgvFornecedor.CurrentRow.Cells[1].Value.ToString();
-            txbInscricaoEstadual.Text = this.dgvFornecedor.CurrentRow.Cells[3].Value.ToString();
-            txbCep.Text = this.dgvFornecedor.CurrentRow.Cells[4].Value.ToString();
-            txbRua.Text = this.dgvFornecedor.CurrentRow.Cells[5].Value.ToString();
-       
-            txbEstado.Text = this.dgvFornecedor.CurrentRow.Cells[6].Value.ToString();
-            txbNumero.Text = this.dgvFornecedor.CurrentRow.Cells[7].Value.ToString();
-            txbComplemento.Text = this.dgvFornecedor.CurrentRow.Cells[8].Value.ToString();
-            txbBairro.Text = this.dgvFornecedor.CurrentRow.Cells[9].Value.ToString();
-            txbCidade.Text = this.dgvFornecedor.CurrentRow.Cells[10].Value.ToString();
-            _temp = this.dgvFornecedor.CurrentRow.Cells[11].Value.ToString();
-
-            bool _temp2 = bool.Parse(_temp);
-            if (_temp2 == true)
-                rbFornecedorAtivo.Checked = true;
-            else
-                rbFornecedorInativo.Checked = true;
-
-
-            btnAdicionar.Enabled = false;
-        }
+     
 
         private void gbEndereco_Enter(object sender, EventArgs e)
         {
@@ -335,6 +308,34 @@ namespace SistemaPDVBack.View
         {
             if ((Char.IsLetter(e.KeyChar)))
                 e.Handled = true;
+        }
+
+        private void dgvFornecedor_CellDoubleClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            string _temp;
+
+            txbId.Text = this.dgvFornecedor.CurrentRow.Cells[0].Value.ToString();
+            txbNomeFantasia.Text = this.dgvFornecedor.CurrentRow.Cells[2].Value.ToString();
+            mskTxbCnpj.Text = this.dgvFornecedor.CurrentRow.Cells[1].Value.ToString();
+            txbInscricaoEstadual.Text = this.dgvFornecedor.CurrentRow.Cells[3].Value.ToString();
+            txbCep.Text = this.dgvFornecedor.CurrentRow.Cells[4].Value.ToString();
+            txbRua.Text = this.dgvFornecedor.CurrentRow.Cells[5].Value.ToString();
+
+            txbEstado.Text = this.dgvFornecedor.CurrentRow.Cells[6].Value.ToString();
+            txbNumero.Text = this.dgvFornecedor.CurrentRow.Cells[7].Value.ToString();
+            txbComplemento.Text = this.dgvFornecedor.CurrentRow.Cells[8].Value.ToString();
+            txbBairro.Text = this.dgvFornecedor.CurrentRow.Cells[9].Value.ToString();
+            txbCidade.Text = this.dgvFornecedor.CurrentRow.Cells[10].Value.ToString();
+            _temp = this.dgvFornecedor.CurrentRow.Cells[11].Value.ToString();
+
+            bool _temp2 = bool.Parse(_temp);
+            if (_temp2 == true)
+                rbFornecedorAtivo.Checked = true;
+            else
+                rbFornecedorInativo.Checked = true;
+
+
+            btnAdicionar.Enabled = false;
         }
     }
 }

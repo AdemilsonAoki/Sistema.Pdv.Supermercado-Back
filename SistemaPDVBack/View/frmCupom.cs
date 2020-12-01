@@ -37,7 +37,7 @@ namespace SistemaPDVBack.View
             cupom.ImprimirCupom(codItem, codBarras, descricao, quantidade,valorUnit, Total, Status , cpf, data , hora, caixa, formaPagamento, valorRecebido, troco, totalVendido);
             foreach (string obj in cupom.Layout)
             {
-                listBox1.Items.Add(obj);
+               listBox1.Items.Add(obj);
             }
         }
 

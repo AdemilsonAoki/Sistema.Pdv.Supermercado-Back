@@ -9,17 +9,26 @@ using System.Threading.Tasks;
 
 namespace SistemaPDVBack.Controller
 {
+
     class ControllerRelatorio
     {
         MySqlCommand cmd = new MySqlCommand();
         Conexao conexao = new Conexao();
         Relatorio relatorio = new Relatorio();
+        public List<string> ListaProduto = new List<string>();
+    
+
+        MySqlDataReader reader;
+        public ControllerRelatorio()
+        {
+
+        }
 
         public ControllerRelatorio(string dataInicial, string dataFinal)
         {
 
             relatorio.DataInicial = dataInicial;
-            relatorio.DataFinal = dataFinal; 
+            relatorio.DataFinal = dataFinal;
         }
 
         public DataTable BuscarPorData()
@@ -50,8 +59,47 @@ namespace SistemaPDVBack.Controller
                 conexao.FecharBanco();
             }
         }
-    
 
-     
+        public DataTable BuscarPorProdutos(string id)
+        {
+            relatorio.Id = id;
+            cmd.CommandText = "select pp.quantidadeItemPedido, p.nomeProduto, p.precoVenda,  pp.totalProdutoPedido from ProdutoPedido pp join Produto p on pp.codProduto = p.idProduto join Pedido pe  on pe.idPedido = pp.codPedido  where pe.idpedido = @idPedido;  ";
+            cmd.Parameters.AddWithValue("@idPedido", relatorio.Id);
+
+       
+
+            try
+            {
+                cmd.Connection = conexao.AbrirBanco();
+                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+
+                DataTable dtLista = new DataTable();
+
+
+                da.Fill(dtLista);
+
+
+                return (dtLista);
+
+
+
+
+            }
+            catch (Exception e)
+            {
+                throw;
+                //MessageBox.Show(e.Message);
+
+            }
+            finally
+            {
+                conexao.FecharBanco();
+                cmd.Parameters.Clear();
+            }
+        }
+
+
+
+
     }
 }

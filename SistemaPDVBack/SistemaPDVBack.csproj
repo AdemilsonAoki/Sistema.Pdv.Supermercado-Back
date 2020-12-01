@@ -79,7 +79,6 @@
     <Compile Include="Controller\ControllerProdutoPedido.cs" />
     <Compile Include="Controller\ControllerRelatorio.cs" />
     <Compile Include="Controller\ControllerUsuario.cs" />
-    <Compile Include="Controller\DadosRelatorio.cs" />
     <Compile Include="DTO\ProdutoPedidoDTO.cs" />
     <Compile Include="Model\CarregaUsuario.cs" />
     <Compile Include="Model\Cliente.cs" />
@@ -87,6 +86,12 @@
     <Compile Include="Model\Conexao.cs" />
     <Compile Include="Model\Departamento.cs" />
     <Compile Include="Model\Relatorio.cs" />
+    <Compile Include="View\frmCarrinho.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmCarrinho.Designer.cs">
+      <DependentUpon>frmCarrinho.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\frmCupom.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -175,6 +180,9 @@
     </Compile>
     <Compile Include="View\MoverForm.cs" />
     <EmbeddedResource Include="Report1.rdlc" />
+    <EmbeddedResource Include="View\frmCarrinho.resx">
+      <DependentUpon>frmCarrinho.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\frmCupom.resx">
       <DependentUpon>frmCupom.cs</DependentUpon>
     </EmbeddedResource>

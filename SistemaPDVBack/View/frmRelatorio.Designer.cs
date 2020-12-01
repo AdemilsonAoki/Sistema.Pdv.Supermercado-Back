@@ -129,6 +129,8 @@
             this.dgvRelatorio.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvRelatorio.Size = new System.Drawing.Size(753, 295);
             this.dgvRelatorio.TabIndex = 31;
+            this.dgvRelatorio.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRelatorio_CellContentClick);
+            this.dgvRelatorio.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRelatorio_CellDoubleClick);
             // 
             // label1
             // 

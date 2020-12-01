@@ -86,3 +86,4 @@ F:\Users\PC\Desktop\Projetos\PimSupermercadoPdVback\Sistema.Pdv.Supermercado-Bac
 F:\Users\PC\Desktop\Projetos\PimSupermercadoPdVback\Sistema.Pdv.Supermercado-Back\SistemaPDVBack\obj\Debug\SistemaPDVBack.View.frmLogin.resources
 F:\Users\PC\Desktop\Projetos\PimSupermercadoPdVback\Sistema.Pdv.Supermercado-Back\SistemaPDVBack\obj\Debug\SistemaPDVBack.View.frmMenuTeste.resources
 F:\Users\PC\Desktop\Projetos\PimSupermercadoPdVback\Sistema.Pdv.Supermercado-Back\SistemaPDVBack\obj\Debug\SistemaPDVBack.View.frmTelaPdv.resources
+F:\Users\PC\Desktop\Projetos\PimSupermercadoPdVback\Sistema.Pdv.Supermercado-Back\SistemaPDVBack\obj\Debug\SistemaPDVBack.View.frmCarrinho.resources

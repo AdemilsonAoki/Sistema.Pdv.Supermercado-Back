@@ -346,5 +346,10 @@ namespace SistemaPDVBack.View
             if ((Char.IsLetter(e.KeyChar)))
                 e.Handled = true;
         }
+
+        private void dgvProduto_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

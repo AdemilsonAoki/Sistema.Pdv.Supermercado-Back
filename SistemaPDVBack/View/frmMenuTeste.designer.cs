@@ -239,6 +239,7 @@
             // pnHorizontal
             // 
             this.pnHorizontal.BackColor = System.Drawing.Color.Black;
+            this.pnHorizontal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnHorizontal.Controls.Add(this.btnMax);
             this.pnHorizontal.Controls.Add(this.btnMin);
             this.pnHorizontal.Controls.Add(this.btnClose);
@@ -262,7 +263,7 @@
             this.btnMax.IconChar = FontAwesome.Sharp.IconChar.Square;
             this.btnMax.IconColor = System.Drawing.Color.White;
             this.btnMax.IconSize = 16;
-            this.btnMax.Location = new System.Drawing.Point(817, 16);
+            this.btnMax.Location = new System.Drawing.Point(815, 16);
             this.btnMax.Name = "btnMax";
             this.btnMax.Rotation = 0D;
             this.btnMax.Size = new System.Drawing.Size(26, 23);
@@ -279,7 +280,7 @@
             this.btnMin.IconChar = FontAwesome.Sharp.IconChar.Minus;
             this.btnMin.IconColor = System.Drawing.Color.White;
             this.btnMin.IconSize = 16;
-            this.btnMin.Location = new System.Drawing.Point(795, 16);
+            this.btnMin.Location = new System.Drawing.Point(793, 16);
             this.btnMin.Name = "btnMin";
             this.btnMin.Rotation = 0D;
             this.btnMin.Size = new System.Drawing.Size(16, 23);
@@ -294,7 +295,7 @@
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(848, 12);
+            this.btnClose.Location = new System.Drawing.Point(846, 12);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(24, 23);
             this.btnClose.TabIndex = 3;
@@ -344,22 +345,23 @@
             this.pnForm.Name = "pnForm";
             this.pnForm.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.pnForm.Size = new System.Drawing.Size(884, 561);
-            this.pnForm.TabIndex = 4;
+            this.pnForm.TabIndex = 8;
             // 
             // frmMenuTeste
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.Black;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(1084, 611);
             this.Controls.Add(this.pnForm);
             this.Controls.Add(this.pnHorizontal);
             this.Controls.Add(this.pnMenuVertical);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.IsMdiContainer = true;
             this.Name = "frmMenuTeste";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.TopMost = true;
             this.TransparencyKey = System.Drawing.Color.Transparent;
             this.Load += new System.EventHandler(this.frmMenuTeste_Load);
             this.pnMenuVertical.ResumeLayout(false);
@@ -386,12 +388,12 @@
         private FontAwesome.Sharp.IconButton btnMin;
         private System.Windows.Forms.Button btnClose;
         private FontAwesome.Sharp.IconButton btnMax;
-        private System.Windows.Forms.Panel pnForm;
         private FontAwesome.Sharp.IconButton btnColaborador;
         private FontAwesome.Sharp.IconButton btnProduto;
         private FontAwesome.Sharp.IconButton btnFornecedor;
         private FontAwesome.Sharp.IconButton btnRelatorios;
         private FontAwesome.Sharp.IconButton btnLogOut;
+        private System.Windows.Forms.Panel pnForm;
     }
 }
 

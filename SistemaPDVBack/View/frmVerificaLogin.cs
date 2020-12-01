@@ -21,6 +21,7 @@ namespace SistemaPDVBack.View
         bool validadodor;
 
         public bool Validador { get {return validadodor; } set { validadodor = value; } }
+        
 
         private void btnOk_Click(object sender, EventArgs e)
         {

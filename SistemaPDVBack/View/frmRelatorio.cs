@@ -20,6 +20,7 @@ namespace SistemaPDVBack.View
 
             
         }
+        public List<string> listaCarrinho;
 
         private void btnConsulta_Click(object sender, EventArgs e)
         {
@@ -51,6 +52,33 @@ namespace SistemaPDVBack.View
                     _index++;
                 }
             }
+        }
+
+        private void dgvRelatorio_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+           
+       
+
+        }
+
+        private void dgvRelatorio_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            string id;
+
+            using (var carrinho = new frmCarrinho())
+            {
+
+                id = dgvRelatorio.CurrentRow.Cells[0].Value.ToString();
+                carrinho.PreencheListaProdutos(id);
+
+
+                carrinho.ShowDialog();
+
+            }
+          
+           
+           
+
         }
     }
 }
