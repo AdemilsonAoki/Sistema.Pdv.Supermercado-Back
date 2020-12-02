@@ -20,7 +20,6 @@ namespace SistemaPDVBack.View
         ControllerColaborador controllerColaborador;
         ControllerUsuario controllerUsuario;
 
-
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
             string _ativo = "";
@@ -75,9 +74,6 @@ namespace SistemaPDVBack.View
                     MessageBox.Show("CPF já existe!!");
                 }
 
-
-
-
             }
 
 
@@ -88,8 +84,6 @@ namespace SistemaPDVBack.View
             //verificar
             controllerColaborador = new ControllerColaborador();
             dgvColaborador.DataSource = controllerColaborador.ListarColaborador();
-            DefinirCabecalhos(new List<string>() { "ID", "Nome", "Cpf", "Departamento", "Cargo", "Telefone", "E-mail Pessoal", "E-mail Coorp.", "Usuario", "Senha", "Status" });
-
 
         }
 
@@ -99,8 +93,6 @@ namespace SistemaPDVBack.View
             controllerColaborador = new ControllerColaborador();
 
             cmbDepartamento.DataSource = controllerColaborador.PreencherDepartamento();
-
-
             cmbDepartamento.DisplayMember = "nomeDepartamento";
             cmbDepartamento.ValueMember = "idDepartamento";
             rbColaboradorAtivo.Checked = true;
@@ -112,7 +104,6 @@ namespace SistemaPDVBack.View
             cmbDepartamento.Text = this.dgvColaborador.CurrentRow.Cells[3].Value.ToString();
             txbNome.Text = this.dgvColaborador.CurrentRow.Cells[1].Value.ToString();
             txbId.Text = this.dgvColaborador.CurrentRow.Cells[0].Value.ToString();
-
             msktCpf.Text = this.dgvColaborador.CurrentRow.Cells[2].Value.ToString();
             cmbCargo.Text = this.dgvColaborador.CurrentRow.Cells[4].Value.ToString();
             mskTxtCelular.Text = this.dgvColaborador.CurrentRow.Cells[5].Value.ToString();

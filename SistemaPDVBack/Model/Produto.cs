@@ -35,14 +35,6 @@ namespace SistemaPDVBack.Model
         public string Categoria { get{return categoria ;} set{categoria = value;} }
         public int StatusAtivo { get{return statusAtivo;} set{ statusAtivo = value;} }
 
-
-
-
-        public Produto()
-        {
-                
-        }
-
        
     }
 

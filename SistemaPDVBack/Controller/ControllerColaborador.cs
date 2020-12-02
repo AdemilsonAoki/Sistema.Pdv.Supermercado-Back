@@ -9,8 +9,7 @@ namespace SistemaPDVBack.Controller
 {
     class ControllerColaborador
     {
-
-        private readonly MySqlCommand cmd = new MySqlCommand();
+                private readonly MySqlCommand cmd = new MySqlCommand();
         private readonly string _inserir = "insert into Colaborador(cpfColaborador,nomeColaborador,  statusAtivo, cargoColaborador, telefoneColaborador, emailPessoalColaborador, emailCorporativo, idDepartamento)" +
                                             "values(@cpfColaborador, @nomeColaborador, @statusAtivo, @cargoColaborador, @telefoneColaborador,@emailPessoalColaborador, @emailCorporativo,@idDepartamento)";
         private readonly string _alterar = "update Colaborador set cpfColaborador = @cpfColaborador, nomeColaborador = @nomeColaborador,   statusAtivo = @statusAtivo, cargoColaborador = @cargoColaborador,telefoneColaborador = @telefoneColaborador,emailPessoalColaborador= @emailPessoalColaborador, emailCorporativo =@emailCorporativo, idDepartamento =@idDepartamento where idColaborador = @idColaborador";
@@ -48,7 +47,7 @@ namespace SistemaPDVBack.Controller
             {
                 string validaEmail = "^([0-9a-zA-Z]([-.\\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\\w]*[0-9a-zA-Z]\\.)+[a-zA-Z]{2,9})$";
                 string validaTelefone = "^\\(?[1-9]{2}\\)? ?(?:[2-8]|9[1-9])[0-9]{3}\\-?[0-9]{4}$";
-                string validaNumero = "^[0-9]*$";
+              
                 try
                 {
                     if (id != "")
@@ -71,8 +70,7 @@ namespace SistemaPDVBack.Controller
 
                         colaborador.EmailPessoalColaborador = emailPessoalColaborador;
 
-
-                    }
+                                            }
                     else
                     {
                         mensagem = "formato incorreto";
@@ -83,8 +81,7 @@ namespace SistemaPDVBack.Controller
                         colaborador.NomeColaborador = nomeColaborador;
                         colaborador.CargoColaborador = cargoColaborador;
 
-
-                    }
+                                            }
                     else
                     {
                         mensagem = "formato incorreto";
@@ -119,8 +116,6 @@ namespace SistemaPDVBack.Controller
 
                     colaborador.CodDepartamento = int.Parse(codDepartamento);
 
-
-
                 }
                 catch (Exception e)
                 {
@@ -151,7 +146,6 @@ namespace SistemaPDVBack.Controller
                     cmd.Connection = conexao.AbrirBanco();
                     cmd.ExecuteNonQuery();
 
-
                 }
                 catch (Exception e)
                 {
@@ -174,11 +168,8 @@ namespace SistemaPDVBack.Controller
             {
                 cmd.CommandText = _alterar;
                 cmd.Parameters.AddWithValue("@idDepartamento", colaborador.CodDepartamento);
-
                 cmd.Parameters.AddWithValue("@idColaborador", colaborador.IdColaborador);
                 cmd.Parameters.AddWithValue("@nomeColaborador", colaborador.NomeColaborador);
-
-
                 cmd.Parameters.AddWithValue("@cpfColaborador", colaborador.CpfColaborador);
                 cmd.Parameters.AddWithValue("@statusAtivo", colaborador.StatusAtivo);
                 cmd.Parameters.AddWithValue("@cargoColaborador", colaborador.CargoColaborador);
@@ -282,15 +273,12 @@ namespace SistemaPDVBack.Controller
 
             MySqlDataAdapter da = new MySqlDataAdapter();
             cmd.CommandText = "select *from departamento";
-
-
             try
             {
                 cmd.Connection = conexao.AbrirBanco();
                 MySqlDataReader dr = cmd.ExecuteReader();
                 DataTable dt = new DataTable();
                 dt.Load(dr);
-
                 return dt;
 
 
@@ -312,16 +300,13 @@ namespace SistemaPDVBack.Controller
 
         public bool Verificarcpf()
         {
-
-
-            cmd.CommandText = "select Count(1) from Colaborador where cpfColaborador= @cpfColaborador ";
+                        cmd.CommandText = "select Count(1) from Colaborador where cpfColaborador= @cpfColaborador ";
             cmd.Parameters.AddWithValue("@cpfColaborador", colaborador.CpfColaborador);
 
             try
             {
                 cmd.Connection = conexao.AbrirBanco();
-
-                var resultado = cmd.ExecuteScalar();
+                                var resultado = cmd.ExecuteScalar();
                 if (resultado.ToString() != "0")
                 {
                     return true;

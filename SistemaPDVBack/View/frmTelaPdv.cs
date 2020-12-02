@@ -270,21 +270,10 @@ namespace SistemaPDVBack.View
             lblNomeOperador.Text = CarregaUsuario.Nome;
         }
 
-        private void btnAdicionar_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txbDescricao_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void txbCodBarras_KeyPress(object sender, KeyPressEventArgs e)
         {
             if ((Char.IsLetter(e.KeyChar)))
                 e.Handled = true;
-
 
         }
 
@@ -294,11 +283,6 @@ namespace SistemaPDVBack.View
             lblHora.Text = DateTime.Now.ToString("HH:mm:ss");
         }
 
-        private void msktCpf_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
-        {
-
-        }
-
         private void txbQuantidade_KeyPress(object sender, KeyPressEventArgs e)
         {
             if ((Char.IsLetter(e.KeyChar)))
@@ -306,7 +290,7 @@ namespace SistemaPDVBack.View
         }
 
         string codItem;
-        
+
 
         private void CancelarItem()
         {
@@ -316,8 +300,8 @@ namespace SistemaPDVBack.View
             {
 
                 verificaLogin.ShowDialog();
-              
-                if(verificaLogin.Validador == true)
+
+                if (verificaLogin.Validador == true)
                 {
                     using (var cancelarItem = new frmCancelarItem())
                     {
@@ -328,13 +312,9 @@ namespace SistemaPDVBack.View
                     }
 
                 }
-                              
-
 
             }
-
-         
-
+            
             if (codItem != "")
             {
                 foreach (DataGridViewRow linha in dgvCarrinho.Rows)

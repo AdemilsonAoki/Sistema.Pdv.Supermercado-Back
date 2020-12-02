@@ -22,10 +22,10 @@ namespace SistemaPDVBack.View
             //Form
             this.Text = string.Empty;
             this.ControlBox = false;
-            
+
             this.DoubleBuffered = true;
             this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
-            AbrirForm(new frmDashboard());
+            AbrirForm(new frmHome());
 
 
         }
@@ -54,7 +54,7 @@ namespace SistemaPDVBack.View
                 leftBorder.Visible = true;
                 leftBorder.BringToFront();
 
-               
+
 
 
             }
@@ -80,7 +80,7 @@ namespace SistemaPDVBack.View
 
         private void DEsativarBotao()
         {
-            if(iconButton != null)
+            if (iconButton != null)
             {
                 iconButton.BackColor = Color.FromArgb(0, 0, 0);
                 iconButton.ForeColor = Color.Gainsboro;
@@ -88,18 +88,15 @@ namespace SistemaPDVBack.View
                 iconButton.IconColor = Color.Gainsboro;
                 iconButton.TextImageRelation = TextImageRelation.ImageBeforeText;
                 iconButton.ImageAlign = ContentAlignment.MiddleLeft;
-               
+
 
             }
         }
 
 
-
-     
-
         private void btnDashbord_Click(object sender, EventArgs e)
         {
-            AbrirForm(new frmDashboard());
+            AbrirForm(new frmHome());
 
             ActivateButton(sender, RGBColors.color1);
             pnHorizontal.BackColor = RGBColors.color8;
@@ -107,11 +104,10 @@ namespace SistemaPDVBack.View
 
 
             lblNomeForms.Text = home;
-   
+
 
 
         }
-
 
         private void btnLogo_Click(object sender, EventArgs e)
         {
@@ -127,10 +123,12 @@ namespace SistemaPDVBack.View
                 leftBorder.Visible = false;
                 iconFilho.IconChar = IconChar.Home;
                 iconFilho.IconColor = Color.White;
+                AbrirForm(new frmHome());
+                lblNomeForms.Text = home;
             }
 
         }
-      
+
 
         private void pnHorizontal_MouseDown(object sender, MouseEventArgs e)
         {
@@ -161,20 +159,16 @@ namespace SistemaPDVBack.View
 
         private void iconMenu_Click(object sender, EventArgs e)
         {
-           
-
-
 
             if (pnMenuVertical.Width == 200)
             {
-
 
                 btnColaborador.Text = "";
                 btnHome.Text = "";
                 btnProduto.Text = "";
                 btnRelatorios.Text = "";
                 pnMenuVertical.Width = 70;
-                btnFornecedor.Text = ""; 
+                btnFornecedor.Text = "";
 
             }
             else
@@ -184,16 +178,9 @@ namespace SistemaPDVBack.View
                 btnProduto.Text = produto;
                 btnRelatorios.Text = relatorio;
                 btnFornecedor.Text = fornecedor;
-               
+
                 pnMenuVertical.Width = 200;
             }
-        }
-
-       
-
-        private void pnHorizontal_Paint(object sender, PaintEventArgs e)
-        {
-
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -214,10 +201,10 @@ namespace SistemaPDVBack.View
             this.WindowState = FormWindowState.Minimized;
         }
 
-    
+
         private void showSubMenu(Panel submenu)
         {
-            if(submenu.Visible == false)
+            if (submenu.Visible == false)
             {
                 submenu.Visible = true;
             }
@@ -229,42 +216,29 @@ namespace SistemaPDVBack.View
 
         private void btnProduto_Click_1(object sender, EventArgs e)
         {
-
-            //showSubMenu(pnSubMenuProduto);
-
-
             ActivateButton(sender, RGBColors.color2);
             AbrirForm(new frmProduto());
             lblNomeForms.Text = produto;
             MudaCorIcone(RGBColors.color4);
-
-            // lblNomeForms.Text = produto;
-
-
         }
 
 
 
 
-   
+
 
         private void btnColaborador_Click(object sender, EventArgs e)
         {
-
 
             ActivateButton(sender, RGBColors.color3);
             AbrirForm(new frmColaborador());
             lblNomeForms.Text = colaborador;
             MudaCorIcone(RGBColors.color2);
-         
+
         }
-
-
-   
 
         private void btnRelatorios_Click(object sender, EventArgs e)
         {
-
 
             ActivateButton(sender, RGBColors.color5);
             AbrirForm(new frmRelatorio());
@@ -279,7 +253,6 @@ namespace SistemaPDVBack.View
             AbrirForm(new frmFornecedor());
             lblNomeForms.Text = fornecedor;
             MudaCorIcone(RGBColors.color4);
-            // lblNomeForms.Text = fornecedor;
         }
 
         private void btnLogOut_Click(object sender, EventArgs e)

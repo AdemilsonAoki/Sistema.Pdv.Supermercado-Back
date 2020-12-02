@@ -19,7 +19,6 @@ namespace SistemaPDVBack.Model
         string emailPessoalColaborador;
         string emailCorporativo;
 
-
         public int IdColaborador { get {return idColaborador; } set { idColaborador = value; } }
         public string NomeColaborador { get {return nomeColaborador; } set {nomeColaborador = value; } }
 

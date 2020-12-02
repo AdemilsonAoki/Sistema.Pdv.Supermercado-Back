@@ -16,7 +16,6 @@ namespace SistemaPDVBack.Controller
         Conexao conexao = new Conexao();
         Relatorio relatorio = new Relatorio();
         public List<string> ListaProduto = new List<string>();
-    
 
         MySqlDataReader reader;
         public ControllerRelatorio()
@@ -66,23 +65,14 @@ namespace SistemaPDVBack.Controller
             cmd.CommandText = "select pp.quantidadeItemPedido, p.nomeProduto, p.precoVenda,  pp.totalProdutoPedido from ProdutoPedido pp join Produto p on pp.codProduto = p.idProduto join Pedido pe  on pe.idPedido = pp.codPedido  where pe.idpedido = @idPedido;  ";
             cmd.Parameters.AddWithValue("@idPedido", relatorio.Id);
 
-       
-
             try
             {
                 cmd.Connection = conexao.AbrirBanco();
                 MySqlDataAdapter da = new MySqlDataAdapter(cmd);
 
                 DataTable dtLista = new DataTable();
-
-
                 da.Fill(dtLista);
-
-
                 return (dtLista);
-
-
-
 
             }
             catch (Exception e)
@@ -97,9 +87,6 @@ namespace SistemaPDVBack.Controller
                 cmd.Parameters.Clear();
             }
         }
-
-
-
 
     }
 }

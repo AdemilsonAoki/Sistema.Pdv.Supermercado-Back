@@ -27,7 +27,6 @@ namespace SistemaPDVBack.Controller
 
         Conexao conexao = new Conexao();
         Produto produto = new Produto();
-        Regex r;
         public ControllerProduto()
         {
 
@@ -91,8 +90,6 @@ namespace SistemaPDVBack.Controller
                     {
                         produto.DataFabricacao = dataFabricacao;
 
-
-
                     }
                     else
                     {
@@ -109,15 +106,12 @@ namespace SistemaPDVBack.Controller
                         mensagem = "formato incorreto";
                     }
 
-
-
                     produto.CodFornecedor = int.Parse(codFornecedor);
                     produto.PrecoCusto = decimal.Parse(precoCusto);
                     produto.PrecoVenda = decimal.Parse(precoVenda);
                     produto.MargemLucro = decimal.Parse(margemLucro);
                     produto.QuantidadeEstoqueProduto = int.Parse(quantidadeEstoqueProduto);
                     produto.StatusAtivo = int.Parse(statusAtivo);
-
 
 
                 }
@@ -181,7 +175,6 @@ namespace SistemaPDVBack.Controller
                 cmd.CommandText = _alterar;
 
                 cmd.Parameters.AddWithValue("@idProduto", produto.IdProduto);
-
                 cmd.Parameters.AddWithValue("@codBarras", produto.CodBarras);
                 cmd.Parameters.AddWithValue("@codFornecedor", produto.CodFornecedor);
                 cmd.Parameters.AddWithValue("@nomeProduto", produto.NomeProduto);
@@ -194,9 +187,6 @@ namespace SistemaPDVBack.Controller
                 cmd.Parameters.AddWithValue("@quantidadeEstoqueProduto", produto.QuantidadeEstoqueProduto);
                 cmd.Parameters.AddWithValue("@categoria", produto.Categoria);
                 cmd.Parameters.AddWithValue("@statusAtivo", produto.StatusAtivo);
-
-
-
 
                 try
                 {

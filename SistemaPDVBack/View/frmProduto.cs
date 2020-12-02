@@ -35,8 +35,6 @@ namespace SistemaPDVBack.View
             cmbFornecedor.DisplayMember = "nomeFantasia";
             cmbFornecedor.ValueMember = "idFornecedor";
 
-
-
         }
         private void Listar()
         {
@@ -45,13 +43,9 @@ namespace SistemaPDVBack.View
 
             dgvProduto.DataSource = controllerProduto.ListarProduto();
 
-
-
             cmbFornecedor.SelectedIndex = 0;
 
             DefinirCabecalhos(new List<string>() { "ID", "Cód de barras", "Nome", "Fornecedor", "Descrição", "Quantidade", "Preço Custo", "Margem", "Preço Venda", "Data Fabri.", "Data Venci.", "Categoria", "Ativo" });
-
-
 
             LimpaCampos();
         }
@@ -134,8 +128,6 @@ namespace SistemaPDVBack.View
                 {
                     MessageBox.Show("Esse código de barras já existe !!");
                 }
-                
-
 
             }
 
@@ -164,11 +156,6 @@ namespace SistemaPDVBack.View
 
 
         }
-
-
-
-
-
 
         private void dgvProduto_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -201,7 +188,6 @@ namespace SistemaPDVBack.View
                 rbPerecivel.Checked = true;
             else
                 rbNaoPerecivel.Checked = true;
-
 
             btnAdicionar.Enabled = false;
 
@@ -325,8 +311,6 @@ namespace SistemaPDVBack.View
 
             }
 
-
-
         }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
@@ -346,10 +330,6 @@ namespace SistemaPDVBack.View
             if ((Char.IsLetter(e.KeyChar)))
                 e.Handled = true;
         }
-
-        private void dgvProduto_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
+          
     }
 }

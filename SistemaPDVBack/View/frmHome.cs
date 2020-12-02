@@ -12,9 +12,9 @@ using SistemaPDVBack.Model;
 
 namespace SistemaPDVBack.View
 {
-    public partial class frmDashboard : Form
+    public partial class frmHome : Form
     {
-        public frmDashboard()
+        public frmHome()
         {
             InitializeComponent();
         }
@@ -27,12 +27,7 @@ namespace SistemaPDVBack.View
 
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void timer1_Tick(object sender, EventArgs e)
+         private void timer1_Tick(object sender, EventArgs e)
         {
             lblHora.Text = DateTime.Now.ToString("HH:mm:ss");
 

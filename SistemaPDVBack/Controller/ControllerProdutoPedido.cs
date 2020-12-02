@@ -17,21 +17,6 @@ namespace SistemaPDVBack.Controller
         Conexao conexao = new Conexao();
         ProdutoPedido produtoPedido = new ProdutoPedido();
 
-        public ControllerProdutoPedido()
-        {
-
-        }
-        public ControllerProdutoPedido(string idProduto)
-        {
-            if (!idProduto.Equals(""))
-            {
-                produtoPedido.IdProdutoPedido = int.Parse(idProduto);
-                CarregaPedido();
-
-
-            }
-
-        }
         public ControllerProdutoPedido(string codBarras, string quantidade, string total)
         {
             ConverterValidar(codBarras, quantidade, total);
@@ -39,12 +24,6 @@ namespace SistemaPDVBack.Controller
             CarregaProduto();
 
         }
-
-   
-
-
-
-
 
         private void ConverterValidar(string codBarras, string quantidade, string total)
         {
@@ -56,7 +35,7 @@ namespace SistemaPDVBack.Controller
 
                 }
                 if (!quantidade.Equals(""))
-                { 
+                {
                     produtoPedido.QuantidadeItemPedido = int.Parse(quantidade);
 
                 }
@@ -67,11 +46,11 @@ namespace SistemaPDVBack.Controller
                     produtoPedido.TotalProdutoPedido = decimal.Parse(total);
                 }
             }
-            //Verificar
+ 
 
             catch (Exception e)
             {
-               throw;
+                throw;
             }
 
 
@@ -104,8 +83,7 @@ namespace SistemaPDVBack.Controller
             catch (Exception e)
             {
                 throw;
-                //MessageBox.Show(e.Message);
-
+          
             }
             finally
             {
@@ -118,7 +96,7 @@ namespace SistemaPDVBack.Controller
 
         public void AtualizaEstoque()
         {
-           
+
             cmd.CommandText = "update Produto set quantidadeEstoqueProduto  = quantidadeEstoqueProduto - @quantidadeProduto where idProduto = @idProduto";
             cmd.Parameters.AddWithValue("@quantidadeProduto", produtoPedido.QuantidadeItemPedido);
             cmd.Parameters.AddWithValue("@idProduto", produtoPedido.CodProduto);
@@ -128,7 +106,7 @@ namespace SistemaPDVBack.Controller
                 cmd.Connection = conexao.AbrirBanco();
                 cmd.ExecuteNonQuery();
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 throw;
             }
@@ -139,13 +117,9 @@ namespace SistemaPDVBack.Controller
             }
         }
 
-
-
         public string VerificaProdutoNome()
-      
+
         {
-
-
             cmd.CommandText = "select *from Produto where codBarras = @codBarras";
             cmd.Parameters.AddWithValue("@codBarras", produtoPedido.CodBarras);
 
@@ -160,10 +134,9 @@ namespace SistemaPDVBack.Controller
                 {
 
                     nome = reader.GetString(3);
-                    
 
                 }
-               
+
                 return nome;
 
 
@@ -184,11 +157,9 @@ namespace SistemaPDVBack.Controller
         private void CarregaProduto()
         {
 
-
             cmd.CommandText = "select *from Produto where codBarras = @codBarras";
             cmd.Parameters.AddWithValue("@codBarras", produtoPedido.CodBarras);
 
-           
             try
             {
                 cmd.Connection = conexao.AbrirBanco();
@@ -200,17 +171,13 @@ namespace SistemaPDVBack.Controller
 
                     produtoPedido.CodProduto = reader.GetInt32(0);
 
-
                 }
-
-               
-
 
             }
             catch (Exception e)
             {
                 throw;
-                //MessageBox.Show(e.Message);
+
 
             }
             finally
@@ -222,22 +189,16 @@ namespace SistemaPDVBack.Controller
         }
         public void AdicionarProdutoPedido()
         {
-
             cmd.CommandText = "insert into ProdutoPedido(codPedido, codProduto, quantidadeItemPedido, totalProdutoPedido) values (@codPedido, @codProduto, @quantidadeItemPedido,@totalProdutoPedido)";
-
             cmd.Parameters.AddWithValue("@codPedido", produtoPedido.CodPedido);
             cmd.Parameters.AddWithValue("@codProduto", produtoPedido.CodProduto);
             cmd.Parameters.AddWithValue("@quantidadeItemPedido", produtoPedido.QuantidadeItemPedido);
             cmd.Parameters.AddWithValue("@totalProdutoPedido", produtoPedido.TotalProdutoPedido);
 
-
-
-
             try
             {
                 cmd.Connection = conexao.AbrirBanco();
                 cmd.ExecuteNonQuery();
-
 
             }
             catch (Exception e)
@@ -256,38 +217,6 @@ namespace SistemaPDVBack.Controller
 
         }
 
-        //public void DeeletarProdutoPedido()
-        //{
-
-        //    cmd.CommandText = "DELETE FROM ProdutoPedido where idProdutoPedido = @idProdutoPedido";
-
-        //    cmd.Parameters.AddWithValue("@idProdutoPedido", produtoPedido.IdProdutoPedido);
-
-
-
-
-
-        //    try
-        //    {
-        //        cmd.Connection = conexao.AbrirBanco();
-        //        cmd.ExecuteNonQuery();
-
-
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        MessageBox.Show(e.Message);
-        //        return;
-
-        //    }
-        //    finally
-        //    {
-        //        cmd.Parameters.Clear();
-        //        conexao.FecharBanco();
-        //    }
-
-
-        //}
         public void CarregaPedido()
         {
 
@@ -324,34 +253,6 @@ namespace SistemaPDVBack.Controller
                 conexao.FecharBanco();
             }
         }
-
-   
-
-        public DataTable ListarProdutoPedido()
-        {
-            cmd.CommandText = "select p.nomeProduto, p.precoVenda, pp.quantidadeItemPedido, pp.totalProdutoPedido, pp.idProdutoPedido from ProdutoPedido pp join Produto p on pp.codProduto = p.codBarras join Pedido pe on pe.idPedido = pp.codPedido  where pe.idpedido = @idPedido";
-            cmd.Parameters.AddWithValue("idPedido", produtoPedido.CodPedido);
-            try
-            {
-                cmd.Connection = conexao.AbrirBanco();
-                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
-                DataTable dtLista = new DataTable();
-                da.Fill(dtLista);
-                return dtLista;
-
-            }
-            catch (Exception e)
-            {
-                throw;
-            }
-            finally
-            {
-                conexao.FecharBanco();
-            }
-
-        }
-
-
 
     }
 }

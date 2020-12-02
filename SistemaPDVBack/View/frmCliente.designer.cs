@@ -90,7 +90,7 @@
             this.msktCnpjCpf.Name = "msktCnpjCpf";
             this.msktCnpjCpf.Size = new System.Drawing.Size(222, 23);
             this.msktCnpjCpf.TabIndex = 4;
-            this.msktCnpjCpf.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.msktCnpjCpf_MaskInputRejected);
+    
             // 
             // frmCliente
             // 

@@ -105,9 +105,6 @@ namespace SistemaPDVBack.Controller
                 cmd.Parameters.AddWithValue("@cidade", fornecedor.CidadePessoa);
                 cmd.Parameters.AddWithValue("@cepFornecedor", fornecedor.CepFornecedor);
 
-
-
-
                 try
                 {
                     cmd.Connection = conexao.AbrirBanco();

@@ -31,7 +31,7 @@ namespace SistemaPDVBack.Controller
             login.Senha = senha;
 
         }
-       
+
 
         private void ValidarConverter(string usuario, string senha, string cpf, string statusAtivo)
         {
@@ -50,7 +50,6 @@ namespace SistemaPDVBack.Controller
 
         }
 
-
         public bool Login()
         {
             cmd.CommandText = "select *from usuario where usuario = @usuario and senha = @senha";
@@ -67,7 +66,7 @@ namespace SistemaPDVBack.Controller
                     {
                         CarregaUsuario.Nome = reader.GetString(2);
                         CarregaUsuario.IdUser = reader.GetString(1);
-                        
+
 
                     }
                     return true;
@@ -97,7 +96,7 @@ namespace SistemaPDVBack.Controller
         {
             cmd.CommandText = "select *from Colaborador where cpfColaborador = @cpfColaborador ";
             cmd.Parameters.AddWithValue("@cpfColaborador", colaborador.CpfColaborador);
-            
+
             try
             {
                 cmd.Connection = conexao.AbrirBanco();
@@ -111,20 +110,18 @@ namespace SistemaPDVBack.Controller
                         colaborador.IdColaborador = reader.GetInt32(0);
 
                     }
-                  
-
 
                 }
                 else
                 {
-                    
+
                 }
 
             }
             catch (Exception e)
             {
                 MessageBox.Show(e.Message);
-              
+
             }
             finally
             {
@@ -139,9 +136,6 @@ namespace SistemaPDVBack.Controller
             cmd.Parameters.AddWithValue("@usuario", login.Login);
             cmd.Parameters.AddWithValue("@senha", login.Senha);
             cmd.Parameters.AddWithValue("@statusAtivo", login.StatusAtivo);
-
-
-
             try
             {
                 cmd.Connection = conexao.AbrirBanco();
@@ -196,18 +190,13 @@ namespace SistemaPDVBack.Controller
                 {
                     while (reader.Read())
                     {
-                      
-
                         cargo = reader.GetString(4);
                     }
-                   // return cargo;
-
-
                 }
                 return cargo;
 
             }
-            catch (Exception )
+            catch (Exception)
             {
                 return cargo = "Não encontrado";
             }
@@ -218,7 +207,7 @@ namespace SistemaPDVBack.Controller
             }
         }
 
-      
+
 
     }
 }

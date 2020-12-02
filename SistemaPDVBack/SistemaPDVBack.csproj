@@ -142,11 +142,11 @@
     <Compile Include="View\frmFornecedor.designer.cs">
       <DependentUpon>frmFornecedor.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\frmDashboard.cs">
+    <Compile Include="View\frmHome.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\frmDashboard.designer.cs">
-      <DependentUpon>frmDashboard.cs</DependentUpon>
+    <Compile Include="View\frmHome.designer.cs">
+      <DependentUpon>frmHome.cs</DependentUpon>
     </Compile>
     <Compile Include="View\frmLogin.cs">
       <SubType>Form</SubType>
@@ -179,7 +179,6 @@
       <DependentUpon>frmVerificaLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="View\MoverForm.cs" />
-    <EmbeddedResource Include="Report1.rdlc" />
     <EmbeddedResource Include="View\frmCarrinho.resx">
       <DependentUpon>frmCarrinho.cs</DependentUpon>
     </EmbeddedResource>
@@ -205,8 +204,8 @@
     <EmbeddedResource Include="View\frmColaborador.resx">
       <DependentUpon>frmColaborador.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\frmDashboard.resx">
-      <DependentUpon>frmDashboard.cs</DependentUpon>
+    <EmbeddedResource Include="View\frmHome.resx">
+      <DependentUpon>frmHome.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmDinheiro.resx">
       <DependentUpon>frmDinheiro.cs</DependentUpon>

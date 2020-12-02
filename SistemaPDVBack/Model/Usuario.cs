@@ -12,10 +12,6 @@ namespace SistemaPDVBack.Model
         string login;
         string senha;
         int statusAtivo;
-
-     //   public int IdUsuario { get{return;} set{;} }
-       // public string cpfColaborador { get{return;} set{;} }
-
         public string Login { get{return login;} set{login = value;} }
         public string Senha { get{return senha ;} set{ senha = value;} }
         public int StatusAtivo { get{return statusAtivo;} set{ statusAtivo = value;} }

@@ -170,7 +170,6 @@
             this.txbDescricao.Name = "txbDescricao";
             this.txbDescricao.Size = new System.Drawing.Size(1326, 36);
             this.txbDescricao.TabIndex = 50;
-            this.txbDescricao.TextChanged += new System.EventHandler(this.txbDescricao_TextChanged);
             // 
             // lblDescricao
             // 
@@ -350,7 +349,7 @@
             this.btnAdicionar.TabIndex = 1;
             this.btnAdicionar.Text = "Adicionar (A)";
             this.btnAdicionar.UseVisualStyleBackColor = false;
-            this.btnAdicionar.Click += new System.EventHandler(this.btnAdicionar_Click);
+
             // 
             // btnAjuda
             // 

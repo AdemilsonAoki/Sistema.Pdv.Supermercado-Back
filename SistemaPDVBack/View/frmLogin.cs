@@ -110,7 +110,6 @@ namespace SistemaPDVBack.View
                 {
                     frmTelaPdv frmPdv = new frmTelaPdv();
 
-                    //frmMenuTeste frmMenu = new frmMenuTeste();
                     frmPdv.Show();
                     frmPdv.FormClosed += LogOut;
                     this.Hide();
@@ -119,12 +118,6 @@ namespace SistemaPDVBack.View
 
             }
         }
-
-        private void txbSenha_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
 
         private void LogOut(object sender, FormClosedEventArgs e)
         {

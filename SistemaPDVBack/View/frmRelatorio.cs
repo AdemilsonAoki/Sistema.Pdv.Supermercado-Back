@@ -18,13 +18,13 @@ namespace SistemaPDVBack.View
         {
             InitializeComponent();
 
-            
+
         }
         public List<string> listaCarrinho;
 
         private void btnConsulta_Click(object sender, EventArgs e)
         {
-            ControllerRelatorio relatorio = new ControllerRelatorio(dtpDataInicial.Text , dtpDataFinal.Text);
+            ControllerRelatorio relatorio = new ControllerRelatorio(dtpDataInicial.Text, dtpDataFinal.Text);
 
             dgvRelatorio.DataSource = relatorio.BuscarPorData();
             DefinirCabecalhos(new List<string>() { "ID", "Data ", "Pagamento", "Total" });
@@ -54,13 +54,6 @@ namespace SistemaPDVBack.View
             }
         }
 
-        private void dgvRelatorio_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-           
-       
-
-        }
-
         private void dgvRelatorio_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             string id;
@@ -75,9 +68,6 @@ namespace SistemaPDVBack.View
                 carrinho.ShowDialog();
 
             }
-          
-           
-           
 
         }
     }

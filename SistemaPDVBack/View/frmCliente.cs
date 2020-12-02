@@ -45,9 +45,7 @@ namespace SistemaPDVBack.View
         string cnpj = "";
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
-            //ControllerCliente cliente = new ControllerCliente(msktCnpjCpf.Text);
-            //cliente.AdicionarCliente();
-          
+
             if (rbCpf.Checked)
             {
                 cpf = msktCnpjCpf.Text.Replace(".", "").Replace("-", "");
@@ -55,14 +53,14 @@ namespace SistemaPDVBack.View
             }
             else
             {
-               cnpj = msktCnpjCpf.Text.Replace(".", "").Replace("-", "").Replace("/", ""); ;
+                cnpj = msktCnpjCpf.Text.Replace(".", "").Replace("-", "").Replace("/", ""); ;
 
             }
 
 
             if (msktCnpjCpf.Text != "   .   .   -" && msktCnpjCpf.Text != "  .   .   /    -")
             {
-                if (cpf.Length == 11 || cnpj.Length == 14)  
+                if (cpf.Length == 11 || cnpj.Length == 14)
                 {
                     this.Close();
 
@@ -116,7 +114,7 @@ namespace SistemaPDVBack.View
 
                     msktCnpjCpf.Focus();
 
-           
+
                     break;
                 case Keys.F2:
 
@@ -124,23 +122,16 @@ namespace SistemaPDVBack.View
                     msktCnpjCpf.ReadOnly = false;
 
                     msktCnpjCpf.Focus();
- 
+
                     break;
-
-
 
             }
 
             return base.ProcessCmdKey(ref msg, keyData);
 
-
         }
 
-        private void msktCnpjCpf_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
-        {
-          
-
-        }
+      
     }
 
 }

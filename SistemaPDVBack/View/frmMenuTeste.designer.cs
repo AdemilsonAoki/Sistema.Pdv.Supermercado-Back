@@ -251,7 +251,6 @@
             this.pnHorizontal.Name = "pnHorizontal";
             this.pnHorizontal.Size = new System.Drawing.Size(884, 50);
             this.pnHorizontal.TabIndex = 1;
-            this.pnHorizontal.Paint += new System.Windows.Forms.PaintEventHandler(this.pnHorizontal_Paint);
             this.pnHorizontal.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnHorizontal_MouseDown);
             // 
             // btnMax

@@ -94,7 +94,6 @@
             this.txbSenha.Size = new System.Drawing.Size(373, 13);
             this.txbSenha.TabIndex = 2;
             this.txbSenha.Text = "SENHA";
-            this.txbSenha.TextChanged += new System.EventHandler(this.txbSenha_TextChanged);
             this.txbSenha.Enter += new System.EventHandler(this.txbSenha_Enter);
             this.txbSenha.Leave += new System.EventHandler(this.txbSenha_Leave);
             // 
