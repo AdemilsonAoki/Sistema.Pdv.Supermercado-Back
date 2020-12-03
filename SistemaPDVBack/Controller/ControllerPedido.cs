@@ -23,7 +23,6 @@ namespace SistemaPDVBack.Controller
 
         public ControllerPedido(string status, string dataDoPedido, string total, string formaPagamento)
         {
-    
             ConverterValidar(status, dataDoPedido, total, formaPagamento);
         }
   
@@ -232,11 +231,6 @@ namespace SistemaPDVBack.Controller
                 x.WriteLine("" + ";" + "" + ";" + "Troco" + ";" + "" + ";" + "" + ";" + troco + ";" + "" + ";");
 
             }
-
-
-
-
-
 
             x.Close();
 

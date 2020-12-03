@@ -71,6 +71,7 @@
             this.lblNomeValorPago = new System.Windows.Forms.Label();
             this.lblValorAReceber = new System.Windows.Forms.Label();
             this.pnFormaPagamento = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
             this.pnInfos.SuspendLayout();
             this.panel3.SuspendLayout();
             this.pnTitulo.SuspendLayout();
@@ -283,6 +284,7 @@
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.button2);
             this.panel3.Controls.Add(this.button1);
             this.panel3.Controls.Add(this.lblAtalhos);
             this.panel3.Controls.Add(this.btnLimpaCampos);
@@ -297,7 +299,7 @@
             // button1
             // 
             this.button1.BackColor = System.Drawing.SystemColors.Info;
-            this.button1.Location = new System.Drawing.Point(52, 99);
+            this.button1.Location = new System.Drawing.Point(3, 103);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(103, 35);
             this.button1.TabIndex = 7;
@@ -349,7 +351,6 @@
             this.btnAdicionar.TabIndex = 1;
             this.btnAdicionar.Text = "Adicionar (A)";
             this.btnAdicionar.UseVisualStyleBackColor = false;
-
             // 
             // btnAjuda
             // 
@@ -543,6 +544,16 @@
             this.pnFormaPagamento.Size = new System.Drawing.Size(1350, 36);
             this.pnFormaPagamento.TabIndex = 69;
             // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.SystemColors.Info;
+            this.button2.Location = new System.Drawing.Point(106, 103);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(100, 35);
+            this.button2.TabIndex = 70;
+            this.button2.Text = "Forma Pgmt.(D,C)";
+            this.button2.UseVisualStyleBackColor = false;
+            // 
             // frmTelaPdv
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -626,5 +637,6 @@
         private System.Windows.Forms.Label lblValorAReceber;
         private System.Windows.Forms.Panel pnFormaPagamento;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }

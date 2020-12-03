@@ -77,8 +77,6 @@ namespace SistemaPDVBack.View
 
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
-
-
             InseriValorRb();
             if (!cmbFornecedor.Text.Equals(""))
             {
@@ -90,108 +88,65 @@ namespace SistemaPDVBack.View
 
                     controllerProduto = new ControllerProduto(txbId.Text, txbCodigoBarras.Text, cmbFornecedor.SelectedValue.ToString(), txbNome.Text, rtbDescricao.Text, txbPrecoCusto.Text, txbPrecoDeVenda.Text,
                                                         txbMargemDeLucro.Text, msktDataFabricacao.Text, msktDataVencimento.Text, txbQuantidadeEstoque.Text, _perecivel, _ativo);
-
-
-                    if (controllerProduto.Ds_Msg != "")
+                    if (controllerProduto.VerificarCodBarras() == false)
                     {
-                        // Exibir erro!
+                        controllerProduto.AdicionarProduto();
 
-                        txbCodigoBarras.Focus();
-                        const string caption = "Ocorreu um erro?";
-                        var result = MessageBox.Show(controllerProduto.Ds_Msg, caption,
-                                                      MessageBoxButtons.OK,
-                                                      MessageBoxIcon.Warning);
+                        if (controllerProduto.Ds_Msg != "")
+                        {
+                            // Exibir erro!
 
+                            txbCodigoBarras.Focus();
+                            const string caption = "Ocorreu um erro?";
+                            var result = MessageBox.Show(controllerProduto.Ds_Msg, caption,
+                                                          MessageBoxButtons.OK,
+                                                          MessageBoxIcon.Warning);
+
+                        }
+
+                        Listar();
                     }
                     else
                     {
-
-                        // Tudo certinho!
-                        if (controllerProduto.VerificarCodBarras() == false)
-                        {
-                            controllerProduto.AdicionarProduto();
-
-                            if (controllerProduto.Ds_Msg != "")
-                            {
-                                // Exibir erro!
-
-                                txbCodigoBarras.Focus();
-                                const string caption = "Ocorreu um erro?";
-                                var result = MessageBox.Show(controllerProduto.Ds_Msg, caption,
-                                                              MessageBoxButtons.OK,
-                                                              MessageBoxIcon.Warning);
-
-                            }
-
-                            Listar();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Esse código de barras já existe !!");
-                        }
-
+                        MessageBox.Show("Esse código de barras já existe !!");
                     }
-                }
-                else
-                {
-                    MessageBox.Show("Preencha todos produtos!!");
+
+
                 }
 
-            }
-            else
-            {
-                if (cmbFornecedor.Text.Equals(" "))
+
+                else
                 {
                     controllerProduto = new ControllerProduto(txbId.Text, txbCodigoBarras.Text, cmbFornecedor.SelectedValue.ToString(), txbNome.Text, rtbDescricao.Text, txbPrecoCusto.Text, txbPrecoDeVenda.Text,
-                                                    txbMargemDeLucro.Text, msktDataFabricacao.Text, msktDataVencimento.Text, txbQuantidadeEstoque.Text, _perecivel, _ativo);
-
-                    if (controllerProduto.Ds_Msg != "")
+                                            txbMargemDeLucro.Text, msktDataFabricacao.Text, msktDataVencimento.Text, txbQuantidadeEstoque.Text, _perecivel, _ativo);
+                    // Tudo certinho!
+                    if (controllerProduto.VerificarCodBarras() == false)
                     {
-                        // Exibir erro!
+                        controllerProduto.AdicionarProduto();
 
-                        txbCodigoBarras.Focus();
-                        const string caption = "Ocorreu um erro?";
-                        var result = MessageBox.Show(controllerProduto.Ds_Msg, caption,
-                                                      MessageBoxButtons.OK,
-                                                      MessageBoxIcon.Warning);
+                        if (controllerProduto.Ds_Msg != "")
+                        {
+                            // Exibir erro!
 
+                            txbCodigoBarras.Focus();
+                            const string caption = "Ocorreu um erro?";
+                            var result = MessageBox.Show(controllerProduto.Ds_Msg, caption,
+                                                          MessageBoxButtons.OK,
+                                                          MessageBoxIcon.Warning);
+
+                        }
+
+                        Listar();
                     }
                     else
                     {
-
-                        // Tudo certinho!
-                        if (controllerProduto.VerificarCodBarras() == false)
-                        {
-                            controllerProduto.AdicionarProduto();
-
-                            if (controllerProduto.Ds_Msg != "")
-                            {
-                                // Exibir erro!
-
-                                txbCodigoBarras.Focus();
-                                const string caption = "Ocorreu um erro?";
-                                var result = MessageBox.Show(controllerProduto.Ds_Msg, caption,
-                                                              MessageBoxButtons.OK,
-                                                              MessageBoxIcon.Warning);
-
-                            }
-
-                            Listar();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Esse código de barras já existe !!");
-                        }
-
+                        MessageBox.Show("Esse código de barras já existe !!");
                     }
+
                 }
-                else
-                {
-                    MessageBox.Show("Preeencha todos os  produtos!!");
-                }
+
+
             }
-
-
 
         }
 
@@ -257,11 +212,12 @@ namespace SistemaPDVBack.View
 
         private void btnAlterar_Click(object sender, EventArgs e)
         {
+            btnAdicionar.Enabled = true;
+
             InseriValorRb();
             controllerProduto = new ControllerProduto(txbId.Text, txbCodigoBarras.Text, cmbFornecedor.SelectedValue.ToString(), txbNome.Text, rtbDescricao.Text, txbPrecoCusto.Text, txbPrecoDeVenda.Text,
                                                         txbMargemDeLucro.Text, msktDataFabricacao.Text, msktDataVencimento.Text, txbQuantidadeEstoque.Text, _perecivel, _ativo);
             controllerProduto.AlterarProduto();
-            btnAdicionar.Enabled = true;
             Listar();
         }
 

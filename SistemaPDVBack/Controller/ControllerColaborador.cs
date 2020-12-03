@@ -227,7 +227,7 @@ namespace SistemaPDVBack.Controller
 
         public DataTable ListarTodosColaboradores()
         {
-            cmd.CommandText = "select c.idColaborador, c.nomeColaborador,c.cpfColaborador, d.nomeDepartamento,c.cargoColaborador, c.telefoneColaborador,c.emailCorporativo, c.emailPessoalColaborador, u.usuario, u.senha, c.statusAtivo from Colaborador c join departamento d on c.idDepartamento = d.idDepartamento join Usuario u on u.cpfColaborador = c.cpfColaborador";
+            cmd.CommandText = "select c.idColaborador, c.nomeColaborador,c.cpfColaborador, d.nomeDepartamento,c.cargoColaborador, c.telefoneColaborador,c.emailCorporativo, c.emailPessoalColaborador, u.usuario, u.senha, c.statusAtivo from Colaborador c join departamento d on c.idDepartamento = d.idDepartamento join Usuario u on u.idColaborador = c.idColaborador";
             try
             {
                 cmd.Connection = conexao.AbrirBanco();

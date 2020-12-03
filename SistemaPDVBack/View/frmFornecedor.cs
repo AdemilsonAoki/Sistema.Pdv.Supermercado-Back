@@ -29,12 +29,12 @@ namespace SistemaPDVBack.View
         {
             AtribuirValorRb();
 
-            controllerFornecedor = new ControllerFornecedor(txbId.Text, txbInscricaoEstadual.Text, txbNomeFantasia.Text,  txbEstado.Text, txbNumero.Text,
+            controllerFornecedor = new ControllerFornecedor(txbId.Text, txbInscricaoEstadual.Text, txbNomeFantasia.Text, txbEstado.Text, txbNumero.Text,
                                                             txbComplemento.Text, txbBairro.Text, txbCidade.Text, txbCep.Text, _ativo, txbRua.Text, mskTxbCnpj.Text);
             if (controllerFornecedor.Ds_Msg != "")
             {
                 // Exibir erro!
-    
+
 
                 const string caption = "Ocorreu um erro?";
                 var result = MessageBox.Show(controllerFornecedor.Ds_Msg, caption,
@@ -71,7 +71,7 @@ namespace SistemaPDVBack.View
                     MessageBox.Show("Esse CNPJ ja existe!!");
                 }
                 // Tudo certinho!
-               
+
 
             }
 
@@ -83,10 +83,10 @@ namespace SistemaPDVBack.View
             //verificar
             controllerFornecedor = new ControllerFornecedor();
             dgvFornecedor.DataSource = controllerFornecedor.ListarFornecedor();
-            DefinirCabecalhos(new List<string>() { "Id", "CNPJ", "Nome", "Insc. Estadual", "CEP", "Rua",  "Estado", "Numero", "Complemnto", "Bairro", "Cidade", "Ativo" });
+            DefinirCabecalhos(new List<string>() { "Id", "CNPJ", "Nome", "Insc. Estadual", "CEP", "Rua", "Estado", "Numero", "Complemnto", "Bairro", "Cidade", "Ativo" });
         }
 
-     
+
 
         private void gbEndereco_Enter(object sender, EventArgs e)
         {
@@ -96,7 +96,7 @@ namespace SistemaPDVBack.View
         private void btnAlterar_Click(object sender, EventArgs e)
         {
             AtribuirValorRb();
-            controllerFornecedor = new ControllerFornecedor(txbId.Text,  txbInscricaoEstadual.Text, txbNomeFantasia.Text, txbEstado.Text, txbNumero.Text,
+            controllerFornecedor = new ControllerFornecedor(txbId.Text, txbInscricaoEstadual.Text, txbNomeFantasia.Text, txbEstado.Text, txbNumero.Text,
                                                             txbComplemento.Text, txbBairro.Text, txbCidade.Text, txbCep.Text, _ativo, txbRua.Text, mskTxbCnpj.Text);
 
             if (controllerFornecedor.Ds_Msg != "")
@@ -128,7 +128,7 @@ namespace SistemaPDVBack.View
                 Listar();
 
             }
-            btnAdicionar.Enabled = false;
+            btnAdicionar.Enabled = true;
 
         }
 
@@ -167,92 +167,99 @@ namespace SistemaPDVBack.View
 
         private void btnLocalizar_Click(object sender, EventArgs e)
         {
-
-
-            string temp = "";
-            temp = txbCep.Text.Replace(".", "").Replace("-", "");
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://viacep.com.br/ws/" + temp + "/json/");
-            request.AllowAutoRedirect = false;
-            HttpWebResponse ChecaServidor = (HttpWebResponse)request.GetResponse();
-
-
-            if (ChecaServidor.StatusCode != HttpStatusCode.OK)
-            {
-                MessageBox.Show("Servidor indisponível");
-                return; // Sai da rotina
-            }
-
-            using (Stream webStream = ChecaServidor.GetResponseStream())
+            try
             {
 
 
 
-                if (webStream != null)
+                string temp = "";
+                temp = txbCep.Text.Replace(".", "").Replace("-", "");
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://viacep.com.br/ws/" + temp + "/json/");
+                request.AllowAutoRedirect = false;
+                HttpWebResponse ChecaServidor = (HttpWebResponse)request.GetResponse();
+
+
+                if (ChecaServidor.StatusCode != HttpStatusCode.OK)
                 {
-                    using (StreamReader responseReader = new StreamReader(webStream))
-                    {
-                        string response = responseReader.ReadToEnd();
-                        response = Regex.Replace(response, "[{},]", string.Empty);
-                        response = response.Replace("\"", "");
-
-                        String[] substrings = response.Split('\n');
-
-                        int cont = 0;
-                        foreach (var substring in substrings)
-                        {
-                            if (cont == 1)
-                            {
-                                string[] valor = substring.Split(":".ToCharArray());
-                                if (valor[0] == "  erro")
-                                {
-                                    MessageBox.Show("CEP não encontrado");
-                                    txbCep.Focus();
-                                    return;
-                                }
-                            }
-
-                            //Logradouro
-                            if (cont == 2)
-                            {
-                                string[] valor = substring.Split(":".ToCharArray());
-                                txbRua.Text = valor[1];
-                            }
-
-                            //Complemento
-                            if (cont == 3)
-                            {
-                                string[] valor = substring.Split(":".ToCharArray());
-                                txbComplemento.Text = valor[1];
-                            }
-
-                            //Bairro
-                            if (cont == 4)
-                            {
-                                string[] valor = substring.Split(":".ToCharArray());
-                                txbBairro.Text = valor[1];
-                            }
-
-                            //Localidade (Cidade)
-                            if (cont == 5)
-                            {
-                                string[] valor = substring.Split(":".ToCharArray());
-                                txbCidade.Text = valor[1];
-                            }
-
-                            //Estado (UF)
-                            if (cont == 6)
-                            {
-                                string[] valor = substring.Split(":".ToCharArray());
-                                txbEstado.Text = valor[1];
-                            }
-
-                            cont++;
-                        }
-                    }
+                    MessageBox.Show("Servidor indisponível");
+                    return; // Sai da rotina
                 }
 
-            }
+                using (Stream webStream = ChecaServidor.GetResponseStream())
+                {
 
+
+
+                    if (webStream != null)
+                    {
+                        using (StreamReader responseReader = new StreamReader(webStream))
+                        {
+                            string response = responseReader.ReadToEnd();
+                            response = Regex.Replace(response, "[{},]", string.Empty);
+                            response = response.Replace("\"", "");
+
+                            String[] substrings = response.Split('\n');
+
+                            int cont = 0;
+                            foreach (var substring in substrings)
+                            {
+                                if (cont == 1)
+                                {
+                                    string[] valor = substring.Split(":".ToCharArray());
+                                    if (valor[0] == "  erro")
+                                    {
+                                        MessageBox.Show("CEP não encontrado");
+                                        txbCep.Focus();
+                                        return;
+                                    }
+                                }
+
+                                //Logradouro
+                                if (cont == 2)
+                                {
+                                    string[] valor = substring.Split(":".ToCharArray());
+                                    txbRua.Text = valor[1];
+                                }
+
+                                //Complemento
+                                if (cont == 3)
+                                {
+                                    string[] valor = substring.Split(":".ToCharArray());
+                                    txbComplemento.Text = valor[1];
+                                }
+
+                                //Bairro
+                                if (cont == 4)
+                                {
+                                    string[] valor = substring.Split(":".ToCharArray());
+                                    txbBairro.Text = valor[1];
+                                }
+
+                                //Localidade (Cidade)
+                                if (cont == 5)
+                                {
+                                    string[] valor = substring.Split(":".ToCharArray());
+                                    txbCidade.Text = valor[1];
+                                }
+
+                                //Estado (UF)
+                                if (cont == 6)
+                                {
+                                    string[] valor = substring.Split(":".ToCharArray());
+                                    txbEstado.Text = valor[1];
+                                }
+
+                                cont++;
+                            }
+                        }
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show( ex.Message);
+            }
         }
 
         private void frmFornecedor_Load(object sender, EventArgs e)
@@ -290,7 +297,7 @@ namespace SistemaPDVBack.View
             txbEstado.Clear();
             txbId.Clear();
             txbInscricaoEstadual.Clear();
-       
+
             txbNomeFantasia.Clear();
             txbNumero.Clear();
             txbRua.Clear();

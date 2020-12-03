@@ -84,6 +84,8 @@ namespace SistemaPDVBack.View
             //verificar
             controllerColaborador = new ControllerColaborador();
             dgvColaborador.DataSource = controllerColaborador.ListarColaborador();
+            DefinirCabecalhos(new List<string>() { "ID", "Nome", "Cpf", "Departamento", "Cargo", "telefone", "E-mail Coorp.", "E-mail Pessoal", "Usuario", "Senha", "Status" });
+
 
         }
 
@@ -210,8 +212,10 @@ namespace SistemaPDVBack.View
             controllerColaborador = new ControllerColaborador(txbNome.Text);
             if (txbNome.Text != "")
             {
+
                 dgvColaborador.DataSource = controllerColaborador.PesquisaColaborador();
-                DefinirCabecalhos(new List<string>() { "ID", "Nome", "Cpf", "Departamento", "Cargo", "Telefone", "E-mail Pessoal", "E-mail Coorp.", "Usuario", "Senha", "Status" });
+                DefinirCabecalhos(new List<string>() { "ID", "Nome", "Cpf", "Departamento", "Cargo", "telefone", "E-mail Coorp.", "E-mail Pessoal", "Usuario", "Senha", "Status" });
+
 
 
             }
@@ -220,6 +224,7 @@ namespace SistemaPDVBack.View
                 if (ckbIntativo.Checked)
                 {
                     dgvColaborador.DataSource = controllerColaborador.ListarTodosColaboradores();
+
                 }
                 else
                 {
@@ -231,9 +236,6 @@ namespace SistemaPDVBack.View
 
         }
 
-
-
-
-
+ 
     }
 }

@@ -23,7 +23,7 @@ namespace SistemaPDVBack.Model
         int statusAtivo;
         string cnpj;
         string rua;
-        public int IdFornecedor { get {return IdFornecedor; } set {idFornecedor = value; } }
+        public int IdFornecedor { get {return idFornecedor; } set {idFornecedor = value; } }
         public string InscricaoEstadual { get{return inscricaoEstadual;} set{ inscricaoEstadual = value;} }
         public string NomeFantasia { get{return nomeFantasia;} set{nomeFantasia = value;} }
         public string UfPessoa { get{return ufPessoa;} set{ufPessoa =  value;} }
