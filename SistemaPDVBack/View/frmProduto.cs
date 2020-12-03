@@ -39,11 +39,15 @@ namespace SistemaPDVBack.View
         private void Listar()
         {
             controllerProduto = new ControllerProduto();
-            cmbFornecedor.SelectedIndex = 0;
+            if (cmbFornecedor.Text.Equals(" "))
+            {
+                cmbFornecedor.SelectedIndex = 0;
+
+            }
 
             dgvProduto.DataSource = controllerProduto.ListarProduto();
 
-            cmbFornecedor.SelectedIndex = 0;
+
 
             DefinirCabecalhos(new List<string>() { "ID", "Cód de barras", "Nome", "Fornecedor", "Descrição", "Quantidade", "Preço Custo", "Margem", "Preço Venda", "Data Fabri.", "Data Venci.", "Categoria", "Ativo" });
 
@@ -76,39 +80,17 @@ namespace SistemaPDVBack.View
 
 
             InseriValorRb();
-
-            if (rbNaoPerecivel.Checked == true)
+            if (!cmbFornecedor.Text.Equals(""))
             {
-                msktDataFabricacao.Text = "00/00/0000";
-                msktDataVencimento.Text = "00/00/0000";
-                controllerProduto = new ControllerProduto(txbId.Text, txbCodigoBarras.Text, cmbFornecedor.SelectedValue.ToString(), txbNome.Text, rtbDescricao.Text, txbPrecoCusto.Text, txbPrecoDeVenda.Text,
-                                                    txbMargemDeLucro.Text, msktDataFabricacao.Text, msktDataVencimento.Text, txbQuantidadeEstoque.Text, _perecivel, _ativo);
-            }
-            else
-            {
-                controllerProduto = new ControllerProduto(txbId.Text, txbCodigoBarras.Text, cmbFornecedor.SelectedValue.ToString(), txbNome.Text, rtbDescricao.Text, txbPrecoCusto.Text, txbPrecoDeVenda.Text,
-                                                    txbMargemDeLucro.Text, msktDataFabricacao.Text, msktDataVencimento.Text, txbQuantidadeEstoque.Text, _perecivel, _ativo);
-            }
-
-
-            if (controllerProduto.Ds_Msg != "")
-            {
-                // Exibir erro!
-
-                txbCodigoBarras.Focus();
-                const string caption = "Ocorreu um erro?";
-                var result = MessageBox.Show(controllerProduto.Ds_Msg, caption,
-                                              MessageBoxButtons.OK,
-                                              MessageBoxIcon.Warning);
-
-            }
-            else
-            {
-
-                // Tudo certinho!
-                if(controllerProduto.VerificarCodBarras() == false)
+                if (rbNaoPerecivel.Checked == true)
                 {
-                    controllerProduto.AdicionarProduto();
+                    msktDataFabricacao.Text = "00/00/0000";
+                    msktDataVencimento.Text = "00/00/0000";
+
+
+                    controllerProduto = new ControllerProduto(txbId.Text, txbCodigoBarras.Text, cmbFornecedor.SelectedValue.ToString(), txbNome.Text, rtbDescricao.Text, txbPrecoCusto.Text, txbPrecoDeVenda.Text,
+                                                        txbMargemDeLucro.Text, msktDataFabricacao.Text, msktDataVencimento.Text, txbQuantidadeEstoque.Text, _perecivel, _ativo);
+
 
                     if (controllerProduto.Ds_Msg != "")
                     {
@@ -121,15 +103,95 @@ namespace SistemaPDVBack.View
                                                       MessageBoxIcon.Warning);
 
                     }
+                    else
+                    {
 
-                    Listar();
+                        // Tudo certinho!
+                        if (controllerProduto.VerificarCodBarras() == false)
+                        {
+                            controllerProduto.AdicionarProduto();
+
+                            if (controllerProduto.Ds_Msg != "")
+                            {
+                                // Exibir erro!
+
+                                txbCodigoBarras.Focus();
+                                const string caption = "Ocorreu um erro?";
+                                var result = MessageBox.Show(controllerProduto.Ds_Msg, caption,
+                                                              MessageBoxButtons.OK,
+                                                              MessageBoxIcon.Warning);
+
+                            }
+
+                            Listar();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Esse código de barras já existe !!");
+                        }
+
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Esse código de barras já existe !!");
+                    MessageBox.Show("Preencha todos produtos!!");
                 }
 
             }
+            else
+            {
+                if (cmbFornecedor.Text.Equals(" "))
+                {
+                    controllerProduto = new ControllerProduto(txbId.Text, txbCodigoBarras.Text, cmbFornecedor.SelectedValue.ToString(), txbNome.Text, rtbDescricao.Text, txbPrecoCusto.Text, txbPrecoDeVenda.Text,
+                                                    txbMargemDeLucro.Text, msktDataFabricacao.Text, msktDataVencimento.Text, txbQuantidadeEstoque.Text, _perecivel, _ativo);
+
+                    if (controllerProduto.Ds_Msg != "")
+                    {
+                        // Exibir erro!
+
+                        txbCodigoBarras.Focus();
+                        const string caption = "Ocorreu um erro?";
+                        var result = MessageBox.Show(controllerProduto.Ds_Msg, caption,
+                                                      MessageBoxButtons.OK,
+                                                      MessageBoxIcon.Warning);
+
+                    }
+                    else
+                    {
+
+                        // Tudo certinho!
+                        if (controllerProduto.VerificarCodBarras() == false)
+                        {
+                            controllerProduto.AdicionarProduto();
+
+                            if (controllerProduto.Ds_Msg != "")
+                            {
+                                // Exibir erro!
+
+                                txbCodigoBarras.Focus();
+                                const string caption = "Ocorreu um erro?";
+                                var result = MessageBox.Show(controllerProduto.Ds_Msg, caption,
+                                                              MessageBoxButtons.OK,
+                                                              MessageBoxIcon.Warning);
+
+                            }
+
+                            Listar();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Esse código de barras já existe !!");
+                        }
+
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Preeencha todos os  produtos!!");
+                }
+            }
+
+
 
         }
 
@@ -196,7 +258,7 @@ namespace SistemaPDVBack.View
         private void btnAlterar_Click(object sender, EventArgs e)
         {
             InseriValorRb();
-            controllerProduto = new ControllerProduto(txbId.Text,txbCodigoBarras.Text, cmbFornecedor.SelectedValue.ToString(), txbNome.Text, rtbDescricao.Text, txbPrecoCusto.Text, txbPrecoDeVenda.Text,
+            controllerProduto = new ControllerProduto(txbId.Text, txbCodigoBarras.Text, cmbFornecedor.SelectedValue.ToString(), txbNome.Text, rtbDescricao.Text, txbPrecoCusto.Text, txbPrecoDeVenda.Text,
                                                         txbMargemDeLucro.Text, msktDataFabricacao.Text, msktDataVencimento.Text, txbQuantidadeEstoque.Text, _perecivel, _ativo);
             controllerProduto.AlterarProduto();
             btnAdicionar.Enabled = true;
@@ -275,7 +337,10 @@ namespace SistemaPDVBack.View
             txbPrecoDeVenda.Clear();
             txbPrecoCusto.Clear();
             txbQuantidadeEstoque.Clear();
-            cmbFornecedor.SelectedIndex = 0;
+            if (cmbFornecedor.Text.Equals(" "))
+            {
+                cmbFornecedor.SelectedIndex = 0;
+            }
             rbProdutoAtivo.Checked = true;
             rbPerecivel.Checked = true;
             rtbDescricao.Clear();
@@ -330,6 +395,6 @@ namespace SistemaPDVBack.View
             if ((Char.IsLetter(e.KeyChar)))
                 e.Handled = true;
         }
-          
+
     }
 }
