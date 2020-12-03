@@ -1,14 +1,12 @@
 ﻿using MySql.Data.MySqlClient;
 using SistemaPDVBack.Model;
 using SistemaPDVBack.DTO;
-
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+
 
 namespace SistemaPDVBack.Controller
 {
@@ -25,8 +23,7 @@ namespace SistemaPDVBack.Controller
 
         public ControllerPedido(string status, string dataDoPedido, string total, string formaPagamento)
         {
-            // CarregaCpf();
-
+    
             ConverterValidar(status, dataDoPedido, total, formaPagamento);
         }
   
@@ -79,12 +76,7 @@ namespace SistemaPDVBack.Controller
             cmd.Parameters.AddWithValue("@formaPagamento", pedido.FormaDePagamento);
             cmd.Parameters.AddWithValue("@totalPedido", pedido.TotalPedido);
 
-
-            //  cmd.Parameters.AddWithValue("@tipoCliente", pedido.TipoCliente);
-
-
-
-
+                      
             try
             {
                 cmd.Connection = conexao.AbrirBanco();

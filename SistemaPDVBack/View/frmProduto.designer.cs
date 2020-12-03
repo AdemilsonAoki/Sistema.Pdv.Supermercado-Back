@@ -559,7 +559,6 @@
             this.Controls.Add(this.lblCodBarras);
             this.Name = "frmProduto";
             this.Text = "frmProduto";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmProduto_Load);
             this.gpDescricaoNome.ResumeLayout(false);
             this.gpDescricaoNome.PerformLayout();
