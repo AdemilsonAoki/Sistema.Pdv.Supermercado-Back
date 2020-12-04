@@ -69,12 +69,22 @@ namespace SistemaPDVBack.Controller
                     }
                     else
                     {
-                        mensagem = "Preencha os campos";
                     }
                     string inscricao = inscricaoEstadual.Replace(".", "");
                     fornecedor.Cnpj = cnpj;
                     fornecedor.StatusAtivo = int.Parse(statusAtivo);
-                    fornecedor.InscricaoEstadual = inscricao;
+                
+
+                    if (inscricao.Length > 12)
+                    {
+                        mensagem = "campo invalido ";
+
+
+                    }
+                    else
+                    {
+                        fornecedor.InscricaoEstadual = inscricao;
+                    }
                     fornecedor.ComplementoPessoa = complemento;
                     string cepFornecedor = cep.Replace(".", "").Replace("-", "");
                     fornecedor.CepFornecedor = int.Parse(cepFornecedor);
