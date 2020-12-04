@@ -49,7 +49,7 @@ namespace SistemaPDVBack.View
 
 
 
-            DefinirCabecalhos(new List<string>() { "ID", "Cód de barras", "Nome", "Fornecedor", "Descrição", "Quantidade", "Preço Custo", "Margem", "Preço Venda", "Data Fabri.", "Data Venci.", "Categoria", "Ativo" });
+            DefinirCabecalhos(new List<string>() { "ID", "Cód barras", "Nome", "Fornecedor", "Descrição", "Qtd.", "P. Custo", "Margem", "P. Venda", "Dt. Fabri.", "Dt. Venci.", "Categoria", "Ativo" });
 
             LimpaCampos();
         }
@@ -218,6 +218,20 @@ namespace SistemaPDVBack.View
             controllerProduto = new ControllerProduto(txbId.Text, txbCodigoBarras.Text, cmbFornecedor.SelectedValue.ToString(), txbNome.Text, rtbDescricao.Text, txbPrecoCusto.Text, txbPrecoDeVenda.Text,
                                                         txbMargemDeLucro.Text, msktDataFabricacao.Text, msktDataVencimento.Text, txbQuantidadeEstoque.Text, _perecivel, _ativo);
             controllerProduto.AlterarProduto();
+
+            if (controllerProduto.Ds_Msg != "")
+            {
+                // Exibir erro!
+
+                txbCodigoBarras.Focus();
+                const string caption = "Ocorreu um erro?";
+                var result = MessageBox.Show(controllerProduto.Ds_Msg, caption,
+                                              MessageBoxButtons.OK,
+                                              MessageBoxIcon.Warning);
+
+            }
+
+            Listar();
             Listar();
         }
 
@@ -241,7 +255,7 @@ namespace SistemaPDVBack.View
             if (txbCodigoBarras.Text != "")
             {
                 dgvProduto.DataSource = controllerProduto.PesquisaProduto();
-                DefinirCabecalhos(new List<string>() { "ID", "Cód de barras", "Nome", "Fornecedor", "Descrição", "Quantidade", "Preço Custo", "Margem", "Preço Venda", "Data Fabri.", "Data Venci.", "Categoria", "Ativo" });
+                DefinirCabecalhos(new List<string>() { "ID", "Cód barras", "Nome", "Fornecedor", "Descrição", "Qtd", "P. Custo", "Margem", "P. Venda", "Dt. Fabri.", "Dt. Venci.", "Categoria", "Ativo" });
 
 
             }
@@ -250,6 +264,8 @@ namespace SistemaPDVBack.View
                 if (ckbInativo.Checked)
                 {
                     dgvProduto.DataSource = controllerProduto.ListarTodosProdutos();
+                    DefinirCabecalhos(new List<string>() { "ID", "Cód barras", "Nome", "Fornecedor", "Descrição", "Qtd", "P. Custo", "Margem", "P. Venda", "Dt. Fabri.", "Dt. Venci.", "Categoria", "Ativo" });
+
                 }
                 else
                 {
@@ -348,9 +364,26 @@ namespace SistemaPDVBack.View
 
         private void txbCodigoBarras_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if ((Char.IsLetter(e.KeyChar)))
+            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8)
+            {
                 e.Handled = true;
+            }
         }
 
+        private void txbPrecoCusto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8 && e.KeyChar != (char)44 && e.KeyChar != (char)1)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txbPrecoDeVenda_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8 && e.KeyChar != (char)44 && e.KeyChar != (char)1)
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

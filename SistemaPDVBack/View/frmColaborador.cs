@@ -64,7 +64,7 @@ namespace SistemaPDVBack.View
                                                       MessageBoxIcon.Warning);
 
                     }
-                    controllerUsuario = new ControllerUsuario(txbUsuario.Text, txbSenha.Text, msktCpf.Text, _ativo);
+                    controllerUsuario = new ControllerUsuario(txbUsuario.Text, txbSenha.Text, msktCpf.Text, _ativo, txbId.Text);
                     controllerUsuario.AdicionarUsuario();
                     Listar();
                     LimpaCampos();
@@ -150,7 +150,7 @@ namespace SistemaPDVBack.View
             }
 
             controllerColaborador = new ControllerColaborador(txbId.Text, txbNome.Text, msktCpf.Text, cmbDepartamento.SelectedValue.ToString(), _ativo, cmbCargo.Text, mskTxtCelular.Text, txbEmail.Text, txbEmailCorporativo.Text);
-            controllerUsuario = new ControllerUsuario(txbUsuario.Text, txbSenha.Text, msktCpf.Text, _ativo);
+            controllerUsuario = new ControllerUsuario(txbUsuario.Text, txbSenha.Text, msktCpf.Text, _ativo, txbId.Text);
 
             if (controllerColaborador.Ds_Msg != "")
             {
@@ -167,6 +167,8 @@ namespace SistemaPDVBack.View
             {
                 // Tudo certinho!
                 controllerColaborador.AlterarColaborador();
+                controllerUsuario.AlterarUsuario();
+
 
                 if (controllerColaborador.Ds_Msg != "")
                 {
@@ -179,7 +181,6 @@ namespace SistemaPDVBack.View
                                                   MessageBoxIcon.Warning);
 
                 }
-                controllerUsuario.AlterarUsuario();
                 LimpaCampos();
 
                 Listar();
@@ -224,6 +225,8 @@ namespace SistemaPDVBack.View
                 if (ckbIntativo.Checked)
                 {
                     dgvColaborador.DataSource = controllerColaborador.ListarTodosColaboradores();
+                    DefinirCabecalhos(new List<string>() { "ID", "Nome", "Cpf", "Departamento", "Cargo", "telefone", "E-mail Coorp.", "E-mail Pessoal", "Usuario", "Senha", "Status" });
+
 
                 }
                 else

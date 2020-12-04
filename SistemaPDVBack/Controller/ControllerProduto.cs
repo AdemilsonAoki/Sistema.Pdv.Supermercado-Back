@@ -263,7 +263,7 @@ namespace SistemaPDVBack.Controller
         }
         public DataTable PreencherFornecedor()
         {
-            cmd.CommandText = "Select *from Fornecedor";
+            cmd.CommandText = "Select *from Fornecedor where statusAtivo = 1";
             try
             {
                 cmd.Connection = conexao.AbrirBanco();

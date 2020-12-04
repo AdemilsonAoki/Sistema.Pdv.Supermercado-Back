@@ -273,6 +273,8 @@ namespace SistemaPDVBack.View
             if (txbNomeFantasia.Text != "")
             {
                 dgvFornecedor.DataSource = controllerFornecedor.PesquisaFornecedor();
+                DefinirCabecalhos(new List<string>() { "Id", "CNPJ", "Nome", "Insc. Estadual", "CEP", "Rua", "Estado", "Numero", "Complemnto", "Bairro", "Cidade", "Ativo" });
+
 
             }
             else
@@ -280,6 +282,9 @@ namespace SistemaPDVBack.View
                 if (ckbInativo.Checked)
                 {
                     dgvFornecedor.DataSource = controllerFornecedor.ListarTodosFornecedores();
+                    DefinirCabecalhos(new List<string>() { "Id", "CNPJ", "Nome", "Insc. Estadual", "CEP", "Rua", "Estado", "Numero", "Complemnto", "Bairro", "Cidade", "Ativo" });
+
+
                 }
                 else
                 {

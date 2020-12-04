@@ -17,10 +17,14 @@ namespace SistemaPDVBack.Controller
         private readonly MySqlCommand cmd = new MySqlCommand();
         private MySqlDataReader reader;
 
-        public ControllerUsuario(string usuario, string senha, string cpfColaborador, string statusAtivo)
+        public ControllerUsuario(string usuario, string senha, string cpfColaborador, string statusAtivo, string id)
         {
-            ValidarConverter(usuario, senha, cpfColaborador, statusAtivo);
-            LerColaborador();
+            ValidarConverter(usuario, senha, cpfColaborador, statusAtivo, id);
+            if (string.IsNullOrEmpty(id))
+            {
+                LerColaborador();
+            }
+
 
 
         }
@@ -31,66 +35,6 @@ namespace SistemaPDVBack.Controller
             login.Senha = senha;
 
         }
-
-
-        private void ValidarConverter(string usuario, string senha, string cpf, string statusAtivo)
-        {
-            try
-            {
-                login.StatusAtivo = int.Parse(statusAtivo);
-                login.Login = usuario;
-                login.Senha = senha;
-                colaborador.CpfColaborador = cpf;
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message);
-            }
-
-
-        }
-
-        public bool Login()
-        {
-            cmd.CommandText = "select *from usuario where usuario = @usuario and senha = @senha";
-            cmd.Parameters.AddWithValue("@usuario", login.Login);
-            cmd.Parameters.AddWithValue("@senha", login.Senha);
-            try
-            {
-                cmd.Connection = conexao.AbrirBanco();
-
-                reader = cmd.ExecuteReader();
-                if (reader.HasRows)
-                {
-                    while (reader.Read())
-                    {
-                        CarregaUsuario.Nome = reader.GetString(2);
-                        CarregaUsuario.IdUser = reader.GetString(1);
-
-
-                    }
-                    return true;
-
-
-                }
-                else
-                {
-                    return false;
-                }
-
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message);
-                return false;
-            }
-            finally
-            {
-                conexao.FecharBanco();
-            }
-
-        }
-
 
         private void LerColaborador()
         {
@@ -128,6 +72,72 @@ namespace SistemaPDVBack.Controller
                 conexao.FecharBanco();
             }
         }
+        private void ValidarConverter(string usuario, string senha, string cpf, string statusAtivo, string id)
+        {
+            try
+            {
+
+                if (!string.IsNullOrEmpty(id))
+                {
+                    colaborador.IdColaborador = int.Parse(id);
+                }
+
+                login.StatusAtivo = int.Parse(statusAtivo);
+                login.Login = usuario;
+                login.Senha = senha;
+                colaborador.CpfColaborador = cpf;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+
+
+        }
+
+        public bool Login()
+        {
+            cmd.CommandText = "select *from usuario where usuario = @usuario and senha = @senha and statusAtivo = 1";
+            cmd.Parameters.AddWithValue("@usuario", login.Login);
+            cmd.Parameters.AddWithValue("@senha", login.Senha);
+            try
+            {
+                cmd.Connection = conexao.AbrirBanco();
+
+                reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        CarregaUsuario.Nome = reader.GetString(2);
+                        CarregaUsuario.IdUser = reader.GetString(1);
+
+
+                    }
+                    return true;
+
+
+                }
+                else
+                {
+                    return false;
+                }
+
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                return false;
+            }
+            finally
+            {
+                conexao.FecharBanco();
+                cmd.Parameters.Clear();
+
+            }
+
+        }
+
         public void AdicionarUsuario()
         {
             cmd.CommandText = "insert into Usuario(idColaborador, usuario, senha, statusAtivo) values (@idColaborador, @usuario, @senha, @statusAtivo) ";
@@ -160,10 +170,16 @@ namespace SistemaPDVBack.Controller
         {
             try
             {
-                cmd.CommandText = "Update Usuario set usuario = @usuario, senha = @senha where idColaborador = @idColaborador";
+
+
+
+                cmd.CommandText = "Update Usuario set usuario = @usuario, senha = @senha, statusAtivo = @statusAtivo where idColaborador = @idColaborador";
                 cmd.Parameters.AddWithValue("@usuario", login.Login);
                 cmd.Parameters.AddWithValue("@senha", login.Senha);
+                cmd.Parameters.AddWithValue("@statusAtivo", login.StatusAtivo);
+
                 cmd.Parameters.AddWithValue("@idColaborador", colaborador.IdColaborador);
+
                 cmd.Connection = conexao.AbrirBanco();
                 cmd.ExecuteNonQuery();
 
@@ -172,6 +188,11 @@ namespace SistemaPDVBack.Controller
             catch (Exception e)
             {
                 throw;
+            }
+            finally
+            {
+                cmd.Parameters.Clear();
+                conexao.FecharBanco();
             }
         }
 
