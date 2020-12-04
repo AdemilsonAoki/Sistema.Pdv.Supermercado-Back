@@ -204,7 +204,7 @@ namespace SistemaPDVBack.View
             txbUsuario.Clear();
             txbSenha.Clear();
             cmbDepartamento.SelectedIndex = 0;
-            cmbCargo.SelectedIndex = 0;
+            cmbCargo.SelectedIndex = 1;
 
         }
 

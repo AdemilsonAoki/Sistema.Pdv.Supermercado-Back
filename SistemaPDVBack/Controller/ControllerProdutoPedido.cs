@@ -60,7 +60,7 @@ namespace SistemaPDVBack.Controller
         {
 
 
-            cmd.CommandText = "select *from Produto where codBarras = @codBarras";
+            cmd.CommandText = "select *from Produto where codBarras = @codBarras and statusAtivo = 1";
             cmd.Parameters.AddWithValue("@codBarras", produtoPedido.CodBarras);
 
             string venda = "";
@@ -120,7 +120,7 @@ namespace SistemaPDVBack.Controller
         public string VerificaProdutoNome()
 
         {
-            cmd.CommandText = "select *from Produto where codBarras = @codBarras";
+            cmd.CommandText = "select *from Produto where codBarras = @codBarras and statusAtivo = 1";
             cmd.Parameters.AddWithValue("@codBarras", produtoPedido.CodBarras);
 
             string nome = "";

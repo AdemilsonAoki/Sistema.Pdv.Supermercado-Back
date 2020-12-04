@@ -76,7 +76,8 @@ namespace SistemaPDVBack.Controller
                     fornecedor.StatusAtivo = int.Parse(statusAtivo);
                     fornecedor.InscricaoEstadual = inscricao;
                     fornecedor.ComplementoPessoa = complemento;
-                    fornecedor.CepFornecedor = int.Parse(cep);
+                    string cepFornecedor = cep.Replace(".", "").Replace("-", "");
+                    fornecedor.CepFornecedor = int.Parse(cepFornecedor);
                 }
                 catch (Exception e)
                 {
