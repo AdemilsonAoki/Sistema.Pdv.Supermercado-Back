@@ -46,12 +46,10 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
-         
             // 
             // lblBoasVindas
             // 
-            this.lblBoasVindas.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblBoasVindas.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblBoasVindas.AutoSize = true;
             this.lblBoasVindas.BackColor = System.Drawing.Color.Transparent;
             this.lblBoasVindas.Font = new System.Drawing.Font("Verdana", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -64,8 +62,7 @@
             // 
             // lblHora
             // 
-            this.lblHora.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblHora.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.lblHora.AutoSize = true;
             this.lblHora.Font = new System.Drawing.Font("Verdana", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHora.ForeColor = System.Drawing.SystemColors.AppWorkspace;
@@ -79,7 +76,7 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // frmDashboard
+            // frmHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -87,7 +84,7 @@
             this.Controls.Add(this.lblHora);
             this.Controls.Add(this.lblBoasVindas);
             this.Controls.Add(this.pictureBox1);
-            this.Name = "frmDashboard";
+            this.Name = "frmHome";
             this.Text = "frmDashboard";
             this.Load += new System.EventHandler(this.frmDashboard_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
